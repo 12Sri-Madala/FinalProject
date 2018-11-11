@@ -1,14 +1,34 @@
 import React from 'react';
 import '../assets/css/app.css';
-import logo from '../assets/images/logo.svg';
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom';
+import Home from './home';
+import ApplicationPage from './application_page';
+import MeetTeam from './meet_team';
 
 const App = () => (
-    <div>
-        <div className="app">
-            <img src={logo} className="logo rotate"/>
-            <h1>Welcome to React</h1>
+    <Router>
+        <div>
+            <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/application_page">Application</Link>
+                </li>
+                <li>
+                    <Link to="/meet_team">Meet the team</Link>
+                </li>
+            </ul>
+            <Route exact path="/" component={Home}/>
+            <Route path="/application_page" component={ApplicationPage}/>
+            <Route path="/meet_team" component={MeetTeam}/>
         </div>
-    </div>
+
+    </Router>
 );
 
 export default App;
