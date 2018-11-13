@@ -8,7 +8,7 @@ import {
 import Home from './home';
 import ApplicationPage from './application_page';
 import MeetTeam from './meet_team';
-import existingBookmarks from './existingbookmarks';
+import ExistingBookmarks from './existingbookmarks';
 
 const App = () => (
     <Router>
@@ -25,7 +25,7 @@ const App = () => (
                 </li>
             </ul>
             
-            <existingBookmarks/>
+            <ExistingBookmarks/>
 
             <Route exact path="/" component={Home}/>
             <Route path="/application_page" component={ApplicationPage}/>

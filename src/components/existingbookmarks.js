@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import DummyList from '/dummylist';
+import DummyList from '../existingdummy/dummylist';
 
-class existingBookmarks extends Component {
+class ExistingBookmarks extends Component {
+    
+    getListData () {
 
+    }
     render(){ 
+        console.log(DummyList);
         return ( 
             <ul>
                 <li> Existing Bookmarks </li>
@@ -12,4 +16,4 @@ class existingBookmarks extends Component {
     }
 }
  
-export default existingBookmarks;
+export default ExistingBookmarks;
