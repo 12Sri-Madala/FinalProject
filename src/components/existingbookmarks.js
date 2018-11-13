@@ -11,7 +11,6 @@ class ExistingBookmarks extends Component {
         }
     }
 
-
     componentDidMount(){
         this.getListData();
     }
