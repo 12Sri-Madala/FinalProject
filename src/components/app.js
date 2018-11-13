@@ -8,6 +8,7 @@ import {
 import Home from './home';
 import ApplicationPage from './application_page';
 import MeetTeam from './meet_team';
+import ExistingBookmarks from './existingbookmarks';
 
 const App = () => (
     <Router>
@@ -23,6 +24,9 @@ const App = () => (
                     <Link to="/meet_team">Meet the team</Link>
                 </li>
             </ul>
+            
+            <ExistingBookmarks/>
+
             <Route exact path="/" component={Home}/>
             <Route path="/application_page" component={ApplicationPage}/>
             <Route path="/meet_team" component={MeetTeam}/>
