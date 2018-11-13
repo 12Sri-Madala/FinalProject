@@ -1,6 +1,11 @@
 import React from 'react';
-export default() => (
+
+
+
+const MeetTeam = () => (
     <div>
-        <h1>TEAM PAGE</h1>
+        <h1>MEET THE TEAM</h1>
     </div>
 )
+
+export default MeetTeam;
