@@ -3,7 +3,8 @@ import '../assets/css/app.css';
 import {
     BrowserRouter as Router,
     Route,
-    Link
+    Link,
+    Switch
 } from 'react-router-dom';
 import Home from './home';
 import ApplicationPage from './application_page';
@@ -23,9 +24,11 @@ const App = () => (
                     <Link to="/meet_team">Meet the team</Link>
                 </li>
             </ul>
-            <Route exact path="/" component={Home}/>
-            <Route path="/application_page" component={ApplicationPage}/>
-            <Route path="/meet_team" component={MeetTeam}/>
+            <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route path="/application_page" component={ApplicationPage}/>
+                <Route path="/meet_team" component={MeetTeam}/>
+            </Switch>
         </div>
 
     </Router>
