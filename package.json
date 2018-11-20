@@ -15,6 +15,7 @@
     "url": "https://github.com/12Sri-Madala/FinalProject.git"
   },
   "dependencies": {
+    "materialize-css": "^1.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
