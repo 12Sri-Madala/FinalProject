@@ -8,13 +8,13 @@ import MeetTeam from './meet_team';
 
 
 export default () => (
+    <div>
 
-        <div className="container">
-            <Nav/>
-            <Route exact path="/" component={Home}/>
-            <Route path="/application_page" component={ApplicationPage}/>
-            <Route path="/meet_team" component={MeetTeam}/>
-        </div>
+        <Nav/>
+        <Route exact path="/" component={Home}/>
+        <Route path="/application_page" component={ApplicationPage}/>
+        <Route path="/meet_team" component={MeetTeam}/>
+    </div>
 )
 
 
