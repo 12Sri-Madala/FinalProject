@@ -1,18 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import './nav.css';
 
-export default () => {
-    return (
-        <ul className="nav nav-tabs mt-3">
+export default props => (
+        <ul className="nav nav-tabs mt-3 navExtras">
             <li className="nav-item">
-                <Link to={'/'} className="nav-link">Home</Link>
+                <NavLink exact to={'/'} activeClassName="active selected" className="nav-link">Home</NavLink>
             </li>
             <li className="nav-item">
-                <Link to={'/application_page'} className="nav-link">Application</Link>
+                <NavLink to={'/application_page'} activeClassName="active selected" className="nav-link">Application</NavLink>
             </li>
             <li className="nav-item">
-                <Link to={'/meet_team'} className="nav-link">Meet The Team</Link>
+                <NavLink to={'/meet_team'} activeClassName="active selected" className="nav-link">Meet The Team</NavLink>
             </li>
         </ul>
-    )
-}
+)
