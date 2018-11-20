@@ -4,11 +4,14 @@ import Nav from './nav';
 import Home from './home';
 import ApplicationPage from './application_page';
 import MeetTeam from './meet_team';
+import ExistingBookmarks from './existingbookmarks';
+
 
 export default () => (
 
         <div className="container">
-            <Nav/>
+            <Nav/>               
+            <ExistingBookmarks/>
             <Route exact path="/" component={Home}/>
             <Route path="/application_page" component={ApplicationPage}/>
             <Route path="/meet_team" component={MeetTeam}/>
