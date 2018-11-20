@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import DummyList from '../existingdummy/dummylist';
+import DummyFolders from '../existingdummy/dummyfolders';
 
-class ExistingBookmarks extends Component {
-
+class ExistingFolders extends Component {
+    
     constructor(props){
         super(props);
 
@@ -14,25 +14,25 @@ class ExistingBookmarks extends Component {
     componentDidMount(){
         this.getExistingBookmarks()
     }
-    
+
     getExistingBookmarks = () => {
         this.setState({
-            list: DummyList
+            list: DummyFolders
         });
     }
 
     render(){ 
-
-        const dummyListElements = this.state.list.map((item, index) => {
-            return <li key={item._id}>{item.title}, {item.URL}</li>;
+        
+        const dummyFolderElements = this.state.list.map((item, index) =>{
+            return <li key={item._id}>{item.folder}</li>
         })
 
         return ( 
             <ul>
-                <li> {dummyListElements} </li>
+                {dummyFolderElements}
             </ul>
          );
     }
 }
  
-export default ExistingBookmarks;
+export default ExistingFolders;

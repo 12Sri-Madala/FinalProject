@@ -5,8 +5,6 @@ import Home from './home';
 import ApplicationPage from './application_page';
 import MeetTeam from './meet_team';
 
-
-
 export default () => (
     <div>
 
