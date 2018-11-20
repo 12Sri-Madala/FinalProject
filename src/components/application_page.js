@@ -6,15 +6,20 @@ import './applicationcss.css';
 
 const ApplicationPage = () => (
     
-    <div>
+    <div className="applicationDiv">
+        <div className="insideDiv">
+            <AllReminderList  />
+        </div>
 
-        <AllReminderList className="applicationDivs" />
 
+        <div className="insideDiv">
+            <ExistingBookmarks />
+        </div>
 
-        <ExistingBookmarks className="applicationDivs" />
-  
-        
-        <ExistingFolders className="applicationDivs" />
+        <div className="insideDiv">
+            <ExistingFolders />
+        </div>
+
   
     </div>
 
