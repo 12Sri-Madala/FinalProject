@@ -1,10 +1,9 @@
 import React from 'react';
 
 
-const Home = () => (
-    <div>
-        <h1>HOME PAGE</h1>
-    </div>
+export default props => (
+        <div>
+            <h1>YOU ARE HOME</h1>
+        </div>
 )
 
-export default Home;

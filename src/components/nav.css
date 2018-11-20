@@ -1,0 +1,12 @@
+.nav-item .nav-link.selected {
+    color: rosybrown;
+
+}
+.nav-item .nav-link:hover {
+    color: pink;
+
+}
+.navExtras{
+    background-color: beige;
+
+}

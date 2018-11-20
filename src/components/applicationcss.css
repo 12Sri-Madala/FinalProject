@@ -1,0 +1,6 @@
+.applicationDivs{
+    display:inline-block;
+    margin: 0;
+    width: 50vw;
+    background-color: blue;
+}

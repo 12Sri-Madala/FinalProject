@@ -1,18 +1,23 @@
 import React from 'react';
-import ReminderList from './reminder_list';
 import ExistingBookmarks from './existingbookmarks';
 import ExistingFolders from './existingfolders';
-
+import AllReminderList from './all_of_reminder_list';
+import './applicationcss.css';
 
 const ApplicationPage = () => (
-            <div>
-                <h1>Application Page</h1>
-                <ReminderList/>
-                <h1>Bookmarks</h1>
-                <ExistingBookmarks/>
-                <h1>Folders</h1>
-                <ExistingFolders/>
-            </div>
+    
+    <div>
+
+        <AllReminderList className="applicationDivs" />
+
+
+        <ExistingBookmarks className="applicationDivs" />
+  
+        
+        <ExistingFolders className="applicationDivs" />
+  
+    </div>
+
 )
 
 export default ApplicationPage;

@@ -29,7 +29,7 @@ class ExistingBookmarks extends Component {
 
         return ( 
             <ul>
-                {dummyListElements}
+                <li> {dummyListElements} </li>
             </ul>
          );
     }
