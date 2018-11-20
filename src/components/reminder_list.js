@@ -1,4 +1,4 @@
-import 'materialize-css/dist/css/materialize.min.css';
+//import 'materialize-css/dist/css/materialize.min.css';
 import React, { Component } from 'react';
 
 import reminder_list from '../dummy_data_bookmark_reminders/reminder_list'
