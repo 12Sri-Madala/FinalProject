@@ -8,9 +8,10 @@ class ReminderList extends Component {
     render(){
 
         const listElements = this.props.data.map((item, index) => {
-            return <li className="collection-item listItemElements" key={item._id}>
-                {item.website}
+            return <li onClick={() => {}} className="collection-item listItemElements" key={item._id}>
+                <a href={item.website}>{item.website}</a>
                 </li>;
+
         });
 
         return(
