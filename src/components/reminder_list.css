@@ -1,0 +1,9 @@
+.listItemElements:hover{
+    font-size: 1rem;
+    font-style: italic;
+    background-color: lightskyblue;
+    list-style-type: none;
+}
+.allListItemElements{
+    list-style-type: none;
+}
