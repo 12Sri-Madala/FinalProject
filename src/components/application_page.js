@@ -7,17 +7,19 @@ import './applicationcss.css';
 const ApplicationPage = () => (
     
     <div className="applicationDiv">
-        <div className="insideDiv">
+
+        <div className="insideDiv leftDivApp">
+
             <AllReminderList  />
+
         </div>
 
+        <div className="insideDiv rightDivApp">
 
-        <div className="insideDiv">
             <ExistingBookmarks />
-        </div>
 
-        <div className="insideDiv">
             <ExistingFolders />
+
         </div>
 
   

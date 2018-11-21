@@ -1,9 +1,20 @@
 .applicationDiv{
-
     margin: 0;
-
+    width: 100vmin;
 }
 .insideDiv{
     display:inline-block;
-    width: 30vw;
+
+}
+
+.leftDivApp{
+    width: 40vmin;
+
+}
+.rightDivApp{
+   width: 60vmin;
+
+}
+.rightDivApp > * {
+    display:inline-block;
 }
