@@ -6,7 +6,17 @@
     color: pink;
 
 }
+.nav-item{
+
+    list-style-type: none;
+
+
+}
 .navExtras{
+    display: inline-flex;
+    justify-content: center;
     background-color: beige;
+    height: 10vh;
+    width: 100vw;
 
 }
