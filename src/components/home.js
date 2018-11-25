@@ -24,7 +24,11 @@ export default props => {
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                  className="ggLogin"/>
-                <GoogleLogin
+                <div id="my-signin2">
+                    
+                </div>
+
+                {/*<GoogleLogin
                     clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
                     render={renderProps => (
                         <button onClick={renderProps.onClick}>Sign Up</button>
@@ -32,7 +36,7 @@ export default props => {
                     buttonText="Login"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
-                    className="ggLogin"/>
+                    className="ggLogin"/>*/}
 
                 <a href="https://www.google.com" target="_blank">
                     <button type="button" className="btn btn-info">Get the Extension</button>
