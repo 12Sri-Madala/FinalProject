@@ -25,7 +25,7 @@ export default props => {
                     onFailure={responseGoogle}
                  className="ggLogin"/>
                 <div id="my-signin2">
-                    
+
                 </div>
 
                 {/*<GoogleLogin
