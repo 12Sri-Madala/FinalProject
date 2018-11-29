@@ -11,7 +11,6 @@ const ApplicationPage = () => (
         <div className="insideDiv leftDivApp">
 
             <AllReminderList  />
-
         </div>
 
         <div className="insideDiv rightDivApp">
