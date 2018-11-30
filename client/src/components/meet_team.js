@@ -16,5 +16,9 @@ export default props =>(
                 </div>
                 <Member />
             </div>
+            <div className="meetteam center">
+                <Member />
+                <Member />
+            </div>
         </div>
 )
