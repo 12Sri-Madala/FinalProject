@@ -1,9 +1,28 @@
 .listItemElements:hover{
     font-size: 1rem;
     font-style: italic;
-    background-color: lightskyblue;
+    background-color: lightgray;
     list-style-type: none;
+}
+.listItemElements{
+    border-bottom: 1px black solid;
+
+
 }
 .allListItemElements{
     list-style-type: none;
+
+}
+
+.lastTimeColor{
+   background-color:red;
+}
+.secondToLastTimeColor{
+    background-color: pink;
+}
+.thirdToLastTimeColor{
+  background-color: green;
+}
+.fourthToLastTimeColor{
+   background-color: blue;
 }
