@@ -1,3 +1,4 @@
 export default {
-    TICK: 'tick'
+    TICK: 'tick',
+    TIME_LEFT: 'time_left'
 }

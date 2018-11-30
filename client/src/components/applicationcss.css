@@ -1,6 +1,7 @@
 .applicationDiv{
     margin: 0;
     width: 100vmin;
+    height: 100vh;
 }
 .insideDiv{
     display:inline-block;
@@ -9,10 +10,12 @@
 
 .leftDivApp{
     width: 40vmin;
+    height: 100%;
 
 }
 .rightDivApp{
    width: 60vmin;
+    height: 100%;
 
 }
 .rightDivApp > * {

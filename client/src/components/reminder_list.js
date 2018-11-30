@@ -50,9 +50,8 @@ class ReminderList extends Component {
         });
 
         return(
-            <div>
-                <Clock/>
-                <ul className= "allListItemElements">
+            <div className= "allListItemElements">
+                <ul>
                 {listElements}
                 </ul>
             </div>

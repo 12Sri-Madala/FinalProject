@@ -11,7 +11,7 @@
 }
 .allListItemElements{
     list-style-type: none;
-
+    height: 100vh;
 }
 
 .lastTimeColor{
