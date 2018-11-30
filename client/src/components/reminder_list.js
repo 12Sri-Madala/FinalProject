@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './reminder_list.css';
 import Popup from "reactjs-popup";
-
+import Clock from './clock';
 
 
 class ReminderList extends Component {
@@ -44,17 +44,19 @@ class ReminderList extends Component {
                             <a href={item.url}>Website: {item.url}</a>
                         </div>
                     </div>
-
                 </Popup>
-
             </div>;
 
         });
 
         return(
-            <ul className= "allListItemElements">
+            <div>
+                <Clock/>
+                <ul className= "allListItemElements">
                 {listElements}
-            </ul>
+                </ul>
+            </div>
+
         );
     }
 }
