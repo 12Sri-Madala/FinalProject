@@ -1,21 +1,22 @@
 .applicationDiv{
     margin: 0;
-    width: 100vmin;
-    height: 100vh;
+
 }
 .insideDiv{
     display:inline-block;
+    height: 90vh;
+
 
 }
 
 .leftDivApp{
-    width: 40vmin;
-    height: 100%;
+    width: 30vw;
+    background-image: url("../images/reminders-background.jpg");
 
 }
 .rightDivApp{
-   width: 60vmin;
-    height: 100%;
+
+    vertical-align: top;
 
 }
 .rightDivApp > * {

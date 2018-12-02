@@ -7,7 +7,7 @@ import Clock from './clock';
 class ReminderList extends Component {
 
 
-    checkTimeLeft(item){
+    /*checkTimeLeft(item){
         var classChanged = '';
 
        if(item._hours < 4){
@@ -24,18 +24,22 @@ class ReminderList extends Component {
        }
 
        return classChanged;
-    }
+    }*/
 
     render(){
         const listElements = this.props.data.map((item, index) => {
-            const classChanged = this.checkTimeLeft(item);
+           /* const classChanged = this.checkTimeLeft(item);*/
 
-            return <div key={item.id} className="listItemElements"><li onClick={() => {}}>
-                <a href={item.url}>{item.title}</a>
+            return(
+                <div key={item.id} className="listItemElements">
+
+                    <img className="iconStyle partOfList" src={item.icon}/>
+                <li className="partOfList" onClick={() => {}}>
+                    <a href={item.url}>{item.title}</a>
+                    <span ><b>{item.time}{item.date}</b></span>
                 </li>
-                <span className={classChanged} ><b>{item._hours}</b>  hours are left </span>
-                <img src={item.icon}/>
-                <Popup trigger={<button>See more info</button>}>
+
+                <Popup trigger={<button className="btnList">See more info</button>}>
                     <div>
                         <div>
                             Notes: {item.notes}
@@ -45,13 +49,14 @@ class ReminderList extends Component {
                         </div>
                     </div>
                 </Popup>
-            </div>;
+            </div>
+        )
 
         });
 
         return(
-            <div className= "allListItemElements">
-                <ul>
+            <div>
+                <ul  className= "allListItemElements">
                 {listElements}
                 </ul>
             </div>

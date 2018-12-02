@@ -1,28 +1,59 @@
-.listItemElements:hover{
+*{
     font-size: 1rem;
+}
+
+.listItemElements:hover{
     font-style: italic;
     background-color: lightgray;
     list-style-type: none;
 }
 .listItemElements{
-    border-bottom: 1px black solid;
-
+    font-size: 1rem;
+    width: 100%;
 
 }
 .allListItemElements{
     list-style-type: none;
-    height: 100vh;
+    height: 90vh;
+    margin: 0;
+    overflow: auto;
+
 }
 
+
+.iconStyle{
+    width: 10%;
+    height: 10%;
+}
+.partOfList{
+    display: inline-block;
+    vertical-align: top;
+}
+.btnList{
+    position: relative;
+    left: 60%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .lastTimeColor{
-   background-color:red;
+    background-color:red;
 }
 .secondToLastTimeColor{
     background-color: pink;
 }
 .thirdToLastTimeColor{
-  background-color: green;
+    background-color: green;
 }
 .fourthToLastTimeColor{
-   background-color: blue;
+    background-color: blue;
 }
