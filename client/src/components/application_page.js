@@ -4,6 +4,7 @@ import ExistingFolders from './existingfolders';
 import AllReminderList from './all_of_reminder_list';
 import './applicationcss.css';
 import Nav from './nav'
+import ReminderListRedux from './reminder_list_redux';
 
 const ApplicationPage = () => (
     
@@ -16,10 +17,12 @@ const ApplicationPage = () => (
         </div>
 
         <div className="insideDiv rightDivApp">
+            <ReminderListRedux/>
 
-            <ExistingBookmarks />
 
-            <ExistingFolders />
+            {/*<ExistingBookmarks />
+
+            <ExistingFolders />*/}
 
         </div>
 

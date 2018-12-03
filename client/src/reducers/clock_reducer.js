@@ -1,3 +1,4 @@
+/*
 import types from '../actions/types';
 
 
@@ -17,4 +18,4 @@ function clockReducer(state = DEFAULT_STATE, action){
     }
 }
 
-export default clockReducer;
+export default clockReducer;*/

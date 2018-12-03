@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default [
-    {
+    /*{
         title: 'Google Maps', 
         URL: 'www.maps.google.com',
         _id: '001'
@@ -20,6 +20,11 @@ export default [
         title: 'Amazon', 
         URL: 'www.amazon.com',
         _id: '004'
+    }*/
+
+    {
+        id: '98',
+        index: 0
     }
 ];
 

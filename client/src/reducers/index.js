@@ -1,7 +1,18 @@
 import { combineReducers } from 'redux';
-import clockReducer from './clock_reducer';
+import listReducer from './list_reducer'
+import { reducer as formReducer } from 'redux-form';
 
-export default combineReducers({
-    clock: clockReducer
-
+const rootReducer = combineReducers({
+    form: formReducer,
+    list: listReducer
 });
+
+export default rootReducer;
+
+
+
+
+
+
+
+

@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { tick } from '../actions';
@@ -35,4 +36,4 @@ function mapStateToProps(state){
 export default connect(mapStateToProps, {
 
     tick: tick
-})(Clock);
+})(Clock);*/

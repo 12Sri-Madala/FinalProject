@@ -13,5 +13,8 @@ export default props => (
             <li className="">
                 <NavLink to={'/meet_team'} activeClassName="active selected" className="nav-link">Meet The Team</NavLink>
             </li>
+            <li className="">
+                <NavLink to={'/add_item'} activeClassName="active selected" className="nav-link">Add ITEM</NavLink>
+            </li>
         </ul>
 )
