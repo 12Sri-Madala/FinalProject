@@ -1,4 +1,3 @@
-
 body{
     background-color: #FFFFFF;
     margin: 0;
@@ -9,15 +8,20 @@ body{
     border: solid #e5e5e5;
     border-width: 2px 0 0;
 }
-
-.home-login{
-    width: 100vw;
-    height: 70vmin;
-    border-bottom: 1px solid black;
+.homepage {
     background-image: url(./images/title-background.jpg);
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
+}
+.home-login{
+    width: 100vw;
+    height: 75vh;
+    /* background-image: url(./images/title-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+    margin: 0;
 }
 
 .home-title {
@@ -31,7 +35,7 @@ body{
     display: inline-block;
     height: 30%;
     width: 70%;
-    top: 40px;
+    top: 70px;
     background-image: url(./images/crease-logo.png);
     background-size: contain;
     background-position: center;
@@ -40,7 +44,7 @@ body{
 
 .login-area {
     position: relative;
-    top: 100px;
+    top: 140px;
 }
 
 .login-button {
@@ -66,5 +70,21 @@ body{
 }
 button:focus {
     outline: none;
-    background-color: #265288;
+    background-color: #265288; 
+}
+
+.description-header {
+    width: 100vw;
+    height: 10vh;
+    background-color: #265288; 
+    color: whitesmoke;
+    margin: 0;
+}
+
+.description-title {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.lobster {
+    font-family: "Lobster", cursive;
 }

@@ -10,7 +10,7 @@ export default props => {
     }
 
     return (
-        <div>
+        <div className="homepage">
             <div className="home-login center">
                 <div className="crease-logo"></div>
                 <div className="login-area">
@@ -19,10 +19,9 @@ export default props => {
                 </div>
             </div>
 
-
-            <hr className="hrBar"></hr>
-
-
+            <div className="description-header">
+                <h3 className="center description-title">What is <span className="lobster">Crease</span> ?</h3>
+            </div>
             <div className="homeDivPart">
                 <h3>DESCRIPTION AREA</h3>
             </div>

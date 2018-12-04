@@ -7,7 +7,6 @@ import MeetTeam from './meet_team';
 
 export default () => (
     <div>
-
         <Nav/>
         <Route exact path="/" component={Home}/>
         <Route path="/application_page" component={ApplicationPage}/>
