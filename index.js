@@ -76,7 +76,9 @@ app.post('/bookmarks', (req, resp) => {
     })
 })
 
-app.put()
+app.put('/:id/update', (req, resp) => {
+  
+})
 
 app.get("*", (req, res) => {
   res.sendFile(resolve(__dirname, "client", "dist", "index.html"));
