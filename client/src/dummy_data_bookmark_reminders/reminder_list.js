@@ -7,7 +7,7 @@ export default [
         recurrence: "weekly",
         _hours: 3,
         time: "12:00",
-        title: 'INSTAGRAM TITLE: TH',
+        title: 'Instagram Title: asdf this is nice asdad sadasd sadad asdasd ads',
         url: "https://www.wikipedia.com"
     },
     {
@@ -18,10 +18,10 @@ export default [
         recurrence: "weekly",
         _hours: 6,
         time: "14:00",
-        title: 'INSTAGRAM TITLE: TH',
+        title: 'Instagram Title: asdf this is nice asdad sadasd sadad asdasd ads',
         url: "https://facebook.com"
     },
-    {
+   {
         date: "2018-12-03",
         icon: "https://reacttraining.com/react-router/favicon-32x32.png",
         id: "2LMDUebunef6aQP5QweSCZMzi",

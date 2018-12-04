@@ -10,24 +10,26 @@ class ReminderList extends Component {
         const listElements = this.props.data.map((item, index) => {
 
             return(
-                <div key={item.id} className="listItemElements">
-
+             <div key={item.id} className="listItemElements">
                     <img className="iconStyle partOfList" src={item.icon}/>
-                <li className="partOfList" onClick={() => {}}>
-                    <a href={item.url}>{item.title}</a>
-                    <span ><b>{item.time}{item.date}</b></span>
-                </li>
+                    <li className="partOfList inLine listStyle" onClick={() => {}}>
+                        <a className="inLine titleClass" href={item.url}>{item.title}</a>
+                        <div  className="inLine dateClass">
+                            <p className="insideDateClass">{item.time}</p>
+                            <p className="insideDateClass">{item.date}</p>
+                        </div>
 
-                <Popup trigger={<button className="btnList">See more info</button>}>
-                    <div>
+                    </li>
+                    <Popup trigger={<button className="btnList">info</button>}>
                         <div>
-                            Notes: {item.notes}
+                            <div>
+                                Notes: {item.notes}
+                            </div>
+                            <div>
+                                <a href={item.url}>Website: {item.url}</a>
+                            </div>
                         </div>
-                        <div>
-                            <a href={item.url}>Website: {item.url}</a>
-                        </div>
-                    </div>
-                </Popup>
+                    </Popup>
             </div>
         )
 
