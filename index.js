@@ -76,6 +76,8 @@ app.post('/bookmarks', (req, resp) => {
     })
 })
 
+app.put()
+
 app.get("*", (req, res) => {
   res.sendFile(resolve(__dirname, "client", "dist", "index.html"));
 });
