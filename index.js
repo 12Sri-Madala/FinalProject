@@ -76,8 +76,20 @@ app.post('/bookmarks', (req, resp) => {
     })
 })
 
-app.put('/:id/update', (req, resp) => {
-  
+app.put('/bookmarks', (req, resp) => {
+  bookmarks.findByIdAndUpdate({ userID: req.query.userID }, (err, user) => {
+    if (err) return console.log(err)
+    bookmarks.findOne({ userID }).then(function(bookmarks) {
+      resp.send(bookmarks);
+    });
+  });
+});
+
+app.delete('/bookmarks', (req, resp) => {
+  bookmarks.findOneAndRemove({ userID: req.query.userID }, (err, user) => {
+    if (err) return console.log(err)
+    resp.send(bookmarks)
+  })
 })
 
 app.get("*", (req, res) => {
@@ -105,6 +117,10 @@ var bookmarkSchema = new mongoose.Schema({
     Notes: String,
     reminderDate: Date,
     alarmTimer: String,
+    nested: {
+      status: Boolean,
+      nestedBookmarks: [ bookmarkSchema ]
+    }
   });
 
 var usersSchema = new mongoose.Schema({
@@ -130,8 +146,6 @@ var userTemp = new userBase({
     createdAt: 12/3/18,
     updatedAt: 12/3/18,
 })
-
-
 
 var bookmarkTemp = new userBookmarks({
   url: 'washingtonpost.com/...',
