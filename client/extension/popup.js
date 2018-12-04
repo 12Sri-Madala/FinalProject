@@ -101,6 +101,7 @@ function dumpTreeNodes(bookmarkNodes, query) {
   var list = $('<ul>');
   var i;
   for (i = 0; i < bookmarkNodes.length; i++) {
+    console.log(bookmarkNodes[i]);
     list.append(dumpNode(bookmarkNodes[i], query));
   }
   return list;

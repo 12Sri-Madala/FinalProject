@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
 import Nav from './nav';
-import Home from './home';
+import Home from './home/home';
 import ApplicationPage from './application_page';
 import MeetTeam from './meet_team';
 

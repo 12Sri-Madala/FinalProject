@@ -1,0 +1,70 @@
+
+body{
+    background-color: #FFFFFF;
+    margin: 0;
+
+}
+
+.hrBar{
+    border: solid #e5e5e5;
+    border-width: 2px 0 0;
+}
+
+.home-login{
+    width: 100vw;
+    height: 70vmin;
+    border-bottom: 1px solid black;
+    background-image: url(./images/title-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home-title {
+    font-size: 15vmin;
+    font-family: 'Lobster', cursive;
+    color: #265288;
+}
+
+.crease-logo {
+    position: relative;
+    display: inline-block;
+    height: 30%;
+    width: 70%;
+    top: 40px;
+    background-image: url(./images/crease-logo.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.login-area {
+    position: relative;
+    top: 100px;
+}
+
+.login-button {
+    font-size: 1.2em;
+    font-weight: 800;
+    text-decoration: none;
+    text-align: center;
+    background-color: rgba(86, 135, 132, 0.2);
+    color: #265288;
+    border: 3px solid #265288;
+    border-radius: 5px;
+    padding: 1%;
+    margin: 0 1%;
+    width: 15%;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+}
+
+.login-button:hover, .getting-started-button:hover {
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.85);
+    background-color: #265288;
+}
+button:focus {
+    outline: none;
+    background-color: #265288;
+}
