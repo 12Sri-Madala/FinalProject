@@ -1,80 +1,108 @@
 const express = require("express");
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 const { resolve } = require("path");
 const cors = require("cors");
 const PORT = process.env.PORT || 8000;
-mongoose.connect('mongodb://12Sri:EzAs12Sri@ds121624.mlab.com:21624/crease')
+mongoose.connect("mongodb://12Sri:EzAs12Sri@ds121624.mlab.com:21624/crease");
 
 const app = express();
-var userBase
-var userBookmarks
+var userBase;
+var userBookmarks;
 var db = mongoose.connection;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(resolve(__dirname, "client", "dist")));
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 app.get("/api", (req, res) => {
   res.send("<h1>API WORKING!</h1>");
 });
 
-app.get('/bookmarks', (req, resp) => {
-    userBase.findOne({ userID: req.query.userID }, (err, user) => {
-        if(err) return console.log(err)
-        if(user === null){
-            resp.send({
-                success: false,
-                message: 'User not found'
-            })
-            return 
-        }
-        console.log(user)
+app.get("/bookmarks", (req, resp) => {
+  userBase.findOne({ userID: req.query.userID }, (err, user) => {
+    if (err) return console.log(err);
+    if (user === null) {
+      resp.send({
+        success: false,
+        message: "User not found"
+      });
+      return;
+    }
+    console.log(user);
+    resp.send({
+      success: true,
+      data: userBase.bookmarks
+    });
+  });
+});
+
+app.post("/bookmarks", (req, resp) => {
+  userBase.findOne({ userID: req.query.userID }, (err, user) => {
+    if (err) return console.log(err);
+    if (user === null) {
+      resp.send({
+        success: false,
+        message: "User not found"
+      });
+      return;
+    }
+    // console.log(user)
+    console.log(req.body);
+    var newBookmark = new userBookmarks({
+      url: req.body.url || "google.com",
+      title: req.body.title || "some Title",
+      favicon: req.body.favicon || "sample favicon",
+      notes: req.body.notes || "your notes",
+      reminderDate: req.body.reminderDate || "1/1/2000",
+      alarmTimer:
+        req.body.alarmTimer || "(number of minutes to alarm triggering)"
+    });
+
+    newBookmark.save(function(err, bookmark) {
+      userBase.bookmarks.push(newBookmark);
+      userBase.save(function(err, savedUser) {
+        // console.log(savedUser)
+        if (err) return console.error(err);
         resp.send({
-            success: true,
-            data: user.bookmarks
-        })
-    })
-})
+          success: true,
+          bookmarkCount: savedUser.bookmarks.length
+        });
+      });
+    });
+  });
+});
 
-app.post('/bookmarks', (req, resp) => {
-    userBase.findOne({ userID: req.query.userID }, (err, user) => {
-        if(err) return console.log(err)
-        if(user === null){
-            resp.send({
-                success: false,
-                message: 'User not found'
-            })
-            return 
-        }
-        // console.log(user)
-        console.log(req.body)
-        var newBookmark = new userBookmarks({
-            url: req.body.url || 'google.com',
-            title: req.body.title || 'some Title',
-            favicon: req.body.favicon ||'sample favicon',
-            notes: req.body.notes ||'your notes',
-            reminderDate: req.body.reminderDate ||'1/1/2000',
-            alarmTimer: req.body.alarmTimer || '(number of minutes to alarm triggering)',
-          })
+app.put("/bookmarks", (req, resp) => {
+  userBase.findOne({ userID: req.query.userID }, (err, user) => {
+    if (err) return console.log(err);
+    userBookmarks.findOneAndUpdate({ bookmarkID }).then(function(bookmarks) {
+      resp.send({
+        success: true,
+        updatedBookmarks: bookmarks
+      });
+    });
+  });
+});
 
-          newBookmark.save(function (err, bookmark) {
-            user.bookmarks.push(newBookmark)
-            user.save(function (err, savedUser) {
-                // console.log(savedUser)
-                if(err) return console.error(err);
-                resp.send({
-                    success: true,
-                    bookmarkCount: savedUser.bookmarks.length
-                })
-            })
-        })
-    })
-})
+app.delete("/bookmarks", (req, resp) => {
+  userBase.findOne({ userID: req.query.userID }, (err, user) => {
+    if (err) return console.log(err);
+    user.nested.nestedBookmarks.findOneAndRemove({ bookmarkID: req.query.bookmarkID }).then(function(bookmarks) {
+        resp.send({
+          success: true,
+          updatedBookmarks: bookmarks
+        });
+      });
+  });
+});
 
 app.get("*", (req, res) => {
   res.sendFile(resolve(__dirname, "client", "dist", "index.html"));
@@ -90,60 +118,59 @@ app
     );
   });
 
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    
-
-var bookmarkSchema = new mongoose.Schema({
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function() {
+  var bookmarkSchema = new mongoose.Schema({
+    bookmarkID: String,
     url: String,
     title: String,
     favicon: String,
     Notes: String,
     reminderDate: Date,
     alarmTimer: String,
+    
+    nested: {
+      status: Boolean,
+      nestedBookmarks: [bookmarkSchema]
+    }
   });
 
-var usersSchema = new mongoose.Schema({
+  var usersSchema = new mongoose.Schema({
     userID: String,
     createdAt: Date,
     updatedAt: Date,
-    bookmarks: [ bookmarkSchema ]
-})
+    bookmarks: [bookmarkSchema]
+  });
 
-bookmarkSchema.methods.purrr = function(){
-  var greeting = this.name
+  bookmarkSchema.methods.purrr = function() {
+    var greeting = this.name
       ? `Purrr My name is ${this.name} Purrrr`
-      : `I dont have a name but I'll Purrr anyway, Purrr`
-  console.log(greeting);
-}
-    console.log('connected to db')
+      : `I dont have a name but I'll Purrr anyway, Purrr`;
+    console.log(greeting);
+  };
+  console.log("connected to db");
 
-userBase = mongoose.model('userBase', usersSchema);
-userBookmarks = mongoose.model('Sri', bookmarkSchema);
+  userBase = mongoose.model("User", usersSchema);
+  userBookmarks = mongoose.model("Bookmark", bookmarkSchema);
 
-var userTemp = new userBase({
-    userID: 'sri.madala19',
-    createdAt: 12/3/18,
-    updatedAt: 12/3/18,
-})
+  var userTemp = new userBase({
+    userID: "sri.madala19",
+    createdAt: 12 / 3 / 18,
+    updatedAt: 12 / 3 / 18
+  });
 
-
-
-var bookmarkTemp = new userBookmarks({
-  url: 'washingtonpost.com/...',
-  title: 'Drones called in to save the Great Wall',
-  favicon: 'someURL',
-  Notes: 'architects are using drones to repair parts of the crumbling great wall',
-  reminderDate: 12/4/18,
-  alarmTimer: '(number of minutes to alarm triggering)',
-})
-
+  var bookmarkTemp = new userBookmarks({
+    url: "washingtonpost.com/...",
+    title: "Drones called in to save the Great Wall",
+    favicon: "someURL",
+    Notes:
+      "architects are using drones to repair parts of the crumbling great wall",
+    reminderDate: 12 / 4 / 18,
+    alarmTimer: "(number of minutes to alarm triggering)"
+  });
 });
 
-
-
-
-//do we have to make a new variable every time or can we just make a temp var 
+//do we have to make a new variable every time or can we just make a temp var
 //
 
 // var bookmark2 = new userBookmarks({
