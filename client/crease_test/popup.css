@@ -1,0 +1,187 @@
+body {
+    margin: 1px 3px 0px 3px;
+}
+
+.row {
+    margin-bottom: 0px;
+}
+
+#extension-body {
+    background-image: url(crease.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.extension-header {
+    display: inline-block;
+    width: 100%;
+    height: 45px;
+    background-color: #a1bfd1;
+    color: rgb(59, 59, 59);
+    font-size: 20px;
+    border-radius: 5px 5px 0 0;
+}
+
+.extension-icon {
+    display: inline-block;
+    position: relative;
+    width: 12%;
+    vertical-align: middle;
+    left: 5px;
+    top: 4px;
+}
+
+h6 {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    left: 12px;
+    top: 2px;
+}
+
+.header-icon {
+    display: inline-block;
+    position: relative;
+    background-color: lightgrey;
+    height: 38px;
+    width: 38px;
+    top: 3px;
+    left: 6px;
+    border-radius: 5px;
+}
+
+.header-icon img {
+    position: relative;
+    top: 6px;
+    left: 7px;
+}
+
+.header-title {
+    display: inline-block;
+    position: relative;
+    font-size: 12px;
+    font-weight: bold;
+    left: 10px;
+}
+
+.extension-alarm {
+    margin: 5px;
+    padding: 2px;
+}
+
+.reminder-header {
+    font-size: 12px;
+    font-weight: bold;
+    display: block;
+}
+
+.recurrence-header {
+    font-size: 11px;
+    font-weight: bold;
+    display: block;
+}
+
+.extension-notes {
+    padding: 2px;
+}
+
+.extension-btns {
+    padding: 0 5px 8px;
+}
+
+.btn-small {
+    background-color:  #a1bfd1;
+}
+
+.btn-small:focus, .btn-small:hover {
+    background-color: #7995a7;
+}
+
+#recurrence-label {
+    color: black;
+}
+
+#notes-label {
+    font-size: .8rem;
+}
+
+textarea.materialize-textarea:focus:not([readonly]) {
+    color: #474a4d;
+    border-bottom: 1px solid #7894a5;
+    -webkit-box-shadow: 0 1px 0 0 #7894a5;
+    box-shadow: 0 1px 0 0 #7894a5;
+}
+
+textarea.materialize-textarea {
+    font-size: 12px;
+}
+
+textarea.materialize-textarea:focus:not([readonly])+label {
+    color: #7894a5;
+}
+
+input[type=date]:not(.browser-default) {
+    font-size: 10px;
+}
+
+input[type=time]:not(.browser-default) {
+    font-size: 10px;
+}
+
+input[type=date]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #7894a5;
+    -webkit-box-shadow: 0 1px 0 0 #7894a5;
+    box-shadow: 0 1px 0 0 #7894a5;
+}
+
+input[type=time]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #7894a5;
+    -webkit-box-shadow: 0 1px 0 0 #7894a5;
+    box-shadow: 0 1px 0 0 #7894a5;
+}
+
+.select-wrapper input.select-dropdown {
+    font-size: 12px;
+}
+
+.dropdown-content li>span {
+    color: black;
+}
+
+.select-wrapper input.select-dropdown:focus {
+    border-bottom: 1px solid #7894a5;
+}
+
+.input-field {
+    position: relative;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+/* Date and Time Inputs */
+
+[type="date"] {
+    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+[type="time"] {
+    background:#fff url(alarm.png)  97% 50% no-repeat ;
+}
+
+[type="time"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type="time"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+

@@ -1,0 +1,28 @@
+{
+  "name": "crease",
+  "version": "1.0.0",
+  "description": "Update this",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/12Sri-Madala/FinalProject.git"
+  },
+  "author": "Update this",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/12Sri-Madala/FinalProject/issues"
+  },
+  "homepage": "https://github.com/12Sri-Madala/FinalProject#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.14"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7",
+    "npm-run-all": "^4.1.5"
+  }
+}
