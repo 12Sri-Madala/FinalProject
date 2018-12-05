@@ -16,7 +16,7 @@ export default props => {
             <div className="homeDivPart row">
 
                 <GoogleLogin
-                    clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                    clientId="789130565798-ud616gfbsn8jv90803gvk44ltl6al47l.apps.googleusercontent.com"
                     render={renderProps => (
                         <button className="ggLogin col s6  blue btn" onClick={renderProps.onClick}>Log In</button>
                     )}
@@ -25,8 +25,9 @@ export default props => {
                     onFailure={responseGoogle}
                  />
 
+
                 <GoogleLogin
-                    clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                    clientId="789130565798-ud616gfbsn8jv90803gvk44ltl6al47l.apps.googleusercontent.com"
                     render={renderProps => (
                         <button className="ggLogin col s6 blue btn" onClick={renderProps.onClick}>Sign Up</button>
                     )}
