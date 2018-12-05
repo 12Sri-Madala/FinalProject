@@ -3,6 +3,8 @@ import axios from 'axios';
 import ReminderList from './reminder_list';
 import reminder_list from '../dummy_data_bookmark_reminders/reminder_list';
 
+
+
 //const BASE_URL = 'http://api.reactprototypes.com/todos';
 //const API_KEY = 'c718_demouser';
 
@@ -26,6 +28,8 @@ class AllReminderList extends Component {
     render(){
        return(
            <ReminderList data={this.state.list}/>
+
+
        )
 
     }

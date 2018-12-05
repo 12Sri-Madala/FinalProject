@@ -3,15 +3,18 @@ import { NavLink } from 'react-router-dom';
 import './nav.css';
 
 export default props => (
-        <ul className="nav nav-tabs mt-3 navExtras">
-            <li className="nav-item">
+        <ul className="navExtras">
+            <li className="">
                 <NavLink exact to={'/'} activeClassName="active selected" className="nav-link">Home</NavLink>
             </li>
-            <li className="nav-item">
+            <li className="">
                 <NavLink to={'/application_page'} activeClassName="active selected" className="nav-link">Application</NavLink>
             </li>
-            <li className="nav-item">
+            <li className="">
                 <NavLink to={'/meet_team'} activeClassName="active selected" className="nav-link">Meet The Team</NavLink>
+            </li>
+            <li className="">
+                <NavLink to={'/add_item'} activeClassName="active selected" className="nav-link">Add ITEM</NavLink>
             </li>
         </ul>
 )
