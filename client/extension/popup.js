@@ -99,11 +99,11 @@ function dumpBookmarks(query) {
 }
 function dumpTreeNodes(bookmarkNodes, query) {
   var list = $('<ul>');
-  var i;
-  for (i = 0; i < bookmarkNodes.length; i++) {
-    console.log(bookmarkNodes[i]);
-    list.append(dumpNode(bookmarkNodes[i], query));
-  }
+  var i = null;
+  // for (i = 0; i < bookmarkNodes.length; i++) {
+    console.log(bookmarkNodes[0]);
+    // list.append(dumpNode(bookmarkNodes[i], query));
+  // }
   return list;
 }
 function dumpNode(bookmarkNode, query) {
