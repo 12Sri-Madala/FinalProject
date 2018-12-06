@@ -14,7 +14,7 @@ function launchAlarmURL(object){
     const tabObj = {};
     tabObj.url = object.url
 
-    chrome.tabs.create( tabObj, function callback);
+    chrome.tabs.create( tabObj);
 }
 
 function createAlarm(creaseObj) {
