@@ -67,7 +67,7 @@
     left: 20%;
 }
 .titleClass{
-    positon: relative;
+    position: relative;
     width: 65%;
     overflow: hidden;
     text-overflow: ellipsis;
