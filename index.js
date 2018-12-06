@@ -44,7 +44,7 @@ app.get("/bookmarks", (req, resp) => {
   });
 });
 
-app.post("/bookmarks", (req, resp) => {
+app.post("/bookmarks", (req, resp) => { console.log('Posting bookmarks', JSON.stringify(req.body));
   userBase.findOne({ userID: req.query.userID }, (err, user) => {
     if (err) return console.log(err);
     if (user === null) {
@@ -67,7 +67,7 @@ app.post("/bookmarks", (req, resp) => {
     });
 
     newBookmark.save(function(err, bookmark) {
-      userBase.bookmarks.push(newBookmark);
+      userBase.bookmarks.push(bookmark);
       userBase.save(function(err, savedUser) {
         // console.log(savedUser)
         if (err) return console.error(err);
@@ -119,6 +119,7 @@ app
   });
 
 db.on("error", console.error.bind(console, "connection error:"));
+
 db.once("open", function() {
   var bookmarkSchema = new mongoose.Schema({
     bookmarkID: String,
@@ -129,6 +130,9 @@ db.once("open", function() {
     reminderDate: Date,
     alarmTimer: String,
     
+  });
+
+  bookmarkSchema.add({
     nested: {
       status: Boolean,
       nestedBookmarks: [bookmarkSchema]
@@ -172,24 +176,3 @@ db.once("open", function() {
 
 //do we have to make a new variable every time or can we just make a temp var
 //
-
-// var bookmark2 = new userBookmarks({
-//   url: 'facebook.com',
-
-// })
-
-// var bookmark3 = new userBookmarks({
-//   url: 'youtube.com',
-
-// })
-
-// chu.purrr()
-// chu.save(function (err, chu) {
-//     if(err) return console.error(err);
-//     chu.purrr();
-// })
-
-// Kitten.find(function (err, kittens) {
-//   if (err) return console.error(err);
-//   console.log(kittens);
-// })

@@ -94,18 +94,36 @@ $(function() {
 function dumpBookmarks(query) {
   var bookmarkTreeNodes = chrome.bookmarks.getTree(
     function(bookmarkTreeNodes) {
-      $('#bookmarks').append(dumpTreeNodes(bookmarkTreeNodes, query));
+      const ajaxOptions = {
+        method: 'POST',
+        url: 'http://localhost:8000/bookmarks',
+        contentType: 'application/json',
+        data: JSON.stringify(bookmarkTreeNodes),
+        userID: 'julianso89'
+      }
+    
+      $.ajax(ajaxOptions);
+
+      // $('#bookmarks').append(dumpTreeNodes(bookmarkTreeNodes, query));
     });
 }
-function dumpTreeNodes(bookmarkNodes, query) {
-  var list = $('<ul>');
-  var i = null;
-  // for (i = 0; i < bookmarkNodes.length; i++) {
-    console.log(bookmarkNodes[0]);
-    // list.append(dumpNode(bookmarkNodes[i], query));
-  // }
-  return list;
-}
+// function dumpTreeNodes(bookmarkNodes, query) {
+//   const ajaxOptions = {
+//     method: 'POST',
+//     url: 'https://localhost:8000/bookmarks',
+//     data: bookmarkNodes
+//   }
+
+//   $.ajax(ajaxOptions);
+
+//   // var list = $('<ul>');
+//   // var i = null;
+//   // // for (i = 0; i < bookmarkNodes.length; i++) {
+//   //   console.log(bookmarkNodes[0]);
+//   //   // list.append(dumpNode(bookmarkNodes[i], query));
+//   // // }
+//   // return list;
+// }
 function dumpNode(bookmarkNode, query) {
   if (bookmarkNode.title) {
     if (query && !bookmarkNode.children) {
