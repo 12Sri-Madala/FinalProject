@@ -19,7 +19,7 @@ class Reminder extends Component {
         } else {
             return (
                 <div  className="inLine dateClass">
-                    <p className="insideDateClass">{countdown.hours + 'H'}</p>
+                    <p className="insideDateClass">{ time }</p>
                 </div>
             );
         }
