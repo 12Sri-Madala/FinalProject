@@ -129,6 +129,9 @@ db.once("open", function() {
     reminderDate: Date,
     alarmTimer: String,
     
+  });
+
+  bookmarkSchema.add({
     nested: {
       status: Boolean,
       nestedBookmarks: [bookmarkSchema]
