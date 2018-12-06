@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import DummyList from '../existingdummy/dummylist';
+import ExistingBookmarkList from './existingbookmarks_list';
+import ExistingDummyList from '../existingdummy/dummylist'
+
 
 class ExistingBookmarks extends Component {
-
     constructor(props){
         super(props);
 
@@ -15,24 +16,23 @@ class ExistingBookmarks extends Component {
         this.getExistingBookmarks()
     }
     
-    getExistingBookmarks = () => {
+    getExistingBookmarks(){
         this.setState({
-            list: DummyList
+            list: ExistingDummyList
         });
     }
 
-    render(){ 
+    render(){
+        console.log(this.list);
+        return(
+            <div>
+                <ExistingBookmarkList  children={this.state.list} open={true} depth={0}/>
+            </div>
+        )
 
-        const dummyListElements = this.state.list.map((item, index) => {
-            return <li key={item._id}>{item.title}, {item.URL}</li>;
-        })
 
-        return ( 
-            <ul>
-                <li> {dummyListElements} </li>
-            </ul>
-         );
     }
+
 }
  
 export default ExistingBookmarks;

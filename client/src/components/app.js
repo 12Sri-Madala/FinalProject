@@ -11,6 +11,7 @@ export default () => (
         <Nav/>
         <Route exact path="/" component={Home}/>
         <Route path="/application_page" component={ApplicationPage}/>
+
         <Route path="/meet_team" component={MeetTeam}/>
         <Route path="/add_item" component = {AddItemReminders}/>
     </div>
