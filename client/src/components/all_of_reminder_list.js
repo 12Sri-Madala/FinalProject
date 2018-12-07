@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ReminderList from './reminder_list';
+import ReminderList from './reminders/reminder_list';
 import reminder_list from '../dummy_data_bookmark_reminders/reminder_list';
 
 
