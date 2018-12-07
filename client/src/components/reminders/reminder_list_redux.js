@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './reminder_list.css';
 import Popup from "reactjs-popup";
 import { connect } from 'react-redux';
-import { getReminderList } from '../actions'
+import { getReminderList } from '../../actions';
 
 
 class ReminderList extends Component {

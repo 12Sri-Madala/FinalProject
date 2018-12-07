@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Folder from './existingbookmarks/existingbookmarks';
 import AllReminderList from './all_of_reminder_list';
 import './applicationcss.css';
-import ReminderListRedux from './reminder_list_redux';
+import ReminderListRedux from './reminders/reminder_list_redux';
 
 class ApplicationPage extends Component {
 
