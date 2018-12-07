@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import IndividualBookmark from './individualbookmark'
+import IndividualBookmark from './individualbookmark';
+import './existingbookmarks_list.css';
+
+
 
 class Folder extends Component {
     constructor(props){
@@ -11,7 +14,7 @@ class Folder extends Component {
 
     toggleFolder = () => {
         this.setState({
-            open: this.state.open
+            open: !this.state.open
         })
     }
 
@@ -20,10 +23,10 @@ class Folder extends Component {
         return (
             this.props.children.map((item, index) => {
                 if(item.children) {
-                    console.log("HEY BABY", item.title)
+
                     return (
 
-                        <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+1}/>
+                        <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+5}/>
                     )
                 }
                 else {
@@ -36,12 +39,19 @@ class Folder extends Component {
     }
     render(){
         return(
-                <div className="folder" onClick={this.toggleFolder}>
-                    {this.getContents()}
-
+                <div className="folder" style=
+                    {{marginLeft: this.props.depth+'%'}}>
+                    <div className="toggle" onClick={this.toggleFolder}>
+                        <i class="fas fa-folder folderIcon"></i>
+                    </div>
+                    <div className="title">
+                        {this.props.title}
+                    </div>
+                        {this.state.open ? this.getContents() : ''}
                 </div>
         );
     }
 }
+
 export default Folder;
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ExistingBookmarkList from './existingbookmarks_list';
-import ExistingDummyList from '../existingdummy/dummylist'
+import ExistingDummyList from '../../existingdummy/dummylist'
 
 
 class ExistingBookmarks extends Component {
@@ -23,10 +23,9 @@ class ExistingBookmarks extends Component {
     }
 
     render(){
-        console.log(this.list);
         return(
-            <div>
-                <ExistingBookmarkList  children={this.state.list} open={true} depth={0}/>
+            <div>My Bookmarks
+                <ExistingBookmarkList  children={this.state.list} open={false} depth={0}/>
             </div>
         )
 
