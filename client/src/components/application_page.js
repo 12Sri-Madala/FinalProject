@@ -1,33 +1,36 @@
-import React from 'react';
-import ExistingBookmarks from './existingbookmarks';
-import ExistingFolders from './existingfolders';
+import React, { Component } from 'react';
+import Folder from './existingbookmarks/existingbookmarks';
 import AllReminderList from './all_of_reminder_list';
 import './applicationcss.css';
 import ReminderListRedux from './reminder_list_redux';
 
-const ApplicationPage = () => (
-    
-    <div className="applicationDiv">
+class ApplicationPage extends Component {
+
+    render(){
+        return (
+            <div className="applicationDiv">
 
 
-        <div className="insideDiv leftDivApp">
+                <div className="insideDiv leftDivApp">
 
-            <AllReminderList  />
-        </div>
+                    <AllReminderList  />
+                </div>
 
-        <div className="insideDiv rightDivApp">
-            <ReminderListRedux/>
+                <div className="insideDiv rightDivApp">
+                    {/*<ReminderListRedux/>*/}
 
 
-            {/*<ExistingBookmarks />
+                   <Folder />
 
-            <ExistingFolders />*/}
 
-        </div>
 
-  
-    </div>
+                </div>
 
-)
+
+            </div>
+
+        )
+    }
+}
 
 export default ApplicationPage;

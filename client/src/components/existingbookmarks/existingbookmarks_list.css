@@ -1,0 +1,28 @@
+.folderIcon{
+  color:#FDCA29;
+  font-size: 4rem;
+}
+.folder{
+
+}
+.toggle{
+    display: inline-block;
+    padding: 3px;
+    color: white;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.title{
+    display: inline-block;
+
+
+}
+.bookmark::before{
+    content: '--'
+}
+.bookmark{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+
+}

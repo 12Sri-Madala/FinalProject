@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './reminder_list.css';
 import Popup from "reactjs-popup";
+import { Link } from 'react-router-dom';
 
 
 class ReminderList extends Component {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import {addToDoItem} from "../actions";
 import NavButton from './nav_button';
-import Nav from './nav';
+
 
 class AddItem extends Component {
     renderInput(props){
@@ -30,7 +30,7 @@ class AddItem extends Component {
         return(
 
             <div>
-                <Nav/>
+
                 <h1 className="center">
                     Add Item
                 </h1>
