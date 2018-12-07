@@ -26,7 +26,7 @@ app.get("/api", (req, res) => {
   res.send("<h1>API WORKING!</h1>");
 });
 
-app.get("/bookmarks", (req, resp) => {
+app.get("/GetBookmarks", (req, resp) => {
   userBase.findOne({ userID: req.query.userID }, (err, user) => {
     if (err) return console.log(err);
     if (user === null) {
@@ -44,18 +44,58 @@ app.get("/bookmarks", (req, resp) => {
   });
 });
 
-app.post("/bookmarks", (req, resp) => { console.log('Posting bookmarks', JSON.stringify(req.body));
-  userBase.findOne({ userID: req.query.userID }, (err, user) => {
+async function createBookmark(treeNode){
+  const record = new userBookmarks ({
+
+    bookmarkId: treeNode.id,
+    url: treeNode.url,
+    title: treeNode.title,
+    favicon: null,
+    notes: '',
+    reminderDate: null,
+    alarmTimer: null,
+  })
+  console.log(treeNode)
+
+  await record.save()
+ 
+  if(treeNode.hasOwnProperty('children')){
+    var incrementingID = 1
+    record.nested=[{
+      folderID: incrementingID++,
+      status: true,
+      nestedBookmarks: []
+    }];
+ 
+    for(let i = 0; i < treeNode.children.length; i++){
+      const childRecord = await createBookmark(node.children[i]);
+      record.nested.nestedBookmarks.push(childRecord)
+    }
+    await record.save()
+  }
+  return record
+ }
+
+app.post("/postBookmarks", (req, resp) => { 
+  // console.log('Posting bookmarks', JSON.stringify(req.body));
+  console.log('====Post Bookmarks:', req.body);
+  // console.log(req.userID)
+  console.log(req.body.userID)
+
+  userBase.findOne({ userID: req.body.userID }, function(err, user) {
     if (err) return console.log(err);
     if (user === null) {
+      console.log(user)
       resp.send({
         success: false,
         message: "User not found"
       });
       return;
     }
-    // console.log(user)
-    console.log(req.body);
+  
+    createBookmark(req.body)
+
+    console.log('POST RETURN STATEMENT');
     var newBookmark = new userBookmarks({
       url: req.body.url || "google.com",
       title: req.body.title || "some Title",
@@ -154,8 +194,8 @@ db.once("open", function() {
   };
   console.log("connected to db");
 
-  userBase = mongoose.model("User", usersSchema);
-  userBookmarks = mongoose.model("Bookmark", bookmarkSchema);
+  userBase = mongoose.model("userBases", usersSchema);
+  userBookmarks = mongoose.model("userBookmarks", bookmarkSchema);
 
   var userTemp = new userBase({
     userID: "sri.madala19",
