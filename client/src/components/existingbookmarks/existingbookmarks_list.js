@@ -8,7 +8,8 @@ class Folder extends Component {
     constructor(props){
         super(props);
         this.state = {
-            open: this.props.open
+            open: this.props.open,
+            folder: 'fa-folder'
         }
     }
 
@@ -16,6 +17,16 @@ class Folder extends Component {
         this.setState({
             open: !this.state.open
         })
+        if (this.state.folder === 'fa-folder'){
+            this.setState({
+               folder: 'fa-folder-open'
+            })
+        }
+        else{
+            this.setState({
+                folder: 'fa-folder'
+            })
+        }
     }
 
     getContents = () => {
@@ -26,7 +37,7 @@ class Folder extends Component {
 
                     return (
 
-                        <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+5}/>
+                        <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+8}/>
                     )
                 }
                 else {
@@ -42,7 +53,7 @@ class Folder extends Component {
                 <div className="folder" style=
                     {{marginLeft: this.props.depth+'%'}}>
                     <div className="toggle" onClick={this.toggleFolder}>
-                        <i class="fas fa-folder folderIcon"></i>
+                        <i className={`fas ${this.state.folder} folderIcon`}></i>
                     </div>
                     <div className="title">
                         {this.props.title}

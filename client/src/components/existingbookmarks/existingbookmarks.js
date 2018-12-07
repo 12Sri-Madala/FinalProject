@@ -8,24 +8,26 @@ class ExistingBookmarks extends Component {
         super(props);
 
         this.state = {
-            list:[]
+            list: ExistingDummyList
         }
     }
 
-    componentDidMount(){
-        this.getExistingBookmarks()
-    }
-    
-    getExistingBookmarks(){
-        this.setState({
-            list: ExistingDummyList
-        });
-    }
+    // componentDidMount(){
+    //     this.getExistingBookmarks()
+    //
+    // }
+    //
+    // getExistingBookmarks(){
+    //     this.setState({
+    //         list: ExistingDummyList
+    //     });
+    // }
 
     render(){
+        console.log("YERBA MATE", this.state.list[0].children)
         return(
-            <div>My Bookmarks
-                <ExistingBookmarkList  children={this.state.list} open={false} depth={0}/>
+            <div>
+                <ExistingBookmarkList  children={this.state.list[0].children} open={false} depth={0}/>
             </div>
         )
 
