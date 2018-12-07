@@ -114,12 +114,40 @@
     line-height: initial;
 }
 
-#reminder-time {
+#reminder-time-hours {
     top: 20%;
-    left: 18%
 }
 
 #time-AM-PM {
     top: 20%;
     left:18%
+}
+
+#amPM {
+    font-size: 1rem;
+}
+
+.countdownAMPM{
+    display: inline-block;
+    position: relative;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    margin: 0;
+    top: 15%;
+    left: 20%;
+    vertical-align: top;
+    text-align: right;
+    line-height: 0px;
+}
+
+.reminder-dots {
+    position: absolute;
+    height: .5vh;
+    width: 2%;
+    background-image: url('./images/reminder-dots.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: 28%;
+    cursor: pointer;
 }

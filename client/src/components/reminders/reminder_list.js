@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './reminder_list.css';
 import Popup from "reactjs-popup";
+import dots from './images/reminder-dots.png';
 
 
 class Reminder extends Component {
@@ -25,16 +26,12 @@ class Reminder extends Component {
             );
         } else if ( countdown.days === 0 && countdown.hours > 11 ){
             return (
-                <div  className="countdown" id="reminder-time">
+                <div  className="countdown" id="reminder-time-hours">
                     <p className="countdown-font">{`${countdown.hours} H`}</p>
                 </div>
             );
         } else if ( countdown.days === 0 && countdown.hours < 12){
-            return (
-                <div  className="countdown" id="time-AM-PM">
-                    <p className="countdown-font">{ this.timeConvert(time) }</p>
-                </div>
-            );
+            return this.timeConvert( time )
         }
     }
 
@@ -54,9 +51,22 @@ class Reminder extends Component {
         }
         
         timeConvert += (minutes < 10) ? ":0" + minutes : ":" + minutes; 
-        timeConvert += (hours >= 12) ? " P.M." : " A.M.";  
-    
-        return timeConvert;
+
+        if (hours >= 12) {
+            return (
+                <div  className="countdownAMPM">
+                    <p className="countdown-font" id="amPM">{ `P.M.` }</p>
+                    <p className="countdown-font">{ timeConvert }</p>
+                </div>
+            );
+        } else {
+            return (
+                <div  className="countdownAMPM">
+                    <p className="countdown-font" id="amPM">{ `A.M.` }</p>
+                    <p className="countdown-font">{ timeConvert }</p>
+                </div>
+            );
+        }
     }
 
     titleLength = (title) => {
@@ -85,7 +95,7 @@ class Reminder extends Component {
                     <a className="reminder-title-link" href={item.url}>{this.titleLength(item.title)}</a>
                 </div>
                     {this.countDown( item.date, item.time )}
-                {/* <Popup trigger={<button className="btnList">info</button>}>
+                <Popup trigger={<div className="reminder-dots"></div>}>
                     <div>
                         <div>
                             Notes: {item.notes}
@@ -94,7 +104,7 @@ class Reminder extends Component {
                             <a href={item.url}>Website: {item.url}</a>
                         </div>
                     </div>
-                </Popup> */}
+                </Popup>
             </div>
         )
 
