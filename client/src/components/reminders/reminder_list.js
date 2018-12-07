@@ -100,8 +100,9 @@ class Reminder extends Component {
                         <div>
                             Notes: {item.notes}
                         </div>
-                        <div>
-                            <a href={item.url}>Website: {item.url}</a>
+                        <hr />
+                        <div className="popup-link">
+                            <a href={item.url}>{item.url}</a>
                         </div>
                     </div>
                 </Popup>
