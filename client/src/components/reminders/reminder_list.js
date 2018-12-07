@@ -5,20 +5,27 @@ import Popup from "reactjs-popup";
 
 class Reminder extends Component {
 
+    reminderBackground = (index) => {
+        if ( index%2 === 0 ){
+            return 'light-reminder-background';
+        }
+        return 'dark-reminder-background';
+    }
+
     daysRemaining = ( date, time ) => {
         var dateTime = `${date} ${time}`;
         var countdown = getTimeRemaining( dateTime );
     
         if( countdown.days > 0){
             return (
-                <div  className="inLine dateClass">
+                <div  className="countdown">
                     <p className="insideDateClass">{countdown.hours + 'H'}</p>
                     <p className="insideDateClass">{countdown.days + 'D'}</p>
                 </div>
             );
         } else {
             return (
-                <div  className="inLine dateClass">
+                <div  className="countdown">
                     <p className="insideDateClass">{ time }</p>
                 </div>
             );
@@ -27,14 +34,21 @@ class Reminder extends Component {
 
     render(){
         const listElements = this.props.data.map((item, index) => {
+        
+            
+
             return(
-             <div key={item.id} className="listItemElements">
-                    <img className="iconStyle partOfList" src={item.icon}/>
-                    <li className="partOfList inLine listStyle" onClick={() => {}}>
-                        <a className="inLine titleClass" href={item.url}>{item.title}</a>
-                        {this.daysRemaining( item.date, item.time )}
-                    </li>
-                    <Popup trigger={<button className="btnList">info</button>}>
+             <div key={item.id} className={this.reminderBackground(index)}>
+                <div className="reminder-icon-bg">
+                    <img className="reminder-icon" src={item.icon}/>
+                </div>
+                <div className="reminder-title" onClick={() => {}}>
+                    <a className="reminder-title-link" href={item.url}>{item.title}</a>
+                </div>
+                {/* <div className="reminder-countdown">
+                    {this.daysRemaining( item.date, item.time )}
+                </div> */}
+                    {/* <Popup trigger={<button className="btnList">info</button>}>
                         <div>
                             <div>
                                 Notes: {item.notes}
@@ -43,7 +57,7 @@ class Reminder extends Component {
                                 <a href={item.url}>Website: {item.url}</a>
                             </div>
                         </div>
-                    </Popup>
+                    </Popup> */}
             </div>
         )
 
@@ -51,7 +65,7 @@ class Reminder extends Component {
 
         return(
             <div>
-                <ul  className= "allListItemElements">
+                <ul  className= "reminderElements">
                 {listElements}
                 </ul>
             </div>
