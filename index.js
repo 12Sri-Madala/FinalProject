@@ -26,7 +26,7 @@ app.get("/api", (req, res) => {
   res.send("<h1>API WORKING!</h1>");
 });
 
-app.get("/bookmarks", (req, resp) => {
+app.get("/getBookmarks", (req, resp) => {
   userBase.findOne({ userID: req.query.userID }, (err, user) => {
     if (err) return console.log(err);
     if (user === null) {
@@ -44,7 +44,8 @@ app.get("/bookmarks", (req, resp) => {
   });
 });
 
-app.post("/bookmarks", (req, resp) => { console.log('Posting bookmarks', JSON.stringify(req.body));
+app.post("/postBookmarks", (req, resp) => {
+  console.log("Posting bookmarks", JSON.stringify(req.body));
   userBase.findOne({ userID: req.query.userID }, (err, user) => {
     if (err) return console.log(err);
     if (user === null) {
@@ -95,7 +96,9 @@ app.put("/bookmarks", (req, resp) => {
 app.delete("/bookmarks", (req, resp) => {
   userBase.findOne({ userID: req.query.userID }, (err, user) => {
     if (err) return console.log(err);
-    user.nested.nestedBookmarks.findOneAndRemove({ bookmarkID: req.query.bookmarkID }).then(function(bookmarks) {
+    user.nested.nestedBookmarks
+      .findOneAndRemove({ bookmarkID: req.query.bookmarkID })
+      .then(function(bookmarks) {
         resp.send({
           success: true,
           updatedBookmarks: bookmarks
@@ -128,8 +131,7 @@ db.once("open", function() {
     favicon: String,
     Notes: String,
     reminderDate: Date,
-    alarmTimer: String,
-    
+    alarmTimer: String
   });
 
   bookmarkSchema.add({

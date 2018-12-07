@@ -96,7 +96,7 @@ function dumpBookmarks(query) {
     function(bookmarkTreeNodes) {
       const ajaxOptions = {
         method: 'POST',
-        url: 'http://localhost:8000/bookmarks',
+        url: 'http://localhost:8000/postBookmarks',
         contentType: 'application/json',
         data: JSON.stringify(bookmarkTreeNodes),
         userID: 'julianso89'
