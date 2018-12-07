@@ -90,12 +90,13 @@ $(function() {
     dumpBookmarks($("#search").val());
   });
 });
+
 // Traverse the bookmark tree, and print the folder and nodes.
 function dumpBookmarks(query) {
   var bookmarkTreeNodes = chrome.bookmarks.getTree(
     function(bookmarkTreeNodes) {
       
-      const ajaxOptions = {
+      const postingCall = {
         method: 'POST',
         url: 'http://localhost:8000/postBookmarks',
         contentType: 'application/json',
@@ -105,28 +106,11 @@ function dumpBookmarks(query) {
         }),
       }
     
-      $.ajax(ajaxOptions);
+      $.ajax(postingCall);
 
-      // $('#bookmarks').append(dumpTreeNodes(bookmarkTreeNodes, query));
     });
 }
-// function dumpTreeNodes(bookmarkNodes, query) {
-//   const ajaxOptions = {
-//     method: 'POST',
-//     url: 'https://localhost:8000/bookmarks',
-//     data: bookmarkNodes
-//   }
 
-//   $.ajax(ajaxOptions);
-
-//   // var list = $('<ul>');
-//   // var i = null;
-//   // // for (i = 0; i < bookmarkNodes.length; i++) {
-//   //   console.log(bookmarkNodes[0]);
-//   //   // list.append(dumpNode(bookmarkNodes[i], query));
-//   // // }
-//   // return list;
-// }
   
 function dumpNode(bookmarkNode, query) {
   if (bookmarkNode.title) {

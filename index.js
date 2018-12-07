@@ -22,9 +22,20 @@ app.use(function(req, res, next) {
   next();
 });
 
+
 app.get("/api", (req, res) => {
-  res.send("<h1>API WORKING!</h1>");
+ res.send("<h1>API WORKING!</h1>");
 });
+
+app
+  .listen(PORT, () => {
+    console.log(`Server Running on PORT ${PORT}`);
+  })
+  .on("error", () => {
+    console.log(
+      `Server listen error, Do you already have a server running on PORT: ${PORT}`
+    );
+  });
 
 
 app.get("/getBookmarks", (req, resp) => {
@@ -38,10 +49,10 @@ app.get("/getBookmarks", (req, resp) => {
       });
       return;
     }
-    console.log(user);
+    // console.log(user);
     resp.send({
       success: true,
-      data: userBase.bookmarks
+      data: user.bookmarks
     });
   });
 });
@@ -150,19 +161,12 @@ app.get("*", (req, res) => {
   res.sendFile(resolve(__dirname, "client", "dist", "index.html"));
 });
 
-app
-  .listen(PORT, () => {
-    console.log(`Server Running on PORT ${PORT}`);
-  })
-  .on("error", () => {
-    console.log(
-      `Server listen error, Do you already have a server running on PORT: ${PORT}`
-    );
-  });
-
 db.on("error", console.error.bind(console, "connection error:"));
 
 db.once("open", function() {
+
+  console.log("connected to db");
+
   var bookmarkSchema = new mongoose.Schema({
     bookmarkID: String,
     url: String,
@@ -187,33 +191,26 @@ db.once("open", function() {
     bookmarks: [bookmarkSchema]
   });
 
-  bookmarkSchema.methods.purrr = function() {
-    var greeting = this.name
-      ? `Purrr My name is ${this.name} Purrrr`
-      : `I dont have a name but I'll Purrr anyway, Purrr`;
-    console.log(greeting);
-  };
-  console.log("connected to db");
-
   userBase = mongoose.model("userBases", usersSchema);
   userBookmarks = mongoose.model("userBookmarks", bookmarkSchema);
 
-  var userTemp = new userBase({
-    userID: "sri.madala19",
-    createdAt: 12 / 3 / 18,
-    updatedAt: 12 / 3 / 18
-  });
-
-  var bookmarkTemp = new userBookmarks({
-    url: "washingtonpost.com/...",
-    title: "Drones called in to save the Great Wall",
-    favicon: "someURL",
-    Notes:
-      "architects are using drones to repair parts of the crumbling great wall",
-    reminderDate: 12 / 4 / 18,
-    alarmTimer: "(number of minutes to alarm triggering)"
-  });
 });
 
-//do we have to make a new variable every time or can we just make a temp var
-//
+
+
+
+//   var userTemp = new userBase({
+//     userID: "sri.madala19",
+//     createdAt: 12 / 3 / 18,
+//     updatedAt: 12 / 3 / 18
+//   });
+
+//   var bookmarkTemp = new userBookmarks({
+//     url: "washingtonpost.com/...",
+//     title: "Drones called in to save the Great Wall",
+//     favicon: "someURL",
+//     Notes:
+//       "architects are using drones to repair parts of the crumbling great wall",
+//     reminderDate: 12 / 4 / 18,
+//     alarmTimer: "(number of minutes to alarm triggering)"
+//   });
