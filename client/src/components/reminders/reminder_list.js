@@ -12,24 +12,63 @@ class Reminder extends Component {
         return 'dark-reminder-background';
     }
 
-    daysRemaining = ( date, time ) => {
+    countDown = ( date, time ) => {
         var dateTime = `${date} ${time}`;
         var countdown = getTimeRemaining( dateTime );
     
-        if( countdown.days > 0){
+        if ( countdown.days > 0){
             return (
                 <div  className="countdown">
-                    <p className="insideDateClass">{countdown.hours + 'H'}</p>
-                    <p className="insideDateClass">{countdown.days + 'D'}</p>
+                    <p className="countdown-font">{`${countdown.hours} H`}</p>
+                    <p className="countdown-font">{`${countdown.days} D`}</p>
                 </div>
             );
-        } else {
+        } else if ( countdown.days === 0 && countdown.hours > 11 ){
             return (
-                <div  className="countdown">
-                    <p className="insideDateClass">{ time }</p>
+                <div  className="countdown" id="reminder-time">
+                    <p className="countdown-font">{`${countdown.hours} H`}</p>
+                </div>
+            );
+        } else if ( countdown.days === 0 && countdown.hours < 12){
+            return (
+                <div  className="countdown" id="time-AM-PM">
+                    <p className="countdown-font">{ this.timeConvert(time) }</p>
                 </div>
             );
         }
+    }
+
+    timeConvert = ( time ) => {
+        time = time.split(':'); 
+
+        var hours = Number(time[0]);
+        var minutes = Number(time[1]);
+        var timeConvert;
+
+        if (hours > 0 && hours <= 12) {
+            timeConvert= "" + hours;
+        } else if (hours > 12) {
+            timeConvert= "" + (hours - 12);
+        } else if (hours == 0) {
+            timeConvert= "12";
+        }
+        
+        timeConvert += (minutes < 10) ? ":0" + minutes : ":" + minutes; 
+        timeConvert += (hours >= 12) ? " P.M." : " A.M.";  
+    
+        return timeConvert;
+    }
+
+    titleLength = (title) => {
+        var concatTitle = '';
+        if(title.length > 71){
+            for (var i=0; i<70; i++){
+                concatTitle += title[i];
+            }
+            concatTitle += ".."
+            return concatTitle
+        } 
+        return title;
     }
 
     render(){
@@ -43,21 +82,19 @@ class Reminder extends Component {
                     <img className="reminder-icon" src={item.icon}/>
                 </div>
                 <div className="reminder-title" onClick={() => {}}>
-                    <a className="reminder-title-link" href={item.url}>{item.title}</a>
+                    <a className="reminder-title-link" href={item.url}>{this.titleLength(item.title)}</a>
                 </div>
-                {/* <div className="reminder-countdown">
-                    {this.daysRemaining( item.date, item.time )}
-                </div> */}
-                    {/* <Popup trigger={<button className="btnList">info</button>}>
+                    {this.countDown( item.date, item.time )}
+                {/* <Popup trigger={<button className="btnList">info</button>}>
+                    <div>
                         <div>
-                            <div>
-                                Notes: {item.notes}
-                            </div>
-                            <div>
-                                <a href={item.url}>Website: {item.url}</a>
-                            </div>
+                            Notes: {item.notes}
                         </div>
-                    </Popup> */}
+                        <div>
+                            <a href={item.url}>Website: {item.url}</a>
+                        </div>
+                    </div>
+                </Popup> */}
             </div>
         )
 
@@ -76,12 +113,14 @@ class Reminder extends Component {
 
 function getTimeRemaining(endtime){
     var t = Date.parse(endtime) - Date.parse(new Date());
+    var minutes = Math.floor( (t/1000/60) % 60 );
     var hours = Math.floor( (t/(1000*60*60)) % 24 );
     var days = Math.floor( t/(1000*60*60*24) );
     return {
       'total': t,
       'days': days,
       'hours': hours,
+      'minutes': minutes,
     };
 }
 

@@ -82,15 +82,18 @@
 .countdown{
     display: inline-block;
     position: relative;
-    font-size: .8rem;
-    margin: 0;
+    font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
+    margin: 0;
+    top: 7%;
     left: 20%;
+    vertical-align: top;
+    text-align: right;
+    line-height: 2px;
 }
 
-.insideDateClass{
-    font-size: .8rem;
-    margin: 0;
+.countdown-font {
+    font-size: 1.5rem;
 }
 
 .reminder-title-link{
@@ -103,9 +106,20 @@
     display: inline-block;
     position: relative;
     font-family: 'Barlow Condensed', sans-serif;
-    top: 17%;
+    top: 25%;
     left: 6%;
     width: 50%;
     font-size: 1.2rem;
     vertical-align: middle;
+    line-height: initial;
+}
+
+#reminder-time {
+    top: 20%;
+    left: 18%
+}
+
+#time-AM-PM {
+    top: 20%;
+    left:18%
 }

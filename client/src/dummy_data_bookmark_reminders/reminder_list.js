@@ -56,13 +56,13 @@ export default [
     },
     {
         date: "2018-12-12",
-        icon: "https://reacttraining.com/react-router/favicon-32x32.png",
+        icon: "http://dreamville.com/favicon.png",
         id: "2FEDUebtvnc6aQP5QweSCZMzi",
         notes: "This is something I want to read in a few days --notes",
         recurrence: "weekly",
         _hours: 6,
         time: "14:00",
-        title: 'INSTAGRAM TITLE: TH',
+        title: 'Dreamville Records — Cole World No Blanket',
         url: "https://facebook.com"
     },
     // {
