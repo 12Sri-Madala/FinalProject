@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Starting setup for react redux project",
   "main": "index.js",
-  "proxy":{
+  "proxy": {
     "/bookmarks/*": {
-      "target" : "http://localhost:8000/bookmarks"
+      "target": "http://localhost:8000/bookmarks"
     }
   },
   "scripts": {

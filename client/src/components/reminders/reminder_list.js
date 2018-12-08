@@ -16,22 +16,60 @@ class Reminder extends Component {
     countDown = ( date, time ) => {
         var dateTime = `${date} ${time}`;
         var countdown = getTimeRemaining( dateTime );
-    
-        if ( countdown.days > 0){
+        var dayOfWeek = new Date(dateTime).getDay();
+        
+        if ( countdown.days > 7){
             return (
-                <div  className="countdown">
-                    <p className="countdown-font">{`${countdown.hours} H`}</p>
-                    <p className="countdown-font">{`${countdown.days} D`}</p>
+                <div  className="countdownAMPM">
+                    <p className="countdown-font">{ this.timeConvert( time ) }</p>
+                    <p className="countdown-font">{ date }</p>
                 </div>
             );
-        } else if ( countdown.days === 0 && countdown.hours > 11 ){
+        } else if ( countdown.days < 8){
             return (
-                <div  className="countdown" id="reminder-time-hours">
-                    <p className="countdown-font">{`${countdown.hours} H`}</p>
+                <div  className="countdownAMPM">
+                    <p className="countdown-font">{ this.timeConvert( time ) }</p>
+                    <p className="countdown-font">{ this.dayOfWeek( dayOfWeek ) }</p>
                 </div>
             );
-        } else if ( countdown.days === 0 && countdown.hours < 12){
-            return this.timeConvert( time )
+        } else if ( countdown.days === 0 && countdown.hours < 24 ){
+            return (
+                <div  className="countdownAMPM">
+                    <p className="countdown-font">{ this.timeConvert( time ) }</p>
+                </div>
+            );
+        }
+    }
+
+    dayOfWeek = ( day ) => {
+        var today = new Date().getDay();
+        
+        if ( today === day ){
+            return 'Today';
+        }
+
+        switch (day){
+            case 0:
+                return 'SUN';
+                break;
+            case 1:
+                return 'MON';
+                break;
+            case 2:
+                return 'TUES';
+                break;
+            case 3:
+                return 'WED';
+                break;
+            case 4:
+                return 'THUR';
+                break;
+            case 5:
+                return 'FRI';
+                break;
+            case 6:
+                return 'SAT';
+                break;
         }
     }
 
@@ -50,23 +88,10 @@ class Reminder extends Component {
             timeConvert= "12";
         }
         
-        timeConvert += (minutes < 10) ? ":0" + minutes : ":" + minutes; 
+        timeConvert += (minutes < 10) ? ":0" + minutes : ":" + minutes;
+        timeConvert += (hours >= 12) ? " P.M." : " A.M."; 
 
-        if (hours >= 12) {
-            return (
-                <div  className="countdownAMPM">
-                    <p className="countdown-font" id="amPM">{ `P.M.` }</p>
-                    <p className="countdown-font">{ timeConvert }</p>
-                </div>
-            );
-        } else {
-            return (
-                <div  className="countdownAMPM">
-                    <p className="countdown-font" id="amPM">{ `A.M.` }</p>
-                    <p className="countdown-font">{ timeConvert }</p>
-                </div>
-            );
-        }
+        return timeConvert;
     }
 
     titleLength = (title) => {
@@ -113,6 +138,9 @@ class Reminder extends Component {
 
         return(
             <div>
+                <div className="reminder-header">
+                    <h3>Reminders</h3>
+                </div>
                 <ul  className= "reminderElements">
                 {listElements}
                 </ul>
