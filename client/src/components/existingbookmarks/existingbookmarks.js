@@ -25,6 +25,10 @@ class ExistingBookmarks extends Component {
 
     render(){
         console.log("YERBA MATE", this.state.list[0].children)
+
+        /*const newerList = newList.map(() => {
+
+        })*/
         return(
             <div>
                 <ExistingBookmarkList  children={this.state.list[0].children} open={false} depth={0}/>

@@ -22,8 +22,6 @@ class ApplicationPage extends Component {
 
                    <Folder />
 
-
-
                 </div>
 
 
