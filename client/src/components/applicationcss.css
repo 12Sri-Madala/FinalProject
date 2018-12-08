@@ -9,10 +9,10 @@
 
 }
 
-.leftDivApp{
+.reminder-section{
     width: 30vw;
     background-image: url("./reminders/images/reminders-background.jpg");
-
+    min-width: 460px;
 }
 .rightDivApp{
 
