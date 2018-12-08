@@ -17,19 +17,20 @@ class Reminder extends Component {
         var dateTime = `${date} ${time}`;
         var countdown = getTimeRemaining( dateTime );
         var dayOfWeek = new Date(dateTime).getDay();
+
         
         if ( countdown.days > 7){
             return (
                 <div  className="countdownAMPM">
                     <p className="countdown-font">{ this.timeConvert( time ) }</p>
-                    <p className="countdown-font">{ date }</p>
+                    <p className="countdown-font-dow">{ this.dateConvert( date ) }</p>
                 </div>
             );
         } else if ( countdown.days < 8){
             return (
                 <div  className="countdownAMPM">
                     <p className="countdown-font">{ this.timeConvert( time ) }</p>
-                    <p className="countdown-font">{ this.dayOfWeek( dayOfWeek ) }</p>
+                    <p className="countdown-font-dow">{ this.dayOfWeek( dayOfWeek ) }</p>
                 </div>
             );
         } else if ( countdown.days === 0 && countdown.hours < 24 ){
@@ -41,6 +42,17 @@ class Reminder extends Component {
         }
     }
 
+    dateConvert = ( date ) => {
+        var date = new Date(date);
+        var month =  date.getMonth() + 1;
+
+        if ((date.getMonth() + 1) < 10){
+            month = "0" + month;
+        }
+
+        return (month + '/' + date.getDate() + '/' +  date.getFullYear())
+    }
+
     dayOfWeek = ( day ) => {
         var today = new Date().getDay();
         
@@ -50,25 +62,25 @@ class Reminder extends Component {
 
         switch (day){
             case 0:
-                return 'SUN';
+                return 'Sunday';
                 break;
             case 1:
-                return 'MON';
+                return 'Monday';
                 break;
             case 2:
-                return 'TUES';
+                return 'Tuesday';
                 break;
             case 3:
-                return 'WED';
+                return 'Wednesday';
                 break;
             case 4:
-                return 'THUR';
+                return 'Thursday';
                 break;
             case 5:
-                return 'FRI';
+                return 'Friday';
                 break;
             case 6:
-                return 'SAT';
+                return 'Saturday';
                 break;
         }
     }

@@ -44,7 +44,7 @@ export default [
         url: "https://instagram.com"
     },
     {
-        date: "2018-12-13",
+        date: "2018-12-12",
         icon: "https://99percentinvisible.org/app/uploads/2016/06/cropped-favicon_512-32x32.png",
         id: "2DNDUabcnnc6aQP5QweSCZMzi",
         notes: "This is something I want to read tomorrow--notes",
