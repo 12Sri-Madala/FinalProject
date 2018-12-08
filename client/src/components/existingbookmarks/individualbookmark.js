@@ -16,3 +16,4 @@ class IndividualBookmark extends Component {
 }
 
 export default IndividualBookmark;
+

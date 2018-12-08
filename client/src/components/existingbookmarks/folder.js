@@ -40,18 +40,38 @@ class Folder extends Component {
                         <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+10}/>
                     )
                 }
-                else {
+                else if (this.props.depth !== 0) {
                     return (
                         <IndividualBookmark key={index} title={item.title} url={item.url}/>
                     )
                 }
-        })
+            })
         );
     }
+
+    getIndividualBookmarks() {
+        return (
+            this.props.children.map((item, index) => {
+                if (!item.children) {
+                    return (
+                        <IndividualBookmark key={index} title={item.title} url={item.url}/>
+                    )
+                }
+            })
+        )
+    }
+
     render(){
 
         if(this.props.depth === 0){
-            return ( this.getContents(this.props));
+            return (
+                <div>
+
+                    <div>{this.getContents(this.props)}</div>
+
+                    <div>{this.getIndividualBookmarks()}</div>
+                </div>
+            )
         }
 
         else {

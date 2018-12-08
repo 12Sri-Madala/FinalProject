@@ -32,8 +32,8 @@ export default [
 
 
                ],
-                title: 'ALL BOOKMARKS',
-                folder_id: '002',
+                title: 'All Bookmarks',
+                folder_id: '01',
                 id:'006'
             },
             {
@@ -46,12 +46,12 @@ export default [
                     }
 
                 ],
-                title: "OTHER BOOKMARKS",
-                folder_id: '003'
+                title: "Other Bookmarks",
+                folder_id: '02'
             }
         ],
         title: 'Main directory',
-        folder_id: '001',
+        folder_id: '000',
         id: '009'
     }
 
