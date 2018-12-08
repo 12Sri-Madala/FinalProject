@@ -37,9 +37,7 @@ class Folder extends Component {
                 if(item.children) {
                     console.log('each index',index)
                     return (
-
-
-                        <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+8}/>
+                        <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+10}/>
                     )
                 }
                 else {
@@ -52,17 +50,13 @@ class Folder extends Component {
     }
     render(){
 
-
-
-
         if(this.props.depth === 0){
             return ( this.getContents(this.props));
         }
 
         else {
             return (
-                <div className="folder" style=
-                    {{marginLeft: this.props.depth + '%'}}>
+                <div className="folder" style={{marginLeft: this.props.depth + '%'}}>
                     <div className="toggle" onClick={this.toggleFolder}>
                         <i className={`fas ${this.state.folder} folderIcon`}></i>
                     </div>

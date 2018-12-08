@@ -13,7 +13,7 @@
     cursor: pointer;
 }
 .title{
-    display: inline-block;
+
 
 
 }
@@ -24,5 +24,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: pre;
+
+}
+
+.allFolders{
+    position: relative;
+
 
 }
