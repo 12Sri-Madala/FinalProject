@@ -76,10 +76,6 @@ button:focus {
 .description-header {
     width: 100vw;
     height: 10vh;
-    background-image: url(./images/description-header.png);
-    background-size: cover;
-    background-position: left;
-    background-repeat: no-repeat;
     color: whitesmoke;
     margin: 0;
 }
@@ -89,8 +85,20 @@ button:focus {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 5.5vmin;
     top: 5px;
+    color: rgb(218, 218, 218);
+}
+
+.description-body {
+    width: 100vw;
+    height: 80vh;
+    background-image: url('./images/description-body.png');
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
 }
 
 .lobster {
     font-family: "Lobster Two", cursive;
+    font-size: 5.5vmin;
+    color: white;
 }

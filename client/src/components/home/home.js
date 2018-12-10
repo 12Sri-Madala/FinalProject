@@ -35,11 +35,8 @@ export default props => {
                 </div>
             </div>
 
-            <div className="description-header">
+            <div className="description-body">
                 <h3 className="center description-title">What is <span className="lobster">Crease</span> ?</h3>
-            </div>
-            <div className="homeDivPart">
-                <h3>DESCRIPTION AREA</h3>
             </div>
 
             <hr className="hrBar"></hr>
