@@ -62,7 +62,7 @@ app.use(passport.session());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-// app.use(express.static(resolve(__dirname, "client", "dist")));
+app.use(express.static(resolve(__dirname, "client", "dist")));
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header(
@@ -340,9 +340,7 @@ app.delete("/deletebookmarks", (req, resp) => {
 });
 
 app.get("*", (req, res) => {
-  // res.sendFile(resolve(__dirname, "client", "dist", "index.html"));
-
-  res.send('<h1>Catch all route</h1>');
+  res.sendFile(resolve(__dirname, "client", "dist", "index.html"));
 });
 
 db.on("error", console.error.bind(console, "connection error:"));
