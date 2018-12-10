@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-=======
 node_modules
 
->>>>>>> 6725c9dd5c66ea90f35ef0a4860e3e70bca35927
 .DS_Store
+.vscode
