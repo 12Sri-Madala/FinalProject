@@ -1,20 +1,24 @@
 import React from 'react';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
 import { NavLink } from 'react-router-dom';
 import './nav.css';
 
 export default props => (
-        <ul className="navExtras">
-            <li className="">
+         <nav>
+         <div class="nav-wrapper">
+           <a href="#" class="brand-logo">Crease</a>
+           <ul id="nav-mobile" class="right hide-on-med-and-down">
+             <li>
                 <NavLink exact to={'/'} activeClassName="active selected" className="nav-link">Home</NavLink>
-            </li>
-            <li className="">
+             </li>
+             <li>
                 <NavLink to={'/application_page'} activeClassName="active selected" className="nav-link">Application</NavLink>
-            </li>
-            <li className="">
+             </li>
+             <li>
                 <NavLink to={'/meet_team'} activeClassName="active selected" className="nav-link">Meet The Team</NavLink>
-            </li>
-            <li className="">
-                <NavLink to={'/add_item'} activeClassName="active selected" className="nav-link">Add ITEM</NavLink>
-            </li>
-        </ul>
-)
+             </li>
+           </ul>
+         </div>
+       </nav>
+);
