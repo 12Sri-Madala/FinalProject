@@ -34,14 +34,14 @@ export default props => {
                     />
                 </div>
             </div>
-
+            
             <div className="description-body">
-                <h3 className="center description-title">What is <span className="lobster">Crease</span> ?</h3>
+                <div className="description-header">
+                    <h3 className="center description-title">What is <span className="lobster">Crease</span> ?</h3>
+                </div>
             </div>
 
-            <hr className="hrBar"></hr>
-
-            <div className="homeDivPart">
+            <div className="video-body">
                 <h3>VIDEO AREA</h3>
             </div>
 
