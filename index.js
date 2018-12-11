@@ -63,6 +63,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(resolve(__dirname, "client", "dist")));
+
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header(
@@ -116,58 +117,13 @@ app.get("/getBookmarks", (req, resp) => {
   });
 });
 
-// async function createBookmark(treeNode){
-//   console.log(treeNode)
-  
-//   for (i=0; i<treeNode.bookmarks[0][children].length; i++){ // i stands for root directory of bookmark API object
-    
-//     for (x = 0; x<treeNode.bookmarks[0][children][i][children].length; x++){ // x stands for inner bookmarks from root
-//       const record = new userBookmarks ({
-//         bookmarkId: treeNode.bookmarks[0][children][i][children][x][id],
-//         url: treeNode.bookmarks[0][children][i][children][x][url],
-//         title: treeNode.bookmarks[0][children][i][children][x][title],
-//         index: treeNode.bookmarks[0][children][i][children][x][index],
-//         parentId: treeNode.bookmarks[0][children][i][children][x][parentId],
-//         favicon: findFavicon(treeNode.bookmarks[0][children][i][children][x][url]),
-//         notes: '',
-//         reminderDate: null,
-//         alarmTimer: null,
-//       })
-
-//       await record.save();
-      
-//       if(treeNode.bookmarks[0][children][i][children][x].length>1){
-//         record.nested=[{
-//           folderID: incrementingID++,
-//           status: true,
-//           nestedBookmarks: []
-//         }];
-
-//         const childRecord = await createBookmark(treeNode.children[i]);
-//         record.nested.nestedBookmarks.push(childRecord)
-//       }
-//     }
-//   }
- 
-//     for(let i = 0; i < treeNode.children.length; i++){
-//       const childRecord = await createBookmark(treeNode.children[i]);
-//       record.nested.nestedBookmarks.push(childRecord)
-//     }
-//     await record.save()
-//   }
-  // return record
 
 async function addBookmarksToUser(databaseUser, existingBookmarks){
   var result = await CreateBookmarks(existingBookmarks);
   databaseUser.bookmarks = result;
   await databaseUser.save();
   console.log(result);
-  // result[0].then(function(){
-  //   console.log('got promise', arguments);
-  //   // debugger;
-  //   databaseUser.bookmarks = result;
-  //   databaseUser.save();
-  // })
+  
 }
 
 var baseFolderID=0;
@@ -218,39 +174,6 @@ async function CreateBookmarks(array){
         // console.log(JSON.stringify(newArray))
   return newArray;
 }
-
-// var incrementingFolderID = 1
-// function createBookmarks(array){
-//   array.map( item => {
-//     const record = new userBookmarks ({
-
-//     bookmarkId: item.id,
-//     url: item.url,
-//     title: item.title,
-//     favicon: findFavicon(item.url),
-//     notes: '',
-//     reminderDate: null,
-//     alarmTimer: null,
-//   })
-
-//   console.log('Pre IF statement (not nested)', record);
-
-//     if(item.hasOwnProperty('children')){
-//       record.nested={
-//         folderID: incrementingFolderID++,
-//         status: true,
-//         nestedBookmarks: []
-//       };
-//       for (let childIndex=0; childIndex<item.children.length; childIndex++ ){
-//         const childRecord = await createBookmarks(item.children[childIndex]);
-//         record.nested.nestedBookmarks.push(childRecord)
-//       }
-//       console.log('Inside IF statement (nested bookmark)', record)
-      
-//     }
-//     return record
-//   })
-// }
 
 app.post("/addExistingBookmarks", (req, resp) => {
   // console.log('====Post Bookmarks:', req.body);
