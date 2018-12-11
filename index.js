@@ -99,6 +99,12 @@ function findFavicon(url){
 
 app.get("/getBookmarks", (req, resp) => {
 
+  const { user } = req;
+
+  if(!user){
+    return res.status(401).send('Not authorized');
+  }
+
   userBase.findOne({ userID: req.query.userID }, (err, user) => {
     if (err) return console.log(err);
     if (user === null) {
