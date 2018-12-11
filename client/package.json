@@ -5,7 +5,7 @@
   "main": "index.js",
   "proxy": {
     "/bookmarks/*": {
-      "target": "http://localhost:8000/bookmarks"
+      "target": "http://localhost:8000"
     }
   },
   "scripts": {

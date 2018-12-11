@@ -1,0 +1,3 @@
+module.exports = {
+    connect: 'MONGO CONNECTION URI'
+}
