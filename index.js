@@ -1,27 +1,79 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { resolve } = require("path");
+const passport = require('passport');
 const cors = require("cors");
+const cookieSession = require('cookie-session');
+const { cookieConfig, dbConfig } = require('./config');
 const PORT = process.env.PORT || 8000;
-mongoose.connect("mongodb://12Sri:EzAs12Sri@ds121624.mlab.com:21624/crease");
+
+mongoose.connect(dbConfig.connect, {
+  useNewUrlParser: true
+});
 
 const app = express();
 var userBase;
 var userBookmarks;
 var db = mongoose.connection;
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static(resolve(__dirname, "client", "dist")));
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
+db.once("open", function () {
+
+  console.log("connected to db");
+
+  var bookmarkSchema = new mongoose.Schema({
+    bookmarkID: Number,
+    url: String,
+    title: String,
+    favicon: String,
+    Notes: String,
+    reminderDate: Date,
+    alarmTimer: String
+  });
+
+  bookmarkSchema.add({
+    nested: {
+      folderID: Number,
+      status: Boolean,
+      nestedBookmarks: [bookmarkSchema]
+    }
+  });
+
+  var usersSchema = new mongoose.Schema({
+    googleId: String,
+    createdAt: Date,
+    updatedAt: Date,
+    bookmarks: [bookmarkSchema]
+  });
+
+  userBase = mongoose.model("userbases", usersSchema);
+  userBookmarks = mongoose.model("userBookmarks", bookmarkSchema);
+
+  require('./services/passport');
 });
 
+app.use(cookieSession({
+  maxAge: 30 * 24 * 60 * 60 * 1000,
+  keys: [cookieConfig.secret]
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.use(express.static(resolve(__dirname, "client", "dist")));
+
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
+
+require('./routes')(app);
 
 app.get("/api", (req, res) => {
  res.send("<h1>API WORKING!</h1>");
@@ -37,8 +89,22 @@ app
     );
   });
 
+function findFavicon(url){
+    if(url === undefined){
+      const faviconURL=`https://www.google.com/s2/favicons?domain=https://google.com`
+      return faviconURL
+    }  
+    let faviconURL = `https://www.google.com/s2/favicons?domain=${url}`
+    return faviconURL
+}
 
 app.get("/getBookmarks", (req, resp) => {
+
+  const { user } = req;
+
+  if(!user){
+    return res.status(401).send('Not authorized');
+  }
 
   userBase.findOne({ userID: req.query.userID }, (err, user) => {
     if (err) return console.log(err);
@@ -57,81 +123,126 @@ app.get("/getBookmarks", (req, resp) => {
   });
 });
 
-async function createBookmark(treeNode){
-  const record = new userBookmarks ({
 
-    bookmarkId: treeNode.id,
-    url: treeNode.url,
-    title: treeNode.title,
-    favicon: null,
-    notes: '',
-    reminderDate: null,
-    alarmTimer: null,
-  })
-  console.log(treeNode)
+async function addBookmarksToUser(databaseUser, existingBookmarks){
+  var result = await CreateBookmarks(existingBookmarks);
+  databaseUser.bookmarks = result;
+  await databaseUser.save();
+  console.log(result);
+  
+}
 
-  await record.save()
- 
-  if(treeNode.hasOwnProperty('children')){
-    var incrementingID = 1
-    record.nested=[{
-      folderID: incrementingID++,
-      status: true,
-      nestedBookmarks: []
-    }];
- 
-    for(let i = 0; i < treeNode.children.length; i++){
-      const childRecord = await createBookmark(node.children[i]);
-      record.nested.nestedBookmarks.push(childRecord)
+var baseFolderID=0;
+async function CreateBookmarks(array){
+  const newArray = array.map( async item => {
+    if(item.hasOwnProperty('children')){
+      // console.log('INSIDE ',item.children)
+      const userBookmarkOptions = {
+        bookmarkId: item.id,
+        url: item.url,
+        title: item.title,
+        favicon: findFavicon(item.url),
+        parentId: item.parentId,
+        notes: '',
+        reminderDate: null,
+        alarmTimer: null,
+        nested: {
+          folderID: ++baseFolderID,
+          status: true,
+        }
+      };
+      userBookmarkOptions.nested.nestedBookmarks = await CreateBookmarks(item.children);
+
+      const record = new userBookmarks(userBookmarkOptions);
+      //console.log('Inside IF statement (nested bookmark)', record.nested.nestedBookmarks);
+
+      await record.save();
+      // record.nested.nestedBookmarks.push(
+      return record;
+    } else {
+      const record = new userBookmarks ({
+        bookmarkId: item.id,
+        url: item.url,
+        title: item.title,
+        favicon: findFavicon(item.url),
+        notes: '',
+        reminderDate: null,
+        alarmTimer: null,      
+      })
+      console.log('Post IF statement (not nested)', record)
+      await record.save();
+      return record;
     }
-    await record.save()
+  });
+  for (let i = 0; i < newArray.length; i++){
+    newArray[i] = await newArray[i];
   }
-  return record
- }
+        // console.log(JSON.stringify(newArray))
+  return newArray;
+}
 
-app.post("/postBookmarks", (req, resp) => {
-  console.log('====Post Bookmarks:', req.body);
-  // console.log(req.userID)
-  console.log(req.body.userID)
- userBase.findOne({ userID: req.query.userID }, (err, user) => {
+app.post("/addExistingBookmarks", (req, resp) => {
+  // console.log('====Post Bookmarks:', req.body);
+  console.log("1", req.body.userID)
+  let { userID } = req.body;
+  let bookmarks = JSON.parse(req.body.bookmarks);
+  console.log('2 req.body.bookmarks',bookmarks);
+
+  if(!userID){
+    return res.status(422).send('No user id provided');
+  } 
+  
+  userID = userID.toLowerCase();
+  
+ userBase.findOne({ userID }, (err, user) => {
+    console.log("2",user)
+
     if (err) return console.log(err);
     if (user === null) {
-      console.log(user)
+      console.log("3",user)
       resp.send({
         success: false,
         message: "User not found"
       });
       return;
     }
-  
-    createBookmark(req.body)
-
-    console.log('POST RETURN STATEMENT');
-    var newBookmark = new userBookmarks({
-      url: req.body.url || "google.com",
-      title: req.body.title || "some Title",
-      favicon: req.body.favicon || "sample favicon",
-      notes: req.body.notes || "your notes",
-      reminderDate: req.body.reminderDate || "1/1/2000",
-      alarmTimer:
-        req.body.alarmTimer || "(number of minutes to alarm triggering)"
-    });
-
-    newBookmark.save(function(err, bookmark) {
-      userBase.bookmarks.push(bookmark);
-      userBase.save(function(err, savedUser) {
-        // console.log(savedUser)
-        if (err) return console.error(err);
-        resp.send({
-          success: true,
-          bookmarkCount: savedUser.bookmarks.length
-        });
-      });
-    });
+    
+    var array = addBookmarksToUser(user, bookmarks)
+    .then(() => {
+      resp.send({
+        succes: true,
+        message: `Bookmarks added to ${userID}`
+      })
+    })
   });
 });
 
-app.put("/bookmarks", (req, resp) => {
+app.post('/newBookmark', (req, resp) => {
+
+  // var newBookmark = new userBookmarks({
+  //   url: req.body.url || "google.com",
+  //   title: req.body.title || "some Title",
+  //   favicon: req.body.favicon || findFavicon(),
+  //   notes: req.body.notes || "your notes",
+  //   reminderDate: req.body.reminderDate || "12/12/2121",
+  //   alarmTimer:
+  //     req.body.alarmTimer || "(number of minutes to alarm triggering)"
+  // });
+
+  // newBookmark.save(function(err, bookmark) {
+  //   userBase.bookmarks.push(bookmark);
+  //   userBase.save(function(err, savedUser) {
+  //     console.log(savedUser)
+  //     if (err) return console.error(err);
+  //     resp.send({
+  //       success: true,
+  //       bookmarkCount: savedUser.bookmarks.length
+  //     });
+  //   });
+  // });
+})
+
+app.put("/updatebookmarks", (req, resp) => {
   userBase.findOne({ userID: req.query.userID }, (err, user) => {
     if (err) return console.log(err);
     userBookmarks.findOneAndUpdate({ bookmarkID }).then(function(bookmarks) {
@@ -143,7 +254,7 @@ app.put("/bookmarks", (req, resp) => {
   });
 });
 
-app.delete("/bookmarks", (req, resp) => {
+app.delete("/deletebookmarks", (req, resp) => {
   userBase.findOne({ userID: req.query.userID }, (err, user) => {
     if (err) return console.log(err);
     user.nested.nestedBookmarks
@@ -163,41 +274,6 @@ app.get("*", (req, res) => {
 
 db.on("error", console.error.bind(console, "connection error:"));
 
-db.once("open", function() {
-
-  console.log("connected to db");
-
-  var bookmarkSchema = new mongoose.Schema({
-    bookmarkID: String,
-    url: String,
-    title: String,
-    favicon: String,
-    Notes: String,
-    reminderDate: Date,
-    alarmTimer: String
-  });
-
-  bookmarkSchema.add({
-    nested: {
-      status: Boolean,
-      nestedBookmarks: [bookmarkSchema]
-    }
-  });
-
-  var usersSchema = new mongoose.Schema({
-    userID: String,
-    createdAt: Date,
-    updatedAt: Date,
-    bookmarks: [bookmarkSchema]
-  });
-
-  userBase = mongoose.model("userBases", usersSchema);
-  userBookmarks = mongoose.model("userBookmarks", bookmarkSchema);
-
-});
-
-
-
 
 //   var userTemp = new userBase({
 //     userID: "sri.madala19",
@@ -214,3 +290,77 @@ db.once("open", function() {
 //     reminderDate: 12 / 4 / 18,
 //     alarmTimer: "(number of minutes to alarm triggering)"
 //   });
+
+var sampleData = [
+      {
+        dateAdded: 1507836498658,
+        dateGroupModified: 1544228099968,
+        id: "1",
+        index: 0,
+        parentId: "0",
+        folderId: "1", // Trying to Add
+        title: "Bookmarks Bar",
+        children: [
+              {
+                dateAdded: 1544228092591,
+                id: "164",
+                index: 0,
+                parentId: "1",
+                title: "52 Of The Most Common Myths and Misconceptions Debunked In One Infographic | IFLScience",
+                url: 'http://www.iflscience.com/editors-blog/52-common-myths-and-misconceptions-debunked/',
+                favicon: 'url',       // Trying to Add
+                Notes: '',            // Trying to Add
+                reminderDate: null,   // Trying to Add
+                alarmTimer: null      // Trying to Add
+              }, 
+              {
+                dateAdded: 1544228099968,
+                id: "165",
+                index: 1,
+                parentId: "1",
+                title: "The Rise of Tech-Enabled Middlemen – Medium",
+                url: 'https://medium.com/@epeckham/the-rise-of-tech-enabled-middlemen-5d95a4dc3b82#.m6hhmnjp8',
+                favicon: 'url',     // Trying to Add
+                Notes: '',          // Trying to Add
+                reminderDate: null, // Trying to Add
+                alarmTimer: null    // Trying to Add
+              }
+          ]
+      },
+      {
+        dateAdded: 1507836498658,
+        dateGroupModified: 1544228092591,
+        id: "2",
+        index: 1,
+        parentId: "0",
+        folderId: "2",    // Trying to Add
+        title: "Other Bookmarks",
+        children: [
+            {
+              dateAdded: 1462134914607,
+              id: "6",
+              index: 0,
+              parentId: "2",
+              title: "Harry Foundalis - The Bongard Problems",
+              url: "http://www.foundalis.com/res/diss_research.html",
+              favicon: 'url',       // Trying to Add
+              Notes: '',            // Trying to Add
+              reminderDate: null,   // Trying to Add
+              alarmTimer: null      // Trying to Add
+            },
+            {
+              dateAdded: 1462134914608,
+              id: "7",
+              index: 1,
+              parentId: "2",
+              title: "SparkNotes: Crime and Punishment",
+              url: "http://www.sparknotes.com/lit/crime/",
+              favicon: 'url',       // Trying to Add
+              Notes: '',            // Trying to Add
+              reminderDate: null,   // Trying to Add
+              alarmTimer: null      // Trying to Add
+            }
+        ]
+      }
+    ]
+

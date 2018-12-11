@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ExistingBookmarks from './existingbookmarks';
 import AllReminderList from './all_of_reminder_list';
-import './applicationcss.css';
-import ReminderListRedux from './reminders/reminder_list_redux';
+import Nav from './navbar/nav';
+import './application.css';
+
 
 class ApplicationPage extends Component {
 
     render(){
         return (
-            <div className="applicationDiv">
+            <Fragment>
+                <Nav />
+                     <div className="applicationDiv">
 
 
                 <div className="insideDiv reminder-section">
@@ -26,8 +29,8 @@ class ApplicationPage extends Component {
 
 
             </div>
-
-        )
+            </Fragment>
+        );
     }
 }
 

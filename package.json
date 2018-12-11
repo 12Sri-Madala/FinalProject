@@ -4,6 +4,7 @@
   "description": "Update this",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,9 +18,12 @@
   },
   "homepage": "https://github.com/12Sri-Madala/FinalProject#readme",
   "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "mongoose": "^5.3.14"
+    "mongoose": "^5.3.14",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.7",

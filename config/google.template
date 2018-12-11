@@ -1,0 +1,4 @@
+module.exports = {
+    googleClientID: 'GOOGLE CLIENT APP',
+    googleClientSecret: 'GOOGLE CLIENT SECRET'
+}

@@ -95,15 +95,16 @@ $(function() {
 function dumpBookmarks(query) {
   var bookmarkTreeNodes = chrome.bookmarks.getTree(
     function(bookmarkTreeNodes) {
-        console.log(bookmarkTreeNodes);
+
+      console.log(bookmarkTreeNodes)
+
       const postingCall = {
         method: 'POST',
-        url: 'http://localhost:8000/postBookmarks',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          bookmarks: bookmarkTreeNodes,
+        url: 'http://localhost:8000/addExistingBookmarks',
+        data: {
+          bookmarks: JSON.stringify(bookmarkTreeNodes),
           userID: 'julianso89'
-        }),
+        },
       }
     
       $.ajax(postingCall);

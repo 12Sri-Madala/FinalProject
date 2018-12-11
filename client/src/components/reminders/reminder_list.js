@@ -26,20 +26,14 @@ class Reminder extends Component {
                     <p className="countdown-font-dow">{ this.dateConvert( date ) }</p>
                 </div>
             );
-        } else if ( countdown.days < 8){
+        } else if ( countdown.days < 8 && countdown.seconds > 0){
             return (
                 <div  className="countdownAMPM">
                     <p className="countdown-font">{ this.timeConvert( time ) }</p>
                     <p className="countdown-font-dow">{ this.dayOfWeek( dayOfWeek ) }</p>
                 </div>
             );
-        } else if ( countdown.days === 0 && countdown.hours < 24 ){
-            return (
-                <div  className="countdownAMPM">
-                    <p className="countdown-font">{ this.timeConvert( time ) }</p>
-                </div>
-            );
-        }
+        } 
     }
 
     dateConvert = ( date ) => {
@@ -151,7 +145,9 @@ class Reminder extends Component {
         return(
             <div>
                 <div className="reminder-header">
-                    <h3>Reminders</h3>
+                    <div className="reminder-tab">
+                        <h6>Reminder</h6>
+                    </div>   
                 </div>
                 <ul  className= "reminderElements">
                 {listElements}
@@ -164,6 +160,7 @@ class Reminder extends Component {
 
 function getTimeRemaining(endtime){
     var t = Date.parse(endtime) - Date.parse(new Date());
+    var seconds = Math.floor( (t/1000) % 60 );
     var minutes = Math.floor( (t/1000/60) % 60 );
     var hours = Math.floor( (t/(1000*60*60)) % 24 );
     var days = Math.floor( t/(1000*60*60*24) );
@@ -172,6 +169,7 @@ function getTimeRemaining(endtime){
       'days': days,
       'hours': hours,
       'minutes': minutes,
+      'seconds': seconds
     };
 }
 
