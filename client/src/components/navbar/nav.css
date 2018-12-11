@@ -1,0 +1,14 @@
+.main-nav {
+    padding: 0 20px;
+}
+
+.nav-logo{
+    font-family: 'Lobster', cursive;
+}
+
+#navbar {
+    background-image: url('./images/nav-background.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

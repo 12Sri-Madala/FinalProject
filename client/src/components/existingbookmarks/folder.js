@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import IndividualBookmark from './individualbookmark';
 import './existingbookmarks_list.css';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
 
 
 
@@ -35,34 +37,48 @@ class Folder extends Component {
             this.props.children.map((item, index) => {
 
                 if(item.children) {
-                    console.log('each index',index)
+
                     return (
-
-
-                        <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+8}/>
+                        <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+5}/>
                     )
                 }
-                else {
+                else if (this.props.depth !== 0) {
                     return (
-                        <IndividualBookmark key={index} title={item.title} url={item.url}/>
+                        <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.favicon} class="allOfEachBookmarkTwo"/>
                     )
                 }
-        })
+            })
         );
     }
+
+    getIndividualBookmarks() {
+        return (
+            this.props.children.map((item, index) => {
+                console.log(item.title)
+                if (!item.children) {
+                    return (
+                        <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.favicon} class="allOfEachBookmark"/>
+                    )
+                }
+            })
+        )
+    }
+
     render(){
 
-
-
-
         if(this.props.depth === 0){
-            return ( this.getContents(this.props));
+            return (
+                <div>
+                    <div className="folderSection">{this.getContents(this.props)}</div>
+                    <hr className="hrClass"/>
+                    <div className="individualFirstBookMark ">{this.getIndividualBookmarks()}</div>
+                </div>
+            )
         }
 
         else {
             return (
-                <div className="folder" style=
-                    {{marginLeft: this.props.depth + '%'}}>
+                <div className="folder" style={{marginLeft: this.props.depth + '%'}}>
                     <div className="toggle" onClick={this.toggleFolder}>
                         <i className={`fas ${this.state.folder} folderIcon`}></i>
                     </div>

@@ -150,7 +150,9 @@ class Reminder extends Component {
         return(
             <div>
                 <div className="reminder-header">
-                    <h3>Reminders</h3>
+                    <div className="reminder-tab">
+                        <h6>Reminder</h6>
+                    </div>   
                 </div>
                 <ul  className= "reminderElements">
                 {listElements}
