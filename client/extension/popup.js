@@ -115,15 +115,14 @@ function dumpBookmarks(query) {
   var bookmarkTreeNodes = chrome.bookmarks.getTree(
     function(bookmarkTreeNodes) {
 
-      console.log(bookmarkTreeNodes)
+      console.log("Hitting dumpBookmarks function", bookmarkTreeNodes)
 
       const postingCall = {
         method: 'POST',
-        url: 'http://localhost:8000/auth/Bookmarks',
+        url: 'http://localhost:8000/auth/apiBookmarks',
         data: {
-          bookmarks: JSON.stringify(bookmarkTreeNodes),
-          userID: 'julianso89'
-        },
+          bookmarks: JSON.stringify(bookmarkTreeNodes)
+        }
       }
     // should only be run once when the user is logged in, but in the background (no need to interact with the extension)
     // can we trigger an api call from our website to our extension that happens when the user logs in? 

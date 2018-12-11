@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './reminder_list.css';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
 import Popup from "reactjs-popup";
 import dots from './images/reminder-dots.png';
 
