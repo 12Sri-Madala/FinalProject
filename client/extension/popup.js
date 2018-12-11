@@ -95,7 +95,9 @@ $(function() {
 function dumpBookmarks(query) {
   var bookmarkTreeNodes = chrome.bookmarks.getTree(
     function(bookmarkTreeNodes) {
+
       console.log(bookmarkTreeNodes)
+
       const postingCall = {
         method: 'POST',
         url: 'http://localhost:8000/addExistingBookmarks',

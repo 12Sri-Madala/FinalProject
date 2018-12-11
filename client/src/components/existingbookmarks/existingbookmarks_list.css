@@ -1,6 +1,7 @@
 .folderIcon{
   color:#FDCA29;
-  font-size: 4rem;
+  font-size: 3rem;
+
 }
 .folder{
 
@@ -13,16 +14,76 @@
     cursor: pointer;
 }
 .title{
-    display: inline-block;
+
 
 
 }
 .bookmark::before{
-    content: '--'
+    /*content: '--'*/
 }
 .bookmark{
+    white-space: pre;
+    width: 300px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: pre;
+}
 
+.allFolders{
+    position: relative;
+    width: 60vw;
+
+}
+
+.folderSection {
+    height: 45vh;
+
+}
+.folderSection:first-child{
+    overflow: auto;
+}
+.individualFirstBookMark{
+    height: 45vmin;
+    width: 60vw;
+
+
+}
+.individualFirstBookMark:first-child{
+    display: inline-block;
+    white-space: pre;
+    overflow: auto;
+    text-overflow: ellipsis;
+
+
+}
+.individualBookmarkImg{
+    width: 30px;
+    height: 30px;
+}
+.allOfEachBookmark{
+    display: inline-block;
+    width: 200px;
+    text-overflow: ellipsis;
+    margin: 0;
+    margin-left: 20px;
+    overflow: hidden;
+}
+.allOfEachBookmarkTwo{
+    display: inline-block;
+
+    text-overflow: ellipsis;
+    margin: 0;
+
+    overflow: hidden;
+}
+.allOfEachBookmarkTwo img{
+    display: inline-block;
+    position: relative;
+    top: 5px;
+}
+.allOfEachBookmark img {
+    position: relative;
+    left: 40%;
+}
+.hrClass{
+    margin:0;
 }

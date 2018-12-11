@@ -6,22 +6,142 @@ export default [
             {
                 children: [
                    {
-                       title: 'Facebooks website title is here sdasd sdad sadsd adsd',
+                       title: 'Facebooks website title is here sdasd sdad sadsd adsddsadsad a dsadasd dasd adas',
                        url: 'https://facebook.com',
-                       id: '001'
+                       id: '001',
+                       favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
                    },
                    {
-                       title: 'Phils  website title is here sdasd sdad sadsd adsd',
+                       title: 'Phils  website title is here sdasd sdad sadsd adsdd dasd sadadasd adsad',
                        url: 'www.phil.com',
-                       id: '002'
+                       id: '002',
+                       favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
                    },
+                    {
+                        title: 'Facebooks website title is here sdasd sdad sadsd adsd',
+                        url: 'https://facebook.com',
+                        id: '019',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },
+                    {
+                        title: 'Phils  website title is here sdasd sdad sadsd adsd',
+                        url: 'www.phil.com',
+                        id: '020',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },
+                    {
+                        title: 'Facebooks website title is here sdasd sdad sadsd adsd',
+                        url: 'https://facebook.com',
+                        id: '021',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },
+                    /*{
+                        title: 'Phils  website title is here sdasd sdad sadsd adsd',
+                        url: 'www.phil.com',
+                        id: '022',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },
+                    {
+                        title: 'Facebooks website title is here sdasd sdad sadsd adsd',
+                        url: 'https://facebook.com',
+                        id: '023',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },*/
+                    /*{
+                        title: 'Phils  website title is here sdasd sdad sadsd adsd',
+                        url: 'www.phil.com',
+                        id: '024',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },
+                    {
+                        title: 'Facebooks website title is here sdasd sdad sadsd adsd',
+                        url: 'https://facebook.com',
+                        id: '025',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },
+                    {
+                        title: 'Phils  website title is here sdasd sdad sadsd adsd',
+                        url: 'www.phil.com',
+                        id: '026',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },
+                    {
+                        title: 'Facebooks website title is here sdasd sdad sadsd adsd',
+                        url: 'https://facebook.com',
+                        id: '027',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },
+                    {
+                        title: 'Phils  website title is here sdasd sdad sadsd adsd',
+                        url: 'www.phil.com',
+                        id: '028',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },
+                    {
+                        title: 'Facebooks website title is here sdasd sdad sadsd adsd',
+                        url: 'https://facebook.com',
+                        id: '029',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },
+                    {
+                        title: 'Phils  website title is here sdasd sdad sadsd adsd',
+                        url: 'www.phil.com',
+                        id: '030',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                    },*/
                     {
                         children:[
 
                             {
                                 title: 'Bushs website title is here sdasd sdad sadsd adsd',
                                 url: 'www.bush.com',
-                                id: '007'
+                                id: '007',
+                                favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                            },
+                            {
+                                children:[
+
+                                    {
+                                        title: 'Bushs website title is here sdasd sdad czxc czxc sadsd adsd',
+                                        url: 'www.bush.com',
+                                        id: '014',
+                                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                                    },
+                                    {
+                                        children:[
+
+                                            {
+                                                title: 'Bushs website title is here sdasd sdad sczxcxzc czxcz czxcadsd adsd',
+                                                url: 'www.bush.com',
+                                                id: '016',
+                                                favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                                            },
+                                            {
+                                                children:[
+
+                                                    {
+                                                        title: 'Bushs website title is here sdasd d asd sadsadsad d dsadsdad sadsd adsd',
+                                                        url: 'www.bush.com',
+                                                        id: '018',
+                                                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                                                    }
+
+                                                ],
+
+                                                title: "WOW BOOKMARKS",
+                                                folder_id: '017'
+                                            }
+
+                                        ],
+
+                                        title: "WOW BOOKMARKS",
+                                        folder_id: '015'
+                                    }
+
+                                ],
+
+                                title: "WOW BOOKMARKS",
+                                folder_id: '013'
                             }
 
                         ],
@@ -29,11 +149,29 @@ export default [
                         title: "MAYBE BOOKMARKS",
                         folder_id: '008'
                     },
+                    {
+                        children:[
+                            {
+                                title: 'Facebooks website title is here sdasd sdad sadsd adsddsad dasdsadsad dasdsad ',
+                                url: 'https://facebook.com',
+                                id: '032',
+                                favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                            },
+                            {
+                                title: 'Phils  website title is here sdasd sdad sadsd adsdsdd dsadsad  dasdsad ',
+                                url: 'www.phil.com',
+                                id: '033',
+                                favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
+                            }
+                        ],
+                        title:'sister to MAYBE bookmarks' ,
+                        id:'031'
+                    }
 
 
                ],
-                title: 'ALL BOOKMARKS',
-                folder_id: '002',
+                title: 'All Bookmarks',
+                folder_id: '01',
                 id:'006'
             },
             {
@@ -42,16 +180,17 @@ export default [
                     {
                         title: 'Bobs website title is here sdasd sdad sadsd adsd',
                         url: 'www.bob.com',
-                        id: '007'
+                        id: '007',
+                        favicon: 'https://www.google.com/s2/favicons?domain=https://facebook.com'
                     }
 
                 ],
-                title: "OTHER BOOKMARKS",
-                folder_id: '003'
+                title: "Other Bookmarks",
+                folder_id: '02'
             }
         ],
         title: 'Main directory',
-        folder_id: '001',
+        folder_id: '000',
         id: '009'
     }
 

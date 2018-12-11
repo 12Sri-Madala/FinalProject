@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import Folder from './existingbookmarks/existingbookmarks';
+import ExistingBookmarks from './existingbookmarks';
 import AllReminderList from './all_of_reminder_list';
 import Nav from './navbar/nav';
 import './application.css';
@@ -11,22 +11,24 @@ class ApplicationPage extends Component {
         return (
             <Fragment>
                 <Nav />
-                <div className="applicationDiv">
+                     <div className="applicationDiv">
 
 
-                    <div className="insideDiv reminder-section">
+                <div className="insideDiv reminder-section">
 
-                        <AllReminderList  />
-                    </div>
+                    <AllReminderList  />
+                </div>
 
-                    <div className="insideDiv rightDivApp">
+                <div className="insideDiv rightDivApp">
+                    {/*<ReminderListRedux/>*/}
 
-                    <Folder />
 
-                    </div>
-
+                   <ExistingBookmarks />
 
                 </div>
+
+
+            </div>
             </Fragment>
         );
     }
