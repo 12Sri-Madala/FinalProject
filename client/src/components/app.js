@@ -1,5 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
 import Nav from './nav';
 import Home from './home/home';
 import ApplicationPage from './application_page';
