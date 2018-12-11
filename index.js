@@ -238,39 +238,19 @@ async function CreateBookmarks(array){
   return newArray;
 }
 
-app.post("/apiBookmarks", (req, resp) => {
-  // console.log('====Post Bookmarks:', req.body);
-  // let { userID } = req.body;
+app.post("/auth/apiBookmarks", (req, resp) => {
+
   let bookmarks = JSON.parse(req.body.bookmarks);
-  console.log('2 req.body.bookmarks',bookmarks);
-
-  // if(!userID){
-  //   return res.status(422).send('No user id provided');
-  // } 
-  
-  // userID = userID.toLowerCase();
-  
- userBase.findOne({ googleId }, (err, user) => {
-    console.log("2",user)
-
-    if (err) return console.log(err);
-    if (user === null) {
-      console.log("3",user)
-      resp.send({
-        success: false,
-        message: "User not found"
-      });
-      return;
-    }
+  console.log('2 =========== POST Bookmarks req.body.bookmarks',req.body);
     // var array = 
-    addBookmarksToUser(user, bookmarks)
+    addBookmarksToUser(req.user, bookmarks)
     .then(() => {
       resp.send({
         success: true,
         message: `Bookmarks added to ${profile.emails[0].value}`
       })
     })
-  });
+
 });
 
 // app.get("/getBookmarks", (req, resp) => {
