@@ -1,14 +1,63 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { resolve } = require("path");
+const passport = require('passport');
 const cors = require("cors");
+const cookieSession = require('cookie-session');
+const { cookieConfig, dbConfig } = require('./config');
 const PORT = process.env.PORT || 8000;
-mongoose.connect("mongodb://12Sri:EzAs12Sri@ds121624.mlab.com:21624/crease");
+
+mongoose.connect(dbConfig.connect, {
+  useNewUrlParser: true
+});
 
 const app = express();
 var userBase;
 var userBookmarks;
 var db = mongoose.connection;
+
+db.once("open", function () {
+
+  console.log("connected to db");
+
+  var bookmarkSchema = new mongoose.Schema({
+    bookmarkID: Number,
+    url: String,
+    title: String,
+    favicon: String,
+    Notes: String,
+    reminderDate: Date,
+    alarmTimer: String
+  });
+
+  bookmarkSchema.add({
+    nested: {
+      folderID: Number,
+      status: Boolean,
+      nestedBookmarks: [bookmarkSchema]
+    }
+  });
+
+  var usersSchema = new mongoose.Schema({
+    googleId: String,
+    createdAt: Date,
+    updatedAt: Date,
+    bookmarks: [bookmarkSchema]
+  });
+
+  userBase = mongoose.model("userbases", usersSchema);
+  userBookmarks = mongoose.model("userBookmarks", bookmarkSchema);
+
+  require('./services/passport');
+});
+
+app.use(cookieSession({
+  maxAge: 30 * 24 * 60 * 60 * 1000,
+  keys: [cookieConfig.secret]
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(cors());
 app.use(express.json());
@@ -23,6 +72,7 @@ app.use(express.static(resolve(__dirname, "client", "dist")));
 //   next();
 // });
 
+require('./routes')(app);
 
 app.get("/api", (req, res) => {
  res.send("<h1>API WORKING!</h1>");
@@ -294,40 +344,6 @@ app.get("*", (req, res) => {
 });
 
 db.on("error", console.error.bind(console, "connection error:"));
-
-db.once("open", function() {
-
-  console.log("connected to db");
-
-  var bookmarkSchema = new mongoose.Schema({
-    bookmarkID: Number,
-    url: String,
-    title: String,
-    favicon: String,
-    Notes: String,
-    reminderDate: Date,
-    alarmTimer: String
-  });
-
-  bookmarkSchema.add({
-    nested: {
-      folderID: Number,
-      status: Boolean,
-      nestedBookmarks: [bookmarkSchema]
-    }
-  });
-
-  var usersSchema = new mongoose.Schema({
-    userID: String,
-    createdAt: Date,
-    updatedAt: Date,
-    bookmarks: [bookmarkSchema]
-  });
-
-  userBase = mongoose.model("userbases", usersSchema);
-  userBookmarks = mongoose.model("userBookmarks", bookmarkSchema);
-
-});
 
 
 //   var userTemp = new userBase({
