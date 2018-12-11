@@ -135,6 +135,11 @@ class Reminder extends Component {
                         <div className="popup-link">
                             <a href={item.url}>{item.url}</a>
                         </div>
+                        <button classname="btn red darken-3" onClick={() => {
+                            this.props.delete(item)
+                        }}>
+                            Delete
+                        </button>
                     </div>
                 </Popup>
             </div>

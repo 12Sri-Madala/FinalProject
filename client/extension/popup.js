@@ -78,6 +78,25 @@ function processForm() {
   returnObj.url = url;
   returnObj.id = idGenerator();
   creaseObj = returnObj;
+  // where are notes and alarm timers
+
+  $(".addBookmark", {
+    on: {
+      click: function(){
+        var ajaxConfig = {
+          datatype: 'json',
+          url: 'http://localhost:8000/auth/addBookmarks',
+          method: "Post",
+          data: creaseObj,
+          success: function (response){
+            console.log("Sent saved Bookmark: ", response) // ???
+          }
+        }
+
+        $.ajax(ajaxConfig)
+      },
+    }
+  });
 
   console.log("Bookmark/Alarm Data Object:", creaseObj);
   return returnObj;
@@ -100,13 +119,14 @@ function dumpBookmarks(query) {
 
       const postingCall = {
         method: 'POST',
-        url: 'http://localhost:8000/addExistingBookmarks',
+        url: 'http://localhost:8000/auth/Bookmarks',
         data: {
           bookmarks: JSON.stringify(bookmarkTreeNodes),
           userID: 'julianso89'
         },
       }
-    
+    // should only be run once when the user is logged in, but in the background (no need to interact with the extension)
+    // can we trigger an api call from our website to our extension that happens when the user logs in? 
       $.ajax(postingCall);
 
     });

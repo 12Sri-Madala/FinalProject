@@ -1,3 +1,4 @@
+
 const express = require("express");
 const mongoose = require("mongoose");
 const { resolve } = require("path");
@@ -5,6 +6,9 @@ const passport = require('passport');
 const cors = require("cors");
 const cookieSession = require('cookie-session');
 const { cookieConfig, dbConfig } = require('./config');
+module.exports = app => {
+  app.use('/auth', require('./auth'));
+}
 const PORT = process.env.PORT || 8000;
 
 mongoose.connect(dbConfig.connect, {
@@ -26,7 +30,7 @@ db.once("open", function () {
     title: String,
     favicon: String,
     Notes: String,
-    reminderDate: Date,
+    reminderDate: Date, //DateTime?
     alarmTimer: String
   });
 
@@ -40,6 +44,7 @@ db.once("open", function () {
 
   var usersSchema = new mongoose.Schema({
     googleId: String,
+    userName: String,
     createdAt: Date,
     updatedAt: Date,
     bookmarks: [bookmarkSchema]
@@ -97,199 +102,6 @@ function findFavicon(url){
     let faviconURL = `https://www.google.com/s2/favicons?domain=${url}`
     return faviconURL
 }
-
-app.get("/getBookmarks", (req, resp) => {
-
-  const { user } = req;
-
-  if(!user){
-    return res.status(401).send('Not authorized');
-  }
-
-  userBase.findOne({ userID: req.query.userID }, (err, user) => {
-    if (err) return console.log(err);
-    if (user === null) {
-      resp.send({
-        success: false,
-        message: "User not found"
-      });
-      return;
-    }
-    // console.log(user);
-    resp.send({
-      success: true,
-      data: user.bookmarks
-    });
-  });
-});
-
-
-async function addBookmarksToUser(databaseUser, existingBookmarks){
-  var result = await CreateBookmarks(existingBookmarks);
-  databaseUser.bookmarks = result;
-  await databaseUser.save();
-  console.log(result);
-  
-}
-
-var baseFolderID=0;
-async function CreateBookmarks(array){
-  const newArray = array.map( async item => {
-    if(item.hasOwnProperty('children')){
-      // console.log('INSIDE ',item.children)
-      const userBookmarkOptions = {
-        bookmarkId: item.id,
-        url: item.url,
-        title: item.title,
-        favicon: findFavicon(item.url),
-        parentId: item.parentId,
-        notes: '',
-        reminderDate: null,
-        alarmTimer: null,
-        nested: {
-          folderID: ++baseFolderID,
-          status: true,
-        }
-      };
-      userBookmarkOptions.nested.nestedBookmarks = await CreateBookmarks(item.children);
-
-      const record = new userBookmarks(userBookmarkOptions);
-      //console.log('Inside IF statement (nested bookmark)', record.nested.nestedBookmarks);
-
-      await record.save();
-      // record.nested.nestedBookmarks.push(
-      return record;
-    } else {
-      const record = new userBookmarks ({
-        bookmarkId: item.id,
-        url: item.url,
-        title: item.title,
-        favicon: findFavicon(item.url),
-        notes: '',
-        reminderDate: null,
-        alarmTimer: null,      
-      })
-      console.log('Post IF statement (not nested)', record)
-      await record.save();
-      return record;
-    }
-  });
-  for (let i = 0; i < newArray.length; i++){
-    newArray[i] = await newArray[i];
-  }
-        // console.log(JSON.stringify(newArray))
-  return newArray;
-}
-
-app.post("/addExistingBookmarks", (req, resp) => {
-  // console.log('====Post Bookmarks:', req.body);
-  console.log("1", req.body.userID)
-  let { userID } = req.body;
-  let bookmarks = JSON.parse(req.body.bookmarks);
-  console.log('2 req.body.bookmarks',bookmarks);
-
-  if(!userID){
-    return res.status(422).send('No user id provided');
-  } 
-  
-  userID = userID.toLowerCase();
-  
- userBase.findOne({ userID }, (err, user) => {
-    console.log("2",user)
-
-    if (err) return console.log(err);
-    if (user === null) {
-      console.log("3",user)
-      resp.send({
-        success: false,
-        message: "User not found"
-      });
-      return;
-    }
-    
-    var array = addBookmarksToUser(user, bookmarks)
-    .then(() => {
-      resp.send({
-        succes: true,
-        message: `Bookmarks added to ${userID}`
-      })
-    })
-  });
-});
-
-app.post('/newBookmark', (req, resp) => {
-
-  // var newBookmark = new userBookmarks({
-  //   url: req.body.url || "google.com",
-  //   title: req.body.title || "some Title",
-  //   favicon: req.body.favicon || findFavicon(),
-  //   notes: req.body.notes || "your notes",
-  //   reminderDate: req.body.reminderDate || "12/12/2121",
-  //   alarmTimer:
-  //     req.body.alarmTimer || "(number of minutes to alarm triggering)"
-  // });
-
-  // newBookmark.save(function(err, bookmark) {
-  //   userBase.bookmarks.push(bookmark);
-  //   userBase.save(function(err, savedUser) {
-  //     console.log(savedUser)
-  //     if (err) return console.error(err);
-  //     resp.send({
-  //       success: true,
-  //       bookmarkCount: savedUser.bookmarks.length
-  //     });
-  //   });
-  // });
-})
-
-app.put("/updatebookmarks", (req, resp) => {
-  userBase.findOne({ userID: req.query.userID }, (err, user) => {
-    if (err) return console.log(err);
-    userBookmarks.findOneAndUpdate({ bookmarkID }).then(function(bookmarks) {
-      resp.send({
-        success: true,
-        updatedBookmarks: bookmarks
-      });
-    });
-  });
-});
-
-app.delete("/deletebookmarks", (req, resp) => {
-  userBase.findOne({ userID: req.query.userID }, (err, user) => {
-    if (err) return console.log(err);
-    user.nested.nestedBookmarks
-      .findOneAndRemove({ bookmarkID: req.query.bookmarkID })
-      .then(function(bookmarks) {
-        resp.send({
-          success: true,
-          updatedBookmarks: bookmarks
-        });
-      });
-  });
-});
-
-app.get("*", (req, res) => {
-  res.sendFile(resolve(__dirname, "client", "dist", "index.html"));
-});
-
-db.on("error", console.error.bind(console, "connection error:"));
-
-
-//   var userTemp = new userBase({
-//     userID: "sri.madala19",
-//     createdAt: 12 / 3 / 18,
-//     updatedAt: 12 / 3 / 18
-//   });
-
-//   var bookmarkTemp = new userBookmarks({
-//     url: "washingtonpost.com/...",
-//     title: "Drones called in to save the Great Wall",
-//     favicon: "someURL",
-//     Notes:
-//       "architects are using drones to repair parts of the crumbling great wall",
-//     reminderDate: 12 / 4 / 18,
-//     alarmTimer: "(number of minutes to alarm triggering)"
-//   });
 
 var sampleData = [
       {
@@ -364,3 +176,204 @@ var sampleData = [
       }
     ]
 
+// add new user endpoint (login to website) {DONE by google Oauth}
+
+// add current bookmarks to one user endpoint (login to web site) {DONE}
+// update current bookmarks from bookmark api endpoint (login to website) {Have to incorporate MERGE}
+
+async function addBookmarksToUser(databaseUser, existingBookmarks){
+  var result = await CreateBookmarks(existingBookmarks);
+  databaseUser.bookmarks = result;
+  await databaseUser.save();
+  console.log(result);
+  
+}
+
+var baseFolderID=0;
+async function CreateBookmarks(array){
+  const newArray = array.map( async item => {
+    if(item.hasOwnProperty('children')){
+      // console.log('INSIDE ',item.children)
+      const userBookmarkOptions = {
+        bookmarkId: item.id,
+        url: item.url,
+        title: item.title,
+        favicon: findFavicon(item.url),
+        parentId: item.parentId,
+        notes: '',
+        reminderDate: null,
+        alarmTimer: null,
+        nested: {
+          folderID: ++baseFolderID,
+          status: true,
+        }
+      };
+      userBookmarkOptions.nested.nestedBookmarks = await CreateBookmarks(item.children);
+
+      const record = new userBookmarks(userBookmarkOptions);
+      //console.log('Inside IF statement (nested bookmark)', record.nested.nestedBookmarks);
+
+      await record.save();
+      // record.nested.nestedBookmarks.push(
+      return record;
+    } else {
+      const record = new userBookmarks ({
+        bookmarkId: item.id,
+        url: item.url,
+        title: item.title,
+        favicon: findFavicon(item.url),
+        notes: '',
+        reminderDate: null,
+        alarmTimer: null,      
+      })
+      console.log('Post IF statement (not nested)', record)
+      await record.save();
+      return record;
+    }
+  });
+  for (let i = 0; i < newArray.length; i++){
+    newArray[i] = await newArray[i];
+  }
+        // console.log(JSON.stringify(newArray))
+  return newArray;
+}
+
+app.post("/apiBookmarks", (req, resp) => {
+  // console.log('====Post Bookmarks:', req.body);
+  // let { userID } = req.body;
+  let bookmarks = JSON.parse(req.body.bookmarks);
+  console.log('2 req.body.bookmarks',bookmarks);
+
+  // if(!userID){
+  //   return res.status(422).send('No user id provided');
+  // } 
+  
+  // userID = userID.toLowerCase();
+  
+ userBase.findOne({ googleId }, (err, user) => {
+    console.log("2",user)
+
+    if (err) return console.log(err);
+    if (user === null) {
+      console.log("3",user)
+      resp.send({
+        success: false,
+        message: "User not found"
+      });
+      return;
+    }
+    // var array = 
+    addBookmarksToUser(user, bookmarks)
+    .then(() => {
+      resp.send({
+        success: true,
+        message: `Bookmarks added to ${profile.emails[0].value}`
+      })
+    })
+  });
+});
+
+// app.get("/getBookmarks", (req, resp) => {
+
+//   const { user } = req;
+
+//   if(!user){
+//     return res.status(401).send('Not authorized');
+//   }
+
+//   userBase.findOne({ googleId }, (err, user) => {
+//     if (err) return console.log(err);
+//     if (user === null) {
+//       resp.send({
+//         success: false,
+//         message: "User not found"
+//       });
+//       return;
+//     }
+//     // console.log(user);
+//     resp.send({
+//       success: true,
+//       data: user.bookmarks
+//     });
+//   });
+// });
+// COMBINE BOTH ENDPOINTS INTO 1?
+
+// add new bookmark endpoint (extension)
+
+app.post("/addBookmarks", (req, resp) => {
+  userBase.findOne({ googleId }, (err, user) => {
+    console.log("2",user)
+
+    if (err) return console.log(err);
+    if (user === null) {
+      console.log("3",user)
+      resp.send({
+        success: false,
+        message: "User not found"
+      });
+      return;
+    }
+    
+    user.bookmarks = req.body
+    user.save().then(() => {
+      resp.send({
+        success: true,
+        message: `Extension Bookmark added to ${user}; their bookmark list is now: ${user.bookmarks}`
+      })
+    })
+
+  })
+})
+
+// edit current bookmarks endpoint (website) {PROBABLY SOMETHING FOR THE FUTURE, TOO MUCH TO DO FOR THIS}
+
+// app.put("/updateBookmarks", (req, resp) => {
+//   userBase.findOne({ googleId }, (err, user) => {
+//     if (err) return console.log(err);
+//     userBookmarks.findOneAndUpdate({ bookmarkID }).then(function(bookmarks) {
+//       resp.send({
+//         success: true,
+//         updatedBookmarks: bookmarks
+//       });
+//     });
+//   });
+// });
+
+// delete a reminder/bookmark {NEED HELP ON STATE IN REACT AND GETTING THE PROPER ITEM AND ITEM.ID}
+
+app.delete("/deleteBookmarks", (req, resp) => {
+  userBase.findOne({ googleId }, (err, user) => {
+    if (err) return console.log(err);
+    user.bookmarks
+      .findOneAndRemove({ bookmarkID: req.query.bookmarkID }, (err, delBookmark) => {
+        if (err) return console.log(err); // Would this conditional work since it only goes farther down if it doesnt hit this return statement
+      })
+      .then(function(bookmarks) { // what is bookmarks here
+        resp.send({
+          success: true,
+          updatedBookmarks: bookmarks
+        });
+      });
+      
+
+    user.nested.nestedBookmarks
+      .findOneAndRemove({ bookmarkID: req.query.bookmarkID }, (err, delBookmark) => {
+        if (err) return console.log(err);
+        
+      })
+      .then(function(bookmarks) { // what is bookmarks here
+        resp.send({
+          success: true,
+          updatedBookmarks: bookmarks
+        });
+      });
+  });
+});
+
+
+app.get("*", (req, res) => {
+  res.sendFile(resolve(__dirname, "client", "dist", "index.html"));
+});
+
+db.on("error", console.error.bind(console, "connection error:"));
