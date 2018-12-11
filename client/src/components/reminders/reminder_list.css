@@ -194,3 +194,9 @@
     bottom: 0;
 }
 
+#delete-reminder {
+    height: 24px;
+    line-height: 23.4px;
+    font-size: 11px;
+}
+

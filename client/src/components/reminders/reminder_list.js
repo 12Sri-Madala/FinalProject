@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
 import './reminder_list.css';
 import Popup from "reactjs-popup";
-import dots from './images/reminder-dots.png';
-
 
 class Reminder extends Component {
 
@@ -135,7 +135,7 @@ class Reminder extends Component {
                         <div className="popup-link">
                             <a href={item.url}>{item.url}</a>
                         </div>
-                        <button classname="btn red darken-3" onClick={() => {
+                        <button className="btn-small red darken-3" id="delete-reminder" onClick={() => {
                             this.props.delete(item)
                         }}>
                             Delete
