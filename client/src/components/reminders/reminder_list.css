@@ -14,7 +14,6 @@
     width: 100%;
     height: 10%;
     color: rgb(41, 41, 41);
-    /* background-image: url("./images/light-reminder-bg.jpg"); */
     background-color: rgb(231, 184, 184);
     min-width: 100px;
     min-height: 80px;
@@ -26,7 +25,6 @@
     width: 100%;
     height: 10%;
     color: rgb(41, 41, 41);
-    /* background-image: url("./images/dark-reminder-bg.jpg"); */
     background-color: lightcoral;
     min-width: 100px;
     min-height: 80px;
@@ -35,7 +33,7 @@
 .reminder-icon-bg {
     display: inline-block;
     position: relative;
-    background-image: url(./images/reminder-icon-bg.png);
+    background-image: url('./images/reminder-icon-bg.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -60,7 +58,6 @@
     list-style-type: none;
     height: 90vh;
     margin: 0;
-    overflow: auto;
 }
 
 .partOfList{
@@ -166,12 +163,34 @@
     text-align: center;
 }
 
-.reminder-header > h3 {
+.reminder-header {
+    position: relative;
     text-align: center;
     width: 100%;
-    height: 10%;
-    color: whitesmoke;
-    background-color: rgb(82, 82, 82);
+    height: 7vh;
     margin: 0;
-    font-family: 'Lobster', cursive;
+    padding: 0;
+    border-bottom: 3px solid lightgray;
 }
+
+
+.reminder-tab > h6 {
+    position: relative;
+    text-align: center;
+    color: rgb(68, 68, 68);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: bold;
+}
+
+.reminder-tab {
+    position: absolute;
+    height: 70%;
+    min-height: 35px;
+    width: 35%;
+    background-color: lightgray;
+    border-radius: 15px 15px 0 0;
+    padding: 0;
+    left: 10%;
+    bottom: 0;
+}
+
