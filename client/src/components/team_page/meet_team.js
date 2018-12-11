@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
-import './team_page/teampage.css';
-import MeetTeam from './team_page/images/meetteamlogo.png';
-import Member from './team_page/team_member';
-import Nav from './navbar/nav';
+import './teampage.css';
+import MeetTeam from './images/meetteamlogo.png';
+import Member from './team_member';
+import Nav from '../navbar/nav';
 
 export default props => {
     return (

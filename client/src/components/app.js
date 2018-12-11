@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import Home from './home/home';
 import ApplicationPage from './application_page';
-import MeetTeam from './meet_team';
+import MeetTeam from './team_page/meet_team';
 import AddItemReminders from './add_item_reminders';
 
 export default () => (
