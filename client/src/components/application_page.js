@@ -1,33 +1,34 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Folder from './existingbookmarks/existingbookmarks';
 import AllReminderList from './all_of_reminder_list';
-import './applicationcss.css';
-import ReminderListRedux from './reminders/reminder_list_redux';
+import Nav from './navbar/nav';
+import './application.css';
+
 
 class ApplicationPage extends Component {
 
     render(){
         return (
-            <div className="applicationDiv">
+            <Fragment>
+                <Nav />
+                <div className="applicationDiv">
 
 
-                <div className="insideDiv reminder-section">
+                    <div className="insideDiv reminder-section">
 
-                    <AllReminderList  />
+                        <AllReminderList  />
+                    </div>
+
+                    <div className="insideDiv rightDivApp">
+
+                    <Folder />
+
+                    </div>
+
+
                 </div>
-
-                <div className="insideDiv rightDivApp">
-                    {/*<ReminderListRedux/>*/}
-
-
-                   <Folder />
-
-                </div>
-
-
-            </div>
-
-        )
+            </Fragment>
+        );
     }
 }
 

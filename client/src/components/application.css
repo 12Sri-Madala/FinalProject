@@ -1,24 +1,24 @@
 .applicationDiv{
     margin: 0;
-
 }
+
 .insideDiv{
     display:inline-block;
     height: 90vh;
-
-
 }
 
 .reminder-section{
+    position: relative;
     width: 30vw;
-    background-image: url("./reminders/images/reminders-background.jpg");
     min-width: 460px;
+    border-radius: 0 15px 0 0;
+    top: 10px;
 }
+
 .rightDivApp{
-
     vertical-align: top;
-
 }
+
 .rightDivApp > * {
     display:inline-block;
 }

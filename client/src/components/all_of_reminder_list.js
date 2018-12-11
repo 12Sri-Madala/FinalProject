@@ -4,10 +4,6 @@ import ReminderList from './reminders/reminder_list';
 import reminder_list from '../dummy_data_bookmark_reminders/reminder_list';
 
 
-
-//const BASE_URL = 'http://api.reactprototypes.com/todos';
-//const API_KEY = 'c718_demouser';
-
 class AllReminderList extends Component {
     constructor(props){
         super(props);
