@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
 
 class IndividualBookmark extends Component {
 
@@ -6,11 +8,24 @@ class IndividualBookmark extends Component {
 
         const eachBookmarkTitle = this.props.title;
         const eachBookmarkUrl = this.props.url;
+        const eachFavicon = this.props.favicon;
+        const classIndividualFolder = this.props.class;
 
         return(
-            <div className="bookmark">
-                <a href={eachBookmarkUrl}>{eachBookmarkTitle}</a>
+
+        <div className={`${classIndividualFolder}`}>
+            <div className={`${classIndividualFolder}`}>
+                <a href={eachBookmarkUrl}>
+                    <img className="individualBookmarkImg" src={eachFavicon}/>
+                </a>
             </div>
+            <a className={`bookmark ${classIndividualFolder}`} href={eachBookmarkUrl}>
+                {eachBookmarkTitle}
+            </a>
+        </div>
+
+
+
         )
     }
 }

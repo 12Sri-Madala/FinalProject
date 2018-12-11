@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import IndividualBookmark from './individualbookmark';
 import './existingbookmarks_list.css';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
 
 
 
@@ -35,14 +37,14 @@ class Folder extends Component {
             this.props.children.map((item, index) => {
 
                 if(item.children) {
-                    console.log('each index',index)
+
                     return (
-                        <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+10}/>
+                        <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+5}/>
                     )
                 }
                 else if (this.props.depth !== 0) {
                     return (
-                        <IndividualBookmark key={index} title={item.title} url={item.url}/>
+                        <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.favicon} class="allOfEachBookmarkTwo"/>
                     )
                 }
             })
@@ -52,9 +54,10 @@ class Folder extends Component {
     getIndividualBookmarks() {
         return (
             this.props.children.map((item, index) => {
+                console.log(item.title)
                 if (!item.children) {
                     return (
-                        <IndividualBookmark key={index} title={item.title} url={item.url}/>
+                        <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.favicon} class="allOfEachBookmark"/>
                     )
                 }
             })
@@ -66,10 +69,9 @@ class Folder extends Component {
         if(this.props.depth === 0){
             return (
                 <div>
-
-                    <div>{this.getContents(this.props)}</div>
-
-                    <div>{this.getIndividualBookmarks()}</div>
+                    <div className="folderSection">{this.getContents(this.props)}</div>
+                    <hr className="hrClass"/>
+                    <div className="individualFirstBookMark ">{this.getIndividualBookmarks()}</div>
                 </div>
             )
         }
