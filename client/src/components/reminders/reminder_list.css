@@ -194,3 +194,13 @@
     bottom: 0;
 }
 
+#delete-reminder-btn {
+    height: 24px;
+    line-height: 22.4px;
+    font-size: 11px;
+}
+
+.delete-reminder {
+    margin: 4px 0;
+}
+
