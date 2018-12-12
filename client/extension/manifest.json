@@ -8,14 +8,7 @@
   "chrome_url_overrides" : {
     "bookmarks": "crease-bookmarks.html"
   },
-  "content_scripts":[
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": ["content.js"]
-    }
-  ],
+
   "background": {
      "scripts": ["background.js"]
   },
