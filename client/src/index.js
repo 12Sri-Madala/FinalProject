@@ -8,14 +8,13 @@ import rootReducer from './reducers/index';
 import promise from './middleware/promise';
 
 
-
 const store = createStore(rootReducer, {}, applyMiddleware(promise));
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router>
-            <App />
-        </Router>
-    </Provider>,
+        <Provider store={store}>
+            <Router>
+                <App />
+            </Router>
+        </Provider>,
     document.getElementById('root')
 );

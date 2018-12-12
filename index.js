@@ -6,6 +6,7 @@ const passport = require('passport');
 const cors = require("cors");
 const cookieSession = require('cookie-session');
 const { cookieConfig, dbConfig } = require('./config');
+const cookieParser = require('cookie-parser')
 module.exports = app => {
   app.use('/auth', require('./auth'));
 }
@@ -68,6 +69,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(resolve(__dirname, "client", "dist")));
+app.use(cookieParser());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header('Access-Control-Allow-Credentials', true);
+  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
@@ -182,109 +190,121 @@ var sampleData = [
 // update current bookmarks from bookmark api endpoint (login to website) {Have to incorporate MERGE}
 
 async function addBookmarksToUser(databaseUser, existingBookmarks){
+  var baseFolderID=0;
   var result = await CreateBookmarks(existingBookmarks);
   databaseUser.bookmarks = result;
   await databaseUser.save();
   console.log(result);
   
-}
-
-var baseFolderID=0;
-async function CreateBookmarks(array){
-  const newArray = array.map( async item => {
-    if(item.hasOwnProperty('children')){
-      // console.log('INSIDE ',item.children)
-      const userBookmarkOptions = {
-        bookmarkId: item.id,
-        url: item.url,
-        title: item.title,
-        favicon: findFavicon(item.url),
-        parentId: item.parentId,
-        notes: '',
-        reminderDate: null,
-        alarmTimer: null,
-        nested: {
-          folderID: ++baseFolderID,
-          status: true,
-        }
-      };
-      userBookmarkOptions.nested.nestedBookmarks = await CreateBookmarks(item.children);
-
-      const record = new userBookmarks(userBookmarkOptions);
-      //console.log('Inside IF statement (nested bookmark)', record.nested.nestedBookmarks);
-
-      await record.save();
-      // record.nested.nestedBookmarks.push(
-      return record;
-    } else {
-      const record = new userBookmarks ({
-        bookmarkId: item.id,
-        url: item.url,
-        title: item.title,
-        favicon: findFavicon(item.url),
-        notes: '',
-        reminderDate: null,
-        alarmTimer: null,      
-      })
-      console.log('Post IF statement (not nested)', record)
-      await record.save();
-      return record;
+  async function CreateBookmarks(array){
+    const newArray = array.map( async item => {
+      if(item.hasOwnProperty('children')){
+        // console.log('INSIDE ',item.children)
+        const userBookmarkOptions = {
+          bookmarkId: item.id,
+          url: item.url,
+          title: item.title,
+          favicon: findFavicon(item.url),
+          parentId: item.parentId,
+          notes: '',
+          reminderDate: null,
+          alarmTimer: null,
+          nested: {
+            folderID: ++baseFolderID,
+            status: true,
+          }
+        };
+        userBookmarkOptions.nested.nestedBookmarks = await CreateBookmarks(item.children);
+  
+        const record = new userBookmarks(userBookmarkOptions);
+        //console.log('Inside IF statement (nested bookmark)', record.nested.nestedBookmarks);
+  
+        await record.save();
+        // record.nested.nestedBookmarks.push(
+        return record;
+      } else {
+        const record = new userBookmarks ({
+          bookmarkId: item.id,
+          url: item.url,
+          title: item.title,
+          favicon: findFavicon(item.url),
+          notes: '',
+          reminderDate: null,
+          alarmTimer: null,      
+        })
+        console.log('Post IF statement (not nested)', record)
+        await record.save();
+        return record;
+      }
+    });
+    for (let i = 0; i < newArray.length; i++){
+      newArray[i] = await newArray[i];
     }
-  });
-  for (let i = 0; i < newArray.length; i++){
-    newArray[i] = await newArray[i];
+          // console.log(JSON.stringify(newArray))
+    return newArray;
   }
-        // console.log(JSON.stringify(newArray))
-  return newArray;
 }
+
+
 
 app.post("/auth/apiBookmarks", (req, resp) => {
 
   let bookmarks = JSON.parse(req.body.bookmarks);
-  console.log('2 =========== POST Bookmarks req.body.bookmarks',req.body);
+  console.log('2 =========== POST Bookmarks req.body.bookmarks',req.user);
     // var array = 
     addBookmarksToUser(req.user, bookmarks)
     .then(() => {
       resp.send({
         success: true,
-        message: `Bookmarks added to ${profile.emails[0].value}`
+        // message: `Bookmarks added to ${profile.emails[0].value}`
       })
     })
 
 });
 
-// app.get("/getBookmarks", (req, resp) => {
-
-//   const { user } = req;
-
-//   if(!user){
-//     return res.status(401).send('Not authorized');
-//   }
-
-//   userBase.findOne({ googleId }, (err, user) => {
-//     if (err) return console.log(err);
-//     if (user === null) {
-//       resp.send({
-//         success: false,
-//         message: "User not found"
-//       });
-//       return;
-//     }
-//     // console.log(user);
+// app.get("/auth/apiBookmarks", (req, resp)=>{
+//   getBookmarksForUser( req.user )
+//   .then( (response) => {
 //     resp.send({
 //       success: true,
-//       data: user.bookmarks
-//     });
-//   });
-// });
+//       data: response.data
+//     })
+//   })
+// })
+ 
+app.get("/auth/getBookmarks", (req, resp) => {
+  console.log("cookies are here" ,req.cookies);
+
+  const googleId  = req.cookies.googleID;
+
+  if(!googleId){
+    return res.status(401).send('Not authorized');
+  }
+
+  userBase.findOne({ googleId }, (err, user) => {
+    if (err) return console.log(err);
+    if (user === null) {
+      resp.send({
+        success: false,
+        message: "User not found"
+      });
+      return;
+    }
+    console.log(user.bookmarks);
+    resp.send({
+      success: true,
+      data: user.bookmarks
+    });
+  });
+});
 // COMBINE BOTH ENDPOINTS INTO 1?
 
 // add new bookmark endpoint (extension)
 
-app.post("/addBookmarks", (req, resp) => {
+app.post("/auth/addBookmarks", (req, resp) => {
+  const googleId  = req.cookies.googleID;
   userBase.findOne({ googleId }, (err, user) => {
     console.log("2",user)
-
     if (err) return console.log(err);
     if (user === null) {
       console.log("3",user)
@@ -295,8 +315,11 @@ app.post("/addBookmarks", (req, resp) => {
       return;
     }
     
-    user.bookmarks = req.body
-    user.save().then(() => {
+    userBookmarks.create(req.body).then(bookmark => {
+      const folder = user.bookmarks[0].nested.nestedBookmarks[1];
+      folder.nested.nestedBookmarks.push(bookmark);
+      return user.save();
+    }).then(() => {
       resp.send({
         success: true,
         message: `Extension Bookmark added to ${user}; their bookmark list is now: ${user.bookmarks}`
