@@ -31,6 +31,7 @@
 .allFolders{
     position: relative;
     width: 60vw;
+    margin-top: 45px;
 
 }
 
@@ -42,9 +43,9 @@
     overflow: auto;
 }
 .individualFirstBookMark{
-    height: 45vmin;
+    height: 15vw;
     width: 60vw;
-
+    overflow: auto;
 
 }
 .individualFirstBookMark:first-child{

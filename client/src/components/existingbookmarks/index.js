@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Folder from './Folder';
-import ExistingDummyList from '../../existingdummy/dummylist';
 import './existingbookmarks_list.css';
 import axios from 'axios'
 
@@ -31,9 +30,6 @@ class ExistingBookmarks extends Component {
         this.authCall();
 
     }
-    componentDidUpdate(){
-
-    }
 
     render(){
         if (!this.state.list.length) {
@@ -44,13 +40,11 @@ class ExistingBookmarks extends Component {
             let bookmarksBar = this.state.list[0].nested.nestedBookmarks[0].nested.nestedBookmarks;
             let otherBookmarks = this.state.list[0].nested.nestedBookmarks[1].nested.nestedBookmarks;
             let combinedBookmarks = [...bookmarksBar, ...otherBookmarks];
-            debugger;
+
             return(
                 <div>
                     <div className="allFolders">
-
                         <Folder nested={combinedBookmarks} open={false} depth={0}/>
-
                     </div>
                 </div>
             )
