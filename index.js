@@ -328,6 +328,12 @@ app.post("/auth/addBookmarks", async (req, resp) => {
 // delete a reminder/bookmark {NEED HELP ON STATE IN REACT AND GETTING THE PROPER ITEM AND ITEM.ID}
 
 app.delete("/deleteBookmarks", (req, resp) => {
+  const { user } = req;
+
+  console.log('Delete Bookmark called. User Info:', user);
+
+  return res.send({success: 'Called deleteBookmars'});
+
   userBase.findOne({ googleId }, (err, user) => {
     if (err) return console.log(err);
     user.bookmarks
