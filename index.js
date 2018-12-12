@@ -29,10 +29,11 @@ db.once("open", function () {
     bookmarkID: Number,
     url: String,
     title: String,
-    favicon: String,
-    Notes: String,
-    reminderDate: Date, //DateTime?
-    alarmTimer: String
+    icon: String,
+    notes: String,
+    date: Date, 
+    time: String,
+    recurrence: String,
   });
 
   bookmarkSchema.add({
@@ -201,14 +202,14 @@ async function addBookmarksToUser(databaseUser, existingBookmarks){
       if(item.hasOwnProperty('children')){
         // console.log('INSIDE ',item.children)
         const userBookmarkOptions = {
-          bookmarkId: item.id,
+          bookmarkID: item.id,
           url: item.url,
           title: item.title,
-          favicon: findFavicon(item.url),
-          parentId: item.parentId,
+          icon: findFavicon(item.url),
           notes: '',
-          reminderDate: null,
-          alarmTimer: null,
+          date: '',
+          time: '',
+          recurrence: '',
           nested: {
             folderID: ++baseFolderID,
             status: true,
@@ -244,8 +245,6 @@ async function addBookmarksToUser(databaseUser, existingBookmarks){
     return newArray;
   }
 }
-
-
 
 app.post("/auth/apiBookmarks", (req, resp) => {
 
