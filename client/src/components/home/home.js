@@ -6,6 +6,11 @@ import {GoogleLogin} from 'react-google-login';
 
 export default props => {
     const responseGoogle = (response) => {
+        console.log(document);
+        console.log(`googleID=${response.googleId}`);
+        document.cookie = `googleID=${response.googleId}`;
+        //document.cookie = `googleID=${}; Expires: Thu, 31 Dec 2100 00:00:00 UTC`
+        //props.cookies.set('test','michael is missing a link', { path: '/'});
         console.log('google responsE!!!',response);
     }
 

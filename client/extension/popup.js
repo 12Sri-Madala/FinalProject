@@ -78,11 +78,10 @@ function processForm() {
   returnObj.url = url;
   returnObj.id = idGenerator();
   creaseObj = returnObj;
-  // where are notes and alarm timers
 
-  $(".addBookmark", {
-    on: {
-      click: function(){
+  // $(".addBookmark", {
+  //   on: {
+  //     click: function(){
         var ajaxConfig = {
           datatype: 'json',
           url: 'http://localhost:8000/auth/addBookmarks',
@@ -94,9 +93,9 @@ function processForm() {
         }
 
         $.ajax(ajaxConfig)
-      },
-    }
-  });
+  //     },
+  //   }
+  // });
 
   console.log("Bookmark/Alarm Data Object:", creaseObj);
   return returnObj;

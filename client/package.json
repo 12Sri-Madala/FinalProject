@@ -24,6 +24,7 @@
     "googleapis": "^35.0.0",
     "materialize-css": "^1.0.0",
     "react": "^16.5.2",
+    "react-cookie": "^3.0.8",
     "react-dom": "^16.5.2",
     "react-google-login": "^4.0.0",
     "react-redux": "^5.1.1",
