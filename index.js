@@ -261,73 +261,55 @@ app.post("/auth/apiBookmarks", (req, resp) => {
     })
 
 });
-
-// app.get("/auth/apiBookmarks", (req, resp)=>{
-//   getBookmarksForUser( req.user )
-//   .then( (response) => {
-//     resp.send({
-//       success: true,
-//       data: response.data
-//     })
-//   })
-// })
  
-app.get("/auth/getBookmarks", (req, resp) => {
-  console.log("cookies are here" ,req.cookies);
+app.get("/auth/getBookmarks", (req, res) => {
+  console.log("cookies are here" ,req.user);
+  const { user } = req;
 
-  const googleId  = req.cookies.googleID;
-
-  if(!googleId){
+  if(!user){
     return res.status(401).send('Not authorized');
   }
 
-  userBase.findOne({ googleId }, (err, user) => {
-    if (err) return console.log(err);
-    if (user === null) {
-      resp.send({
-        success: false,
-        message: "User not found"
-      });
-      return;
-    }
-    console.log(user.bookmarks);
-    resp.send({
-      success: true,
-      data: user.bookmarks
-    });
+
+  res.send({
+    success: true,
+    bookmarks: filterReminders(user.bookmarks)
   });
 });
-// COMBINE BOTH ENDPOINTS INTO 1?
+
+function filterReminders(bookmarks){
+  return bookmarks.filter(bookmark => {
+
+    if(bookmark.nested && Array.isArray(bookmark.nested.nestedBookmarks)){
+      bookmark.nested.nestedBookmarks = filterReminders(bookmark.nested.nestedBookmarks);
+    }
+
+    return bookmark.reminderDate;
+  });
+}
 
 // add new bookmark endpoint (extension)
 
-app.post("/auth/addBookmarks", (req, resp) => {
-  const googleId  = req.cookies.googleID;
-  userBase.findOne({ googleId }, (err, user) => {
-    console.log("2",user)
-    if (err) return console.log(err);
-    if (user === null) {
-      console.log("3",user)
-      resp.send({
-        success: false,
-        message: "User not found"
-      });
-      return;
-    }
-    
-    userBookmarks.create(req.body).then(bookmark => {
-      const folder = user.bookmarks[0].nested.nestedBookmarks[1];
-      folder.nested.nestedBookmarks.push(bookmark);
-      return user.save();
-    }).then(() => {
-      resp.send({
-        success: true,
-        message: `Extension Bookmark added to ${user}; their bookmark list is now: ${user.bookmarks}`
-      })
-    })
+app.post("/auth/addBookmarks", async (req, resp) => {
+  const { user } = req;
 
-  })
-})
+  if (!user) {
+    return resp.status(401).send({
+      success: false,
+      message: "Not authorized"
+    });
+  } 
+  const bookmark = await userBookmarks.create(req.body)
+  const folder = user.bookmarks[0].nested.nestedBookmarks[1];
+  
+  folder.nested.nestedBookmarks.push(bookmark);
+  await user.save();
+
+  resp.send({
+    success: true,
+    message: `Extension Bookmark added to ${user}; their bookmark list is now: ${user.bookmarks}`
+  });
+});
 
 // edit current bookmarks endpoint (website) {PROBABLY SOMETHING FOR THE FUTURE, TOO MUCH TO DO FOR THIS}
 

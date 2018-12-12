@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ReminderList from './reminders/reminder_list';
-import reminder_list from '../dummy_data_bookmark_reminders/reminder_list';
+import ReminderList from './reminder_list';
+import reminder_list from '../../dummy_data_bookmark_reminders/reminder_list';
 
 
-class AllReminderList extends Component {
+class Reminders extends Component {
     constructor(props){
         super(props);
 
@@ -12,9 +12,23 @@ class AllReminderList extends Component {
             list: []
         }
     }
+
     componentDidMount(){
         this.getReminderListData();
+        this.authCall();
     }
+
+    authCall = async () => {
+
+        const resp = await axios.get("/auth/getBookmarks",{withCredentials: true});
+        
+        console.log("bookmarks accessed:", resp);
+        //  this.setState({
+        //      list: response.data.data
+
+        //  })
+    }
+
     getReminderListData(){
         //call server to get data
         this.setState({
@@ -31,6 +45,6 @@ class AllReminderList extends Component {
     }
 }
 
-export default AllReminderList;
+export default Reminders;
 
 
