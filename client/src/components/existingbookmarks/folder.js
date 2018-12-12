@@ -54,7 +54,6 @@ class Folder extends Component {
     getIndividualBookmarks() {
         return (
             this.props.children.map((item, index) => {
-                console.log(item.title)
                 if (!item.children) {
                     return (
                         <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.favicon} class="allOfEachBookmark"/>
