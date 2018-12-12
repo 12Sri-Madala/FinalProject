@@ -15,20 +15,14 @@ class ExistingBookmarks extends Component {
     }
 
     async authCall(){
-        /*const cookieObj = {};
-        document.cookie
-            .split('; ')
-            .map( keyValue => keyValue.split('='))
-                                .forEach( keyValueArray=> cookieObj[keyValueArray[0]] = keyValueArray[1]);*/
-        
-        
-        
+
         const resp = await axios.get("http://localhost:8000/auth/getBookmarks",{withCredentials: true}).then((response)=>{
             console.log('bookmarks accessed: ', response.data.data);
-            this.setState({
-                list: response.data.data
-            })
+             this.setState({
+                 list: response.data.data
+             })
         });
+        console.log('HEYYYYY',resp)
     }
 
     render(){

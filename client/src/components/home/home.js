@@ -19,15 +19,16 @@ export default props => {
             <div className="home-login center">
                 <div className="crease-logo"></div>
                 <div className="login-area">
-                    <GoogleLogin
-                        clientId="789130565798-ud616gfbsn8jv90803gvk44ltl6al47l.apps.googleusercontent.com"
-                        render={renderProps => (
-                            <button className="login-button" type="button" onClick={renderProps.onClick}>LOGIN</button>
-                        )}
-                        buttonText="LOGIN"
-                        onSuccess={responseGoogle}
-                        onFailure={responseGoogle}
-                    />
+                    {/*<GoogleLogin*/}
+                        {/*clientId="789130565798-ud616gfbsn8jv90803gvk44ltl6al47l.apps.googleusercontent.com"*/}
+                        {/*render={renderProps => (*/}
+                            {/*<button className="login-button" type="button" onClick={renderProps.onClick}>LOGIN</button>*/}
+                        {/*)}*/}
+                        {/*buttonText="LOGIN"*/}
+                        {/*onSuccess={responseGoogle}*/}
+                        {/*onFailure={responseGoogle}*/}
+                    {/*/>*/}
+                    <a href='http://localhost:8000/auth/google'><button className="login-button" type="button" target="_blank">Login</button></a>
                     <GoogleLogin
                         clientId="789130565798-ud616gfbsn8jv90803gvk44ltl6al47l.apps.googleusercontent.com"
                         render={renderProps => (
