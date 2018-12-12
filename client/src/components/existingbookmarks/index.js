@@ -9,8 +9,9 @@ class ExistingBookmarks extends Component {
         super(props);
 
         this.state = {
-            list: ExistingDummyList
+            list: []
         }
+
         this.authCall = this.authCall.bind(this);
     }
 
@@ -20,22 +21,41 @@ class ExistingBookmarks extends Component {
             console.log('bookmarks accessed: ', response.data.data);
              this.setState({
                  list: response.data.data
+
              })
+            console.log("right ehre buddy",this.state.list[0].nested.nestedBookmarks)
         });
-        console.log('HEYYYYY',resp)
+
+    }
+    componentDidMount(){
+        this.authCall();
+
+    }
+    componentDidUpdate(){
+
     }
 
     render(){
-        return(
-            <div>
-                <div className="allFolders">
-                    <button onClick={this.authCall}>click me you fool</button>
-                    <Folder children={this.state.list[0].children[0].children} open={false} depth={0}/>
-                </div>
-            </div>
-        )
-    }
+        if (!this.state.list.length) {
+            return <div>Loading...</div>
+        }
+        else{
+            console.log('RIGHT HERE',this.state.list[0].nested.nestedBookmarks)
+            let bookmarksBar = this.state.list[0].nested.nestedBookmarks[0].nested.nestedBookmarks;
+            let otherBookmarks = this.state.list[0].nested.nestedBookmarks[1].nested.nestedBookmarks;
+            let combinedBookmarks = [...bookmarksBar, ...otherBookmarks];
+            debugger;
+            return(
+                <div>
+                    <div className="allFolders">
 
+                        <Folder nested={combinedBookmarks} open={false} depth={0}/>
+
+                    </div>
+                </div>
+            )
+        }
+    }
 }
  
 export default ExistingBookmarks;
