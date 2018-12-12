@@ -135,11 +135,13 @@ class Reminder extends Component {
                         <div className="popup-link">
                             <a href={item.url}>{item.url}</a>
                         </div>
-                        <button className="btn-small red darken-3" id="delete-reminder" onClick={() => {
-                            this.props.delete(item)
-                        }}>
-                            Delete
-                        </button>
+                        <div className="center delete-reminder">
+                            <button className="btn-small red darken-3" id="delete-reminder-btn" onClick={() => {
+                                this.props.delete(item)
+                            }}>
+                                Delete
+                            </button>
+                        </div> 
                     </div>
                 </Popup>
             </div>
