@@ -47,7 +47,7 @@ export default props => {
 
                     <div className="row">
                         <div className="col s6 description-title">Organize and view with ease</div>
-                        <div className="col s6 description-title">Set a <span className="lobster">Crease</span> reminder for later</div>
+                        <div className="col s5 offset-s1 description-title">Set a <span className="lobster">Crease</span> reminder alert</div>
                     </div>
 
                     <div className="row">
