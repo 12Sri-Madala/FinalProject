@@ -7,7 +7,7 @@ body {
 }
 
 #extension-body {
-    background-image: url(crease.png);
+    background-image: url(./images/crease.png);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -174,7 +174,7 @@ input[type=time]:not(.browser-default):focus:not([readonly]) {
 }
 
 [type="time"] {
-    background:#fff url(alarm.png)  97% 50% no-repeat ;
+    background:#fff url(./images/alarm.png)  97% 50% no-repeat ;
 }
 
 [type="time"]::-webkit-inner-spin-button {
