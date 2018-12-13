@@ -31,7 +31,7 @@ db.once("open", function () {
     title: String,
     icon: String,
     notes: String,
-    date: Date, 
+    date: String, 
     time: String,
     recurrence: String,
   });
@@ -228,10 +228,11 @@ async function addBookmarksToUser(databaseUser, existingBookmarks){
           bookmarkId: item.id,
           url: item.url,
           title: item.title,
-          favicon: findFavicon(item.url),
+          icon: findFavicon(item.url),
           notes: '',
-          reminderDate: null,
-          alarmTimer: null,      
+          date: '',
+          time: '',
+          recurrence: ''    
         })
         console.log('Post IF statement (not nested)', record)
         await record.save();
@@ -269,22 +270,27 @@ app.get("/auth/getBookmarks", (req, res) => {
     return res.status(401).send('Not authorized');
   }
 
-
   res.send({
     success: true,
-    bookmarks: filterReminders(user.bookmarks)
+    bookmarks: user.bookmarks,
+    reminders: findWithReminders(user.bookmarks)
   });
 });
 
-function filterReminders(bookmarks){
-  return bookmarks.filter(bookmark => {
-
-    if(bookmark.nested && Array.isArray(bookmark.nested.nestedBookmarks)){
-      bookmark.nested.nestedBookmarks = filterReminders(bookmark.nested.nestedBookmarks);
+function findWithReminders(bookmarks, reminders = []){
+  
+  for(let i = 0; i < bookmarks.length; i++){
+    const bm = bookmarks[i];
+    if(bm.nested && bm.nested.nestedBookmarks){
+      findWithReminders(bm.nested.nestedBookmarks, reminders);
     }
 
-    return bookmark.reminderDate;
-  });
+    if(bm.time){
+      reminders.push({ ...bm.toObject(), nested: null });
+    }
+  }
+
+  return reminders;
 }
 
 // add new bookmark endpoint (extension)
@@ -292,12 +298,19 @@ function filterReminders(bookmarks){
 app.post("/auth/addBookmarks", async (req, resp) => {
   const { user } = req;
 
+  console.log('USER INFO:', req.body.date);
+
+
   if (!user) {
     return resp.status(401).send({
       success: false,
       message: "Not authorized"
     });
-  } 
+  }
+  req.body.date = new Date(req.body.date)
+
+  console.log('New date after parsing: ', req.body.date)
+  
   const bookmark = await userBookmarks.create(req.body)
   const folder = user.bookmarks[0].nested.nestedBookmarks[1];
   

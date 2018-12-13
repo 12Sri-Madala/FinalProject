@@ -30,7 +30,8 @@
 
 .allFolders{
     position: relative;
-    width: 60vw;
+    width: 62vw;
+    margin-top: 45px;
 
 }
 
@@ -42,9 +43,9 @@
     overflow: auto;
 }
 .individualFirstBookMark{
-    height: 45vmin;
-    width: 60vw;
-
+    height: 15vw;
+    width: 62vw;
+    overflow: auto;
 
 }
 .individualFirstBookMark:first-child{
@@ -66,13 +67,12 @@
     margin: 0;
     margin-left: 20px;
     overflow: hidden;
+
 }
 .allOfEachBookmarkTwo{
     display: inline-block;
-
     text-overflow: ellipsis;
     margin: 0;
-
     overflow: hidden;
 }
 .allOfEachBookmarkTwo img{

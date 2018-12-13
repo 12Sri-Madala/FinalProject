@@ -79,9 +79,6 @@ function processForm() {
   returnObj.id = idGenerator();
   creaseObj = returnObj;
 
-  // $(".addBookmark", {
-  //   on: {
-  //     click: function(){
         var ajaxConfig = {
           datatype: 'json',
           url: 'http://localhost:8000/auth/addBookmarks',
@@ -93,13 +90,11 @@ function processForm() {
         }
 
         $.ajax(ajaxConfig)
-  //     },
-  //   }
-  // });
 
   console.log("Bookmark/Alarm Data Object:", creaseObj);
-  return returnObj;
+  return creaseObj;
 }
+
 
 // Search the bookmarks when entering the search keyword.
 $(function() {
@@ -274,3 +269,4 @@ function findFavicon() {
 document.addEventListener("DOMContentLoaded", function() {
   dumpBookmarks();
 });
+
