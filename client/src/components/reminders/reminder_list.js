@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import './reminder_list.css';
-import 'materialize-css/dist/css/materialize.min.css';
-import 'materialize-css/dist/js/materialize';
 import Popup from "reactjs-popup";
 
 class Reminder extends Component {
@@ -116,11 +114,9 @@ class Reminder extends Component {
 
     render(){
         const listElements = this.props.data.map((item, index) => {
-        
-            
 
             return(
-             <div key={item.id} className={this.reminderBackground(index)}>
+             <div key={item._id} className={this.reminderBackground(index)}>
                 <div className="reminder-icon-bg">
                     <img className="reminder-icon" src={item.icon}/>
                 </div>

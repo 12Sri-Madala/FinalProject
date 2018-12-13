@@ -29,10 +29,11 @@ db.once("open", function () {
     bookmarkID: Number,
     url: String,
     title: String,
-    favicon: String,
-    Notes: String,
-    reminderDate: Date, //DateTime?
-    alarmTimer: String
+    icon: String,
+    notes: String,
+    date: String, 
+    time: String,
+    recurrence: String,
   });
 
   bookmarkSchema.add({
@@ -201,14 +202,14 @@ async function addBookmarksToUser(databaseUser, existingBookmarks){
       if(item.hasOwnProperty('children')){
         // console.log('INSIDE ',item.children)
         const userBookmarkOptions = {
-          bookmarkId: item.id,
+          bookmarkID: item.id,
           url: item.url,
           title: item.title,
-          favicon: findFavicon(item.url),
-          parentId: item.parentId,
+          icon: findFavicon(item.url),
           notes: '',
-          reminderDate: null,
-          alarmTimer: null,
+          date: '',
+          time: '',
+          recurrence: '',
           nested: {
             folderID: ++baseFolderID,
             status: true,
@@ -227,10 +228,11 @@ async function addBookmarksToUser(databaseUser, existingBookmarks){
           bookmarkId: item.id,
           url: item.url,
           title: item.title,
-          favicon: findFavicon(item.url),
+          icon: findFavicon(item.url),
           notes: '',
-          reminderDate: null,
-          alarmTimer: null,      
+          date: '',
+          time: '',
+          recurrence: ''    
         })
         console.log('Post IF statement (not nested)', record)
         await record.save();
@@ -244,8 +246,6 @@ async function addBookmarksToUser(databaseUser, existingBookmarks){
     return newArray;
   }
 }
-
-
 
 app.post("/auth/apiBookmarks", (req, resp) => {
 
@@ -261,73 +261,67 @@ app.post("/auth/apiBookmarks", (req, resp) => {
     })
 
 });
-
-// app.get("/auth/apiBookmarks", (req, resp)=>{
-//   getBookmarksForUser( req.user )
-//   .then( (response) => {
-//     resp.send({
-//       success: true,
-//       data: response.data
-//     })
-//   })
-// })
  
-app.get("/auth/getBookmarks", (req, resp) => {
-  console.log("cookies are here" ,req.cookies);
+app.get("/auth/getBookmarks", (req, res) => {
+  console.log("cookies are here" ,req.user);
+  const { user } = req;
 
-  const googleId  = req.cookies.googleID;
-
-  if(!googleId){
+  if(!user){
     return res.status(401).send('Not authorized');
   }
 
-  userBase.findOne({ googleId }, (err, user) => {
-    if (err) return console.log(err);
-    if (user === null) {
-      resp.send({
-        success: false,
-        message: "User not found"
-      });
-      return;
-    }
-    console.log(user.bookmarks);
-    resp.send({
-      success: true,
-      data: user.bookmarks
-    });
+  res.send({
+    success: true,
+    bookmarks: user.bookmarks,
+    reminders: findWithReminders(user.bookmarks)
   });
 });
-// COMBINE BOTH ENDPOINTS INTO 1?
+
+function findWithReminders(bookmarks, reminders = []){
+  
+  for(let i = 0; i < bookmarks.length; i++){
+    const bm = bookmarks[i];
+    if(bm.nested && bm.nested.nestedBookmarks){
+      findWithReminders(bm.nested.nestedBookmarks, reminders);
+    }
+
+    if(bm.time){
+      reminders.push({ ...bm.toObject(), nested: null });
+    }
+  }
+
+  return reminders;
+}
 
 // add new bookmark endpoint (extension)
 
-app.post("/auth/addBookmarks", (req, resp) => {
-  const googleId  = req.cookies.googleID;
-  userBase.findOne({ googleId }, (err, user) => {
-    console.log("2",user)
-    if (err) return console.log(err);
-    if (user === null) {
-      console.log("3",user)
-      resp.send({
-        success: false,
-        message: "User not found"
-      });
-      return;
-    }
-    
-    userBookmarks.create(req.body).then(bookmark => {
-      const folder = user.bookmarks[0].nested.nestedBookmarks[1];
-      folder.nested.nestedBookmarks.push(bookmark);
-      return user.save();
-    }).then(() => {
-      resp.send({
-        success: true,
-        message: `Extension Bookmark added to ${user}; their bookmark list is now: ${user.bookmarks}`
-      })
-    })
+app.post("/auth/addBookmarks", async (req, resp) => {
+  const { user } = req;
 
-  })
-})
+  console.log('USER INFO:', req.body.date);
+
+
+  if (!user) {
+    return resp.status(401).send({
+      success: false,
+      message: "Not authorized"
+    });
+  }
+  req.body.date = new Date(req.body.date)
+
+  console.log('New date after parsing: ', req.body.date)
+  
+  const bookmark = await userBookmarks.create(req.body)
+  const folder = user.bookmarks[0].nested.nestedBookmarks[1];
+  
+  folder.nested.nestedBookmarks.push(bookmark);
+  await user.save();
+
+  resp.send({
+    success: true,
+    message: `Extension Bookmark added to ${user}; their bookmark list is now: ${user.bookmarks}`
+  });
+});
 
 // edit current bookmarks endpoint (website) {PROBABLY SOMETHING FOR THE FUTURE, TOO MUCH TO DO FOR THIS}
 
@@ -346,6 +340,12 @@ app.post("/auth/addBookmarks", (req, resp) => {
 // delete a reminder/bookmark {NEED HELP ON STATE IN REACT AND GETTING THE PROPER ITEM AND ITEM.ID}
 
 app.delete("/deleteBookmarks", (req, resp) => {
+  const { user } = req;
+
+  console.log('Delete Bookmark called. User Info:', user);
+
+  return res.send({success: 'Called deleteBookmars'});
+
   userBase.findOne({ googleId }, (err, user) => {
     if (err) return console.log(err);
     user.bookmarks

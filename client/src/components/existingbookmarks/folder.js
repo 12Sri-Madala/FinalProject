@@ -34,12 +34,10 @@ class Folder extends Component {
     getContents = () => {
 
         return (
-            this.props.children.map((item, index) => {
-
-                if(item.children) {
-
+            this.props.nested.map((item, index) => {
+                if(!item.url) {
                     return (
-                        <Folder key={index} children={item.children} open={false} title={item.title} depth={this.props.depth+5}/>
+                        <Folder key={index} nested={item.nested.nestedBookmarks} open={false} title={item.title} depth={this.props.depth+5}/>
                     )
                 }
                 else if (this.props.depth !== 0) {
@@ -53,9 +51,8 @@ class Folder extends Component {
 
     getIndividualBookmarks() {
         return (
-            this.props.children.map((item, index) => {
-                console.log(item.title)
-                if (!item.children) {
+            this.props.nested.map((item, index) => {
+                if (item.url) {
                     return (
                         <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.favicon} class="allOfEachBookmark"/>
                     )
@@ -63,9 +60,7 @@ class Folder extends Component {
             })
         )
     }
-
     render(){
-
         if(this.props.depth === 0){
             return (
                 <div>
@@ -75,7 +70,6 @@ class Folder extends Component {
                 </div>
             )
         }
-
         else {
             return (
                 <div className="folder" style={{marginLeft: this.props.depth + '%'}}>
