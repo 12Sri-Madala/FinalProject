@@ -1,7 +1,9 @@
 import React from 'react';
 import './home.css';
-import {GoogleLogin} from 'react-google-login';
-
+import "materialize-css/dist/css/materialize.min.css";
+import "materialize-css/dist/js/materialize";
+import horizon from '../../videos/horizon.mp4';
+import island from '../../videos/island.mp4';
 
 
 export default props => {
@@ -18,23 +20,48 @@ export default props => {
         <div className="homepage">
             <div className="home-login center">
                 <div className="crease-logo"></div>
+
                 <div className="login-area">
-                 
                     <a href='http://localhost:8000/auth/google'><button className='login-button' type='button'>LOGIN</button></a>
                     <a href='http://localhost:8000/auth/google'><button className='login-button' type='button'>SIGNUP</button></a>
-
+                </div>
+                <br/>
+                <br/>
+                <div className="login-area">
+                    <a href='http://localhost:3000/meet_team'><button className="login-button">MEET THE TEAM</button></a>
                 </div>
             </div>
             
             <div className="description-body">
                 <div className="description-header">
                     <h3 className="center description-title">What is <span className="lobster">Crease</span> ?</h3>
-                    
+                    <br/>
+                    <h6 className="center description-title"><span className="lobster">Crease</span> is an all-in-one bookmark manager for your inspirations and read laters</h6>
                 </div>
-            </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                <div className="container">
 
-            <div className="home-login center">
-                <a href="#"><button className="login-button">Meet The Team</button></a>
+                    <div className="row">
+                        <div className="col s6 description-title">Organize and view with ease</div>
+                        <div className="col s6 description-title">Set a <span className="lobster">Crease</span> reminder for later</div>
+                    </div>
+
+                    <div className="row">
+                        
+                        <div className="col s5">
+                            <video className="video-container" src={ horizon } controls="true" loop autoPlay></video>    
+                        </div>
+
+                        <div className="col s5 offset-s2">
+                            <video className="video-container" src={ island } controls="true" loop autoPlay></video>
+                        </div>
+                    
+                    </div>
+                </div>
             </div>
         </div>
     )

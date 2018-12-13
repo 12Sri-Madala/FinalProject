@@ -20,7 +20,7 @@ module.exports = {
                 loader: 'style-loader!css-loader'
             },
             {
-                test: /\.(gif|png|jpe?g|svg)$/i,
+                test: /\.(gif|png|jpe?g|svg|mp4)$/i,
                 use: ['file-loader?hash=sha512&digest=hex&name=assets/images/[hash].[ext]']
             },
             {
