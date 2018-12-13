@@ -8,20 +8,13 @@
   "chrome_url_overrides" : {
     "bookmarks": "crease-bookmarks.html"
   },
-  "content_scripts":[
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": ["content.js"]
-    }
-  ],
+
   "background": {
      "scripts": ["background.js"]
   },
   "browser_action": {
       "default_title": "My Bookmarks",
-      "default_icon": "temp.png",
+      "default_icon": "./images/temp.png",
       "default_popup": "popup.html"
   },
   "manifest_version": 2,
