@@ -269,28 +269,36 @@ app.get("/auth/getBookmarks", (req, res) => {
     return res.status(401).send('Not authorized');
   }
 
-
   res.send({
     success: true,
-    bookmarks: filterReminders(user.bookmarks)
+    bookmarks: user.bookmarks,
+    reminders: findWithReminders(user.bookmarks)
   });
 });
 
-function filterReminders(bookmarks){
-  return bookmarks.filter(bookmark => {
-
-    if(bookmark.nested && Array.isArray(bookmark.nested.nestedBookmarks)){
-      bookmark.nested.nestedBookmarks = filterReminders(bookmark.nested.nestedBookmarks);
+function findWithReminders(bookmarks, reminders = []){
+  
+  for(let i = 0; i < bookmarks.length; i++){
+    const bm = bookmarks[i];
+    if(bm.nested && bm.nested.nestedBookmarks){
+      findWithReminders(bm.nested.nestedBookmarks, reminders);
     }
 
-    return bookmark.reminderDate;
-  });
+    if(bm.time){
+      reminders.push({ ...bm.toObject(), nested: null });
+    }
+  }
+
+  return reminders;
 }
 
 // add new bookmark endpoint (extension)
 
 app.post("/auth/addBookmarks", async (req, resp) => {
   const { user } = req;
+
+  console.log('USER INFO:', user);
+
 
   if (!user) {
     return resp.status(401).send({
