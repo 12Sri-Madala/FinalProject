@@ -298,18 +298,15 @@ function findWithReminders(bookmarks, reminders = []){
 app.post("/auth/addBookmarks", async (req, resp) => {
   const { user } = req;
 
-  console.log('USER INFO:', req.body.date);
-
-
   if (!user) {
     return resp.status(401).send({
       success: false,
       message: "Not authorized"
     });
   }
-  req.body.date = new Date(req.body.date)
+  // req.body.date = new Date(req.body.date)
 
-  console.log('New date after parsing: ', req.body.date)
+  // console.log('New date after parsing: ', req.body.date)
   
   const bookmark = await userBookmarks.create(req.body)
   const folder = user.bookmarks[0].nested.nestedBookmarks[1];
