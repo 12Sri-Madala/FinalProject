@@ -14,8 +14,8 @@ class Reminders extends Component {
     }
 
     componentDidMount(){
-        this.getReminderListData();
         this.authCall();
+        // this.getReminderListData;
     }
 
     authCall = async () => {
@@ -23,18 +23,18 @@ class Reminders extends Component {
         const resp = await axios.get("/auth/getBookmarks",{withCredentials: true});
         
         console.log("bookmarks accessed:", resp);
-        //  this.setState({
-        //      list: response.data.data
+         this.setState({
+             list: resp.data.reminders
 
-        //  })
+         })
     }
 
-    getReminderListData(){
-        //call server to get data
-        this.setState({
-            list: dummy_data
-        });
-    }
+    // getReminderListData(){
+    //     //call server to get data
+    //     this.setState({
+    //         list: dummy_data
+    //     });
+    // }
     render(){
        return(
            <ReminderList data={this.state.list}/>

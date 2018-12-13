@@ -116,7 +116,7 @@ class Reminder extends Component {
         const listElements = this.props.data.map((item, index) => {
 
             return(
-             <div key={item.id} className={this.reminderBackground(index)}>
+             <div key={item._id} className={this.reminderBackground(index)}>
                 <div className="reminder-icon-bg">
                     <img className="reminder-icon" src={item.icon}/>
                 </div>
