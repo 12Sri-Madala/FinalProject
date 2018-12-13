@@ -17,12 +17,12 @@ class ExistingBookmarks extends Component {
     async authCall(){
 
         const resp = await axios.get("http://localhost:8000/auth/getBookmarks",{withCredentials: true}).then((response)=>{
-            console.log('bookmarks accessed: ', response.data.data);
+            console.log('bookmarks accessed: ', response.data.bookmarks[0].nested.nestedBookmarks);
              this.setState({
-                 list: response.data.data
+                 list: response.data.bookmarks[0].nested.nestedBookmarks
 
              })
-            console.log("right ehre buddy",this.state.list[0].nested.nestedBookmarks)
+            console.log("right ehre buddy",this.state.list)
         });
 
     }
@@ -32,13 +32,14 @@ class ExistingBookmarks extends Component {
     }
 
     render(){
+
         if (!this.state.list.length) {
             return <div>Loading...</div>
         }
         else{
-            console.log('RIGHT HERE',this.state.list[0].nested.nestedBookmarks)
-            let bookmarksBar = this.state.list[0].nested.nestedBookmarks[0].nested.nestedBookmarks;
-            let otherBookmarks = this.state.list[0].nested.nestedBookmarks[1].nested.nestedBookmarks;
+            console.log('RIGHT HERE',this.state.list)
+            let bookmarksBar = this.state.list[0].nested.nestedBookmarks;
+            let otherBookmarks = this.state.list[1].nested.nestedBookmarks;
             let combinedBookmarks = [...bookmarksBar, ...otherBookmarks];
 
             return(
