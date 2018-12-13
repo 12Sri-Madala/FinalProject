@@ -7,7 +7,7 @@ const TeamMemberSri = () => {
         <div className="member-container">
             <img className="member-pic" src={SriPic} />
             <span className="id-card">
-                <a href="http://google.com"><i className="fas fa-id-card"></i></a>
+                <a href="http://sridharmadala.com"><i className="fas fa-id-card"></i></a>
             </span>
             <span className="github">
                 <a href="https://github.com/12Sri-Madala"><i className="fab fa-github"></i></a>

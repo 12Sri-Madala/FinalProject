@@ -7,7 +7,7 @@ const TeamMemberAndrew = () => {
         <div className="member-container">
             <img className="member-pic" src={AndrewPic} />
             <span className="id-card">
-                <a href="http://andrewtech.com"><i className="fas fa-id-card"></i></a>
+                <a href="http://andrewmirs.tech"><i className="fas fa-id-card"></i></a>
             </span>
             <span className="github">
                 <a href="https://github.com/andrewmirs"><i className="fab fa-github"></i></a>
