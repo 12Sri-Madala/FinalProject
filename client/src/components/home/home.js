@@ -53,11 +53,11 @@ export default props => {
                     <div className="row">
                         
                         <div className="col s5">
-                            <video className="video-container" src={ horizon } controls="true" loop autoPlay></video>    
+                            <video className="video-container" src={ horizon } loop autoPlay></video>    
                         </div>
 
                         <div className="col s5 offset-s2">
-                            <video className="video-container" src={ island } controls="true" loop autoPlay></video>
+                            <video className="video-container" src={ island } loop autoPlay></video>
                         </div>
                     
                     </div>
