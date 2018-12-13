@@ -14,9 +14,10 @@
     cursor: pointer;
 }
 .title{
-
-
-
+    white-space: pre;
+    width: 10vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .bookmark::before{
     /*content: '--'*/
@@ -31,21 +32,25 @@
 .allFolders{
     position: relative;
     width: 62vw;
-    margin-top: 45px;
+    margin-top: 55px;
 
 }
 
 .folderSection {
-    height: 45vh;
+    height: 40vh;
 
 }
 .folderSection:first-child{
     overflow: auto;
 }
+.folder{
+    display:inline-block;
+}
 .individualFirstBookMark{
     height: 15vw;
     width: 62vw;
     overflow: auto;
+
 
 }
 .individualFirstBookMark:first-child{
@@ -86,4 +91,8 @@
 }
 .hrClass{
     margin:0;
+    margin-bottom: 14px;
+    width: 50vw;
+    position: relative;
+    left: 5%;
 }
