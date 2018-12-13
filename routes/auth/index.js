@@ -8,7 +8,7 @@ router.get('/test', (req, res) => {
 router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 
 router.get('/callback', passport.authenticate('google'), (req, res) => {
-    res.redirect('/');
+    res.redirect('http://localhost:3000/application_page');
 });
 
 router.get('/current-user', (req, res) => {

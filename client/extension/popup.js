@@ -110,25 +110,25 @@ $(function() {
 });
 
 // Traverse the bookmark tree, and print the folder and nodes.
-function dumpBookmarks(query) {
-  var bookmarkTreeNodes = chrome.bookmarks.getTree(
-    function(bookmarkTreeNodes) {
+// function dumpBookmarks(query) {
+//   var bookmarkTreeNodes = chrome.bookmarks.getTree(
+//     function(bookmarkTreeNodes) {
 
-      console.log("Hitting dumpBookmarks function", bookmarkTreeNodes)
+//       console.log("Hitting dumpBookmarks function", bookmarkTreeNodes)
 
-      const postingCall = {
-        method: 'POST',
-        url: 'http://localhost:8000/auth/apiBookmarks',
-        data: {
-          bookmarks: JSON.stringify(bookmarkTreeNodes)
-        }
-      }
-    // should only be run once when the user is logged in, but in the background (no need to interact with the extension)
-    // can we trigger an api call from our website to our extension that happens when the user logs in? 
-      $.ajax(postingCall);
+//       const postingCall = {
+//         method: 'POST',
+//         url: 'http://localhost:8000/auth/apiBookmarks',
+//         data: {
+//           bookmarks: JSON.stringify(bookmarkTreeNodes)
+//         }
+//       }
+//     should only be run once when the user is logged in, but in the background (no need to interact with the extension)
+//     can we trigger an api call from our website to our extension that happens when the user logs in? 
+//       $.ajax(postingCall);
 
-    });
-}
+//     });
+// }
 
   
 function dumpNode(bookmarkNode, query) {
