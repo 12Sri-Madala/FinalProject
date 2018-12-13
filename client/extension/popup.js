@@ -76,6 +76,7 @@ function processForm() {
   returnObj.title = title;
   returnObj.icon = favicon;
   returnObj.url = url;
+  returnObj.id = idGenerator();
   creaseObj = returnObj;
 
         var ajaxConfig = {

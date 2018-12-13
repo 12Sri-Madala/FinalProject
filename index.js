@@ -31,7 +31,7 @@ db.once("open", function () {
     title: String,
     icon: String,
     notes: String,
-    date: Date, 
+    date: String, 
     time: String,
     recurrence: String,
   });
@@ -228,10 +228,11 @@ async function addBookmarksToUser(databaseUser, existingBookmarks){
           bookmarkId: item.id,
           url: item.url,
           title: item.title,
-          favicon: findFavicon(item.url),
+          icon: findFavicon(item.url),
           notes: '',
-          reminderDate: null,
-          alarmTimer: null,      
+          date: '',
+          time: '',
+          recurrence: ''    
         })
         console.log('Post IF statement (not nested)', record)
         await record.save();
@@ -297,7 +298,7 @@ function findWithReminders(bookmarks, reminders = []){
 app.post("/auth/addBookmarks", async (req, resp) => {
   const { user } = req;
 
-  console.log('USER INFO:', user);
+  console.log('USER INFO:', req.body.date);
 
 
   if (!user) {
@@ -305,7 +306,11 @@ app.post("/auth/addBookmarks", async (req, resp) => {
       success: false,
       message: "Not authorized"
     });
-  } 
+  }
+  req.body.date = new Date(req.body.date)
+
+  console.log('New date after parsing: ', req.body.date)
+  
   const bookmark = await userBookmarks.create(req.body)
   const folder = user.bookmarks[0].nested.nestedBookmarks[1];
   
