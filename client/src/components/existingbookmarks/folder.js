@@ -41,8 +41,9 @@ class Folder extends Component {
                     )
                 }
                 else if (this.props.depth !== 0) {
+                    
                     return (
-                        <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.favicon} class="allOfEachBookmarkTwo"/>
+                        <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.icon} class="allOfEachBookmarkTwo"/>
                     )
                 }
             })
@@ -51,10 +52,12 @@ class Folder extends Component {
 
     getIndividualBookmarks() {
         return (
+
             this.props.nested.map((item, index) => {
+
                 if (item.url) {
                     return (
-                        <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.favicon} class="allOfEachBookmark"/>
+                        <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.icon} class="allOfEachBookmark"/>
                     )
                 }
             })
