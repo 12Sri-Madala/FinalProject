@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ReminderList from './reminder_list';
-import reminder_list from '../../dummy_data_bookmark_reminders/reminder_list';
+import dummy_data from '../../dummy_data_bookmark_reminders/reminder_list';
 
 
 class Reminders extends Component {
@@ -32,7 +32,7 @@ class Reminders extends Component {
     getReminderListData(){
         //call server to get data
         this.setState({
-            list: reminder_list
+            list: dummy_data
         });
     }
     render(){
