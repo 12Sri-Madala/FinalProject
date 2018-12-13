@@ -8,11 +8,18 @@
 }
 
 .reminder-section{
+    display: inline-block;
     position: relative;
     width: 30vw;
+    height: 88vh;
     min-width: 460px;
     border-radius: 0 15px 0 0;
     top: 10px;
+    overflow-y: auto;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
 }
 
 .rightDivApp{

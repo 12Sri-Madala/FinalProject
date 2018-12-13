@@ -102,8 +102,8 @@ class Reminder extends Component {
 
     titleLength = (title) => {
         var concatTitle = '';
-        if(title.length > 71){
-            for (var i=0; i<70; i++){
+        if(title.length > 66){
+            for (var i=0; i<65; i++){
                 concatTitle += title[i];
             }
             concatTitle += ".."
@@ -114,14 +114,17 @@ class Reminder extends Component {
 
     render(){
         const listElements = this.props.data.map((item, index) => {
+            console.log(this.props);
 
             return(
              <div key={item._id} className={this.reminderBackground(index)}>
-                <div className="reminder-icon-bg">
-                    <img className="reminder-icon" src={item.icon}/>
-                </div>
-                <div className="reminder-title" onClick={() => {}}>
-                    <a className="reminder-title-link" href={item.url}>{this.titleLength(item.title)}</a>
+                <a className="reminder-title-link" href={item.url} target="_blank">
+                    <div className="reminder-icon-bg">
+                        <img className="reminder-icon" src={item.icon}/>
+                    </div>
+                </a>
+                <div className="reminder-title">
+                    <a className="reminder-title-link" href={item.url} target="_blank">{this.titleLength(item.title)}</a>
                 </div>
                     {this.countDown( item.date, item.time )}
                 <Popup trigger={<div className="reminder-dots"></div>}>
@@ -131,7 +134,7 @@ class Reminder extends Component {
                         </div>
                         <hr />
                         <div className="popup-link">
-                            <a href={item.url}>{item.url}</a>
+                        Recurrence: {item.recurrence}
                         </div>
                         <div className="center delete-reminder">
                             <button className="btn-small red darken-3" id="delete-reminder-btn" onClick={() => {

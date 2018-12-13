@@ -14,7 +14,7 @@ class ApplicationPage extends Component {
                      <div className="applicationDiv">
 
 
-                <div className="insideDiv reminder-section">
+                <div className="reminder-section">
 
                     <Reminders  />
                 </div>
