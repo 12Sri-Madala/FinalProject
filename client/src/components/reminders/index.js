@@ -21,7 +21,10 @@ class Reminders extends Component {
     authCall = async () => {
 
         const resp = await axios.get("/auth/getBookmarks",{withCredentials: true});
-        
+        resp.data.reminders.sort((a, b) => {
+            return Date.parse(`${a.date} ${a.time}`) - Date.parse(`${b.date} ${b.time}`);
+        });
+
         console.log("bookmarks accessed:", resp);
          this.setState({
              list: resp.data.reminders
@@ -29,12 +32,6 @@ class Reminders extends Component {
          })
     }
 
-    // getReminderListData(){
-    //     //call server to get data
-    //     this.setState({
-    //         list: dummy_data
-    //     });
-    // }
     render(){
        return(
            <ReminderList data={this.state.list}/>
