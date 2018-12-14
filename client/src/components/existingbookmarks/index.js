@@ -13,7 +13,6 @@ class ExistingBookmarks extends Component {
             return <div>Loading...</div>
         }
         else{
-            console.log('RIGHT HERE',this.props.list)
             let bookmarksBar = this.props.list[0].nested.nestedBookmarks;
             let otherBookmarks = this.props.list[1].nested.nestedBookmarks;
             let combinedBookmarks = [...bookmarksBar, ...otherBookmarks];
