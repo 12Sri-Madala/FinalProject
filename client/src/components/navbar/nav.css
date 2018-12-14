@@ -7,8 +7,11 @@
 }
 
 #navbar {
-    background-image: url('./images/nav-background.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+nav {
+    background-color: #265288;
 }
