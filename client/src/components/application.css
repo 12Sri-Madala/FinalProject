@@ -1,24 +1,26 @@
 .applicationDiv{
     margin: 0;
+    width: 1280px;
 }
 
 .insideDiv{
     display:inline-block;
-    height: 90vh;
+    height: 85vh;
+    min-width: 500px;
 }
 
 .reminder-section{
     display: inline-block;
     position: relative;
     width: 30vw;
-    height: 88vh;
+    height: 85vh;
     min-width: 460px;
     border-radius: 0 15px 0 0;
     top: 10px;
     overflow-y: auto;
 }
 
-::-webkit-scrollbar {
+.reminder-section::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
 }
