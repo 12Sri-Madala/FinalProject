@@ -4,6 +4,7 @@ import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize";
 import horizon from '../../videos/horizon.mp4';
 import island from '../../videos/island.mp4';
+import extenstionVideo from '../../videos/Crease Extension.mp4'
 
 
 export default props => {
@@ -54,11 +55,11 @@ export default props => {
                     <div className="row">
                         
                         <div className="col s5">
-                            <video className="video-container" src={ horizon } loop autoPlay></video>    
+                            <video className="video-container" src={ extenstionVideo } loop autoPlay></video>    
                         </div>
 
                         <div className="col s5 offset-s2">
-                            <video className="video-container" src={ island } loop autoPlay></video>
+                            <video className="video-container" src={ extenstionVideo } loop autoPlay></video>
                         </div>
                     
                     </div>
