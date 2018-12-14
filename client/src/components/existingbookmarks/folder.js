@@ -41,6 +41,7 @@ class Folder extends Component {
                     )
                 }
                 else if (this.props.depth !== 0) {
+
                     return (
                         <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.icon} class="allOfEachBookmarkTwo"/>
                     )
@@ -53,7 +54,8 @@ class Folder extends Component {
         return (
 
             this.props.nested.map((item, index) => {
-                if (item.url) {
+
+                if (item.url && !item.time) {
                     return (
                         <IndividualBookmark key={index} title={item.title} url={item.url} favicon={item.icon} class="allOfEachBookmark"/>
                     )
