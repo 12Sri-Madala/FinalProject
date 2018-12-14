@@ -126,7 +126,7 @@ class Reminder extends Component {
                     <a className="reminder-title-link" href={item.url} target="_blank">{this.titleLength(item.title)}</a>
                 </div>
                     {this.countDown( item.date, item.time )}
-                <Popup trigger={<div className="reminder-dots"></div>}>
+                <Popup position="left center" trigger={<div className="reminder-dots"></div>}>
                     <div>
                         <div>
                             Notes: {item.notes}
