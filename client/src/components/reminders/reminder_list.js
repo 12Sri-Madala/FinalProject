@@ -114,7 +114,6 @@ class Reminder extends Component {
 
     render(){
         const listElements = this.props.data.map((item, index) => {
-            console.log(this.props);
 
             return(
              <div key={item._id} className={this.reminderBackground(index)}>
