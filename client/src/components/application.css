@@ -1,10 +1,12 @@
 .applicationDiv{
     margin: 0;
+    width: 1280px;
 }
 
 .insideDiv{
     display:inline-block;
     height: 85vh;
+    min-width: 500px;
 }
 
 .reminder-section{
