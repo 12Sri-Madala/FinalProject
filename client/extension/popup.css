@@ -17,8 +17,11 @@ body {
     display: inline-block;
     width: 100%;
     height: 45px;
-    background-color: #a1bfd1;
-    color: rgb(59, 59, 59);
+    background-image: url(./images/btn-bg.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgb(29, 29, 29);
     font-size: 20px;
     border-radius: 5px 5px 0 0;
 }
@@ -60,9 +63,9 @@ h6 {
 .header-title {
     display: inline-block;
     position: relative;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
-    left: 10px;
+    left: 16px;
 }
 
 .extension-alarm {
@@ -91,11 +94,27 @@ h6 {
 }
 
 .btn-small {
-    background-color:  #a1bfd1;
+    background-color:  darkgrey;
 }
 
 .btn-small:focus, .btn-small:hover {
-    background-color: #7995a7;
+    background-color:  rgb(116, 116, 116);
+}
+
+
+.btn-small:focus, .btn-small:hover {
+    background-image: url(./images/btn-bg.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+button:focus {
+    background-image: url(./images/btn-bg.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #recurrence-label {
@@ -130,15 +149,15 @@ input[type=time]:not(.browser-default) {
 }
 
 input[type=date]:not(.browser-default):focus:not([readonly]) {
-    border-bottom: 1px solid #7894a5;
-    -webkit-box-shadow: 0 1px 0 0 #7894a5;
-    box-shadow: 0 1px 0 0 #7894a5;
+    border-bottom: 1px solid #265288;
+    -webkit-box-shadow: 0 1px 0 0 #265288;
+    box-shadow: 0 1px 0 0 #265288;
 }
 
 input[type=time]:not(.browser-default):focus:not([readonly]) {
-    border-bottom: 1px solid #7894a5;
-    -webkit-box-shadow: 0 1px 0 0 #7894a5;
-    box-shadow: 0 1px 0 0 #7894a5;
+    border-bottom: 1px solid #265288;
+    -webkit-box-shadow: 0 1px 0 0 #265288;
+    box-shadow: 0 1px 0 0 #265288;
 }
 
 .select-wrapper input.select-dropdown {
@@ -150,13 +169,17 @@ input[type=time]:not(.browser-default):focus:not([readonly]) {
 }
 
 .select-wrapper input.select-dropdown:focus {
-    border-bottom: 1px solid #7894a5;
+    border-bottom: 1px solid #265288;
 }
 
 .input-field {
     position: relative;
     margin-top: 0rem;
     margin-bottom: 0rem;
+}
+
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #265288;
 }
 
 /* Date and Time Inputs */

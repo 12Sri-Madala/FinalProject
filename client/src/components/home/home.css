@@ -13,6 +13,7 @@ body{
     background-size: cover;
     background-position: center;
     background-repeat: repeat-y;
+    height: 100vw;
 }
 .home-login{
     width: 100vw;
