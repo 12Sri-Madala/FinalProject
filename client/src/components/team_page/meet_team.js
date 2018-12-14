@@ -12,22 +12,20 @@ import Andrew from './team_andrew';
 
 
 export default props => {
-    return (
-        <Fragment>
-            <Nav />
-            <div className="teampage-background">
-                <div className="meetteam center">
-                    <Sri />
-                    <div className="meetteam-logo">
-                        <img className="meetteam-logo" src={MeetTeam} />
-                    </div>
-                    <Michael />
-                </div>
-                <div className="meetteam center">
-                    <Andrew />
-                    <Julian />
-                </div>
-            </div> 
-        </Fragment>
-    );
+    return <Fragment>
+        <Nav />
+        <div className="teampage-background">
+          <div className="meetteam center">
+            <Sri />
+            <div className="meetteam-logo">
+              <img className="meetteam-logo" src={MeetTeam} />
+            </div>
+            <Michael />
+          </div>
+          <div className="meetteam center">
+            <Julian />
+            <Andrew />
+          </div>
+        </div>
+      </Fragment>;
 }
