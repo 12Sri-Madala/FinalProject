@@ -2,8 +2,6 @@ import React from 'react';
 import './home.css';
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize";
-import horizon from '../../videos/horizon.mp4';
-import island from '../../videos/island.mp4';
 import extenstionVideo from '../../videos/Crease Extension.mp4'
 
 

@@ -17,13 +17,13 @@ body {
     display: inline-block;
     width: 100%;
     height: 45px;
-    background-image: url(./images/btn-bg.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     color: rgb(29, 29, 29);
     font-size: 20px;
     border-radius: 5px 5px 0 0;
+    background-color: #265288;
 }
 
 .extension-icon {
@@ -66,6 +66,7 @@ h6 {
     font-size: 13px;
     font-weight: bold;
     left: 16px;
+    color: whitesmoke;
 }
 
 .extension-alarm {
