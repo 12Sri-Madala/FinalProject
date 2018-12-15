@@ -79,22 +79,21 @@ function processForm() {
   returnObj.id = idGenerator();
   creaseObj = returnObj;
 
-        var ajaxConfig = {
-          datatype: 'json',
-          url: 'http://localhost:8000/auth/addBookmarks',
-          method: "Post",
-          data: creaseObj,
-          success: function (response){
-            console.log("Sent saved Bookmark: ", response) // ???
-          }
-        }
+  var ajaxConfig = {
+    datatype: "json",
+    url: "http://localhost:8000/auth/addBookmarks",
+    method: "Post",
+    data: creaseObj,
+    success: function(response) {
+      console.log("Sent saved Bookmark: ", response); // ???
+    }
+  };
 
-        $.ajax(ajaxConfig)
+  $.ajax(ajaxConfig);
 
   console.log("Bookmark/Alarm Data Object:", creaseObj);
   return creaseObj;
 }
-
 
 // Search the bookmarks when entering the search keyword.
 $(function() {
@@ -106,26 +105,22 @@ $(function() {
 
 // Traverse the bookmark tree, and print the folder and nodes.
 function dumpBookmarks(query) {
-  var bookmarkTreeNodes = chrome.bookmarks.getTree(
-    function(bookmarkTreeNodes) {
+  var bookmarkTreeNodes = chrome.bookmarks.getTree(function(bookmarkTreeNodes) {
+    console.log("Hitting dumpBookmarks function", bookmarkTreeNodes);
 
-      console.log("Hitting dumpBookmarks function", bookmarkTreeNodes)
-
-      // const postingCall = {
-      //   method: 'POST',
-      //   url: 'http://localhost:8000/auth/apiBookmarks',
-      //   data: {
-      //     bookmarks: JSON.stringify(bookmarkTreeNodes)
-      //   }
-      // }
+    // const postingCall = {
+    //   method: "POST",
+    //   url: "http://localhost:8000/auth/apiBookmarks",
+    //   data: {
+    //     bookmarks: JSON.stringify(bookmarkTreeNodes)
+    //   }
+    // };
     // should only be run once when the user is logged in, but in the background (no need to interact with the extension)
     // can we trigger an api call from our website to our extension that happens when the user logs in?
-      $.ajax(postingCall);
-
-    });
+    $.ajax(postingCall);
+  });
 }
 
-  
 function dumpNode(bookmarkNode, query) {
   if (bookmarkNode.title) {
     if (query && !bookmarkNode.children) {
@@ -269,4 +264,3 @@ function findFavicon() {
 document.addEventListener("DOMContentLoaded", function() {
   dumpBookmarks();
 });
-

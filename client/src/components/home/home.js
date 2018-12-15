@@ -2,7 +2,9 @@ import React from 'react';
 import './home.css';
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize";
-import extenstionVideo from '../../videos/Crease Extension.mp4'
+import extenstionVideo from '../../videos/Crease Extension.mp4';
+import applicationPage from '../../videos/applicationpage.mp4';
+import application from '../../videos/application.mp4'
 
 
 export default props => {
@@ -43,24 +45,25 @@ export default props => {
                     <br/>
                     <br/>
                     <br/>
-                <div className="container">
+                <div className="container video-container-parent">
 
                     <div className="row">
                         <div className="col s6 description-title">Organize and view with ease</div>
-                        <div className="col s5 offset-s1 description-title">Set a <span className="lobster">Crease</span> reminder alert</div>
+                        <div className="col s4 offset-s2 description-title">Set a <span className="lobster">Crease</span> reminder</div>
                     </div>
 
                     <div className="row">
                         
                         <div className="col s5">
-                            <video className="video-container" src={ extenstionVideo } loop autoPlay></video>    
+                            <video className="video-container" src={ application } loop autoPlay controls="true"></video>    
                         </div>
 
                         <div className="col s5 offset-s2">
-                            <video className="video-container" src={ extenstionVideo } loop autoPlay></video>
+                            <video className="video-container" src={ extenstionVideo } loop autoPlay controls="true"></video>
                         </div>
                     
                     </div>
+                
                 </div>
             </div>
         </div>
