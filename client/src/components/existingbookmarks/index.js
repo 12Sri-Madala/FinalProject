@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import Folder from './Folder';
 import './existingbookmarks_list.css';
+import { Route, Switch} from 'react-router-dom';
 
 class ExistingBookmarks extends Component {
     constructor(props){
         super(props);
-
+        this.state = {
+            bookmarks: props.list
+        }
     }
 
-    render(){
-        if (!this.props.list.length) {
-            return <div>Loading...</div>
-        }
-        else{
-            let bookmarksBar = this.props.list[0].nested.nestedBookmarks;
-            let otherBookmarks = this.props.list[1].nested.nestedBookmarks;
-            let combinedBookmarks = [...bookmarksBar, ...otherBookmarks];
-
+    componentDidMount(){
+        
+    }
+    render(){                   
             return(
-                <div>
-                    <div className="allFolders">
-                        <Folder nested={combinedBookmarks} open={false} depth={0}/>
-                    </div>
+                <div className="allFolders">
+                    <Switch>
+                        <Route path="/application_page/:openRoute?" component={ 
+                            (props) => <Folder nested={this.state.bookmarks} open={false} title="Bookmarks" depth={0} {...props}/>}/>
+                        <Route path="*" component={ 
+                            (props) => <Folder nested={this.state.bookmarks} open={false} title="Bookmarks" depth={0} {...props}/>}/>
+                    </Switch>
                 </div>
-            )
-        }
+           )   
     }
 }
  
