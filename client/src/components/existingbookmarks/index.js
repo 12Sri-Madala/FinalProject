@@ -9,23 +9,32 @@ class ExistingBookmarks extends Component {
         this.state = {
             bookmarks: props.list
         }
+         
     }
-
-    componentDidMount(){
+    render(){ 
         
+        if (!this.props.list.length){
+           return(
+            console.log('0 marks')
+           )
+        }
+        else{
+        return(                                     
+                
+          <div>hello</div>
+        ) 
+       }                           
     }
-    render(){                   
-            return(
-                <div className="allFolders">
+}
+ 
+export default ExistingBookmarks;
+
+
+{/* <div className="allFolders">
                     <Switch>
                         <Route path="/application_page/:openRoute?" component={ 
                             (props) => <Folder nested={this.state.bookmarks} open={false} title="Bookmarks" depth={0} {...props}/>}/>
                         <Route path="*" component={ 
                             (props) => <Folder nested={this.state.bookmarks} open={false} title="Bookmarks" depth={0} {...props}/>}/>
                     </Switch>
-                </div>
-           )   
-    }
-}
- 
-export default ExistingBookmarks;
+                </div> */}
