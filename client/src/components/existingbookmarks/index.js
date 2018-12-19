@@ -15,9 +15,9 @@ class ExistingBookmarks extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         const { bookmarks } = this.state;
-        const { list } = this.props.list;
+        const { list } = this.props;
 
-        if (!bookmarks && !list.length) {
+        if (bookmarks === null && list.length) {
             this.setState({ 
                 bookmarks:this.props.list 
             });
@@ -26,24 +26,25 @@ class ExistingBookmarks extends Component {
         
     }
 
-    componentDidMount(){
-        this.setState({ 
-            bookmarks:this.props.list 
-        });
-    }
     render(){ 
-        
         if (!this.state.bookmarks){
            return(
             <div>Loading...</div>
            )
         }
-        else if (this.props.list){
+        else if (this.state.bookmarks){
+            console.log('index page', this.state.bookmarks)
             return(                                     
                 <div className="allFolders">
                 <Switch>
                     <Route path="/application_page/:openRoute?" component={ 
-                        (props) => <Folder nested={this.state.bookmarks}  title="Bookmarks" depth={0} {...props}/>}/>
+                            (props) => {
+                                debugger;
+                                return <Folder nested={this.state.bookmarks}  title="Bookmarks" depth={0} {...props}/>
+                            }
+                        }
+                    />
+                            
                     <Route path="*" component={ 
                         (props) => <Folder nested={this.state.bookmarks}  title="Bookmarks" depth={0} {...props}/>}/>
                 </Switch>

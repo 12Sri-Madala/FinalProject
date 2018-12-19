@@ -17,8 +17,7 @@ class Folder extends Component {
             openRoute = props.openRoute;
           }
         this.state = {
-            open: props.open,
-            folder: 'fa-folder',
+            folder: props.open ? "fa-folder-open" : "fa-folder",
             openRoute: openRoute
         }
     }
@@ -37,21 +36,12 @@ class Folder extends Component {
           this.props.history.push( '/application_page/'+newRoute.join(','));
     }
     getButtonMarker = () => {
-        // this.setState({
-        //     open: !this.state.open
-        // })
-        // if (this.state.folder === 'fa-folder'){
-        //     this.setState({
-        //        folder: 'fa-folder-open'
-        //     })
-        // }
-        // else{
-        //     this.setState({
-        //         folder: 'fa-folder'
-        //     })
-        // }
         
-        return  this.checkIfOpen() ? '-' : 'V';
+        this.checkIfOpen() ? this.setState({
+            folder: 'fa-folder-open'
+        }) : this.setState({
+            folder: 'fa-folder'
+        });
     }
     checkIfOpen = () => {  
         if( this.state.openRoute.length >= this.props.depth){
@@ -62,7 +52,7 @@ class Folder extends Component {
         return false;
       }
 
-    getContents = () => {
+    getContents = (open) => {
         
         return (
             this.props.nested.map((item, index) => {
@@ -70,7 +60,7 @@ class Folder extends Component {
                 if(!item.url) {
                     
                     return (
-                        <Folder key={index} nested={item.nested.nestedBookmarks} open={false} openRoute={this.state.openRoute} history={this.props.history}
+                        <Folder key={index} nested={item.nested.nestedBookmarks} open={open} openRoute={this.state.openRoute} history={this.props.history}
                           title={item.title} depth={this.props.depth+1}/>
                     )
 
@@ -101,34 +91,32 @@ class Folder extends Component {
     
     render(){
         
-        // if(this.props.depth === 0){
+        if(this.props.depth === 0){
             
-        //     return (
-        //         <div>
-        //             <div className="folderSection">{this.getContents(this.props)}</div>
-        //             <hr className="hrClass"/>
-        //             <div className="individualFirstBookMark ">{this.getIndividualBookmarks()}</div>
-        //         </div>
-        //     )
-        // }
-        // else {
+            return (
+                <div>
+                    <div className="folderSection">{this.getContents(this.props)}</div>
+                    <hr className="hrClass"/>
+                    <div className="individualFirstBookMark ">{this.getIndividualBookmarks()}</div>
+                </div>
+            )
+        }
+        
 
-            if(!this.props.nested){
-                return <div>Loading...</div>
-            }
+           
 
             else if (this.props.nested){
-                console.log('hey THIS IS IT', this.props.nested)
+                
             return (
                 <div className="folder" style={{marginLeft: this.props.depth + '%'}}>
                     <div className="toggle" onClick={this.toggleFolder}>
-                        {this.getButtonMarker()}
+                        {/* {this.getButtonMarker()} */}
                         <i className={`fas ${this.state.folder} folderIcon`}></i> 
                     </div>
                     <div className="title">
                         {this.props.title}
                     </div>                   
-                     { this.checkIfOpen() ? this.getContents() : ''}
+                     { this.checkIfOpen() ? this.getContents(true) : ''}
                 </div>
             );
             }

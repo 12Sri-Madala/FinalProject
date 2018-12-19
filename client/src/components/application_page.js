@@ -5,6 +5,9 @@ import Reminders from './reminders';
 import Nav from './navbar/nav';
 import './application.css';
 
+import { Route, Switch} from 'react-router-dom';
+
+
 
 class ApplicationPage extends Component {
 
