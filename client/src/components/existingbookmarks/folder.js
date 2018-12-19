@@ -30,6 +30,7 @@ class Folder extends Component {
             newRoute = newRoute.slice(0, this.props.depth);
           }
         else {
+            
             newRoute[this.props.depth] = this.props.title
             newRoute = newRoute.slice(0, this.props.depth+1);
           }
@@ -39,13 +40,16 @@ class Folder extends Component {
         
         this.checkIfOpen() ? this.setState({
             folder: 'fa-folder-open'
-        }) : this.setState({
+        }) 
+        : 
+        this.setState({
             folder: 'fa-folder'
         });
     }
     checkIfOpen = () => {  
         if( this.state.openRoute.length >= this.props.depth){
             if(this.state.openRoute[this.props.depth] === this.props.title){
+                
               return true
             }
         }           
@@ -60,7 +64,7 @@ class Folder extends Component {
                 if(!item.url) {
                     
                     return (
-                        <Folder key={index} nested={item.nested.nestedBookmarks} open={open} openRoute={this.state.openRoute} history={this.props.history}
+                        <Folder key={index} nested={item.nested.nestedBookmarks} open={false} openRoute={this.state.openRoute} history={this.props.history}
                           title={item.title} depth={this.props.depth+1}/>
                     )
 
@@ -109,8 +113,7 @@ class Folder extends Component {
                 
             return (
                 <div className="folder" style={{marginLeft: this.props.depth + '%'}}>
-                    <div className="toggle" onClick={this.toggleFolder}>
-                        {/* {this.getButtonMarker()} */}
+                    <div className="toggle" onClick={this.toggleFolder}>                   
                         <i className={`fas ${this.state.folder} folderIcon`}></i> 
                     </div>
                     <div className="title">
