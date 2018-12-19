@@ -42,3 +42,18 @@ function createAlarm(creaseObj) {
       when: reminder, periodInMinutes: recurrence});
 }
 
+chrome.runtime.onInstalled.addListener(function() {
+    chrome.bookmarks.getTree(function(bookmarkTreeNodes) {
+        console.log("Hitting dumpBookmarks function", bookmarkTreeNodes);
+    
+        const postingCall = {
+          method: "POST",
+          url: "http://localhost:8000/auth/apiBookmarks",
+          data: {
+            bookmarks: JSON.stringify(bookmarkTreeNodes)
+          }
+        };
+    
+        $.ajax(postingCall);
+      });
+});
