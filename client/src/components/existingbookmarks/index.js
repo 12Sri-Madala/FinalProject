@@ -6,35 +6,57 @@ import { Route, Switch} from 'react-router-dom';
 class ExistingBookmarks extends Component {
     constructor(props){
         super(props);
+        
         this.state = {
-            bookmarks: props.list
+            bookmarks: null
         }
          
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        const { bookmarks } = this.state;
+        const { list } = this.props.list;
+
+        if (!bookmarks && !list.length) {
+            this.setState({ 
+                bookmarks:this.props.list 
+            });
+        }
+
+        
+    }
+
+    componentDidMount(){
+        this.setState({ 
+            bookmarks:this.props.list 
+        });
+    }
     render(){ 
         
-        if (!this.props.list.length){
+        if (!this.state.bookmarks){
            return(
-            console.log('0 marks')
+            <div>Loading...</div>
            )
         }
-        else{
-        return(                                     
-                
-          <div>hello</div>
-        ) 
-       }                           
+        else if (this.props.list){
+            return(                                     
+                <div className="allFolders">
+                <Switch>
+                    <Route path="/application_page/:openRoute?" component={ 
+                        (props) => <Folder nested={this.state.bookmarks}  title="Bookmarks" depth={0} {...props}/>}/>
+                    <Route path="*" component={ 
+                        (props) => <Folder nested={this.state.bookmarks}  title="Bookmarks" depth={0} {...props}/>}/>
+                </Switch>
+            </div>     
+            
+            ) 
+       }                         
     }
 }
  
 export default ExistingBookmarks;
 
 
-{/* <div className="allFolders">
-                    <Switch>
-                        <Route path="/application_page/:openRoute?" component={ 
-                            (props) => <Folder nested={this.state.bookmarks} open={false} title="Bookmarks" depth={0} {...props}/>}/>
-                        <Route path="*" component={ 
-                            (props) => <Folder nested={this.state.bookmarks} open={false} title="Bookmarks" depth={0} {...props}/>}/>
-                    </Switch>
-                </div> */}
+// open={false} on both routes????
+
+

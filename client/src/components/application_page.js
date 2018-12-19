@@ -35,7 +35,6 @@ class ApplicationPage extends Component {
     }
 
     render(){
-        console.log('application page props', this.state.combinedBookmarks)
         return (
             <Fragment>
                 <Nav />
