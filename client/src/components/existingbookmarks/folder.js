@@ -29,17 +29,12 @@ class Folder extends Component {
         if(newRoute[this.props.depth] === this.props.title){
             newRoute = newRoute.slice(0, this.props.depth);
             console.log('open')
-            this.setState({
-                folder: 'fa-folder'
-            });
           }
         else {
             newRoute[this.props.depth] = this.props.title
             newRoute = newRoute.slice(0, this.props.depth+1);
             console.log('closed')
-            this.setState({
-                folder: 'fa-folder-open'
-            })
+            
           }
           this.props.history.push( '/application_page/'+newRoute.join(','));
     }
@@ -60,7 +55,7 @@ class Folder extends Component {
         return false;
       }
 
-    getContents = (open = false) => {
+    getContents = (open) => {
         
         return (
             this.props.nested.map((item, index) => {
