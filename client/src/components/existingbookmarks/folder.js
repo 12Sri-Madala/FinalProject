@@ -23,16 +23,23 @@ class Folder extends Component {
     }
 
     toggleFolder = () => {
-        console.log('folders props are here',this.props)
+        
         let newRoute = this.state.openRoute;
 
         if(newRoute[this.props.depth] === this.props.title){
             newRoute = newRoute.slice(0, this.props.depth);
+            console.log('open')
+            this.setState({
+                folder: 'fa-folder'
+            });
           }
         else {
-            
             newRoute[this.props.depth] = this.props.title
             newRoute = newRoute.slice(0, this.props.depth+1);
+            console.log('closed')
+            this.setState({
+                folder: 'fa-folder-open'
+            })
           }
           this.props.history.push( '/application_page/'+newRoute.join(','));
     }
@@ -40,23 +47,20 @@ class Folder extends Component {
         
         this.checkIfOpen() ? this.setState({
             folder: 'fa-folder-open'
-        }) 
-        : 
-        this.setState({
+        }) : this.setState({
             folder: 'fa-folder'
         });
     }
     checkIfOpen = () => {  
         if( this.state.openRoute.length >= this.props.depth){
             if(this.state.openRoute[this.props.depth] === this.props.title){
-                
               return true
             }
         }           
         return false;
       }
 
-    getContents = (open) => {
+    getContents = (open = false) => {
         
         return (
             this.props.nested.map((item, index) => {
@@ -113,7 +117,8 @@ class Folder extends Component {
                 
             return (
                 <div className="folder" style={{marginLeft: this.props.depth + '%'}}>
-                    <div className="toggle" onClick={this.toggleFolder}>                   
+                    <div className="toggle" onClick={this.toggleFolder}>
+                        
                         <i className={`fas ${this.state.folder} folderIcon`}></i> 
                     </div>
                     <div className="title">

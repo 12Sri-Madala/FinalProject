@@ -27,13 +27,14 @@ class ExistingBookmarks extends Component {
     }
 
     render(){ 
+        debugger;
         if (!this.state.bookmarks){
            return(
             <div>Loading...</div>
            )
         }
         else if (this.state.bookmarks){
-            console.log('index page', this.state.bookmarks)
+            
             return(                                     
                 <div className="allFolders">
                 <Switch>
