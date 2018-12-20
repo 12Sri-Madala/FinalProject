@@ -1,183 +1,181 @@
-import React, { Component } from 'react';
-import 'materialize-css/dist/css/materialize.min.css';
-import 'materialize-css/dist/js/materialize';
-import './reminder_list.css';
+import React, { Component } from "react";
+import "materialize-css/dist/css/materialize.min.css";
+import "materialize-css/dist/js/materialize";
+import "./reminder_list.css";
 import Popup from "reactjs-popup";
 
 class Reminder extends Component {
+  reminderBackground = index => {
+    if (index % 2 === 0) {
+      return "light-reminder-background";
+    }
+    return "dark-reminder-background";
+  };
 
-    reminderBackground = (index) => {
-        if ( index%2 === 0 ){
-            return 'light-reminder-background';
-        }
-        return 'dark-reminder-background';
+  countDown = (date, time) => {
+    var dateTime = `${date} ${time}`;
+    var countdown = getTimeRemaining(dateTime);
+    var dayOfWeek = new Date(dateTime).getDay();
+
+    if (countdown.days > 7) {
+      return (
+        <div className="countdownAMPM">
+          <p className="countdown-font">{this.timeConvert(time)}</p>
+          <p className="countdown-font-dow">{this.dateConvert(date)}</p>
+        </div>
+      );
+    } else if (countdown.days < 8 && countdown.seconds > 0) {
+      return (
+        <div className="countdownAMPM">
+          <p className="countdown-font">{this.timeConvert(time)}</p>
+          <p className="countdown-font-dow">{this.dayOfWeek(dayOfWeek)}</p>
+        </div>
+      );
+    }
+  };
+
+  dateConvert = date => {
+    var date = new Date(date);
+    var month = date.getMonth() + 1;
+
+    if (date.getMonth() + 1 < 10) {
+      month = "0" + month;
     }
 
-    countDown = ( date, time ) => {
-        var dateTime = `${date} ${time}`;
-        var countdown = getTimeRemaining( dateTime );
-        var dayOfWeek = new Date(dateTime).getDay();
+    return month + "/" + date.getDate() + "/" + date.getFullYear();
+  };
 
-        
-        if ( countdown.days > 7){
-            return (
-                <div  className="countdownAMPM">
-                    <p className="countdown-font">{ this.timeConvert( time ) }</p>
-                    <p className="countdown-font-dow">{ this.dateConvert( date ) }</p>
-                </div>
-            );
-        } else if ( countdown.days < 8 && countdown.seconds > 0){
-            return (
-                <div  className="countdownAMPM">
-                    <p className="countdown-font">{ this.timeConvert( time ) }</p>
-                    <p className="countdown-font-dow">{ this.dayOfWeek( dayOfWeek ) }</p>
-                </div>
-            );
-        } 
+  dayOfWeek = day => {
+    var today = new Date().getDay();
+    console.log(day);
+    if (today === day) {
+      return "Today";
     }
 
-    dateConvert = ( date ) => {
-        var date = new Date(date);
-        var month =  date.getMonth() + 1;
+    switch (day) {
+      case 0:
+        return "Sunday";
+        break;
+      case 1:
+        return "Monday";
+        break;
+      case 2:
+        return "Tuesday";
+        break;
+      case 3:
+        return "Wednesday";
+        break;
+      case 4:
+        return "Thursday";
+        break;
+      case 5:
+        return "Friday";
+        break;
+      case 6:
+        return "Saturday";
+        break;
+    }
+  };
 
-        if ((date.getMonth() + 1) < 10){
-            month = "0" + month;
-        }
+  timeConvert = time => {
+    time = time.split(":");
 
-        return (month + '/' + date.getDate() + '/' +  date.getFullYear())
+    var hours = Number(time[0]);
+    var minutes = Number(time[1]);
+    var timeConvert;
+
+    if (hours > 0 && hours <= 12) {
+      timeConvert = "" + hours;
+    } else if (hours > 12) {
+      timeConvert = "" + (hours - 12);
+    } else if (hours == 0) {
+      timeConvert = "12";
     }
 
-    dayOfWeek = ( day ) => {
-        var today = new Date().getDay();
-        
-        if ( today === day ){
-            return 'Today';
-        }
+    timeConvert += minutes < 10 ? ":0" + minutes : ":" + minutes;
+    timeConvert += hours >= 12 ? " P.M." : " A.M.";
 
-        switch (day){
-            case 0:
-                return 'Sunday';
-                break;
-            case 1:
-                return 'Monday';
-                break;
-            case 2:
-                return 'Tuesday';
-                break;
-            case 3:
-                return 'Wednesday';
-                break;
-            case 4:
-                return 'Thursday';
-                break;
-            case 5:
-                return 'Friday';
-                break;
-            case 6:
-                return 'Saturday';
-                break;
-        }
+    return timeConvert;
+  };
+
+  titleLength = title => {
+    var concatTitle = "";
+    if (title.length > 66) {
+      for (var i = 0; i < 65; i++) {
+        concatTitle += title[i];
+      }
+      concatTitle += "..";
+      return concatTitle;
     }
+    return title;
+  };
 
-    timeConvert = ( time ) => {
-        time = time.split(':'); 
-
-        var hours = Number(time[0]);
-        var minutes = Number(time[1]);
-        var timeConvert;
-
-        if (hours > 0 && hours <= 12) {
-            timeConvert= "" + hours;
-        } else if (hours > 12) {
-            timeConvert= "" + (hours - 12);
-        } else if (hours == 0) {
-            timeConvert= "12";
-        }
-        
-        timeConvert += (minutes < 10) ? ":0" + minutes : ":" + minutes;
-        timeConvert += (hours >= 12) ? " P.M." : " A.M."; 
-
-        return timeConvert;
-    }
-
-    titleLength = (title) => {
-        var concatTitle = '';
-        if(title.length > 66){
-            for (var i=0; i<65; i++){
-                concatTitle += title[i];
-            }
-            concatTitle += ".."
-            return concatTitle
-        } 
-        return title;
-    }
-
-    render(){
-        const listElements = this.props.data.map((item, index) => {
-
-            return(
-             <div key={item._id} className={this.reminderBackground(index)}>
-                <a className="reminder-title-link" href={item.url} target="_blank">
-                    <div className="reminder-icon-bg">
-                        <img className="reminder-icon" src={item.icon}/>
-                    </div>
-                </a>
-                <div className="reminder-title">
-                    <a className="reminder-title-link" href={item.url} target="_blank">{this.titleLength(item.title)}</a>
-                </div>
-                    {this.countDown( item.date, item.time )}
-                <Popup position="left center" trigger={<div className="reminder-dots"></div>}>
-                    <div>
-                        <div>
-                            Notes: {item.notes}
-                        </div>
-                        <hr />
-                        <div className="popup-link">
-                        Recurrence: {item.recurrence}
-                        </div>
-                        <div className="center delete-reminder">
-                            <button className="btn-small red darken-3" id="delete-reminder-btn" onClick={() => {
-                                this.props.delete(item)
-                            }}>
-                                Delete
-                            </button>
-                        </div> 
-                    </div>
-                </Popup>
+  render() {
+    const listElements = this.props.data.map((item, index) => {
+      return (
+        <div key={item._id} className={this.reminderBackground(index)}>
+          <a className="reminder-title-link" href={item.url} target="_blank">
+            <div className="reminder-icon-bg">
+              <img className="reminder-icon" src={item.icon} />
             </div>
-        )
-
-        });
-
-        return(
+          </a>
+          <div className="reminder-title">
+            <a className="reminder-title-link" href={item.url} target="_blank">
+              {this.titleLength(item.title)}
+            </a>
+          </div>
+          {this.countDown(item.date, item.time)}
+          <Popup
+            position="left center"
+            trigger={<div className="reminder-dots" />}
+          >
             <div>
-                <div className="reminder-header">
-                    <div className="reminder-tab">
-                        <h6>Reminder</h6>
-                    </div>   
-                </div>
-                <ul  className= "reminderElements">
-                {listElements}
-                </ul>
+              <div>Notes: {item.notes}</div>
+              <hr />
+              <div className="popup-link">Recurrence: {item.recurrence}</div>
+              <div className="center delete-reminder">
+                <button
+                  className="btn-small red darken-3"
+                  id="delete-reminder-btn"
+                  onClick={() => {
+                    this.props.delete(item);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
+          </Popup>
+        </div>
+      );
+    });
 
-        );
-    }
+    return (
+      <div>
+        <div className="reminder-header">
+          <div className="reminder-tab">
+            <h6>Reminder</h6>
+          </div>
+        </div>
+        <ul className="reminderElements">{listElements}</ul>
+      </div>
+    );
+  }
 }
 
-function getTimeRemaining(endtime){
-    var t = Date.parse(endtime) - Date.parse(new Date());
-    var seconds = Math.floor( (t/1000) % 60 );
-    var minutes = Math.floor( (t/1000/60) % 60 );
-    var hours = Math.floor( (t/(1000*60*60)) % 24 );
-    var days = Math.floor( t/(1000*60*60*24) );
-    return {
-      'total': t,
-      'days': days,
-      'hours': hours,
-      'minutes': minutes,
-      'seconds': seconds
-    };
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    total: t,
+    days: days,
+    hours: hours,
+    minutes: minutes,
+    seconds: seconds
+  };
 }
 
 export default Reminder;

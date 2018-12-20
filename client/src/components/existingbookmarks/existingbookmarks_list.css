@@ -32,7 +32,7 @@
 .allFolders{
     position: relative;
     margin-top: 55px;
-    margin-left: 28px;
+    margin-left: 100px;
     width: 60vw;
 
 }
@@ -48,7 +48,7 @@
     display:inline-block;
 }
 .individualFirstBookMark{
-    height: 15vw;
+    height: 19vw;
     width: 60vw;
     overflow: auto;
 
