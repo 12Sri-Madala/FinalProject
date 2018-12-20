@@ -95,7 +95,6 @@ function processForm() {
   return creaseObj;
 }
 
-
 function findFavicon() {
   $("a[href^='http']").each(function() {
     $(this).append(

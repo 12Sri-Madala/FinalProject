@@ -9,36 +9,64 @@ import 'materialize-css/dist/js/materialize';
 class Folder extends Component {
     constructor(props){
         super(props);
+        let openRoute = [];
+        if(props.match && props.match.params.openRoute){
+            openRoute = props.match.params.openRoute.split(',');
+          } 
+        else if(props.openRoute) {
+            openRoute = props.openRoute;
+          }
         this.state = {
-            open: this.props.open,
-            folder: 'fa-folder'
+            folder: props.open ? "fa-folder" : "fa-folder-open",
+            openRoute: openRoute
         }
     }
 
     toggleFolder = () => {
-        this.setState({
-            open: !this.state.open
-        })
-        if (this.state.folder === 'fa-folder'){
-            this.setState({
-               folder: 'fa-folder-open'
-            })
-        }
-        else{
-            this.setState({
-                folder: 'fa-folder'
-            })
-        }
+        
+        let newRoute = this.state.openRoute;
+        
+        if(newRoute[this.props.depth] === this.props.title){
+            newRoute = newRoute.slice(0, this.props.depth);
+            console.log('open')
+          }
+        else {
+            newRoute[this.props.depth] = this.props.title
+            newRoute = newRoute.slice(0, this.props.depth+1);
+            console.log('closed')
+            
+          }
+          this.props.history.push( '/application_page/'+newRoute.join(','));
     }
+    getButtonMarker = () => {
+        
+        this.checkIfOpen() ? this.setState({
+            folder: 'fa-folder-open'
+        }) : this.setState({
+            folder: 'fa-folder'
+        });
+    }
+    checkIfOpen = () => {  
+        if( this.state.openRoute.length >= this.props.depth){
+            if(this.state.openRoute[this.props.depth] === this.props.title){
+              return true
+            }
+        }           
+        return false;
+      }
 
-    getContents = () => {
-
+    getContents = (open) => {
+        
         return (
             this.props.nested.map((item, index) => {
+                
                 if(!item.url) {
+                    
                     return (
-                        <Folder key={index} nested={item.nested.nestedBookmarks} open={false} title={item.title} depth={this.props.depth+5}/>
+                        <Folder key={index} nested={item.nested.nestedBookmarks} open={open} openRoute={this.state.openRoute} history={this.props.history}
+                          title={item.title} depth={this.props.depth+1}/>
                     )
+
                 }
                 else if (this.props.depth !== 0) {
 
@@ -63,8 +91,11 @@ class Folder extends Component {
             })
         )
     }
+    
     render(){
+        
         if(this.props.depth === 0){
+            
             return (
                 <div>
                     <div className="folderSection">{this.getContents(this.props)}</div>
@@ -73,21 +104,30 @@ class Folder extends Component {
                 </div>
             )
         }
-        else {
+        
+
+           
+
+            else if (this.props.nested){
+                
             return (
                 <div className="folder" style={{marginLeft: this.props.depth + '%'}}>
                     <div className="toggle" onClick={this.toggleFolder}>
-                        <i className={`fas ${this.state.folder} folderIcon`}></i>
+                        
+                        <i className={`fas ${this.state.folder} folderIcon`}></i> 
                     </div>
                     <div className="title">
                         {this.props.title}
-                    </div>
-                    {this.state.open ? this.getContents() : ''}
+                    </div>                   
+                     { this.checkIfOpen() ? this.getContents(true) : ''}
                 </div>
             );
+            }
         }
-    }
+    //}
 }
 
 export default Folder;
 
+// open={false} for the folder
+//  {/* {this.state.open ? this.getContents() : ''}  */}

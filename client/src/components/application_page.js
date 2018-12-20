@@ -5,6 +5,9 @@ import Reminders from './reminders';
 import Nav from './navbar/nav';
 import './application.css';
 
+import { Route, Switch} from 'react-router-dom';
+
+
 
 class ApplicationPage extends Component {
 
@@ -13,7 +16,7 @@ class ApplicationPage extends Component {
 
         this.state = {
             reminders: [],
-            bookmarks: []
+            combinedBookmarks: []
         };
     }
 
@@ -28,8 +31,10 @@ class ApplicationPage extends Component {
 
         const { reminders, bookmarks: bookmarkRoot } = response.data;
         const bookmarks = bookmarkRoot[0].nested.nestedBookmarks;
-
-        this.setState({ reminders, bookmarks });
+        let bookmarksBar = bookmarks[0].nested.nestedBookmarks;
+        let otherBookmarks = bookmarks[1].nested.nestedBookmarks;
+        const combinedBookmarks = [...bookmarksBar, ...otherBookmarks];      
+        this.setState({ reminders, combinedBookmarks });
     }
 
     render(){
@@ -46,7 +51,7 @@ class ApplicationPage extends Component {
 
                 <div className="insideDiv rightDivApp">
 
-                   <ExistingBookmarks list={this.state.bookmarks} />
+                   <ExistingBookmarks list={this.state.combinedBookmarks} />
 
                 </div>
 
