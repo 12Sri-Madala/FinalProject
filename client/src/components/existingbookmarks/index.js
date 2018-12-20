@@ -27,7 +27,7 @@ class ExistingBookmarks extends Component {
     }
 
     render(){ 
-        debugger;
+        
         if (!this.state.bookmarks){
            return(
             <div>Loading...</div>
@@ -40,7 +40,7 @@ class ExistingBookmarks extends Component {
                 <Switch>
                     <Route path="/application_page/:openRoute?" component={ 
                             (props) => {
-                                debugger;
+                                
                                 return <Folder nested={this.state.bookmarks}  title="Bookmarks" depth={0} {...props}/>
                             }
                         }

@@ -17,7 +17,7 @@ class Folder extends Component {
             openRoute = props.openRoute;
           }
         this.state = {
-            folder: props.open ? "fa-folder-open" : "fa-folder",
+            folder: props.open ? "fa-folder" : "fa-folder-open",
             openRoute: openRoute
         }
     }
@@ -25,7 +25,7 @@ class Folder extends Component {
     toggleFolder = () => {
         
         let newRoute = this.state.openRoute;
-
+        
         if(newRoute[this.props.depth] === this.props.title){
             newRoute = newRoute.slice(0, this.props.depth);
             console.log('open')
@@ -63,7 +63,7 @@ class Folder extends Component {
                 if(!item.url) {
                     
                     return (
-                        <Folder key={index} nested={item.nested.nestedBookmarks} open={false} openRoute={this.state.openRoute} history={this.props.history}
+                        <Folder key={index} nested={item.nested.nestedBookmarks} open={open} openRoute={this.state.openRoute} history={this.props.history}
                           title={item.title} depth={this.props.depth+1}/>
                     )
 
