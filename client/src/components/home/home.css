@@ -13,7 +13,7 @@ body{
     background-size: cover;
     background-position: center;
     background-repeat: repeat-y;
-    height: 100vw;
+    height: 110vw;
 }
 .home-login{
     width: 100vw;
@@ -89,7 +89,7 @@ button:focus {
 
 .description-body {
     width: 100vw;
-    height: 80vh;
+    height: 100vh;
     background-image: url('./images/description-body.png');
     background-size: cover;
     background-position: left;
@@ -104,6 +104,10 @@ button:focus {
 }
 
 .video-container {
-    height: 650px;
-    width: 450px;
+    height: 800px;
+    width: 557px;
+}
+
+video-container-parent {
+
 }
