@@ -116,82 +116,6 @@ function findFavicon(url) {
   return faviconURL;
 }
 
-var sampleData = [
-  {
-    dateAdded: 1507836498658,
-    dateGroupModified: 1544228099968,
-    id: "1",
-    index: 0,
-    parentId: "0",
-    folderId: "1", // Trying to Add
-    title: "Bookmarks Bar",
-    children: [
-      {
-        dateAdded: 1544228092591,
-        id: "164",
-        index: 0,
-        parentId: "1",
-        title:
-          "52 Of The Most Common Myths and Misconceptions Debunked In One Infographic | IFLScience",
-        url:
-          "http://www.iflscience.com/editors-blog/52-common-myths-and-misconceptions-debunked/",
-        favicon: "url", // Trying to Add
-        Notes: "", // Trying to Add
-        reminderDate: null, // Trying to Add
-        alarmTimer: null // Trying to Add
-      },
-      {
-        dateAdded: 1544228099968,
-        id: "165",
-        index: 1,
-        parentId: "1",
-        title: "The Rise of Tech-Enabled Middlemen – Medium",
-        url:
-          "https://medium.com/@epeckham/the-rise-of-tech-enabled-middlemen-5d95a4dc3b82#.m6hhmnjp8",
-        favicon: "url", // Trying to Add
-        Notes: "", // Trying to Add
-        reminderDate: null, // Trying to Add
-        alarmTimer: null // Trying to Add
-      }
-    ]
-  },
-  {
-    dateAdded: 1507836498658,
-    dateGroupModified: 1544228092591,
-    id: "2",
-    index: 1,
-    parentId: "0",
-    folderId: "2", // Trying to Add
-    title: "Other Bookmarks",
-    children: [
-      {
-        dateAdded: 1462134914607,
-        id: "6",
-        index: 0,
-        parentId: "2",
-        title: "Harry Foundalis - The Bongard Problems",
-        url: "http://www.foundalis.com/res/diss_research.html",
-        favicon: "url", // Trying to Add
-        Notes: "", // Trying to Add
-        reminderDate: null, // Trying to Add
-        alarmTimer: null // Trying to Add
-      },
-      {
-        dateAdded: 1462134914608,
-        id: "7",
-        index: 1,
-        parentId: "2",
-        title: "SparkNotes: Crime and Punishment",
-        url: "http://www.sparknotes.com/lit/crime/",
-        favicon: "url", // Trying to Add
-        Notes: "", // Trying to Add
-        reminderDate: null, // Trying to Add
-        alarmTimer: null // Trying to Add
-      }
-    ]
-  }
-];
-
 // add new user endpoint (login to website) {DONE by google Oauth}
 
 // add current bookmarks to one user endpoint (login to web site) {DONE}
@@ -326,20 +250,6 @@ app.post("/auth/addBookmarks", async (req, resp) => {
     }`
   });
 });
-
-// edit current bookmarks endpoint (website) {PROBABLY SOMETHING FOR THE FUTURE, TOO MUCH TO DO FOR THIS}
-
-// app.put("/updateBookmarks", (req, resp) => {
-//   userBase.findOne({ googleId }, (err, user) => {
-//     if (err) return console.log(err);
-//     userBookmarks.findOneAndUpdate({ bookmarkID }).then(function(bookmarks) {
-//       resp.send({
-//         success: true,
-//         updatedBookmarks: bookmarks
-//       });
-//     });
-//   });
-// });
 
 // delete a reminder/bookmark {NEED HELP ON STATE IN REACT AND GETTING THE PROPER ITEM AND ITEM.ID}
 
