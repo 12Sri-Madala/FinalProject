@@ -21,6 +21,7 @@ mongoose.connect(
 const app = express();
 var userBase;
 var userBookmarks;
+var userReminders;
 var db = mongoose.connection;
 
 db.once("open", function() {
@@ -31,11 +32,18 @@ db.once("open", function() {
     url: String,
     title: String,
     icon: String,
+  });
+
+  var reminderSchema = new mongoose.Schema({
+    bookmarkID: Number,
+    url: String,
+    title: String,
+    icon: String,
     notes: String,
     date: String,
     time: String,
     recurrence: String
-  });
+  })
 
   bookmarkSchema.add({
     nested: {
@@ -50,11 +58,13 @@ db.once("open", function() {
     userName: String,
     createdAt: Date,
     updatedAt: Date,
-    bookmarks: [bookmarkSchema]
+    bookmarks: [bookmarkSchema],
+    reminders: [reminderSchema]
   });
 
   userBase = mongoose.model("userbases", usersSchema);
   userBookmarks = mongoose.model("userBookmarks", bookmarkSchema);
+  userReminders = mongoose.model("userReminders", reminderSchema)
 
   require("./services/passport");
 });
@@ -132,25 +142,21 @@ async function addBookmarksToUser(databaseUser, existingBookmarks) {
     const newArray = array.map(async item => {
       if (item.hasOwnProperty("children")) {
         // console.log('INSIDE ',item.children)
-        const userBookmarkOptions = {
+        const userBookmarkParent = {
           bookmarkID: item.id,
           url: item.url,
           title: item.title,
           icon: findFavicon(item.url),
-          notes: "",
-          date: "",
-          time: "",
-          recurrence: "",
           nested: {
             folderID: ++baseFolderID,
             status: true
           }
         };
-        userBookmarkOptions.nested.nestedBookmarks = await CreateBookmarks(
+        userBookmarkParent.nested.nestedBookmarks = await CreateBookmarks(
           item.children
         );
 
-        const record = new userBookmarks(userBookmarkOptions);
+        const record = new userBookmarks(userBookmarkParent);
         //console.log('Inside IF statement (nested bookmark)', record.nested.nestedBookmarks);
 
         await record.save();
@@ -162,10 +168,6 @@ async function addBookmarksToUser(databaseUser, existingBookmarks) {
           url: item.url,
           title: item.title,
           icon: findFavicon(item.url),
-          notes: "",
-          date: "",
-          time: "",
-          recurrence: ""
         });
         console.log("Post IF statement (not nested)", record);
         await record.save();
@@ -233,20 +235,16 @@ app.post("/auth/addBookmarks", async (req, resp) => {
       message: "Not authorized"
     });
   }
-  // req.body.date = new Date(req.body.date)
 
-  // console.log('New date after parsing: ', req.body.date)
+  const reminder = await userReminders.create(req.body);
 
-  const bookmark = await userBookmarks.create(req.body);
-  const folder = user.bookmarks[0].nested.nestedBookmarks[1];
-
-  folder.nested.nestedBookmarks.push(bookmark);
+  user.reminders.push(reminder);
   await user.save();
 
   resp.send({
     success: true,
-    message: `Extension Bookmark added to ${user}; their bookmark list is now: ${
-      user.bookmarks
+    message: `Extension Bookmark added to ${user}; their reminder list is now: ${
+      user.reminders
     }`
   });
 });
@@ -258,7 +256,7 @@ app.delete("/deleteBookmarks", (req, resp) => {
 
   console.log("Delete Bookmark called. User Info:", user);
 
-  return res.send({ success: "Called deleteBookmars" });
+  return res.send({ success: "Called deleteBookmarks" });
 
   userBase.findOne({ googleId }, (err, user) => {
     if (err) return console.log(err);
