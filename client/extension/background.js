@@ -10,6 +10,8 @@ function createNotification(creaseObj){
  
 }
 
+
+
 function launchAlarmURL(object){
     const tabObj = {};
     tabObj.url = object.url
@@ -57,3 +59,97 @@ chrome.runtime.onInstalled.addListener(function() {
         $.ajax(postingCall);
       });
 });
+
+class User {
+    constructor() {
+        this.loggedIn = false;
+        this.tabsSortedByWindow = {};
+        this.activeTabIndex = {};
+        this.tabIds = {};
+        this.name = '';
+        this.photo = '';
+        this.detachedTabInfo = {
+            uniqueId: null
+        };
+    }
+    login() {
+        if (user.loggedIn) {
+            return;
+        }
+        chrome.cookies.get({
+            url: BASE_URL,
+            name: COOKIE_NAME
+        }, function (cookie) {
+            if (cookie) {
+                var date = new Date();
+                var currenttime = date.getTime();
+                var ifExpire = currenttime - cookie.expirationDate;
+                if (ifExpire > 0) {
+                    user.loggedIn = true;
+                    user.changeBrowserIcon('images/extension-green-logo.png');
+                    clearPreviousTabData();
+                    user.sendAllTabsToServer();
+                } else {
+                    user.changeBrowserIcon('images/iconpurple.png');
+                    user.loggedIn = false;
+                }
+            } else {
+                user.changeBrowserIcon('images/iconpurple.png');
+                user.loggedIn = false;
+            }
+        });
+    }
+    logout() {
+        chrome.cookies.remove({
+            url: BASE_URL,
+            name: COOKIE_NAME
+        }, function (result) {
+            if (result.name === COOKIE_NAME) {
+                user.changeBrowserIcon('images/iconpurple.png')
+                if (user.loggedIn) {
+                    clearPreviousTabData();
+                    user.loggedIn = false;
+                    for (var window in user.tabsSortedByWindow) {
+                        for (var tab in user.tabsSortedByWindow[window]) {
+                            var matchedTab = user.tabsSortedByWindow[window][tab];
+                            let domain = (matchedTab.url).match(/closeyourtabs.com/gi)
+                            if (domain) {
+                                chrome.tabs.reload(matchedTab.id);
+                            }
+                        }
+                    }
+
+                }
+            } 
+        })
+
+
+    }
+    sendAllTabsToServer() {
+        for (var window in this.tabsSortedByWindow) {
+            for (var tab in this.tabsSortedByWindow[window]) {
+                var currentTab = this.tabsSortedByWindow[window][tab];
+                var dataForServer = dataObjectForNewTab(currentTab);
+                createNewTabRequest(dataForServer, currentTab.index);
+
+            }
+        }
+    }
+    changeBrowserIcon(imagePath) {
+        chrome.browserAction.setIcon({
+            path: imagePath
+        })
+    }
+}
+
+
+function createNewUser() {
+    user = new User();
+    chrome.windows.getAll(function (windows) {
+        windows.forEach(function (window) {
+            createNewWindow(window.id);
+        });
+    });
+    getAllTabs();
+    user.login();
+}
