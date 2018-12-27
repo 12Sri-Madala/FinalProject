@@ -185,13 +185,13 @@ async function addBookmarksToUser(databaseUser, existingBookmarks) {
 app.post("/auth/apiBookmarks", (req, resp) => {
   let bookmarks = JSON.parse(req.body.bookmarks);
   console.log("2 =========== POST Bookmarks req.body.bookmarks", req.user);
-  // var array =
-  // addBookmarksToUser(req.user, bookmarks).then(() => {
-  //   resp.send({
-  //     success: true
-  //     // message: `Bookmarks added to ${profile.emails[0].value}`
-  //   });
-  // });
+  var array =
+  addBookmarksToUser(req.user, bookmarks).then(() => {
+    resp.send({
+      success: true
+      // message: `Bookmarks added to ${profile.emails[0].value}`
+    });
+  });
 });
 
 app.get("/auth/getBookmarks", (req, res) => {

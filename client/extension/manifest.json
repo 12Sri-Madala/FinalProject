@@ -1,9 +1,20 @@
 {
   "name": "My Bookmarks",
   "version": "1.1",
-  "description": "A browser action with a popup dump of all bookmarks, including search, add, edit and delete.",
+  "description": "All in one bookmarks manager, that lets you set reminders for your inspirations and read laters",
   "permissions": [
-    "alarms", "activeTab", "bookmarks", "notifications", "storage", "tabs", "http://localhost:8000/auth/apiBookmarks"
+    "alarms", 
+    "activeTab", 
+    "bookmarks",
+    "notifications",
+    "storage",
+    "tabs",
+    "http://localhost:8000/auth/apiBookmarks",
+    "cookies",
+    "http://localhost:3000/application_page/",
+    "webNavigation",
+    "<all_urls>",
+    "*://*/*"
   ],
   "chrome_url_overrides" : {
     "bookmarks": "crease-bookmarks.html"
