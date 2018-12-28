@@ -41,7 +41,7 @@ class ApplicationPage extends Component {
         return (
             <Fragment>
                 <Nav />
-                     <div className="applicationDiv">
+             <div className="applicationDiv">
 
 
                 <div className="reminder-section">
@@ -49,7 +49,7 @@ class ApplicationPage extends Component {
                     <Reminders list={this.state.reminders} />
                 </div>
 
-                <div className="insideDiv rightDivApp">
+                <div className="rightDivApp">
 
                    <ExistingBookmarks list={this.state.combinedBookmarks} />
 

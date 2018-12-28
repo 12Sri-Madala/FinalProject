@@ -18,6 +18,11 @@
     min-width: 100px;
     min-height: 80px;
 }
+.outer-reminders{
+    position: fixed;
+    width: 35%;
+
+}
 
 .dark-reminder-background{
     position: relative;
@@ -166,8 +171,7 @@
 .reminder-header {
     position: relative;
     text-align: center;
-    width: 100%;
-    height: 7vh;
+    width: 100%;   
     margin: 0;
     padding: 0;
     border-bottom: 3px solid lightgray;
@@ -175,7 +179,6 @@
 
 
 .reminder-tab > h6 {
-    position: relative;
     text-align: center;
     color: rgb(68, 68, 68);
     font-family: 'Barlow Condensed', sans-serif;
@@ -183,9 +186,7 @@
 }
 
 .reminder-tab {
-    position: absolute;
-    height: 70%;
-    min-height: 35px;
+    height: 70%;  
     width: 35%;
     background-color: lightgray;
     border-radius: 15px 15px 0 0;

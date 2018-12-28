@@ -138,7 +138,8 @@ class Reminder extends Component {
                   className="btn-small red darken-3"
                   id="delete-reminder-btn"
                   onClick={() => {
-                    this.props.delete(item);
+                    // this.props.delete(item);
+                    console.log('DELETED',item);
                   }}
                 >
                   Delete
@@ -151,7 +152,7 @@ class Reminder extends Component {
     });
 
     return (
-      <div>
+      <div className="outer-reminders">
         <div className="reminder-header">
           <div className="reminder-tab">
             <h6>Reminder</h6>
