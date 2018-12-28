@@ -1,3 +1,5 @@
+const BASE_URL = 'http://localhost:3000/'
+
 function createNotification(creaseObj){
     const id = creaseObj.id
 
@@ -9,8 +11,6 @@ function createNotification(creaseObj){
     }, function(id) {});
  
 }
-
-
 
 function launchAlarmURL(object){
     const tabObj = {};
@@ -86,15 +86,14 @@ class User {
                 var ifExpire = currenttime - cookie.expirationDate;
                 if (ifExpire > 0) {
                     user.loggedIn = true;
-                    user.changeBrowserIcon('images/extension-green-logo.png');
-                    clearPreviousTabData();
-                    user.sendAllTabsToServer();
+                    // user.changeBrowserIcon('images/extension-green-logo.png');
+                    // user.sendAllTabsToServer();
                 } else {
-                    user.changeBrowserIcon('images/iconpurple.png');
+                    // user.changeBrowserIcon('images/iconpurple.png');
                     user.loggedIn = false;
                 }
             } else {
-                user.changeBrowserIcon('images/iconpurple.png');
+                // user.changeBrowserIcon('images/iconpurple.png');
                 user.loggedIn = false;
             }
         });
@@ -125,31 +124,9 @@ class User {
 
 
     }
-    sendAllTabsToServer() {
-        for (var window in this.tabsSortedByWindow) {
-            for (var tab in this.tabsSortedByWindow[window]) {
-                var currentTab = this.tabsSortedByWindow[window][tab];
-                var dataForServer = dataObjectForNewTab(currentTab);
-                createNewTabRequest(dataForServer, currentTab.index);
-
-            }
-        }
-    }
-    changeBrowserIcon(imagePath) {
-        chrome.browserAction.setIcon({
-            path: imagePath
-        })
-    }
 }
-
 
 function createNewUser() {
     user = new User();
-    chrome.windows.getAll(function (windows) {
-        windows.forEach(function (window) {
-            createNewWindow(window.id);
-        });
-    });
-    getAllTabs();
     user.login();
 }
