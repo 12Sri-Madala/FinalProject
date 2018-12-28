@@ -1,24 +1,18 @@
 .applicationDiv{
     margin: 0;
+    height: 90%;
     width: 100vw;
-
 }
 
-.insideDiv{
-    display:inline-block;
-    height: 85vh;
-    min-width: 500px;
-}
 
 .reminder-section{
-    display: inline-block;
-    position: relative;
-    width: 30vw;
-    height: 91vh;
+    display: inline-block;   
     min-width: 400px;
-    border-radius: 0 15px 0 0;
-    top: 10px;
+    border-radius: 0 15px 0 0;   
     overflow-y: auto;
+    height: 100%;
+    width: 35%;
+    padding-top: 60px;
 }
 
 .reminder-section::-webkit-scrollbar {
@@ -28,6 +22,11 @@
 
 .rightDivApp{
     vertical-align: top;
+    padding-top: 100px;
+    padding-left: 50px;
+    width: 60%;
+    display:inline-block; 
+    min-width: 500px;
 }
 
 .rightDivApp > * {

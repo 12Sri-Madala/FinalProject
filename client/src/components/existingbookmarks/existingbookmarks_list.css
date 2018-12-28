@@ -3,9 +3,6 @@
   font-size: 3rem;
 
 }
-.folder{
-
-}
 .toggle{
     display: inline-block;
     padding: 3px;
@@ -19,27 +16,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.bookmark::before{
-    /*content: '--'*/
-}
+
 .bookmark{
     white-space: pre;
-    width: 300px;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .allFolders{
-    position: relative;
-    margin-top: 55px;
-    margin-left: 100px;
     width: 60vw;
-
-}
-
-.folderSection {
-    height: 40vh;
-
 }
 .folderSection:first-child{
     overflow: auto;
@@ -48,19 +31,13 @@
     display:inline-block;
 }
 .individualFirstBookMark{
-    height: 19vw;
-    width: 60vw;
     overflow: auto;
-
-
 }
 .individualFirstBookMark:first-child{
     display: inline-block;
     white-space: pre;
     overflow: auto;
     text-overflow: ellipsis;
-
-
 }
 .individualBookmarkImg{
     width: 30px;
@@ -71,7 +48,6 @@
     width: 200px;
     text-overflow: ellipsis;
     margin: 0;
-    margin-left: 20px;
     overflow: hidden;
 
 }
