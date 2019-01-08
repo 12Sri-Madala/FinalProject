@@ -205,7 +205,7 @@ app.get("/auth/getBookmarks", (req, res) => {
   res.send({
     success: true,
     bookmarks: user.bookmarks,
-    reminders: findWithReminders(user.bookmarks)
+    reminders: findWithReminders(user.reminders)
   });
 });
 
@@ -251,45 +251,57 @@ app.post("/auth/addBookmarks", async (req, resp) => {
 
 // delete a reminder/bookmark {NEED HELP ON STATE IN REACT AND GETTING THE PROPER ITEM AND ITEM.ID}
 
-app.delete("/deleteBookmarks", (req, resp) => {
-  const { user } = req;
+app.delete("/auth/deleteBookmarks", (req, resp) => {
+  const { user: {googleId}, body: { reminder: _id } } = req;
 
-  console.log("Delete Bookmark called. User Info:", user);
+  // console.log("Delete Bookmark called. body Info:", body);
+  // console.log("Delete Bookmark called. User Info:", googleId);
 
-  return res.send({ success: "Called deleteBookmarks" });
-
+  // userReminders.findOne({_id}, (err, reminder) => {
+  //   console.log('Reminders:', reminder);
+  // });
+  
   userBase.findOne({ googleId }, (err, user) => {
-    if (err) return console.log(err);
-    user.bookmarks
-      .findOneAndRemove(
-        { bookmarkID: req.query.bookmarkID },
-        (err, delBookmark) => {
-          if (err) return console.log(err); // Would this conditional work since it only goes farther down if it doesnt hit this return statement
-        }
-      )
-      .then(function(bookmarks) {
-        // what is bookmarks here
-        resp.send({
-          success: true,
-          updatedBookmarks: bookmarks
-        });
-      });
+      if (err) return console.log(err);
+      console.log("Inside findOne function", user);
 
-    user.nested.nestedBookmarks
-      .findOneAndRemove(
-        { bookmarkID: req.query.bookmarkID },
-        (err, delBookmark) => {
-          if (err) return console.log(err);
+      // userBase.reminders
+
+      // userBase.update(
+      //   { _id: _id },
+      //   { $pull }
+      // )
+      user.reminders.id(_id).remove()
+
+      // userReminders
+      //   .findOneAndDelete(
+      //     { _id: _id })
+      user.save(err => {
+        if (err){console.log("Error from find one and delete",err);} else {
+          console.log('Reminder delete success');
         }
-      )
-      .then(function(bookmarks) {
-        // what is bookmarks here
         resp.send({
           success: true,
-          updatedBookmarks: bookmarks
+          // updatedBookmarks: bookmarks
         });
-      });
-  });
+
+      })
+        // .then( response => {
+        //     console.log("Response from find one and delete function",response)
+        //   })
+        // .catch( err => {
+        //   console.log("Error from frind one and delete",err)
+        // })
+        // .then(function(bookmarks) {
+        //   // what is bookmarks here
+        //   resp.send({
+        //     success: true,
+        //     updatedBookmarks: bookmarks
+        //   });
+        // });
+    });
+  // return resp.send({ success: "Called deleteBookmarks" });
+
 });
 
 app.get("*", (req, res) => {

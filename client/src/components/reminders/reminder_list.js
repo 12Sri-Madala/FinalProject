@@ -3,6 +3,7 @@ import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize";
 import "./reminder_list.css";
 import Popup from "reactjs-popup";
+import axios from 'axios';
 
 class Reminder extends Component {
   reminderBackground = index => {
@@ -110,57 +111,18 @@ class Reminder extends Component {
     return title;
   };
 
-  deleteItem = async (id) => {
-    // console.log('Delete item with ID: ', id);
-
-    await axios.delete(`${BASE_URL}/${id + API_KEY}`)
-    this.getListData();
+  deleteItem = async (item) => {
+    console.log("reminder item that was passed in: ", item)
+    await axios({
+      url: `/auth/deleteBookmarks`,
+      method: 'delete',
+      data: {
+        reminder: item
+      }
+    }).then( resp => {
+        console.log("this is the resp from the server: ",resp)
+      })
     
-    // const listCopy = this.state.list.slice();
-
-    // listCopy.splice(index, 1);
-
-    // this.setState({
-    //     list: listCopy
-    // })
-}
-
-async getListData(){
-  // Call server to get data
-  // http://api.reactprototypes.com/todos?key=c718_demouser
-  try {
-      const resp = await axios.get(BASE_URL + API_KEY);
-
-      console.log('Server Resp:', resp);
-
-      this.setState({
-          list: resp.data.todos
-      });
-  } catch(err){
-      // console.log('Error: ', err.message);
-
-      this.setState({
-          error: 'Error getting todos'
-      });
-  }
-  
-  // console.log('Resp: ', resp)
-
-  // axios.get(BASE_URL + API_KEY).then((resp) => {
-  //     // console.log('Server Response: ', resp);
-
-  //     this.setState({
-  //         list: resp.data.todos
-  //     })
-  // }).catch((err) => {
-  //     console.log('Request Error: ', err.message)
-  //     this.setState({
-  //         error: 'Error Getting Todos'
-  //     })
-  // }) 
-
-  // console.log('After axios.get call') (COMES BEFORE AXIOS CALL BECAUSE CALL HAS TO FINISH BEFORE C.LOG RUNS)
- 
 }
 
   render() {
@@ -191,8 +153,10 @@ async getListData(){
                   className="btn-small red darken-3"
                   id="delete-reminder-btn"
                   onClick={() => {
+                    this.deleteItem(item);
                     // this.props.delete(item);
-                    console.log('DELETED',item);
+                    console.log('DELETED: ',item);
+
                   }}
                 >
                   Delete
