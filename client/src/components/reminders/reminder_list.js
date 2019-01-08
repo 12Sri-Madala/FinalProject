@@ -5,8 +5,6 @@ import "./reminder_list.css";
 import Popup from "reactjs-popup";
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000/application_page'
-
 class Reminder extends Component {
   reminderBackground = index => {
     if (index % 2 === 0) {
@@ -124,46 +122,7 @@ class Reminder extends Component {
     }).then( resp => {
         console.log("this is the resp from the server: ",resp)
       })
-    // this.getListData();
     
-}
-
-async getListData(){
-  // Call server to get data
-  // http://api.reactprototypes.com/todos?key=c718_demouser
-  try {
-      const resp = await axios.get(BASE_URL + API_KEY);
-
-      console.log('Server Resp:', resp);
-
-      this.setState({
-          list: resp.data.todos
-      });
-  } catch(err){
-      // console.log('Error: ', err.message);
-
-      this.setState({
-          error: 'Error getting todos'
-      });
-  }
-  
-  // console.log('Resp: ', resp)
-
-  // axios.get(BASE_URL + API_KEY).then((resp) => {
-  //     // console.log('Server Response: ', resp);
-
-  //     this.setState({
-  //         list: resp.data.todos
-  //     })
-  // }).catch((err) => {
-  //     console.log('Request Error: ', err.message)
-  //     this.setState({
-  //         error: 'Error Getting Todos'
-  //     })
-  // }) 
-
-  // console.log('After axios.get call') (COMES BEFORE AXIOS CALL BECAUSE CALL HAS TO FINISH BEFORE C.LOG RUNS)
- 
 }
 
   render() {
@@ -197,6 +156,7 @@ async getListData(){
                     this.deleteItem(item);
                     // this.props.delete(item);
                     console.log('DELETED: ',item);
+
                   }}
                 >
                   Delete

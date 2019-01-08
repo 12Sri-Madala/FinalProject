@@ -265,12 +265,27 @@ app.delete("/auth/deleteBookmarks", (req, resp) => {
       if (err) return console.log(err);
       console.log("Inside findOne function", user);
 
-      userBase.update(
-        { _id: _id },
-        { $pull }
-      )
-        // .findOneAndDelete(
-        //   { _id: _id })
+      // userBase.reminders
+
+      // userBase.update(
+      //   { _id: _id },
+      //   { $pull }
+      // )
+      user.reminders.id(_id).remove()
+
+      // userReminders
+      //   .findOneAndDelete(
+      //     { _id: _id })
+      user.save(err => {
+        if (err){console.log("Error from find one and delete",err);} else {
+          console.log('Reminder delete success');
+        }
+        resp.send({
+          success: true,
+          // updatedBookmarks: bookmarks
+        });
+
+      })
         // .then( response => {
         //     console.log("Response from find one and delete function",response)
         //   })
@@ -285,7 +300,7 @@ app.delete("/auth/deleteBookmarks", (req, resp) => {
         //   });
         // });
     });
-  return resp.send({ success: "Called deleteBookmarks" });
+  // return resp.send({ success: "Called deleteBookmarks" });
 
 });
 
