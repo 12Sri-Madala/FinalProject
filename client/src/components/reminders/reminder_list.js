@@ -3,6 +3,9 @@ import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize";
 import "./reminder_list.css";
 import Popup from "reactjs-popup";
+import axios from 'axios';
+
+const BASE_URL = 'http://localhost:3000/application_page'
 
 class Reminder extends Component {
   reminderBackground = index => {
@@ -110,19 +113,19 @@ class Reminder extends Component {
     return title;
   };
 
-  deleteItem = async (id) => {
-    // console.log('Delete item with ID: ', id);
-
-    await axios.delete(`${BASE_URL}/${id + API_KEY}`)
-    this.getListData();
+  deleteItem = async (item) => {
+    console.log("reminder item that was passed in: ", item)
+    await axios({
+      url: `/auth/deleteBookmarks`,
+      method: 'delete',
+      data: {
+        reminder: item
+      }
+    }).then( resp => {
+        console.log("this is the resp from the server: ",resp)
+      })
+    // this.getListData();
     
-    // const listCopy = this.state.list.slice();
-
-    // listCopy.splice(index, 1);
-
-    // this.setState({
-    //     list: listCopy
-    // })
 }
 
 async getListData(){
@@ -191,8 +194,9 @@ async getListData(){
                   className="btn-small red darken-3"
                   id="delete-reminder-btn"
                   onClick={() => {
+                    this.deleteItem(item);
                     // this.props.delete(item);
-                    console.log('DELETED',item);
+                    console.log('DELETED: ',item);
                   }}
                 >
                   Delete
