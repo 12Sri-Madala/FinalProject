@@ -44,7 +44,7 @@ function createAlarm(creaseObj) {
       when: reminder, periodInMinutes: recurrence});
 }
 
-chrome.runtime.onInstalled.addListener(function() {
+function getBookmarkData() {
     chrome.bookmarks.getTree(function(bookmarkTreeNodes) {
         console.log("Hitting dumpBookmarks function", bookmarkTreeNodes);
     
@@ -58,7 +58,27 @@ chrome.runtime.onInstalled.addListener(function() {
     
         $.ajax(postingCall);
       });
-});
+}
+
+// function handleCreated(id, bookmarkInfo){
+//     console.log(`New bookmark ID: ${id}`);
+//     console.log("New bookmark info: ", bookmarkInfo);
+//     console.log(`New bookmark URL: ${bookmarkInfo.url}`);
+// }
+
+chrome.runtime.onInstalled.addListener(getBookmarkData);
+
+chrome.bookmarks.onCreated.addListener(getBookmarkData)
+
+chrome.bookmarks.onRemoved.addListener(getBookmarkData);
+
+chrome.bookmarks.onChanged.addListener(getBookmarkData);
+
+chrome.bookmarks.onMoved.addListener(getBookmarkData);
+
+chrome.bookmarks.onChildrenReordered.addListener(getBookmarkData);
+
+chrome.bookmarks.onImportEnded.addListener(getBookmarkData);
 
 class User {
     constructor() {
