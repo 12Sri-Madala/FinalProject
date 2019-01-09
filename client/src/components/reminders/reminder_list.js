@@ -124,16 +124,10 @@ class Reminder extends Component {
       }
     }).then( resp => {
         console.log("this is the resp from the server: ",resp)
-        this.setState({
-          reminders: this.props.data
-        })
-        console.log('State after deletion:', this.state);
+        
+        this.props.updateReminders();
       })
     
-  }
-  
-  componentDidUpdate = () => {
-    console.log('Component Update triggered!');
   }
 
   render() {
