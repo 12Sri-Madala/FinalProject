@@ -17,12 +17,6 @@ class Reminders extends Component {
         return newProps;
     }
 
-    // sortReminders = () => {
-    //     this.props.list.sort((a,b)=>{
-    //         return Date.parse(`${a.date} ${a.time}`) - Date.parse(`${b.date} ${b.time}`);
-    //     })
-    // }
-
     render(){
         console.log(this.props.list);
 
