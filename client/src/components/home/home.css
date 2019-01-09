@@ -104,8 +104,8 @@ button:focus {
 }
 
 .video-container {
-    height: 800px;
-    width: 557px;
+    height: 25%;
+    width: 100%;
 }
 
 video-container-parent {
