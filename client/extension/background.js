@@ -1,4 +1,5 @@
 const BASE_URL = 'http://localhost:3000/'
+const COOKIE_NAME = 'connect.sid'
 
 function createNotification(creaseObj){
     const id = creaseObj.id
@@ -83,14 +84,7 @@ chrome.bookmarks.onImportEnded.addListener(getBookmarkData);
 class User {
     constructor() {
         this.loggedIn = false;
-        this.tabsSortedByWindow = {};
-        this.activeTabIndex = {};
-        this.tabIds = {};
-        this.name = '';
-        this.photo = '';
-        this.detachedTabInfo = {
-            uniqueId: null
-        };
+        // this.name = '';
     }
     login() {
         if (user.loggedIn) {
@@ -106,14 +100,10 @@ class User {
                 var ifExpire = currenttime - cookie.expirationDate;
                 if (ifExpire > 0) {
                     user.loggedIn = true;
-                    // user.changeBrowserIcon('images/extension-green-logo.png');
-                    // user.sendAllTabsToServer();
                 } else {
-                    // user.changeBrowserIcon('images/iconpurple.png');
                     user.loggedIn = false;
                 }
             } else {
-                // user.changeBrowserIcon('images/iconpurple.png');
                 user.loggedIn = false;
             }
         });
@@ -124,25 +114,15 @@ class User {
             name: COOKIE_NAME
         }, function (result) {
             if (result.name === COOKIE_NAME) {
-                user.changeBrowserIcon('images/iconpurple.png')
                 if (user.loggedIn) {
-                    clearPreviousTabData();
                     user.loggedIn = false;
-                    for (var window in user.tabsSortedByWindow) {
-                        for (var tab in user.tabsSortedByWindow[window]) {
-                            var matchedTab = user.tabsSortedByWindow[window][tab];
-                            let domain = (matchedTab.url).match(/closeyourtabs.com/gi)
-                            if (domain) {
-                                chrome.tabs.reload(matchedTab.id);
-                            }
-                        }
-                    }
-
+                    let domain = (matchedTab.url).match(/localhost:3000/gi)
+                    if (domain) {
+                        chrome.tabs.reload(matchedTab.id);
+                    }                   
                 }
             } 
         })
-
-
     }
 }
 
