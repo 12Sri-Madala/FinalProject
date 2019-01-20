@@ -6,7 +6,7 @@ import MeetTeam from './team_page/meet_team';
 import './application.css';
 
 export default () => (
-    <div class="appDivBeforeRoot">
+    <div className="appDivBeforeRoot">
         <Route exact path="/" component={Home}/>
         <Route path="/application_page" component={ApplicationPage}/>
         <Route path="/meet_team" component={MeetTeam}/>

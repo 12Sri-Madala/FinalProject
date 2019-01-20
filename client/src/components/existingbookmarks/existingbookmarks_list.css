@@ -22,7 +22,10 @@
   }
   
   .allFolders{
-      width: 60vw;
+    width: 60vw;
+    position: relative;
+    top: 20%;
+    left: 8%;
   }
   .folderSection:first-child{
       overflow: auto;
@@ -70,17 +73,23 @@
       margin:0;
       margin-bottom: 14px;
       width: 50vw;
-      position: relative;
-      left: 5%;
+      
   }
 
   .noDataErrorFixing{
+    font-size: 0;
+    vertical-align: top;
+    min-width: 500px;
+    height: 100%;
+    background: lightgoldenrodyellow;
+  }
+  .insideNoDataErrorFixing{
     font-size: 1rem;
     width: 100%;
     position: relative;
     top: 44%;
     text-align: center;
     padding-right: 5%;
-    padding-left: 5%;
+    padding-left: 5%; 
   }
   
