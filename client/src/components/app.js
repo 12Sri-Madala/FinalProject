@@ -3,9 +3,10 @@ import {Route} from 'react-router-dom';
 import ApplicationPage from './application_page';
 import Home from './home/home';
 import MeetTeam from './team_page/meet_team';
+import './application.css';
 
 export default () => (
-    <div>
+    <div class="appDivBeforeRoot">
         <Route exact path="/" component={Home}/>
         <Route path="/application_page" component={ApplicationPage}/>
         <Route path="/meet_team" component={MeetTeam}/>

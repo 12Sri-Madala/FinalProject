@@ -73,4 +73,14 @@
       position: relative;
       left: 5%;
   }
+
+  .noDataErrorFixing{
+    font-size: 1rem;
+    width: 100%;
+    position: relative;
+    top: 44%;
+    text-align: center;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
   
