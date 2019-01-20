@@ -30,9 +30,13 @@ class ExistingBookmarks extends Component {
         
         if (!this.state.bookmarks){
            return(
-            <div class="noDataErrorFixing">You Do Not Have Any Bookmarks Or Reminders. 
-            Please Add Some Bookmarks Or Reminders Thru 
-            The Extension So You Can See The Dashboard In Action.</div>
+            <div className="noDataErrorFixing">
+                <div className="insideNoDataErrorFixing">
+                    You Do Not Have Any Bookmarks Or Reminders. 
+                    Please Add Some Bookmarks Or Reminders Thru 
+                    The Extension So You Can See The Dashboard In Action.
+                </div>
+            </div>
            )
         }
         else if (this.state.bookmarks){
