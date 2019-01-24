@@ -24,7 +24,7 @@ class ApplicationPage extends Component {
         this.authCall();
     }
 
-    async authCall(){
+    authCall = async () => {
         const response = await axios.get("http://localhost:8000/auth/getBookmarks",{
             withCredentials: true
         });
@@ -46,7 +46,7 @@ class ApplicationPage extends Component {
 
                 <div className="reminder-section">
 
-                    <Reminders list={this.state.reminders} />
+                    <Reminders updateReminders={this.authCall} list={this.state.reminders} />
                 </div>
 
                 <div className="rightDivApp">

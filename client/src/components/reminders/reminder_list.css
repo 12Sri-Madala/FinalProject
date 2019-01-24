@@ -38,7 +38,7 @@
 .reminder-icon-bg {
     display: inline-block;
     position: relative;
-    background-image: url('./images/reminder-icon-bg.png');
+    background-image: url(/assets/images/06fd634a295418f825f43203fe2c6be1.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -156,7 +156,7 @@
     position: absolute;
     height: .5vh;
     width: 4%;
-    background-image: url('./images/reminder-dots.png');
+    background-image: url(/assets/images/4dbd7bb3dfa51af65548fba9e872eb92.png);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;

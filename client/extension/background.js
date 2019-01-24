@@ -1,5 +1,4 @@
-const BASE_URL = 'http://localhost:3000/'
-const COOKIE_NAME = 'connect.sid'
+
 
 function createNotification(creaseObj){
     const id = creaseObj.id

@@ -6,6 +6,10 @@ import Popup from "reactjs-popup";
 import axios from 'axios';
 
 class Reminder extends Component {
+  state = {
+    reminders: null
+  }
+
   reminderBackground = index => {
     if (index % 2 === 0) {
       return "light-reminder-background";
@@ -48,7 +52,6 @@ class Reminder extends Component {
 
   dayOfWeek = day => {
     var today = new Date().getDay();
-    console.log(day);
     if (today === day) {
       return "Today";
     }
@@ -121,12 +124,15 @@ class Reminder extends Component {
       }
     }).then( resp => {
         console.log("this is the resp from the server: ",resp)
+        
+        this.props.updateReminders();
       })
     
-}
+  }
 
   render() {
-    const listElements = this.props.data.map((item, index) => {
+    this.state.reminders = this.props.data;
+    const listElements = this.state.reminders.map((item, index) => {
       return (
         <div key={item._id} className={this.reminderBackground(index)}>
           <a className="reminder-title-link" href={item.url} target="_blank">
@@ -167,7 +173,7 @@ class Reminder extends Component {
         </div>
       );
     });
-
+    
     return (
       <div className="outer-reminders">
         <div className="reminder-header">
