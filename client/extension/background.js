@@ -95,6 +95,7 @@ class User {
             name: COOKIE_NAME
         }, function (cookie) {
             if (cookie) {
+                console.log("Cookie from localhost3000: ", cookie)
                 var date = new Date();
                 var currenttime = date.getTime();
                 var ifExpire = currenttime - cookie.expirationDate;
@@ -129,4 +130,16 @@ class User {
 function createNewUser() {
     user = new User();
     user.login();
+}
+
+chrome.runtime.onStartup.addListener(function (details) {
+    createNewUser();
+});
+
+chrome.runtime.onInstalled.addListener(function (details) {
+    createNewUser();
+});
+
+if(!user){
+    createNewUser();
 }
