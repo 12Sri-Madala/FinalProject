@@ -31,6 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
     favicon = currentFavIcon.src;
     document.querySelector(".header-icon").append(currentFavIcon);
     document.querySelector(".header-title").append(currentTitle);
+    // chrome.bookmarks.search({
+
+    // })
   });
 });
 
@@ -90,9 +93,39 @@ function processForm() {
   };
 
   $.ajax(ajaxConfig);
-
-  console.log("Bookmark/Alarm Data Object:", creaseObj);
+  createAlarm(creaseObj);
   return creaseObj;
+}
+
+function createAlarm(creaseObj) {
+
+  const reminder = new Date(creaseObj.date + " " + creaseObj.time).getTime();
+  let recurrence = null;
+
+
+  switch (creaseObj.recurrence){
+      case 'monthly':
+          recurrence = 43800;
+          break;
+      case 'weekly':
+          recurrence = 10080;
+          break;
+      case 'daily':
+          recurrence = 1440;
+          break;
+      default:
+          recurrence = 0
+  }
+
+  if(!recurrence){
+    chrome.alarms.create(JSON.stringify(creaseObj), {
+      when: reminder});
+    return;
+  }
+
+  chrome.alarms.create(JSON.stringify(creaseObj), {
+    when: reminder, periodInMinutes: recurrence});
+
 }
 
 function findFavicon() {

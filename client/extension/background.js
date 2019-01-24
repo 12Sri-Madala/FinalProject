@@ -1,47 +1,58 @@
 const BASE_URL = 'http://localhost:3000/'
 
-function createNotification(creaseObj){
-    const id = creaseObj.id
+// Chrome Alarm Listener 
 
-    chrome.notifications.create(id, {
+chrome.alarms.onAlarm.addListener(function( alarm ) {
+    console.log('alarm fired: ', alarm);
+
+    var notificationInfo = JSON.parse(alarm.name);
+    var url = notificationInfo.url;
+
+    // Create notification
+
+    var notifID = url + idGenerator();
+
+    chrome.notifications.create( notifID, {
         type: 'basic',
-        iconUrl: creaseObj.icon,
-        title: creaseObj.title,
-        message: creaseObj.notes
-    }, function(id) {});
- 
-}
+        iconUrl: notificationInfo.icon,
+        title: notificationInfo.title,
+        message: notificationInfo.notes,
+    });
 
-function launchAlarmURL(object){
-    const tabObj = {};
-    tabObj.url = object.url
+    // Assign URL to notification click
 
-    chrome.tabs.create( tabObj);
-}
+    chrome.notifications.onClicked.addListener( function(notifID){
+        chrome.windows.getCurrent(function(currentWindow){
+            chrome.notifications.clear(notifID);
+            // If they have a current window open, create new tab
+            if (currentWindow !== null) {
+                chrome.tabs.create({
+                    'url': url
+                });
+                return;
+            } else {
+            // If not, create new window
+                chrome.windows.create({
+                    'url': url,
+                    'focused': true
+                });
+                return;
+            }
+        });
+    });
+      
+});
 
-function createAlarm(creaseObj) {
-
-    const reminder = new Date(creaseObj.date + " " + creaseObj.time);
-    const recurrence = null;
-
-    console.log(reminder);
-
-    switch (creaseObj.recurrence){
-        case 'monthly':
-            recurrence = 43800;
-            break;
-        case 'weekly':
-            recurrence = 10080;
-            break;
-        case 'daily':
-            recurrence = 1440;
-            break;
-        default:
-            recurrence = 0
+function idGenerator() {
+    var keys = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789";
+  
+    var id = "";
+  
+    for (var i = 0; i < 10; i++) {
+      var random = Math.floor(Math.random() * keys.length);
+      id += keys[random];
     }
-
-    chrome.alarms.create(alarmName, {
-      when: reminder, periodInMinutes: recurrence});
+    return id;
 }
 
 function getBookmarkData() {
@@ -60,25 +71,17 @@ function getBookmarkData() {
       });
 }
 
-// function handleCreated(id, bookmarkInfo){
-//     console.log(`New bookmark ID: ${id}`);
-//     console.log("New bookmark info: ", bookmarkInfo);
-//     console.log(`New bookmark URL: ${bookmarkInfo.url}`);
-// }
+// Chrome Bookmark Listeners 
 
 chrome.runtime.onInstalled.addListener(getBookmarkData);
-
 chrome.bookmarks.onCreated.addListener(getBookmarkData)
-
 chrome.bookmarks.onRemoved.addListener(getBookmarkData);
-
 chrome.bookmarks.onChanged.addListener(getBookmarkData);
-
 chrome.bookmarks.onMoved.addListener(getBookmarkData);
-
 chrome.bookmarks.onChildrenReordered.addListener(getBookmarkData);
-
 chrome.bookmarks.onImportEnded.addListener(getBookmarkData);
+
+
 
 class User {
     constructor() {
