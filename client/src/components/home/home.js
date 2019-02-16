@@ -29,8 +29,7 @@ export default props => {
                     <a href='http://localhost:8000/auth/google'><button className='login-button' type='button'>SIGNUP</button></a>
       
                 </div>
-                <br/>
-                <br/>
+
                 <div className="login-area">
                     <a href='http://localhost:3000/meet_team'><button className="login-button">MEET THE TEAM</button></a>
                 </div>
@@ -39,14 +38,10 @@ export default props => {
             <div img src={descBody} className="description-body">
                 <div className="description-header">
                     <h3 className="center description-title">What is <span className="lobster">Crease</span> ?</h3>
-                    <br/>
+
                     <h6 className="center description-title"><span className="lobster">Crease</span> is an all-in-one bookmark manager for your inspirations and read laters</h6>
                 </div>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
+
                 <div className="container video-container-parent">
 
                     <div className="row">
