@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Folder from './Folder';
+import Folder from './folder';
 import './existingbookmarks_list.css';
 import { Route, Switch} from 'react-router-dom';
 
