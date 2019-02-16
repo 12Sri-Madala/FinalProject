@@ -4,8 +4,10 @@ import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize";
 import extenstionVideo from '../../videos/Crease Extension.mp4';
 import applicationPage from '../../videos/applicationpage.mp4';
-import application from '../../videos/application.mp4'
-
+import application from '../../videos/application.mp4';
+import background from './images/title-background.jpg';
+import logo from './images/crease-logo.png';
+import descBody from './images/description-body.png';
 
 export default props => {
     const responseGoogle = (response) => {
@@ -18,9 +20,9 @@ export default props => {
     }
 
     return (
-        <div className="homepage">
+        <div img src={background} className="homepage">
             <div className="home-login center">
-                <div className="crease-logo"></div>
+                <div img src={logo} className="crease-logo"></div>
 
                 <div className="login-area">
                     <a href='http://localhost:8000/auth/google'><button className='login-button' type='button'>LOGIN</button></a>
@@ -34,7 +36,7 @@ export default props => {
                 </div>
             </div>
             
-            <div className="description-body">
+            <div img src={descBody} className="description-body">
                 <div className="description-header">
                     <h3 className="center description-title">What is <span className="lobster">Crease</span> ?</h3>
                     <br/>
