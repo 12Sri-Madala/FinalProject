@@ -10,28 +10,30 @@
       margin-right: 10px;
       cursor: pointer;
   }
-  .title{
-      white-space: pre;
-      width: 10vw;
-      overflow: hidden;
-      text-overflow: ellipsis;
-  }
+  .title {
+    white-space: pre;
+    width: 9vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
   
   .bookmark{
       white-space: pre;
   }
   
-  .allFolders{
+  .allFolders {
     width: 60vw;
     position: relative;
-    top: 20%;
+    top: 14%;
     left: 8%;
-  }
+    max-width: 900px;
+}
   .folderSection:first-child{
       overflow: auto;
   }
   .folder{
       display:inline-block;
+      margin:0;
   }
   .individualFirstBookMark{
       overflow: auto;
@@ -69,12 +71,12 @@
       position: relative;
       left: 40%;
   }
-  .hrClass{
-      margin:0;
-      margin-bottom: 14px;
-      width: 50vw;
-      
-  }
+  .hrClass {
+    margin: 0;
+    margin-bottom: 14px;
+    width: 91%;
+    max-width: 821px;
+}
 
   .noDataErrorFixing{
     font-size: 0;

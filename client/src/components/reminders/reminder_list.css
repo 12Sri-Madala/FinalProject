@@ -18,10 +18,10 @@
     min-width: 100px;
     min-height: 80px;
 }
-.outer-reminders{
+.outer-reminders {
     position: fixed;
     width: 35%;
-
+    min-width: 420px;
 }
 
 .dark-reminder-background{
