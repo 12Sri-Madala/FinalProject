@@ -84,13 +84,16 @@
     max-width: 821px;
 }
 
-  .noDataErrorFixing{
+.noDataErrorFixing {
     font-size: 0;
     vertical-align: top;
     min-width: 500px;
     height: 100%;
     background: lightgoldenrodyellow;
-  }
+    box-shadow: 2px -10px 30px black;
+    margin-left: 27px;
+    
+}
   .insideNoDataErrorFixing{
     font-size: 1rem;
     width: 100%;
@@ -99,6 +102,7 @@
     text-align: center;
     padding-right: 5%;
     padding-left: 5%; 
+    
   }
   .displayingNone{
       display:none;
