@@ -17,3 +17,11 @@ nav {
     background-color: #265288;
     position: fixed;
 }
+@media only screen and (max-width: 992px){
+    nav .brand-logo {
+        left: 6%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+}
+
