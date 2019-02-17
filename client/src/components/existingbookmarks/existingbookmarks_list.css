@@ -15,10 +15,12 @@
     width: 9vw;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin: 0;
 }
   
   .bookmark{
       white-space: pre;
+      width: 78px;
   }
   
   .allFolders {
@@ -31,10 +33,13 @@
   .folderSection:first-child{
       overflow: auto;
   }
-  .folder{
-      display:inline-block;
-      margin:0;
-  }
+  .folder {
+    display: inline-block;
+    margin: 0;
+    max-width: 220px;
+    max-height: 130px;
+    overflow: overlay;
+}
   .individualFirstBookMark{
       overflow: auto;
   }
