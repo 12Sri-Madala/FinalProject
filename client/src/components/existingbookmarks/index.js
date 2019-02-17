@@ -8,10 +8,14 @@ class ExistingBookmarks extends Component {
         super(props);
         
         this.state = {
-            bookmarks: null
+            bookmarks: null,
+            noBookmarks: 'none'
         }
          
     }
+    componentDidMount(){
+        setTimeout(this.addMissingBookmarkMessage, 3000);
+    };
 
     componentDidUpdate(prevProps, prevState) {
         const { bookmarks } = this.state;
@@ -21,17 +25,18 @@ class ExistingBookmarks extends Component {
             this.setState({ 
                 bookmarks:this.props.list 
             });
-        }
-
-        
+        }           
+    }
+    addMissingBookmarkMessage = () => {
+        this.setState({noBookmarks: 'block'})
     }
 
     render(){ 
         
         if (!this.state.bookmarks){
            return(
-            <div className="noDataErrorFixing">
-                <div className="insideNoDataErrorFixing">
+            <div className="noDataErrorFixing" style ={{display: `${this.noBookmarks}`}}>
+                <div style ={{display: `${this.noBookmarks}`}} className='insideNoDataErrorFixing'>
                     You Do Not Have Any Bookmarks Or Reminders. 
                     Please Add Some Bookmarks Or Reminders Thru 
                     The Extension So You Can See The Dashboard In Action.

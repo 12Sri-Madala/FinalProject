@@ -23,12 +23,13 @@
       width: 78px;
   }
   
-  .allFolders {
+ 
+.allFolders {
     width: 60vw;
     position: relative;
-    top: 14%;
-    left: 8%;
     max-width: 900px;
+    margin-top: 92px;
+    margin-left: 43px;
 }
   .folderSection:first-child{
       overflow: auto;
@@ -98,5 +99,11 @@
     text-align: center;
     padding-right: 5%;
     padding-left: 5%; 
+  }
+  .displayingNone{
+      display:none;
+  }
+  .displayingMessage{
+      display:block;
   }
   
