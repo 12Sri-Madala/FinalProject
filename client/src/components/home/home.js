@@ -45,8 +45,8 @@ export default props => {
                 <div className="container video-container-parent">
 
                     <div className="row">
-                        <div className="col s6 description-title">Organize and view with ease</div>
-                        <div className="col s4 offset-s2 description-title">Set a <span className="lobster">Crease</span> reminder</div>
+                        <div className="organize col s6 description-title">Organize and view with ease</div>
+                        <div className="set col s4 offset-s2 description-title">Set a <span className="lobster">Crease</span> reminder</div>
                     </div>
 
                     <div className="row">
