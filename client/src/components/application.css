@@ -4,7 +4,9 @@
     width: 100%;
     font-size: 0;
 }
-
+.replaceApplicationDiv{
+    display:none;
+}
 
 .reminder-section {
     display: inline-block;
@@ -37,4 +39,34 @@
 .appDivBeforeRoot{
     height: 100vh;
     width: 100vw;
+}
+
+@media screen and (min-width: 321px) and (max-width: 905px){
+    .applicationDiv{
+        display:none;
+    }
+    .replaceApplicationDiv{
+        display:block;
+        width:100vw;
+        height: 100vh;
+        background-color:green;
+    }
+    .navBarApplicationPage{
+        display:none;
+    }
+}
+
+@media screen and (orientation: portrait){
+    .applicationDiv{
+        display:none;
+    }
+    .replaceApplicationDiv{
+        display:block;
+        width:100vw;
+        height: 100vh;
+        background-color:green;
+    }
+    .navBarApplicationPage{
+        display:none;
+    }
 }

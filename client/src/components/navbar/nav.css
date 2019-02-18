@@ -6,7 +6,7 @@
     font-family: 'Lobster', cursive;
 }
 
-#navbar {
+.navbar {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
