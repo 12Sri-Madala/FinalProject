@@ -5,6 +5,7 @@ import Reminders from './reminders';
 import Nav from './navbar/nav';
 import './application.css';
 
+
 class ApplicationPage extends Component {
     constructor(props){
         super(props);
@@ -34,9 +35,14 @@ class ApplicationPage extends Component {
                <div className="navBarApplicationPage">
                    <Nav/>
                </div>
+
                 <div className="replaceApplicationDiv">
-                    This Application Is Only Viewable In A Google Chrome Browser On A Desktop In Fullscreen. 
-                    Mobile Devices Will Not Run The Dashboard.
+                    <div className="textAreaReplacementApplicationDiv">
+                        This Application Is Only Viewable In A Google Chrome Browser On A Desktop In Fullscreen. 
+                        Mobile Devices Will Not Run The Dashboard.
+                    </div>
+                    <a href='http://localhost:3000/'><button className="homeButton">Go Home</button></a>
+
                 </div>
                 <div className="applicationDiv">
                     <div className="reminder-section">
