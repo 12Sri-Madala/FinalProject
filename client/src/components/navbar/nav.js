@@ -16,7 +16,8 @@ export default props => (
                   <NavLink to={'/meet_team'} activeClassName="active selected" className="nav-link">Meet The Team</NavLink>
                </li>
                <li>
-                  <button className="btn-small red darken-1">Sign Out</button>
+               <a href='auth/logout'><button className="btn-small red darken-1">Sign Out</button></a>
+
                </li>
             </ul>
          </div>
