@@ -14,14 +14,14 @@
     width: 100%;
     height: 10%;
     color: rgb(41, 41, 41);
-    background-color: rgb(231, 184, 184);
+    background-color:   #f3ce8a;
     min-width: 100px;
     min-height: 80px;
 }
-.outer-reminders{
+.outer-reminders {
     position: fixed;
     width: 35%;
-
+    min-width: 420px;
 }
 
 .dark-reminder-background{
@@ -30,7 +30,7 @@
     width: 100%;
     height: 10%;
     color: rgb(41, 41, 41);
-    background-color: lightcoral;
+    background-color: #ffb52c;
     min-width: 100px;
     min-height: 80px;
 }
@@ -104,6 +104,7 @@
     position: relative;
     color: black;
     font-size: 100%;
+    word-wrap: break-word;
 }
 
 .reminder-title {
@@ -112,7 +113,7 @@
     font-family: 'Barlow Condensed', sans-serif;
     top: 25%;
     left: 6%;
-    width: 50%;
+    width: 47%;
     font-size: 1.2rem;
     vertical-align: middle;
     line-height: initial;
@@ -154,14 +155,17 @@
 
 .reminder-dots {
     position: absolute;
-    height: .5vh;
+    height: .6vh;
     width: 4%;
-    background-image: url(/assets/images/4dbd7bb3dfa51af65548fba9e872eb92.png);
+    -webkit-mask-box-image: url(./images/reminder-dots.png);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     right: 2%;
     cursor: pointer;
+    background-color: red;
+    
+   
 }
 
 .popup-link {

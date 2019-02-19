@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Folder from './Folder';
+import Folder from './folder';
 import './existingbookmarks_list.css';
 import { Route, Switch} from 'react-router-dom';
 
@@ -8,30 +8,43 @@ class ExistingBookmarks extends Component {
         super(props);
         
         this.state = {
-            bookmarks: null
+            bookmarks: null,
+            outsideDivClass: 'none',
+            insideDivClass: 'none'
         }
          
     }
-
+    
+    componentDidMount(){
+       setTimeout(() => {
+        this.setState({
+            outsideDivClass: 'noDataErrorFixing',
+            insideDivClass: 'insideNoDataErrorFixing'
+           }) ;
+       },1000)
+                
+            
+     }
+    
     componentDidUpdate(prevProps, prevState) {
         const { bookmarks } = this.state;
         const { list } = this.props;
-
+        
         if (bookmarks === null && list.length) {
             this.setState({ 
                 bookmarks:this.props.list 
             });
-        }
-
-        
+        }           
     }
+     
 
     render(){ 
         
-        if (!this.state.bookmarks){
+        console.log('boook mark state', this.state.outsideDivClass);
+        if (!this.state.bookmarks){       
            return(
-            <div className="noDataErrorFixing">
-                <div className="insideNoDataErrorFixing">
+            <div  className={`${this.state.outsideDivClass}`} >
+                <div  className={`${this.state.insideDivClass}`}>
                     You Do Not Have Any Bookmarks Or Reminders. 
                     Please Add Some Bookmarks Or Reminders Thru 
                     The Extension So You Can See The Dashboard In Action.

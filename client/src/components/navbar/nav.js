@@ -5,7 +5,7 @@ import { NavLink, Link } from 'react-router-dom';
 import './nav.css';
 
 export default props => (
-      <nav id="navbar">
+      <nav className="navbar">
          <div className="nav-wrapper main-nav">
            <Link className="brand-logo nav-logo" to="/application_page">Crease</Link>
             <ul id="nav-mobile" className="right">

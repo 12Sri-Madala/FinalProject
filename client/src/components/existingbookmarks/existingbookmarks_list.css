@@ -10,29 +10,37 @@
       margin-right: 10px;
       cursor: pointer;
   }
-  .title{
-      white-space: pre;
-      width: 10vw;
-      overflow: hidden;
-      text-overflow: ellipsis;
-  }
+  .title {
+    white-space: pre;
+    width: 9vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
   
   .bookmark{
       white-space: pre;
+      width: 78px;
   }
   
-  .allFolders{
+ 
+.allFolders {
     width: 60vw;
     position: relative;
-    top: 20%;
-    left: 8%;
-  }
+    max-width: 900px;
+    margin-top: 92px;
+    margin-left: 43px;
+}
   .folderSection:first-child{
       overflow: auto;
   }
-  .folder{
-      display:inline-block;
-  }
+  .folder {
+    display: inline-block;
+    margin: 0;
+    max-width: 220px;
+    max-height: 130px;
+    overflow: overlay;
+}
   .individualFirstBookMark{
       overflow: auto;
   }
@@ -69,20 +77,23 @@
       position: relative;
       left: 40%;
   }
-  .hrClass{
-      margin:0;
-      margin-bottom: 14px;
-      width: 50vw;
-      
-  }
+  .hrClass {
+    margin: 0;
+    margin-bottom: 14px;
+    width: 91%;
+    max-width: 821px;
+}
 
-  .noDataErrorFixing{
+.noDataErrorFixing {
     font-size: 0;
     vertical-align: top;
     min-width: 500px;
     height: 100%;
     background: lightgoldenrodyellow;
-  }
+    box-shadow: 2px -10px 30px black;
+    margin-left: 27px;
+    
+}
   .insideNoDataErrorFixing{
     font-size: 1rem;
     width: 100%;
@@ -91,5 +102,12 @@
     text-align: center;
     padding-right: 5%;
     padding-left: 5%; 
+    
+  }
+  .displayingNone{
+      display:none;
+  }
+  .displayingMessage{
+      display:block;
   }
   
