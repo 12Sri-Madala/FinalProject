@@ -55,11 +55,11 @@ export default props => {
                     <div className="row">
                         
                         <div className="col s5">
-                            <video className="video-container" src={ application } loop autoPlay controls="true"></video>    
+                            <video className="video-container" src={ application } loop autoPlay controls={true}></video>    
                         </div>
 
                         <div className="col s5 offset-s2">
-                            <video className="video-container" src={ extenstionVideo } loop autoPlay controls="true"></video>
+                            <video className="video-container" src={ extenstionVideo } loop autoPlay controls={true}></video>
                         </div>
                     
                     </div>
