@@ -1,3 +1,4 @@
+
 function createNotification(creaseObj) {
   const id = creaseObj.id;
 
@@ -11,6 +12,7 @@ function createNotification(creaseObj) {
     },
     function(id) {}
   );
+
 }
 
 function launchAlarmURL(object) {
@@ -62,11 +64,6 @@ function getBookmarkData() {
   });
 }
 
-// function handleCreated(id, bookmarkInfo){
-//     console.log(`New bookmark ID: ${id}`);
-//     console.log("New bookmark info: ", bookmarkInfo);
-//     console.log(`New bookmark URL: ${bookmarkInfo.url}`);
-// }
 
 chrome.runtime.onInstalled.addListener(getBookmarkData);
 

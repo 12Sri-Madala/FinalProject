@@ -25,7 +25,7 @@ export default props => {
                 <div img src={logo} className="crease-logo"></div>
 
                 <div className="login-area">
-                    <a href='http://localhost:8000/auth/google'><button className='login-button' type='button'>LOGIN</button></a>
+                    <a href='auth/google'><button className='login-button' type='button'>LOGIN</button></a>
                     <a href='http://localhost:8000/auth/google'><button className='login-button' type='button'>SIGNUP</button></a>
       
                 </div>
