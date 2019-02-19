@@ -3,19 +3,21 @@
     font-size: 3rem;
   
   }
-  .toggle{
-      display: inline-block;
-      padding: 3px;
-      color: white;
-      margin-right: 10px;
-      cursor: pointer;
-  }
-  .title {
+  .toggle {
+    display: inline-block;
+    padding: 3px;
+    color: white;
+    /* margin-right: 10px; */
+    cursor: pointer;
+    text-align: center;
+}
+.title {
     white-space: pre;
-    width: 9vw;
+    /* width: 9vw; */
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
+    text-align: center;
 }
   
   .bookmark{
@@ -37,9 +39,10 @@
   .folder {
     display: inline-block;
     margin: 0;
-    max-width: 220px;
+    width: 200px;
     max-height: 130px;
     overflow: overlay;
+    text-align: center;
 }
   .individualFirstBookMark{
       overflow: auto;
@@ -50,33 +53,30 @@
       overflow: auto;
       text-overflow: ellipsis;
   }
-  .individualBookmarkImg{
-      width: 30px;
-      height: 30px;
-  }
-  .allOfEachBookmark{
-      display: inline-block;
-      width: 200px;
-      text-overflow: ellipsis;
-      margin: 0;
-      overflow: hidden;
-  
-  }
-  .allOfEachBookmarkTwo{
-      display: inline-block;
-      text-overflow: ellipsis;
-      margin: 0;
-      overflow: hidden;
-  }
+  .individualBookmarkImg {
+    width: 3rem;
+    height: 3rem;
+}
+.allOfEachBookmark {
+    display: inline-block;
+    width: 200px;
+    text-overflow: ellipsis;
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+}
+  .allOfEachBookmarkTwo {
+    display: inline-block;
+    text-overflow: ellipsis;
+    margin: 0;
+    overflow: hidden;
+}
   .allOfEachBookmarkTwo img{
       display: inline-block;
       position: relative;
       top: 5px;
   }
-  .allOfEachBookmark img {
-      position: relative;
-      left: 40%;
-  }
+  
   .hrClass {
     margin: 0;
     margin-bottom: 14px;
@@ -94,16 +94,16 @@
     margin-left: 27px;
     
 }
-  .insideNoDataErrorFixing{
-    font-size: 1rem;
+.insideNoDataErrorFixing {
+    font-size: 1.2rem;
     width: 100%;
     position: relative;
     top: 44%;
     text-align: center;
     padding-right: 5%;
-    padding-left: 5%; 
-    
-  }
+    text-shadow: 2px 2px aliceblue;
+    padding-left: 5%;
+}
   .displayingNone{
       display:none;
   }
@@ -111,3 +111,8 @@
       display:block;
   }
   
+  .addingBookMarkScreenShot {
+    width: 100%;
+    
+    
+}
