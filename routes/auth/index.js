@@ -17,7 +17,7 @@ router.get('/current-user', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.logout();
-    req.redirect('/')
+    res.redirect('/')
     res.send({
         success: true,
         message: 'User logged out'
