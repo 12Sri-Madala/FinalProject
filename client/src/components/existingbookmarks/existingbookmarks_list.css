@@ -17,7 +17,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
-    text-align: center;
+    /* text-align: center; */
 }
   
   .bookmark{
@@ -36,13 +36,17 @@
   .folderSection:first-child{
       overflow: auto;
   }
+  .folderSection{
+      margin-left: 72px;
+  }
   .folder {
     display: inline-block;
     margin: 0;
-    width: 200px;
+    min-width: 200px;
     max-height: 130px;
     overflow: overlay;
-    text-align: center;
+    /* text-align: center; */
+    
 }
   .individualFirstBookMark{
       overflow: auto;
