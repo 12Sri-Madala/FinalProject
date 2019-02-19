@@ -45,10 +45,14 @@ class ExistingBookmarks extends Component {
            return(
             <div  className={`${this.state.outsideDivClass}`} >
                 <div  className={`${this.state.insideDivClass}`}>
+                <img className={`addingBookMarkScreenShot ${this.state.insideDivClass}`} src={require('./images/arrowPointingBookmark.png')}/>
+
                     You Do Not Have Any Bookmarks Or Reminders. 
-                    Please Add Some Bookmarks Or Reminders Thru 
+                    Please Add Some Bookmarks Or Reminders Through 
                     The Extension So You Can See The Dashboard In Action.
+
                 </div>
+
             </div>
            )
         }
@@ -73,11 +77,7 @@ class ExistingBookmarks extends Component {
             ) 
        }                         
     }
-}
- 
+} 
 export default ExistingBookmarks;
-
-
-// open={false} on both routes????
 
 
