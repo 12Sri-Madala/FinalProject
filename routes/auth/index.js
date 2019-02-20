@@ -12,7 +12,16 @@ router.get('/callback', passport.authenticate('google'), (req, res) => {
 });
 
 router.get('/current-user', (req, res) => {
-    res.send(req.user);
+    const { user } = req;
+     
+    if(user){
+        return res.send({
+            username: user.userName,
+            id: user._id
+        });
+    }
+
+    res.status(401).send('Not Authorized');
 })
 
 router.get('/logout', (req, res) => {

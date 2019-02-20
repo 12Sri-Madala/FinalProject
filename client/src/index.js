@@ -5,10 +5,13 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers/index';
-import promise from './middleware/promise';
+import thunk from './middleware/thunk';
+import { signIn } from './actions';
 
 
-const store = createStore(rootReducer, {}, applyMiddleware(promise));
+const store = createStore(rootReducer, {}, applyMiddleware(thunk));
+
+signIn()(store.dispatch);
 
 ReactDOM.render(
         <Provider store={store}>
