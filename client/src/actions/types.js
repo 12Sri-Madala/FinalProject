@@ -1,6 +1,5 @@
 export default {
-    TICK: 'tick',
-    ADD_LIST_ITEM: 'add_list_item',
-    GET_REMINDER_LIST: 'get_reminder_list'
-
+    SIGN_IN: 'sign_in',
+    SIGN_IN_ERROR: 'sign_in_error',
+    SIGN_OUT: 'sign_out'
 }

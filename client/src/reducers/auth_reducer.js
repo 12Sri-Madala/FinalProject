@@ -1,14 +1,16 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    all: []
+    auth: false,
+    info: {}
 };
 
 export default (state = DEFAULT_STATE, action) => {
     switch (action.type) {
-        case types.GET_REMINDER_LIST:
-            console.log('List Reducer for REMINDer:', action);
-            return state;
+        case types.SIGN_IN:
+            return { auth: true, info: action.user };
+        case types.SIGN_IN_ERROR:
+            return { auth: false, info: {} };
         default:
             return state;
     }

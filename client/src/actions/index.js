@@ -1,34 +1,20 @@
 import types from './types';
 import axios from 'axios';
 
+export const signIn = () => async dispatch => {
+    try {
+        const { data: user } = await axios.get('/auth/current-user');
 
-export const BASE_URL = 'http://api.reactprototypes.com/todos';
-export const API_KEY = '?key=c_918demouser';
+        dispatch({
+            type: types.SIGN_IN,
+            user
+        });
 
+    } catch (err){
+        // Dispatch any error handling types from here
 
-export function addToDoItem(item){
-    const resp = axios.post(BASE_URL + API_KEY, item);
-
-    return {
-        type: types.ADD_LIST_ITEM,
-        payload: resp
+        dispatch({
+            type: types.SIGN_IN_ERROR
+        });
     }
 }
-
-export function getReminderList(){
-    const resp = axios.get(BASE_URL + API_KEY);
-
-    return {
-        type: types.GET_REMINDER_LIST,
-        payload: resp
-    }
-}
-
-
-
-
-/*export function tick(){
-    return {
-        type: types.TICK
-    }
-}*/
