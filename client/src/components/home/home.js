@@ -31,7 +31,7 @@ export default props => {
                 </div>
 
                 <div className="login-area">
-                    <a href='http://localhost:3000/meet_team'><button className="login-button">MEET THE TEAM</button></a>
+                    <a href='http://localhost:3000/teampage'><button className="login-button">MEET THE TEAM</button></a>
                 </div>
             </div>
             
@@ -52,11 +52,11 @@ export default props => {
                     <div className="row">
                         
                         <div className="col s5">
-                            <video className="video-container" src={ application } loop autoPlay controls={true}></video>    
+                            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&loop=1&playlist=tgbNymZ7vqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        
                         </div>
 
                         <div className="col s5 offset-s2">
-                            <video className="video-container" src={ extenstionVideo } loop autoPlay controls={true}></video>
+                            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&loop=1&playlist=tgbNymZ7vqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        
                         </div>
                     
                     </div>

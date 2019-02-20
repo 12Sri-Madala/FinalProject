@@ -64,7 +64,7 @@ class ExistingBookmarks extends Component {
             return(                                     
                 <div className="allFolders">
                 <Switch>
-                    <Route path="/application_page/:openRoute?" component={ 
+                    <Route path="/crease_dashboard/:openRoute?" component={ 
                             (props) => {
                                 
                                 return <Folder nested={this.state.bookmarks}  title="Bookmarks" depth={0} {...props}/>

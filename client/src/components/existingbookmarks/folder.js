@@ -36,7 +36,7 @@ class Folder extends Component {
             console.log('closed')
             
           }
-          this.props.history.push( '/application_page/'+newRoute.join(','));
+          this.props.history.push( '/crease_dashboard/'+newRoute.join(','));
     }
     getButtonMarker = () => {
         
