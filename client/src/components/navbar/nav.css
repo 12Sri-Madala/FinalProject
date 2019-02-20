@@ -6,13 +6,22 @@
     font-family: 'Lobster', cursive;
 }
 
-#navbar {
+.navbar {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    z-index: 1;
 }
 
 nav {
     background-color: #265288;
     position: fixed;
 }
+@media only screen and (max-width: 992px){
+    nav .brand-logo {
+        left: 6%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+}
+

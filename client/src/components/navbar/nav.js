@@ -5,7 +5,7 @@ import { NavLink, Link } from 'react-router-dom';
 import './nav.css';
 
 export default props => (
-      <nav id="navbar">
+      <nav className="navbar">
          <div className="nav-wrapper main-nav">
            <Link className="brand-logo nav-logo" to="/application_page">Crease</Link>
             <ul id="nav-mobile" className="right">
@@ -16,7 +16,8 @@ export default props => (
                   <NavLink to={'/meet_team'} activeClassName="active selected" className="nav-link">Meet The Team</NavLink>
                </li>
                <li>
-                  <button className="btn-small red darken-1">Sign Out</button>
+               <a href='/auth/logout'><button className="btn-small red darken-1">Sign Out</button></a>
+
                </li>
             </ul>
          </div>

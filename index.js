@@ -106,8 +106,7 @@ app.get("/api", (req, res) => {
   res.send("<h1>API WORKING!</h1>");
 });
 
-app
-  .listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server Running on PORT ${PORT}`);
   })
   .on("error", e => {
@@ -214,7 +213,7 @@ function findWithReminders(bookmarks, reminders = []) {
     const bm = bookmarks[i];
     if (bm.nested && bm.nested.nestedBookmarks) {
       findWithReminders(bm.nested.nestedBookmarks, reminders);
-    }
+    }4
 
     if (bm.time) {
       reminders.push({ ...bm.toObject(), nested: null });
@@ -249,59 +248,24 @@ app.post("/auth/addBookmarks", async (req, resp) => {
   });
 });
 
-// delete a reminder/bookmark {NEED HELP ON STATE IN REACT AND GETTING THE PROPER ITEM AND ITEM.ID}
-
 app.delete("/auth/deleteBookmarks", (req, resp) => {
   const { user: {googleId}, body: { reminder: _id } } = req;
-
-  // console.log("Delete Bookmark called. body Info:", body);
-  // console.log("Delete Bookmark called. User Info:", googleId);
-
-  // userReminders.findOne({_id}, (err, reminder) => {
-  //   console.log('Reminders:', reminder);
-  // });
   
   userBase.findOne({ googleId }, (err, user) => {
       if (err) return console.log(err);
       console.log("Inside findOne function", user);
-
-      // userBase.reminders
-
-      // userBase.update(
-      //   { _id: _id },
-      //   { $pull }
-      // )
       user.reminders.id(_id).remove()
 
-      // userReminders
-      //   .findOneAndDelete(
-      //     { _id: _id })
       user.save(err => {
         if (err){console.log("Error from find one and delete",err);} else {
           console.log('Reminder delete success');
         }
         resp.send({
-          success: true,
-          // updatedBookmarks: bookmarks
+          success: true
         });
 
       })
-        // .then( response => {
-        //     console.log("Response from find one and delete function",response)
-        //   })
-        // .catch( err => {
-        //   console.log("Error from frind one and delete",err)
-        // })
-        // .then(function(bookmarks) {
-        //   // what is bookmarks here
-        //   resp.send({
-        //     success: true,
-        //     updatedBookmarks: bookmarks
-        //   });
-        // });
     });
-  // return resp.send({ success: "Called deleteBookmarks" });
-
 });
 
 app.get("*", (req, res) => {

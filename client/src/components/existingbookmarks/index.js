@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Folder from './Folder';
+import Folder from './folder';
 import './existingbookmarks_list.css';
 import { Route, Switch} from 'react-router-dom';
 
@@ -8,29 +8,55 @@ class ExistingBookmarks extends Component {
         super(props);
         
         this.state = {
-            bookmarks: null
+            bookmarks: null,
+            outsideDivClass: 'none',
+            insideDivClass: 'none'
         }
          
     }
-
+    
+    componentDidMount(){
+       setTimeout(() => {
+        this.setState({
+            outsideDivClass: 'noDataErrorFixing',
+            insideDivClass: 'insideNoDataErrorFixing'
+           }) ;
+       },1000)
+                
+            
+     }
+    
     componentDidUpdate(prevProps, prevState) {
         const { bookmarks } = this.state;
         const { list } = this.props;
-
-        if (bookmarks === null && list.length) {
-            this.setState({ 
-                bookmarks:this.props.list 
-            });
-        }
-
         
+        if (bookmarks === null) {
+            this.setState({ 
+                bookmarks: list.length ? this.props.list : false
+            });
+        }           
     }
+     
 
     render(){ 
         
-        if (!this.state.bookmarks){
-           return(
-            <div>Loading...</div>
+        console.log('boook mark state', this.state.outsideDivClass);
+        if (!this.state.bookmarks){       
+           return this.state.bookmarks === false ? (
+            <div  className={`${this.state.outsideDivClass}`} >
+                <div  className={`${this.state.insideDivClass}`}>
+                <img className={` ${this.state.insideDivClass}`} src={require(`./images/arrowPointingBookmark.png`)}/>
+
+                    You Do Not Have Any Bookmarks Or Reminders. 
+                    Please Add Some Bookmarks Or Reminders Through 
+                    The Extension So You Can See The Dashboard In Action.
+
+                </div>
+
+            </div>
+           ) : (
+            
+            <img className="weirdImage" src={require(`./images/ajax-loader.gif`)}/>
            )
         }
         else if (this.state.bookmarks){
@@ -54,11 +80,7 @@ class ExistingBookmarks extends Component {
             ) 
        }                         
     }
-}
- 
+} 
 export default ExistingBookmarks;
-
-
-// open={false} on both routes????
 
 

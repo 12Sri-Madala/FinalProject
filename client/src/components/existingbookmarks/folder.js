@@ -91,7 +91,7 @@ class Folder extends Component {
             })
         )
     }
-    
+
     render(){
         
         if(this.props.depth === 0){
@@ -111,7 +111,7 @@ class Folder extends Component {
             else if (this.props.nested){
                 
             return (
-                <div className="folder" style={{marginLeft: this.props.depth + '%'}}>
+                <div className="folder" >
                     <div className="toggle" onClick={this.toggleFolder}>
                         
                         <i className={`fas ${this.state.folder} folderIcon`}></i> 
@@ -124,10 +124,9 @@ class Folder extends Component {
             );
             }
         }
-    //}
 }
 
 export default Folder;
 
-// open={false} for the folder
-//  {/* {this.state.open ? this.getContents() : ''}  */}
+
+/// in THE DIV with classname Folder  style={{marginLeft: this.props.depth + '%'}}

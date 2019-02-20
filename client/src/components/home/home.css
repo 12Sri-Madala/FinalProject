@@ -9,7 +9,7 @@ body{
     border-width: 2px 0 0;
 }
 .homepage {
-    background-image: url(./images/title-background.jpg);
+    background-image: url(/assets/images/63e7632dcca3ec0df648e040702d31a1.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: repeat-y;
@@ -33,7 +33,7 @@ body{
     height: 30%;
     width: 70%;
     top: 20vh;
-    background-image: url(./images/crease-logo.png);
+    background-image: url(/assets/images/7c600517f7aefb02cb66cea3582cfb80.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -42,6 +42,7 @@ body{
 .login-area {
     position: relative;
     top: 30vh;
+    margin: 2%;
 }
 
 .login-button {
@@ -87,10 +88,18 @@ button:focus {
     color: rgb(218, 218, 218);
 }
 
+.organize {
+    margin-top: 7%;
+}
+
+.set {
+    margin-top: 7%;
+}
+
 .description-body {
     width: 100vw;
-    height: 100vh;
-    background-image: url('./images/description-body.png');
+    height: 120vh;
+    background-image: url(/assets/images/1bc33f165303309a8cb2eea3a90b79f3.png);
     background-size: cover;
     background-position: left;
     background-repeat: no-repeat;
@@ -106,8 +115,5 @@ button:focus {
 .video-container {
     height: 25%;
     width: 100%;
-}
-
-video-container-parent {
-
+    margin-top: 10%
 }

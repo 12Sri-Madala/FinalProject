@@ -12,9 +12,9 @@ class Reminder extends Component {
 
   reminderBackground = index => {
     if (index % 2 === 0) {
-      return "light-reminder-background";
+      return "dark-reminder-background";
     }
-    return "dark-reminder-background";
+    return "light-reminder-background";
   };
 
   countDown = (date, time) => {
@@ -104,8 +104,8 @@ class Reminder extends Component {
 
   titleLength = title => {
     var concatTitle = "";
-    if (title.length > 66) {
-      for (var i = 0; i < 65; i++) {
+    if (title.length > 56) {
+      for (var i = 0; i < 55; i++) {
         concatTitle += title[i];
       }
       concatTitle += "..";
