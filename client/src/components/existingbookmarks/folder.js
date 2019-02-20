@@ -28,12 +28,12 @@ class Folder extends Component {
         
         if(newRoute[this.props.depth] === this.props.title){
             newRoute = newRoute.slice(0, this.props.depth);
-            console.log('open')
+            
           }
         else {
             newRoute[this.props.depth] = this.props.title
             newRoute = newRoute.slice(0, this.props.depth+1);
-            console.log('closed')
+            
             
           }
           this.props.history.push( '/crease_dashboard/'+newRoute.join(','));

@@ -20,9 +20,11 @@ export default props => {
     }
 
     return (
-        <div img src={background} className="homepage">
+
+        ///img src={background} --- this was in the div below this for some reason.. 
+        <div  className="homepage">
             <div className="home-login center">
-                <div img src={logo} className="crease-logo"></div>
+                <div  className="crease-logo"></div>
 
                 <div className="login-area">
                     <a href='auth/google'><button className='login-button' type='button'>LOGIN</button></a>
@@ -35,7 +37,7 @@ export default props => {
                 </div>
             </div>
             
-            <div img src={descBody} className="description-body">
+            <div className="description-body">
                 <div className="description-header">
                     <h3 className="center description-title">What is <span className="lobster">Crease</span> ?</h3>
 
@@ -52,11 +54,11 @@ export default props => {
                     <div className="row">
                         
                         <div className="col s5">
-                            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&loop=1&playlist=tgbNymZ7vqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        
+                            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&loop=1&playlist=tgbNymZ7vqY" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                        
                         </div>
 
                         <div className="col s5 offset-s2">
-                            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&loop=1&playlist=tgbNymZ7vqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        
+                            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&loop=1&playlist=tgbNymZ7vqY" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                        
                         </div>
                     
                     </div>
