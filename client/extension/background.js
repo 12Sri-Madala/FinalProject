@@ -25,7 +25,9 @@ chrome.alarms.onAlarm.addListener(function( alarm ) {
         chrome.windows.getCurrent(function(currentWindow){
             chrome.notifications.clear(notifID);
             // If they have a current window open, create new tab
-            if (currentWindow !== null) {
+            console.log("Current window:", currentWindow);
+            debugger;
+            if (currentWindow !== undefined) {
                 chrome.tabs.create({
                     'url': url
                 });
