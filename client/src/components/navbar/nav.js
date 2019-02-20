@@ -10,14 +10,13 @@ export default props => (
            <Link className="brand-logo nav-logo" to="/application_page">Crease</Link>
             <ul id="nav-mobile" className="right">
                <li>
-                  <NavLink to={'/application_page'} activeClassName="active selected" className="nav-link">Application</NavLink>
+                  <a href='auth/google' activeClassName="active selected" className="nav-link">Crease Dashboard</a>
                </li>
                <li>
                   <NavLink to={'/meet_team'} activeClassName="active selected" className="nav-link">Meet The Team</NavLink>
                </li>
                <li>
-               <a href='/auth/logout'><button className="btn-small red darken-1">Sign Out</button></a>
-
+                  <a href='/auth/logout'><button className="btn-small red darken-1">Sign Out</button></a>
                </li>
             </ul>
          </div>
