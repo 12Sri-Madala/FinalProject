@@ -13,7 +13,7 @@ export default props => (
                   <a href='auth/google' activeClassName="active selected" className="nav-link">Crease Dashboard</a>
                </li>
                <li>
-                  <NavLink to={'/meet_team'} activeClassName="active selected" className="nav-link">Meet The Team</NavLink>
+                  <NavLink to={'/teampage'} activeClassName="active selected" className="nav-link">Meet The Team</NavLink>
                </li>
                <li>
                   <a href='/auth/logout'><button className="btn-small red darken-1">Sign Out</button></a>

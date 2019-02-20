@@ -9,7 +9,7 @@ export default () => (
     <div className="appDivBeforeRoot">
         <Route exact path="/" component={Home}/>
         <Route path="/crease_dashboard" component={ApplicationPage}/>
-        <Route path="/meet_team" component={MeetTeam}/>
+        <Route path="/teampage" component={MeetTeam}/>
     </div>
 )
 
