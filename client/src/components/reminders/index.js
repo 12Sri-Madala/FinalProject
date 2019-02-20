@@ -14,7 +14,7 @@ class Reminders extends Component {
     }
 
     render(){
-        console.log(this.props.list);
+       
 
        return(
            <ReminderList updateReminders={this.props.updateReminders}  data={this.props.list}/>

@@ -6,19 +6,19 @@ import { connect } from 'react-redux';
 import './nav.css';
 
 const Nav = props => {
-   console.log('Props', props);
+   // console.log('Props', props);
 
 
    return (
       <nav className="navbar">
          <div className="nav-wrapper main-nav">
-           <Link className="brand-logo nav-logo" to="/application_page">Crease</Link>
+           <Link className="brand-logo nav-logo" to="/crease_dashboard">Crease</Link>
             <ul id="nav-mobile" className="right">
                <li>
-                  <a href='auth/google' activeClassName="active selected" className="nav-link">Crease Dashboard</a>
+                  <a href='auth/google' className="nav-link">Crease Dashboard</a>
                </li>
                <li>
-                  <NavLink to={'/teampage'} activeClassName="active selected" className="nav-link">Meet The Team</NavLink>
+                  <NavLink to={'/teampage'} className="nav-link">Meet The Team</NavLink>
                </li>
                <li>
                   {

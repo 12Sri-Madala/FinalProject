@@ -40,7 +40,7 @@ class ExistingBookmarks extends Component {
 
     render(){ 
         
-        console.log('boook mark state', this.state.outsideDivClass);
+        
         if (!this.state.bookmarks){       
            return this.state.bookmarks === false ? (
             <div  className={`${this.state.outsideDivClass}`} >

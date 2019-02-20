@@ -115,7 +115,7 @@ class Reminder extends Component {
   };
 
   deleteItem = async (item) => {
-    console.log("reminder item that was passed in: ", item)
+    
     await axios({
       url: `/auth/deleteBookmarks`,
       method: 'delete',
@@ -123,7 +123,7 @@ class Reminder extends Component {
         reminder: item
       }
     }).then( resp => {
-        console.log("this is the resp from the server: ",resp)
+        
         
         this.props.updateReminders();
       })
@@ -160,8 +160,7 @@ class Reminder extends Component {
                   id="delete-reminder-btn"
                   onClick={() => {
                     this.deleteItem(item);
-                    // this.props.delete(item);
-                    console.log('DELETED: ',item);
+                    
 
                   }}
                 >
