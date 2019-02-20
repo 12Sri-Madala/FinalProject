@@ -8,7 +8,7 @@ import './application.css';
 export default () => (
     <div className="appDivBeforeRoot">
         <Route exact path="/" component={Home}/>
-        <Route path="/application_page" component={ApplicationPage}/>
+        <Route path="/crease_dashboard" component={ApplicationPage}/>
         <Route path="/meet_team" component={MeetTeam}/>
     </div>
 )
