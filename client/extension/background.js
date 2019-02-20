@@ -1,3 +1,61 @@
+const BASE_URL = 'http://localhost:3000/'
+
+// Chrome Alarm Listener 
+
+chrome.alarms.onAlarm.addListener(function( alarm ) {
+    console.log('alarm fired: ', alarm);
+
+    var notificationInfo = JSON.parse(alarm.name);
+    var url = notificationInfo.url;
+
+    // Create notification
+
+    var notifID = url + idGenerator();
+
+    chrome.notifications.create( notifID, {
+        type: 'basic',
+        iconUrl: notificationInfo.icon,
+        title: notificationInfo.title,
+        message: notificationInfo.notes,
+    });
+
+    // Assign URL to notification click
+
+    chrome.notifications.onClicked.addListener( function(notifID){
+        chrome.windows.getCurrent(function(currentWindow){
+            chrome.notifications.clear(notifID);
+            // If they have a current window open, create new tab
+            console.log("Current window:", currentWindow);
+            debugger;
+            if (currentWindow !== undefined) {
+                chrome.tabs.create({
+                    'url': url
+                });
+                return;
+            } else {
+            // If not, create new window
+                chrome.windows.create({
+                    'url': url,
+                    'focused': true
+                });
+                return;
+            }
+        });
+    });
+      
+});
+
+function idGenerator() {
+    var keys = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789";
+  
+    var id = "";
+  
+    for (var i = 0; i < 10; i++) {
+      var random = Math.floor(Math.random() * keys.length);
+      id += keys[random];
+    }
+    return id;
+}
 
 function createNotification(creaseObj) {
   const id = creaseObj.id;
@@ -64,20 +122,17 @@ function getBookmarkData() {
   });
 }
 
+// Chrome Bookmark Listeners 
 
 chrome.runtime.onInstalled.addListener(getBookmarkData);
-
-chrome.bookmarks.onCreated.addListener(getBookmarkData);
-
+chrome.bookmarks.onCreated.addListener(getBookmarkData)
 chrome.bookmarks.onRemoved.addListener(getBookmarkData);
-
 chrome.bookmarks.onChanged.addListener(getBookmarkData);
-
 chrome.bookmarks.onMoved.addListener(getBookmarkData);
-
 chrome.bookmarks.onChildrenReordered.addListener(getBookmarkData);
-
 chrome.bookmarks.onImportEnded.addListener(getBookmarkData);
+
+
 
 class User {
   constructor() {
