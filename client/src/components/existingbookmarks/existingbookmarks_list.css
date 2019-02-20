@@ -31,7 +31,7 @@
     width: 60vw;
     position: relative;
     max-width: 900px;
-    margin-top: 92px;
+    margin-top: 99px;
     margin-left: 43px;
 }
   .folderSection:first-child{
@@ -127,4 +127,12 @@
     width: 100%;
     
     
+}
+.weirdImage{
+    
+    height: 50px;
+    width: 50px;
+    position: relative;
+    top: 50%;
+    left: 10%;
 }
