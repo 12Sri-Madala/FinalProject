@@ -30,9 +30,9 @@ class ExistingBookmarks extends Component {
         const { bookmarks } = this.state;
         const { list } = this.props;
         
-        if (bookmarks === null && list.length) {
+        if (bookmarks === null) {
             this.setState({ 
-                bookmarks:this.props.list 
+                bookmarks: list.length ? this.props.list : false
             });
         }           
     }
@@ -42,10 +42,10 @@ class ExistingBookmarks extends Component {
         
         console.log('boook mark state', this.state.outsideDivClass);
         if (!this.state.bookmarks){       
-           return(
+           return this.state.bookmarks === false ? (
             <div  className={`${this.state.outsideDivClass}`} >
                 <div  className={`${this.state.insideDivClass}`}>
-                <img className={`addingBookMarkScreenShot ${this.state.insideDivClass}`} src={require('./images/arrowPointingBookmark.png')}/>
+                <img className={` ${this.state.insideDivClass}`} src={require(`./images/arrowPointingBookmark.png`)}/>
 
                     You Do Not Have Any Bookmarks Or Reminders. 
                     Please Add Some Bookmarks Or Reminders Through 
@@ -54,6 +54,9 @@ class ExistingBookmarks extends Component {
                 </div>
 
             </div>
+           ) : (
+            
+            <img className="weirdImage" src={require(`./images/ajax-loader.gif`)}/>
            )
         }
         else if (this.state.bookmarks){
