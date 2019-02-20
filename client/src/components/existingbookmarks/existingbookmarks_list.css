@@ -10,6 +10,7 @@
     /* margin-right: 10px; */
     cursor: pointer;
     text-align: center;
+    padding-left: 0;
 }
 .title {
     white-space: pre;
@@ -43,10 +44,11 @@
     display: inline-block;
     margin: 0;
     min-width: 200px;
-    max-height: 130px;
+    /* max-height: 130px; */
     overflow: overlay;
+    padding-left: 10px;
     /* text-align: center; */
-    
+    border-top: 1px solid black;
 }
   .individualFirstBookMark{
       overflow: auto;
@@ -69,17 +71,23 @@
     overflow: hidden;
     text-align: center;
 }
-  .allOfEachBookmarkTwo {
+.allOfEachBookmarkTwo {
     display: inline-block;
     text-overflow: ellipsis;
     margin: 0;
+    width: 200px;
     overflow: hidden;
+    padding-left: 5px;
+    vertical-align: top;
 }
-  .allOfEachBookmarkTwo img{
-      display: inline-block;
-      position: relative;
-      top: 5px;
-  }
+.allOfEachBookmarkTwo>a {
+    vertical-align: bottom;
+}
+.allOfEachBookmarkTwo img {
+    display: inline-block;
+    position: relative;
+    top: 5px;
+}
   
   .hrClass {
     margin: 0;
