@@ -4,7 +4,7 @@
     background-size: contain;
     background-position: center;
     background-repeat: repeat;
-    height: 100vh;
+    
 }
 
 .meetteam-logo {
@@ -63,6 +63,14 @@
 .github:hover, .linkedin:hover, .id-card:hover {
     color: #265288;
 }
+.nameStyle{
+    
+        font-size: 1.7rem;
+        position: relative;
+        right: 11%;
+        font-weight: 600;
+    
+}
 
 @media screen and (max-width: 1000px){
     /* css to be applied on screens under 1000px */
@@ -71,4 +79,29 @@
 
 .fa-id-card, .fa-github, .fa-linkedin {
     font-size: 2rem;
+}
+
+@media screen and (max-width: 1050px){
+    .meetteam-logo{
+        display:none;
+    }
+    .linkedin{
+        position: initial;
+        display:inline-block;
+    }
+    .id-card{
+        position: initial;
+        display:inline-block;
+    }
+    .github{
+        position: initial;
+        display:inline-block;
+    }
+    .nameStyle{
+        left:0;
+    }
+    .iconSection{
+        display:flex;
+        justify-content: space-evenly;
+    }
 }

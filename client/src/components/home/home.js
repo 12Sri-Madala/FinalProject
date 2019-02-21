@@ -62,8 +62,11 @@ export default props => {
                         </div>
                     
                     </div>
-                
+                    
                 </div>
+                    <div>
+                        <h1>Technologies Used:</h1>
+                    </div>
             </div>
         </div>
     )

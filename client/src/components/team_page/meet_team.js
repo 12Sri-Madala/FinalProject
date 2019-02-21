@@ -21,6 +21,7 @@ export default props => {
               <img className="meetteam-logo" src={MeetTeam} />
             </div>
             <Michael />
+            
           </div>
           <div className="meetteam center">
             <Julian />
