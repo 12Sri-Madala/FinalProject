@@ -17,11 +17,32 @@ nav {
     background-color: #265288;
     position: fixed;
 }
-@media only screen and (max-width: 992px){
+
+
+@media screen and (orientation: portrait){
+    .dashboardLink{
+        display:none !important;
+    }
+    .authButtons{
+        display:none;
+    }
+    .teamLink{
+        position: relative;
+        left: 9%;  
+    }
+    .logoCrease{
+        left: 19% !important;
+        -webkit-transform: translateX(-50%) !important;
+        transform: translateX(-50%) !important;
+    }
+    
+}
+
+/* @media only screen and (max-width: 992px){
     nav .brand-logo {
         left: 6%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
     }
-}
+} */
 
