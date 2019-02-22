@@ -51,7 +51,7 @@
     .replaceApplicationDiv {
         display: block;
         width: 95vw;
-        height: 95vh;
+        height: 95%;
         background: lightgoldenrodyellow;
         box-shadow: 2px 6px 30px black;
         margin-left: 3.5vh;
@@ -59,9 +59,10 @@
         text-align: center;
     }
     .textAreaReplacementApplicationDiv{
-        font-size: 1.3rem;
-        position: relative;
-        transform: translateY(172%);
+        font-size: 1.5rem;
+        padding: 8%;
+        padding-top: 26%;
+        
     }
     .navBarApplicationPage{
         display:none;
@@ -82,8 +83,7 @@
         justify-content: space-evenly;
         transition-duration: 0.2s;
         margin: auto;
-        position: relative;
-        transform: translateY(277%);
+        
     }
 }
 
@@ -104,7 +104,9 @@
     .textAreaReplacementApplicationDiv{
         font-size: 1.5rem;
         text-align: center;
-        padding: 12px;
+        padding: 2%;
+        padding-bottom: 9%;
+        padding-top: 49%;
     }
     .homeButton {
         font-size: 1.2rem;

@@ -41,7 +41,7 @@ class ApplicationPage extends Component {
                         This Application Is Only Viewable In A Google Chrome Browser On A Desktop In Fullscreen. 
                         Mobile Devices Will Not Run The Dashboard.
                     </div>
-                    <a href='http://localhost:3000/'><button className="homeButton">Go Home</button></a>
+                    <a href='/'><button className="homeButton">Go Home</button></a>
 
                 </div>
                 <div className="applicationDiv">
