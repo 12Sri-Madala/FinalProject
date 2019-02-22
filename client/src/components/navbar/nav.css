@@ -38,11 +38,13 @@ nav {
     
 }
 
-/* @media only screen and (max-width: 992px){
+@media only screen and (max-width: 992px){
     nav .brand-logo {
-        left: 6%;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
+        left:2% !important;
+        transform: 0 !important;
+        -webkit-transform: translateX(0) !important; 
     }
-} */
+}
+
+
 

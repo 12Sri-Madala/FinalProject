@@ -1,12 +1,13 @@
 import React from 'react';
-import AndrewPic from './images/andrew.png';
+// import AndrewPic from './images/andrew.png';
+import AndrewPic from './images/sriImage_square.jpg';
 
 
 const TeamMemberAndrew = () => {
     return (
         <div className="member-container">
             <img className="member-pic" src={AndrewPic} />
-            <div>
+            
                 <div className="iconSection">
                     <div className="id-card">
                         <a href="http://andrewmirs.tech"><i className="fas fa-id-card"></i></a>
@@ -21,7 +22,7 @@ const TeamMemberAndrew = () => {
                 <div>
                     <p className="nameStyle">Andrew Mirshafiee</p>
                 </div>       
-            </div>
+            
         </div>
 
   

@@ -1,9 +1,6 @@
 
 .teampage-background {
     background-image: url(./images/team-page-bg.jpg);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
     
 }
 
@@ -14,42 +11,45 @@
     right: 20px;
 }
 
+
 .member-container {
     display: inline-block;
-    
+    margin: auto;
+    width: 50%;
+    padding-top: 9%;
 }
 
 .member-pic {
-    height: 100%;
-    margin-bottom: -43px;
-    margin-top: 45px;
+    display: inline-block;
+    width: 50%
 }
+.iconSection{
+    display: flex;
+    justify-content: center;
+    /* width: 50%; */
+    margin: 0;
+    /* text-align: center; */
 
-.github {
-    position: relative;
-    bottom: 13px;
-    right: 46px;
-    color: grey;
-    font-size: 30px;
-    cursor: pointer;
 }
-
-.linkedin {
-    position: relative;
-    top: 13px;
-    right: 105px;
-    color: grey;
-    font-size: 28px;
-    cursor: pointer;
-}
-
 .id-card {
-    position: relative;
-    left: 7px;
-    bottom: 50px;
+    display: inline-block;
     color: grey;
-    font-size: 28px;
     cursor: pointer;
+    margin: 5px;
+}
+
+.github{
+    display: inline-block;
+    color: grey;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.linkedin{
+    display: inline-block;
+    color: grey;
+    cursor: pointer;
+    margin: 5px;
 }
 
 .member-container a {
@@ -66,23 +66,33 @@
 .nameStyle{
     
         font-size: 1.7rem;
-        position: relative;
-        right: 11%;
+        
         font-weight: 600;
+        margin: 0;
     
 }
+.fa-id-card, .fa-github, .fa-linkedin {
+    font-size: 2rem;
+}
+
+
+@media screen and (orientation: portrait){
+    .teampage-background{
+        height:100vh;
+    }
+}
+
+
+
 
 @media screen and (max-width: 1000px){
     /* css to be applied on screens under 1000px */
 
 }
 
-.fa-id-card, .fa-github, .fa-linkedin {
-    font-size: 2rem;
-}
 
 @media screen and (max-width: 1050px){
-    .meetteam-logo{
+    /* .meetteam-logo{
         display:none;
     }
     .linkedin{
@@ -99,9 +109,25 @@
     }
     .nameStyle{
         left:0;
+        margin: 0;
     }
     .iconSection{
         display:flex;
         justify-content: space-evenly;
     }
+    .member-pic {
+        width: 300px;
+        margin-top: 31px;
+    }
+    .sriImage{
+        margin-bottom: 20px;
+        margin-top: 81px;
+    }
+    .andrewIconAndName{
+        position: relative;
+        bottom: 19px;
+    }
+    .teampage-background{
+        background-size: contain;
+    } */
 }
