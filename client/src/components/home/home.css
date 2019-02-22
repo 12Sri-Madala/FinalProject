@@ -186,7 +186,7 @@ and (max-device-width : 1366px)  {
     }
 
     .team-button {
-        width: 25%;
+        width: 30%;
         padding: 2%;
         font-size: 1.3rem;
     }
@@ -215,5 +215,111 @@ and (max-device-width : 1366px)  {
     .organize, .set {
         font-size: 3rem;
         text-align: center;
+    }
+}
+
+@media only screen 
+and (max-device-width : 1366px)
+and (orientation: landscape)  {
+
+    .homepage {
+        height: 178vh;
+    }
+
+    .device-message-container {
+        margin: 0 9% 3% 9%;
+    }
+
+    .description-body {
+        top: 35px;
+        height: 80vh;
+    }
+
+    .videos {
+        width: 100%;
+    }
+
+    .organize-video {
+        display: block;
+        margin: 0px auto;
+    }
+
+    .set-reminder-video {
+        display: block;
+        margin: 0px auto;
+    }
+}
+
+/***** iPad Media Query *****/
+
+@media only screen 
+and (max-device-width : 768px)
+and (orientation: portrait)  {
+
+    .homepage {
+        height: 162vh;
+    }
+
+    .description-body {
+        top: 45px;
+        height: 64vh;
+    }
+
+    .organize, .set {
+        font-size: 2rem;
+    }
+
+    iframe {
+        width: 300px;
+        height: 200px;
+    }
+
+    .videos {
+        width: 100%;
+    }
+
+    .organize-video {
+        display: block;
+        margin: 0px auto;
+    }
+
+    .set-reminder-video {
+        display: block;
+        margin: 0px auto;
+    }
+}
+
+@media only screen 
+and (max-device-width : 1024px)
+and (orientation: landscape)  {
+    
+    .homepage {
+        height: 182vh;
+    }
+
+    .crease-logo{
+        top: 15vh;
+    }
+
+    .login-area {
+        top: 18vh;
+    }
+
+    .device-message {
+        font-size: 1.1rem;
+    }
+
+    .description-body {
+        top: 22px;
+        height: 83vh;
+    }
+
+    .organize, .set {
+        font-size: 2rem;
+    }
+
+    iframe {
+        width: 380px;
+        height: 250px;
     }
 }
