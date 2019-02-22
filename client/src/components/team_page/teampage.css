@@ -6,7 +6,7 @@
     z-index: -1;
 }
 .meetTeam{
-    
+    background-image: url(./images/team-page-bg.jpg);
 }
 .meetteam-logo {
     display: inline-block;
@@ -21,7 +21,7 @@
     margin: auto;
     width: 50%;
 }
-.center{
+.teamCenter{
     text-align: center;
     position: relative;
     top: 15%;
