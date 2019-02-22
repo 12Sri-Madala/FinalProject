@@ -1,7 +1,8 @@
 
 .teampage-background {
     background-image: url(./images/team-page-bg.jpg);
-    
+    width: 100%;
+    height: 100vmin;
 }
 
 .meetteam-logo {
@@ -16,9 +17,12 @@
     display: inline-block;
     margin: auto;
     width: 50%;
-    padding-top: 9%;
 }
-
+.center{
+    text-align: center;
+    position: relative;
+    top: 15%;
+}
 .member-pic {
     display: inline-block;
     width: 50%
@@ -76,58 +80,17 @@
 }
 
 
+
 @media screen and (orientation: portrait){
     .teampage-background{
-        height:100vh;
-    }
-}
-
-
-
-
-@media screen and (max-width: 1000px){
-    /* css to be applied on screens under 1000px */
-
-}
-
-
-@media screen and (max-width: 1050px){
-    /* .meetteam-logo{
-        display:none;
-    }
-    .linkedin{
-        position: initial;
-        display:inline-block;
-    }
-    .id-card{
-        position: initial;
-        display:inline-block;
-    }
-    .github{
-        position: initial;
-        display:inline-block;
-    }
-    .nameStyle{
-        left:0;
-        margin: 0;
-    }
-    .iconSection{
-        display:flex;
-        justify-content: space-evenly;
+        padding-top: 18%;
+        height: auto;
     }
     .member-pic {
-        width: 300px;
-        margin-top: 31px;
+        display: inline-block;
+        width: 70%;
     }
-    .sriImage{
-        margin-bottom: 20px;
-        margin-top: 81px;
+    .member-container{
+        width: 100%;
     }
-    .andrewIconAndName{
-        position: relative;
-        bottom: 19px;
-    }
-    .teampage-background{
-        background-size: contain;
-    } */
 }
