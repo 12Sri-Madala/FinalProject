@@ -72,6 +72,28 @@ export default props => {
                     </div>
                     
                 </div>
+
+                <div className="phone-videos-container">
+
+                    <div className="row">
+
+                        <p className="organize description-title">Organize and view with ease</p>
+                        <div className="organize-video">
+                            <iframe width="420" height="345" src="https://www.youtube.com/embed/S-AT4nrDjgs?autoplay=1&loop=1&playlist=S-AT4nrDjgs" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>  
+                        </div>
+                                                
+                    </div>
+
+                    <div className="row">
+                        
+                        <p className="set description-title">Set a <span className="lobster">Crease</span> reminder</p>
+                        <div className="set-reminder-video">
+                            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&loop=1&playlist=tgbNymZ7vqY" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                        
+                        </div>
+                    
+                    </div>
+                    
+                </div>
             </div>
         </div>
     )
