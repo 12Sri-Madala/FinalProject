@@ -144,6 +144,10 @@ button:focus {
 @media only screen 
 and (max-device-width : 1366px)  {
 
+    #home-login {
+        top: 0%;
+    }
+    
     .homepage {
         height: 165vh;
     }
@@ -195,8 +199,15 @@ and (max-device-width : 1366px)  {
         font-size: 1.3rem;
     }
 
+    .description-title {
+        text-align: center;
+        position: relative;
+    }
+
     .description-subtitle {
         top: 75px;
+        text-align: center;
+        position: relative;
     }
 
     .video-container-parent {
@@ -436,3 +447,144 @@ and (orientation: landscape)  {
 
 }
 
+/***** iPhone 6/7/8 Plus Media Query *****/
+
+@media only screen 
+and (max-device-width : 414px)
+and (orientation: portrait)  {
+
+    .homepage {
+        height: 193vh;
+    }
+
+    .description-body {
+        height: 95vh;
+        top: 28px;
+    }
+
+}
+
+@media only screen 
+and (max-device-width : 736px)
+and (orientation: landscape)  {
+
+    .homepage {
+        height: 230vh;
+    }
+
+    .description-body {
+        height: 100vh;
+    }
+
+    .description-subtitle, .description-subtitle .lobster {
+        font-size: 5vmin;
+    }
+
+    .organize, .set, .set .lobster {
+        font-size: 1.5rem;
+    }
+}
+
+/***** iPhone 6/7/8 Media Query *****/
+
+@media only screen 
+and (max-device-width : 375px)
+and (orientation: portrait)  {
+    
+    .crease-logo {
+        top: 13vh;
+    }
+
+    .login-area {
+        top: 16vh;
+    }
+
+    .homepage {
+        height: 199vh;
+    }
+
+    .description-body {
+        top: 17px;
+        height: 102vh;
+    }
+
+}
+
+@media only screen 
+and (max-device-width : 667px)
+and (orientation: landscape)  {
+
+    .homepage {
+        height: 235vh;
+    }
+
+    iframe {
+        width: 270px;
+        height: 180px;
+    }
+
+}
+
+/***** iPhone 5 Media Query *****/
+
+@media only screen 
+and (max-device-width : 320px)
+and (orientation: portrait)  {
+    
+    .homepage {
+        height: 215vh;
+    }
+
+    .login-area {
+        top: 13vh;
+    }
+    
+    .device-message, .device-message-container > p {
+        font-size: .8rem;
+    }
+
+    .team-button {
+        width: 50%;
+        font-size: .8rem;
+    }
+
+    .description-body {
+        top: 12px;
+        height: 117vh;
+    }
+}
+
+@media only screen 
+and (max-device-width : 568px)
+and (orientation: landscape)  {
+    
+    .homepage {
+        height: 245vh;
+    }
+
+    .device-message, .device-message-container > p {
+        font-size: .8rem;
+    }
+
+    .team-button {
+        width: 50%;
+        font-size: .8rem;
+    }
+
+    .meet-team-container {
+        top: 25vh;
+    }
+
+    .description-body {
+        height: 102vh;
+    }
+
+    .organize, .set, .set .lobster {
+        font-size: 1.3rem;
+    }
+
+    iframe {
+        width: 230px;
+        height: 150px;
+    }
+}
