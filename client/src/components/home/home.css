@@ -130,6 +130,10 @@ button:focus {
     display: none;
 }
 
+.phone-videos-container {
+    display: none;
+}
+
 /*****************************************************
 ***********         Media Queries         ************
 *****************************************************/
@@ -323,3 +327,112 @@ and (orientation: landscape)  {
         height: 250px;
     }
 }
+
+/***** iPhoneX Media Query *****/
+
+@media only screen 
+and (max-device-width : 600px)
+and (orientation: portrait)  {
+
+    .homepage {
+        height: 188vh;
+    }
+
+    .crease-logo {
+        top: 17vh;
+    }
+
+    .login-area {
+        top: 20vh;
+    }
+
+    .device-message, .device-message-container > p {
+        font-size: 1rem;
+    }
+
+    .team-button {
+        width: 45%;
+        font-size: 1rem;
+        padding: 3%;
+    }
+
+    .description-body {
+        height: 88vh;
+        top: 37px;
+    }
+
+    .description-title, .description-title .lobster {
+        font-size: 6.5vmin
+    }
+
+    .description-subtitle {
+        top: 45px;
+    }
+
+    .organize, .set {
+        font-size: 1.3rem;
+    }
+
+    .set .lobster {
+        font-size: 1.4rem;
+    }
+
+    .video-container-parent {
+        display: none;
+    }
+
+    .phone-videos-container {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        top: 55px;
+    }
+
+    iframe {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+@media only screen 
+and (max-device-width : 812px)
+and (orientation: landscape)  {
+
+    .homepage {
+        height: 257vh;
+    }
+
+    .device-message, .device-message-container > p {
+        font-size: 1rem;
+    }
+
+    .team-button {
+        width: 35%;
+        font-size: 1rem;
+    }
+
+    .description-body {
+        top: 132px;
+        height: 116vh;
+    }
+
+    .description-title, .description-title .lobster {
+        font-size: 6.5vmin;
+    }
+
+    .description-subtitle, .description-subtitle .lobster {
+        font-size: 5.5vmin;
+        top: 25px;
+    }
+
+    .video-container-parent {
+        top: 50px;
+    }
+
+    iframe {
+        width: 300px;
+        height: 200px;
+    }
+
+}
+
