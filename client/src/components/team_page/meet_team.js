@@ -15,15 +15,9 @@ export default props => {
     return <Fragment>
         <Nav />
         <div className="teampage-background">
-          <div className="meetteam center">
-            <Sri />
-            <div className="meetteam-logo">
-              <img className="meetteam-logo" src={MeetTeam} />
-            </div>
-            <Michael />
-            
-          </div>
-          <div className="meetteam center">
+          <div className="meetTeam center container-fluid">
+            <Sri />           
+            <Michael />                     
             <Julian />
             <Andrew />
           </div>

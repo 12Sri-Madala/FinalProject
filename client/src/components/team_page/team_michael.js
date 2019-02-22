@@ -1,5 +1,6 @@
 import React from 'react';
-import MichaelPic from './images/mike1.png';
+// import MichaelPic from './images/mike1.png';
+import MichaelPic from './images/sriImage_square.jpg';
 
 
 const TeamMemberMichael = () => {

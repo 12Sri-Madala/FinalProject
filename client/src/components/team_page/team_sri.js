@@ -1,5 +1,5 @@
 import React from 'react';
-import SriPic from './images/sri.png';
+import SriPic from './images/sriImage_square.jpg';
 
 
 const TeamMemberSri = () => {
