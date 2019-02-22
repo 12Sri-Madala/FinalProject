@@ -23,7 +23,7 @@ export default props => {
 
         ///img src={background} --- this was in the div below this for some reason.. 
         <div  className="homepage">
-            <div className="home-login center">
+            <div className="home-login center" id="home-login">
                 <div  className="crease-logo"></div>
                 
                 <div className="login-area">
@@ -40,16 +40,16 @@ export default props => {
                     </div>
                 </div>
 
-                <div className="login-area">
+                <div className="login-area meet-team-container">
                     <a href='http://localhost:3000/teampage'><button className="login-button team-button">MEET THE TEAM</button></a>
                 </div>
             </div>
             
             <div className="description-body">
                 <div className="description-header">
-                    <h3 className="center description-title">What is <span className="lobster">Crease</span> ?</h3>
+                    <h3 className="description-title">What is <span className="lobster">Crease</span> ?</h3>
 
-                    <h6 className="center description-subtitle"><span className="lobster">Crease</span> is an all-in-one bookmark manager for your inspirations and read laters</h6>
+                    <h6 className="description-subtitle"><span className="lobster">Crease</span> is an all-in-one bookmark manager for your inspirations and read laters</h6>
                 </div>
 
                 <div className="container video-container-parent">
