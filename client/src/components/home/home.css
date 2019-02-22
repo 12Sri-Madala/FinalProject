@@ -88,6 +88,14 @@ button:focus {
     color: rgb(218, 218, 218);
 }
 
+.description-subtitle {
+    position: relative;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 4.5vmin;
+    top: 5px;
+    color: rgb(218, 218, 218);
+}
+
 .organize {
     margin-top: 7%;
 }
@@ -116,4 +124,96 @@ button:focus {
     height: 25%;
     width: 100%;
     margin-top: 10%
+}
+
+.device-message-container {
+    display: none;
+}
+
+/*****************************************************
+***********         Media Queries         ************
+*****************************************************/
+
+
+/***** iPad Pro Media Query *****/
+
+@media only screen 
+and (max-device-width : 1366px)  {
+
+    .homepage {
+        height: 165vh;
+    }
+
+    .login-area {
+        top: 25vh;
+    }
+
+    .device-message-container {
+        display: inline-block;
+        width: 80%;
+        margin: 0 9% 7% 9%;
+        border: 5px solid grey;
+        border-radius: 10px;
+        background-color: rgb(38,82,136, 0.3);
+    }
+
+    .login-button-container {
+        display: none;
+    }
+
+    .device-message {
+        display: inline-block;
+        padding: 0 30px 30px 30px;
+        font-size: 1.3rem;
+    }
+
+    .device-message-container > p {
+        display: inline-block;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .fa-exclamation-triangle {
+        font-size: 1.3rem;
+        padding: 0 10px;
+        color: rgb(38,82,136);
+    }
+
+    .description-body {
+        position: relative;
+        top: 68px;
+        height: 67vh;
+    }
+
+    .team-button {
+        width: 25%;
+        padding: 2%;
+        font-size: 1.3rem;
+    }
+
+    .description-subtitle {
+        top: 75px;
+    }
+
+    .video-container-parent {
+        position: relative;
+        top: 150px;
+    }
+
+    .videos {
+        display: inline-flex;
+    }
+
+    .organize-video {
+        margin-right: 4%;
+    }
+
+    .container {
+        width: 85%;
+    }
+
+    .organize, .set {
+        font-size: 3rem;
+        text-align: center;
+    }
 }
