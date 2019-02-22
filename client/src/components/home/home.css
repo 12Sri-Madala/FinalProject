@@ -588,3 +588,76 @@ and (orientation: landscape)  {
         height: 150px;
     }
 }
+
+/***** iPhone 4 Media Query *****/
+
+@media only screen 
+and (max-device-width : 320px)
+and (max-device-height : 480px)
+and (orientation: portrait)  {
+    
+    .homepage {
+        height: 244vh;
+    }
+
+    .description-body {
+        top: 52px;
+        height: 136vh;
+    }
+
+    .description-title {
+        top: 11px;
+    }
+
+}
+
+@media only screen 
+and (max-device-width : 480px)
+and (max-device-height : 320px)
+and (orientation: landscape)  {
+    
+    .homepage {
+        height: 240vh;
+    }
+
+    .description-body {
+        height: 96vh;
+    }
+
+    .description-subtitle {
+        padding: 0 10px;
+    }
+
+    .organize, .set, .set .lobster {
+        font-size: 1.1rem;
+    }
+
+    iframe {
+        width: 200px;
+        height: 130px;
+    }
+}
+
+/***** iPhoneX Adjustments Media Query *****/
+
+@media only screen 
+and (max-device-width : 375px)
+and (min-device-height : 812px)
+and (orientation: portrait)  {
+
+    .homepage {
+        height: 182vh;
+    }
+
+    .description-body {
+        height: 87vh;
+    }
+
+    .meet-team-container {
+        top: 20vh;
+    }
+
+    .description-title {
+        top: 13px
+    }
+}
