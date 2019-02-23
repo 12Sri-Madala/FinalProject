@@ -82,6 +82,7 @@ button:focus {
 }
 
 .description-title {
+    text-align: center;
     position: relative;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 4.5vmin;
@@ -135,10 +136,41 @@ button:focus {
     display: none;
 }
 
+.videos{
+    display:flex;
+    justify-content: space-evenly;
+}
+iframe{
+    width: 522px;
+    height: 330px;
+}
+.container {
+    width: 90% !important;   
+   }
+
+.technologyText{
+    text-align: center;
+    margin-top: 5%;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 8.5vmin;
+}   
+.icon > img {
+    width: 25%;
+    vertical-align: middle;
+    font-weight: 600;
+}
 /*****************************************************
 ***********         Media Queries         ************
 *****************************************************/
 
+/*** Desktop media query ****/
+@media only screen and (max-width: 1300px){
+    iframe{
+        width: 450px;
+        height: 300px;
+    }
+}
 
 /***** iPad Pro Media Query *****/
 
@@ -217,15 +249,20 @@ and (max-device-width : 1366px)  {
     }
 
     .videos {
-        display: inline-flex;
+        display: flex;
+        justify-content: space-evenly;
     }
+    /* .videoSize{
+        width: 390px;
+        height: 300px;
+    } */
 
     .organize-video {
         margin-right: 4%;
     }
 
     .container {
-        width: 85%;
+     width: 90% !important;   
     }
 
     .organize, .set {
@@ -302,6 +339,11 @@ and (orientation: portrait)  {
     .set-reminder-video {
         display: block;
         margin: 0px auto;
+    }
+    .icon > img {
+        width: 40%;
+        vertical-align: middle;
+        font-weight: 600;
     }
 }
 
@@ -662,3 +704,5 @@ and (orientation: portrait)  {
         top: 13px
     }
 }
+
+

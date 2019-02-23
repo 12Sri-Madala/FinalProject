@@ -62,11 +62,11 @@ export default props => {
                     <div className="videos">
                         
                         <div className="col s5 organize-video">
-                            <iframe width="420" height="345" src="https://www.youtube.com/embed/S-AT4nrDjgs?autoplay=1&loop=1&playlist=S-AT4nrDjgs" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                        
+                            <iframe className="videoSize"  src="https://www.youtube.com/embed/S-AT4nrDjgs?autoplay=1&loop=1&playlist=S-AT4nrDjgs" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                        
                         </div>
 
                         <div className="col s5 offset-s2 set-reminder-video">
-                            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&loop=1&playlist=tgbNymZ7vqY" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                        
+                            <iframe className="videoSize"  src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&loop=1&playlist=tgbNymZ7vqY" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                        
                         </div>
                     
                     </div>
@@ -93,6 +93,19 @@ export default props => {
                     
                     </div>
                     
+                </div>
+            </div>
+            <div className="technologyUsed container">
+                <div className="technologyText">
+                    Technologies Used:
+                </div>
+                <div className="technologyIcons">
+                    <div class="col-xs-3 col-md-3 col-sm-3 item">
+							<div class="icon">
+								<img src="assets/icon_images/react-original.svg"/>
+							</div>
+							React
+					</div>
                 </div>
             </div>
         </div>
