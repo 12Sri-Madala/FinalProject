@@ -95,6 +95,19 @@ export default props => {
                     
                 </div>
             </div>
+            <div className="technologyUsed container">
+                <div className="technologyText">
+                    Technologies Used:
+                </div>
+                <div className="technologyIcons">
+                    <div class="col-xs-3 col-md-3 col-sm-3 item">
+							<div class="icon">
+								<img src="assets/icon_images/react-original.svg"/>
+							</div>
+							React
+					</div>
+                </div>
+            </div>
         </div>
     )
 }
