@@ -1,6 +1,6 @@
 import React from 'react';
 // import MichaelPic from './images/mike1.png';
-import MichaelPic from './images/sriImage_square.jpg';
+import MichaelPic from './images/michael_final.jpg';
 
 
 const TeamMemberMichael = () => {
@@ -21,6 +21,8 @@ const TeamMemberMichael = () => {
                 </div>
                 <div>
                     <p className="nameStyle">Michael Esfahani</p>
+                    <p className="nameStyle devStyle">Frontend Developer</p>
+
                 </div>
             
             </div>

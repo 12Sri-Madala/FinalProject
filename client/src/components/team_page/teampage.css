@@ -20,6 +20,7 @@
     display: inline-block;
     margin: auto;
     width: 50%;
+    margin-top: 2%;
 }
 .teamCenter{
     text-align: center;
@@ -28,7 +29,7 @@
 }
 .member-pic {
     display: inline-block;
-    width: 50%
+    width: 55%;
 }
 .iconSection{
     display: flex;
@@ -77,6 +78,9 @@
         font-weight: 600;
         margin: 0;
     
+}
+.devStyle{
+    font-size:1.1rem;
 }
 .fa-id-card, .fa-github, .fa-linkedin {
     font-size: 2rem;

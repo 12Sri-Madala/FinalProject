@@ -16,10 +16,11 @@ export default props => {
         <Nav />
         <div className="teampage-background">
           <div className="meetTeam teamCenter container-fluid">
-            <Sri />           
+            
+            <Andrew />          
             <Michael />                     
             <Julian />
-            <Andrew />
+            <Sri /> 
           </div>
         </div>
       </Fragment>;

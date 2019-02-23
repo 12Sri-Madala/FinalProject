@@ -78,6 +78,7 @@ button:focus {
     color: whitesmoke;
     margin: 0;
     top: 1vh;
+    text-align: center;
 }
 
 .description-title {
