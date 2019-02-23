@@ -1,5 +1,5 @@
 import React from 'react';
-import SriPic from './images/sriImage_square.jpg';
+import SriPic from './images/sri_final.jpg';
 
 
 const TeamMemberSri = () => {
@@ -19,7 +19,8 @@ const TeamMemberSri = () => {
                     </div>
                 </div>
                 <div>
-                    <p className="nameStyle">Srihar Madala</p>
+                    <p className="nameStyle">Sridhar Madala</p>
+                    <p className="nameStyle devStyle">Backend Developer</p>
                 </div>       
             </div>
         </div>

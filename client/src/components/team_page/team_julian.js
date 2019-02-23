@@ -1,6 +1,6 @@
 import React from 'react';
 // import JulianPic from './images/julian.png';
-import JulianPic from './images/sriImage_square.jpg';
+import JulianPic from './images/Julian_final.jpg';
 
 const TeamMemberJulian = () => {
     return (
@@ -20,6 +20,7 @@ const TeamMemberJulian = () => {
                 </div>
                 <div>
                     <p className="nameStyle">Julian So</p>
+                    <p className="nameStyle devStyle">Backend Developer</p>
                 </div>       
             </div>
         </div>
