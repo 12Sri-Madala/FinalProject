@@ -8,7 +8,7 @@ import application from '../../videos/application.mp4';
 import background from './images/title-background.jpg';
 import logo from './images/crease-logo.png';
 import descBody from './images/description-body.png';
-
+import reactIcon from './icons/react-original.svg';
 export default props => {
     const responseGoogle = (response) => {
         
@@ -100,13 +100,61 @@ export default props => {
                     Technologies Used:
                 </div>
                 <div className="technologyIcons">
-                    <div class="col-xs-3 col-md-3 col-sm-3 item">
+                    
+                        <div className="iconContainer">
 							<div class="icon">
-								<img src="assets/icon_images/react-original.svg"/>
+								<img src={reactIcon}/>                                
 							</div>
-							React
-					</div>
+                            <div className="iconName">
+                                React
+                            </div>							
+                        </div>
+                        <div className="iconContainer">
+							<div class="icon">
+								<img src={reactIcon}/>                                
+							</div>
+                            <div className="iconName">
+                                React
+                            </div>							
+                        </div>
+                        <div className="iconContainer">
+							<div class="icon">
+								<img src={reactIcon}/>                                
+							</div>
+                            <div className="iconName">
+                                React
+                            </div>							
+                        </div>
+					
                 </div>
+                <div className="technologyIcons">
+                    
+                    <div className="iconContainer">
+                        <div class="icon">
+                            <img src={reactIcon}/>                                
+                        </div>
+                        <div className="iconName">
+                            React
+                        </div>							
+                    </div>
+                    <div className="iconContainer">
+                        <div class="icon">
+                            <img src={reactIcon}/>                                
+                        </div>
+                        <div className="iconName">
+                            React
+                        </div>							
+                    </div>
+                    <div className="iconContainer">
+                        <div class="icon">
+                            <img src={reactIcon}/>                                
+                        </div>
+                        <div className="iconName">
+                            React
+                        </div>							
+                    </div>
+                
+            </div>
             </div>
         </div>
     )
