@@ -9,6 +9,12 @@ import background from './images/title-background.jpg';
 import logo from './images/crease-logo.png';
 import descBody from './images/description-body.png';
 import reactIcon from './icons/react-original.svg';
+import CSS from './icons/css3-original.svg'
+import HTML from './icons/html5-original.svg'
+import Javascript from './icons/javascript-original.svg'
+import NodeJS from './icons/nodejs-original.svg'
+import Redux from './icons/redux.svg';
+
 export default props => {
     const responseGoogle = (response) => {
         
@@ -111,18 +117,18 @@ export default props => {
                         </div>
                         <div className="iconContainer">
 							<div class="icon">
-								<img src={reactIcon}/>                                
+								<img src={CSS}/>                                
 							</div>
                             <div className="iconName">
-                                React
+                                CSS
                             </div>							
                         </div>
                         <div className="iconContainer">
 							<div class="icon">
-								<img src={reactIcon}/>                                
+								<img src={Redux}/>                                
 							</div>
                             <div className="iconName">
-                                React
+                                Redux
                             </div>							
                         </div>
 					
@@ -131,26 +137,26 @@ export default props => {
                     
                     <div className="iconContainer">
                         <div class="icon">
-                            <img src={reactIcon}/>                                
+                            <img src={HTML}/>                                
                         </div>
                         <div className="iconName">
-                            React
+                            HTML
                         </div>							
                     </div>
                     <div className="iconContainer">
                         <div class="icon">
-                            <img src={reactIcon}/>                                
+                            <img src={Javascript}/>                                
                         </div>
                         <div className="iconName">
-                            React
+                            Javascript
                         </div>							
                     </div>
                     <div className="iconContainer">
                         <div class="icon">
-                            <img src={reactIcon}/>                                
+                            <img src={NodeJS}/>                                
                         </div>
                         <div className="iconName">
-                            React
+                            NodeJS
                         </div>							
                     </div>
                 

@@ -179,21 +179,19 @@ iframe{
         width: 450px;
         height: 300px;
     }
+    
 }
 
 /***** iPad Pro Media Query *****/
 
-@media only screen 
+/* @media only screen 
 and (max-device-width : 1366px)  {
 
     #home-login {
         top: 0%;
     }
     
-    /* .homepage {
-        height: 165vh;
-    } */
-
+    
     .login-area {
         top: 25vh;
     }
@@ -265,7 +263,7 @@ and (max-device-width : 1366px)  {
         width: 390px;
         height: 300px;
     } */
-
+/* 
     .organize-video {
         margin-right: 4%;
     }
@@ -284,9 +282,7 @@ and (max-device-width : 1366px)  {
 and (max-device-width : 1366px)
 and (orientation: landscape)  {
 
-    /* .homepage {
-        height: 178vh;
-    } */
+    
 
     .device-message-container {
         margin: 0 9% 3% 9%;
@@ -310,7 +306,7 @@ and (orientation: landscape)  {
         display: block;
         margin: 0px auto;
     }
-}
+} */ 
 
 /***** iPad Media Query *****/
 
@@ -318,6 +314,9 @@ and (orientation: landscape)  {
 and (max-device-width : 768px)
 and (orientation: portrait)  {
 
+    .technologyUsed {
+        padding-top: 4%;
+    }
     /* .homepage {
         height: 162vh;
     } */
@@ -393,6 +392,9 @@ and (orientation: landscape)  {
 and (max-device-width : 600px)
 and (orientation: portrait)  {
 
+    .technologyUsed{
+        padding-top: 4%;
+    }
     /* .homepage {
         height: 188vh;
     } */
@@ -456,7 +458,9 @@ and (orientation: portrait)  {
 @media only screen 
 and (max-device-width : 812px)
 and (orientation: landscape)  {
-
+    .technologyUsed{
+        padding-top: 18%;
+    }
     /* .homepage {
         height: 257vh;
     } */
@@ -500,7 +504,9 @@ and (orientation: landscape)  {
 @media only screen 
 and (max-device-width : 414px)
 and (orientation: portrait)  {
-
+    .technologyUsed{
+        padding-top: 4%;
+    }
     /* .homepage {
         height: 193vh;
     } */
@@ -515,7 +521,9 @@ and (orientation: portrait)  {
 @media only screen 
 and (max-device-width : 736px)
 and (orientation: landscape)  {
-
+    .technologyUsed{
+        padding-top: 18%;
+    }
     /* .homepage {
         height: 230vh;
     } */
@@ -539,6 +547,9 @@ and (orientation: landscape)  {
 and (max-device-width : 375px)
 and (orientation: portrait)  {
     
+    .technologyUsed{
+        padding-top: 4%;
+    }
     .crease-logo {
         top: 13vh;
     }
@@ -562,6 +573,9 @@ and (orientation: portrait)  {
 and (max-device-width : 667px)
 and (orientation: landscape)  {
 
+    .technologyUsed{
+        padding-top: 18%;
+    }
     /* .homepage {
         height: 235vh;
     } */
@@ -579,6 +593,9 @@ and (orientation: landscape)  {
 and (max-device-width : 320px)
 and (orientation: portrait)  {
     
+    .technologyUsed{
+        padding-top: 4%;
+    }
     /* .homepage {
         height: 215vh;
     } */
@@ -606,6 +623,9 @@ and (orientation: portrait)  {
 and (max-device-width : 568px)
 and (orientation: landscape)  {
     
+    .technologyUsed{
+        padding-top: 18%;
+    }
     /* .homepage {
         height: 245vh;
     } */
@@ -644,6 +664,9 @@ and (max-device-width : 320px)
 and (max-device-height : 480px)
 and (orientation: portrait)  {
     
+    .technologyUsed{
+        padding-top: 4%;
+    }
     /* .homepage {
         height: 244vh;
     } */
@@ -664,6 +687,9 @@ and (max-device-width : 480px)
 and (max-device-height : 320px)
 and (orientation: landscape)  {
     
+    .technologyUsed{
+        padding-top: 18%;
+    }
     /* .homepage {
         height: 240vh;
     } */
@@ -693,6 +719,9 @@ and (max-device-width : 375px)
 and (min-device-height : 812px)
 and (orientation: portrait)  {
 
+    .technologyUsed{
+        padding-top: 4%;
+    }
     /* .homepage {
         height: 182vh;
     } */
