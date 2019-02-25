@@ -16,7 +16,9 @@ export default props => {
         <Nav />
         <div className="teampage-background">
           <div className="meetTeam teamCenter container-fluid">
-            
+            <div className="teamPageTitle">
+              <h4>Meet The Team</h4>
+            </div>
             <Andrew />          
             <Michael />                     
             <Julian />

@@ -51,11 +51,11 @@
     .replaceApplicationDiv {
         display: block;
         width: 95vw;
-        height: 95%;
+        height: 95vh;
         background: lightgoldenrodyellow;
         box-shadow: 2px 6px 30px black;
-        margin-left: 3.5vh;
-        margin-top: 1.5vh;
+        margin-left: 2%;
+        margin-top: 2%;
         text-align: center;
     }
     .textAreaReplacementApplicationDiv{
