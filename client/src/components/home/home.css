@@ -184,8 +184,8 @@ iframe{
 
 /***** iPad Pro Media Query *****/
 
-/* @media only screen 
-and (max-device-width : 1366px)  {
+@media only screen 
+and (max-device-width : 1200px)  {
 
     #home-login {
         top: 0%;
@@ -259,11 +259,8 @@ and (max-device-width : 1366px)  {
         display: flex;
         justify-content: space-evenly;
     }
-    /* .videoSize{
-        width: 390px;
-        height: 300px;
-    } */
-/* 
+    
+
     .organize-video {
         margin-right: 4%;
     }
@@ -279,7 +276,7 @@ and (max-device-width : 1366px)  {
 }
 
 @media only screen 
-and (max-device-width : 1366px)
+and (max-device-width : 1200px)
 and (orientation: landscape)  {
 
     
@@ -306,7 +303,7 @@ and (orientation: landscape)  {
         display: block;
         margin: 0px auto;
     }
-} */ 
+}
 
 /***** iPad Media Query *****/
 

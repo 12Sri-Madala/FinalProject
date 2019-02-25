@@ -15,11 +15,15 @@ const Nav = props => {
            <Link className="logoCrease brand-logo nav-logo" to="/">Crease</Link>
             <ul id="nav-mobile" className="right">
                <li>
-                  <a href='auth/google' className="nav-link dashboardLink">Crease Dashboard</a>
+                  <NavLink to={'/'} className="nav-link">Home</NavLink>
                </li>
                <li>
-                  <NavLink to={'/teampage'} className="nav-link teamLink">Meet The Team</NavLink>
+                  <a href='auth/google' className="nav-link dashboardLink">Dashboard</a>
                </li>
+               <li>
+                  <NavLink to={'/teampage'} className="nav-link teamLink">Team</NavLink>
+               </li>
+               
                <li>
                   {
                      props.auth
