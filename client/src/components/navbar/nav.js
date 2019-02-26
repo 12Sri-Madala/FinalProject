@@ -18,7 +18,7 @@ const Nav = props => {
                   <NavLink to={'/'} className="nav-link">Home</NavLink>
                </li>
                <li>
-                  <a href='auth/google' className="nav-link dashboardLink">Dashboard</a>
+                  <a href='/crease_dashboard' className="nav-link dashboardLink">Dashboard</a>
                </li>
                <li>
                   <NavLink to={'/teampage'} className="nav-link teamLink">Team</NavLink>

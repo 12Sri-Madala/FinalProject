@@ -22,6 +22,7 @@ class ApplicationPage extends Component {
         const response = await axios.get("http://localhost:8000/auth/getBookmarks",{
             withCredentials: true
         });
+        console.log("Here is the response ", response);
         const { reminders, bookmarks: bookmarkRoot } = response.data;
         const bookmarks = bookmarkRoot[0].nested.nestedBookmarks;
         let bookmarksBar = bookmarks[0].nested.nestedBookmarks;

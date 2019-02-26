@@ -32,7 +32,11 @@ export default props => {
             <div className="home-login center" id="home-login">
                 <div  className="crease-logo"></div>
                 
+                
                 <div className="login-area">
+                    <div className=" meet-team-container meetTheTeamButton">
+                        <a href='https://chrome.google.com/webstore/category/extensions'><button className="login-button team-button">GET THE EXTENSION</button></a>
+                    </div>
                     <div className="login-button-container">
                         <a href='http://localhost:8000/auth/google'><button className='login-button' type='button'>LOGIN</button></a>
                         <a href='http://localhost:8000/auth/google'><button className='login-button' type='button'>SIGNUP</button></a>
@@ -46,9 +50,7 @@ export default props => {
                     </div>
                 </div>
 
-                <div className="login-area meet-team-container">
-                    <a href='http://localhost:3000/teampage'><button className="login-button team-button">MEET THE TEAM</button></a>
-                </div>
+                
             </div>
             
             <div className="description-body">
@@ -102,6 +104,7 @@ export default props => {
                 </div>
             </div>
             <div className="technologyUsed container">
+                
                 <div className="technologyText">
                     Technologies Used:
                 </div>
@@ -159,8 +162,11 @@ export default props => {
                             NodeJS
                         </div>							
                     </div>
-                
-            </div>
+                    
+                </div>
+                    <div className=" meet-team-container meetTheTeamButton">
+                        <a href='http://localhost:3000/teampage'><button className="login-button team-button">MEET THE TEAM</button></a>
+                    </div>
             </div>
         </div>
     )
