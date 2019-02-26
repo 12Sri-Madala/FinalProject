@@ -17,7 +17,7 @@ class Folder extends Component {
             openRoute = props.openRoute;
           }
         this.state = {
-            folder: props.open ? "fa-folder" : "fa-folder-open",
+            folder: props.open ? "fa-folder-open" : "fa-folder",
             openRoute: openRoute
         }
     }
@@ -93,6 +93,7 @@ class Folder extends Component {
     }
 
     render(){
+       
         
         if(this.props.depth === 0){
             
@@ -112,9 +113,8 @@ class Folder extends Component {
                 
             return (
                 <div className="folder" >
-                    <div className="toggle" onClick={this.toggleFolder}>
-                        
-                        <i className={`fas ${this.state.folder} folderIcon`}></i> 
+                    <div className="toggle" onClick={this.toggleFolder}>               
+                    { this.checkIfOpen() ? <i className={`fas fa-folder-open folderIcon`}></i>  : <i className={`fas fa-folder folderIcon`}></i> }  
                     </div>
                     <div className="title">
                         {this.props.title}
