@@ -63,6 +63,10 @@
     list-style-type: none;
     height: 90vh;
     margin: 0;
+    overflow: scroll;
+}
+::-webkit-scrollbar { 
+    display: none; 
 }
 
 .partOfList{
@@ -155,8 +159,8 @@
 
 .reminder-dots {
     position: absolute;
-    height: .6vh;
-    width: 4%;
+    height: .9vh;
+    width: 6%;
     -webkit-mask-box-image: url(./images/reminder-dots.png);
     background-position: center;
     background-size: contain;
@@ -166,6 +170,11 @@
     background-color: red;
     
    
+}
+.outside-Reminder-dots{
+    height: 3.5vh;
+    cursor: pointer;
+    
 }
 
 .popup-link {

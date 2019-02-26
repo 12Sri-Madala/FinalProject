@@ -25,6 +25,9 @@ body{
     font-family: 'Lobster', cursive;
     color: #265288;
 }
+button{
+    cursor: pointer;
+}
 
 .crease-logo {
     position: relative;
