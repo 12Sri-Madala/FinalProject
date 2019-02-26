@@ -107,7 +107,7 @@
     
 }
 .insideNoDataErrorFixing {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     width: 100%;
     position: relative;
     top: 12%;
@@ -143,7 +143,7 @@
     margin-bottom:0;
 }
 .imgExtensionPlaceholder{
-    height: 29vh;
+    height: 23vh;
 }
   .displayingNone{
       display:none;
@@ -164,4 +164,13 @@
     position: relative;
     top: 50%;
     left: 10%;
+}
+
+.redirectTextOne{
+    margin-bottom: 5px;
+}
+.redirectNumbers{
+    display: flex;
+    font-size: 2rem;
+    font-weight: bold;
 }

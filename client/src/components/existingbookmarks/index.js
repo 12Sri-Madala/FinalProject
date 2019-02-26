@@ -46,9 +46,9 @@ class ExistingBookmarks extends Component {
             <div  className={`${this.state.outsideDivClass}`} >
                 <div  className={`${this.state.insideDivClass}`}>
                     <p className="extensionRedirectText extensionRedirectTitle">WHY YOU ARE SEEING THIS MESSAGE</p>  
-                    <p className="extensionRedirectText">1.)</p>
-                    <p className="extensionRedirectText">You Do Not Have The Extension. Please Click On The Button 
-                        Below To Be Redirected To The Chrome Store</p>
+                    <p className="extensionRedirectText redirectNumbers">1</p>
+                    <p className="extensionRedirectText redirectTextOne">You do not have the extension. Please click on the button 
+                        below to be redirected to the Chrome Store</p>
 
                 <div className=" meet-team-container meetTheTeamButton">
                         <a href='https://chrome.google.com/webstore/category/extensions'><button className="extensionButtonDashboardPage team-button">GET THE EXTENSION</button></a>
@@ -56,9 +56,9 @@ class ExistingBookmarks extends Component {
                 <img className={`imgExtensionPlaceholder ${this.state.insideDivClass}`} src={require(`./images/placeholder_extensionpic.png`)}/>
                     
                     <p className="extensionRedirectText">-OR-</p>
-                    <p className="extensionRedirectText">2.)</p>
-                    You Do Not Have Any Bookmarks. 
-                    Please Add Some Bookmarks So You Can See The Dashboard In Action.
+                    <p className="extensionRedirectText redirectNumbers">2</p>
+                    You do not have any bookmarks. 
+                    Please add some bookmarks so you can see the dashboard in action.
                     <img className={` ${this.state.insideDivClass}`} src={require(`./images/arrowPointingBookmark.png`)}/>
 
                 </div>
