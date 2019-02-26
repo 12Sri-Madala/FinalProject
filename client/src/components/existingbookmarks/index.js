@@ -45,7 +45,7 @@ class ExistingBookmarks extends Component {
            return this.state.bookmarks === false ? (
             <div  className={`${this.state.outsideDivClass}`} >
                 <div  className={`${this.state.insideDivClass}`}>
-                    <p className="extensionRedirectText extensionRedirectTitle">WHY YOU ARE SEEING THIS MESSAGE</p>  
+                    <p className="extensionRedirectText extensionRedirectTitle">OPPS! LETS FIGURE OUT WHY THE DASHBOARD IS NOT LOADING.</p>  
                     <p className="extensionRedirectText redirectNumbers">1</p>
                     <p className="extensionRedirectText redirectTextOne">You do not have the extension. Please click on the button 
                         below to be redirected to the Chrome Store</p>
@@ -55,7 +55,7 @@ class ExistingBookmarks extends Component {
                 </div>
                 <img className={`imgExtensionPlaceholder ${this.state.insideDivClass}`} src={require(`./images/placeholder_extensionpic.png`)}/>
                     
-                    <p className="extensionRedirectText">-OR-</p>
+                    <p className="extensionRedirectText orText">-OR-</p>
                     <p className="extensionRedirectText redirectNumbers">2</p>
                     You do not have any bookmarks. 
                     Please add some bookmarks so you can see the dashboard in action.

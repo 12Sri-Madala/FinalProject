@@ -136,11 +136,14 @@
     font-weight:bold;
 }
 .extensionRedirectText{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-align: center;
     text-shadow: 2px 2px aliceblue;
     margin-top:0;
     margin-bottom:0;
+}
+.orText{
+    margin-top: 8px;
 }
 .imgExtensionPlaceholder{
     height: 23vh;
