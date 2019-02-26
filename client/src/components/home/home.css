@@ -16,7 +16,6 @@ body{
     /* height: 120vw; */
 }
 .home-login{
-    width: 100vw;
     height: 86vh;
     margin: 0;
 }
@@ -59,6 +58,8 @@ body{
     width: 15%;
     transition: ease-in-out;
     transition-duration: 0.2s;
+    word-wrap: break-word;
+    min-width: 130px;
 }
 
 .login-button:hover, .getting-started-button:hover {
@@ -73,7 +74,6 @@ button:focus {
 
 .description-header {
     position: relative;
-    width: 100vw;
     height: 10vh;
     color: whitesmoke;
     margin: 0;
@@ -107,7 +107,6 @@ button:focus {
 }
 
 .description-body {
-    width: 100vw;
     height: 100vh;
     background-image: url(/assets/images/1bc33f165303309a8cb2eea3a90b79f3.png);
     background-size: cover;
@@ -168,6 +167,10 @@ iframe{
 }
 .iconContainer{
     margin: 20px;
+}
+.meetTheTeamButton{
+    text-align: center;
+    padding-bottom:2%;
 }
 /*****************************************************
 ***********         Media Queries         ************

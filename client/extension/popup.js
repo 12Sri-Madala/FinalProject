@@ -1,6 +1,7 @@
 $(document).ready(function() {
   $("#creaseform").submit(function(event) {
     event.preventDefault();
+    $('[type=submit]').attr('disabled', 'disabled');
     processForm();
   });
 });
@@ -89,6 +90,9 @@ function processForm() {
     data: creaseObj,
     success: function(response) {
       console.log("Sent saved Bookmark: ", response); // ???
+    },
+    error: function(response){
+      $('[type=submit]').removeAttr('disabled');
     }
   };
 
