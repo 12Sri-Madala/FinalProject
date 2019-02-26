@@ -17,8 +17,13 @@ const Nav = props => {
                <li>
                   <NavLink to={'/'} className="nav-link">Home</NavLink>
                </li>
+               
                <li>
-                  <a href='/crease_dashboard' className="nav-link dashboardLink">Dashboard</a>
+                  {
+                     props.auth
+                        ? <a href='/crease_dashboard' className="nav-link dashboardLink">Dashboard</a>
+                        : <a href='/auth/google'>Dashboard</a>
+                  }
                </li>
                <li>
                   <NavLink to={'/teampage'} className="nav-link teamLink">Team</NavLink>

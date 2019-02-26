@@ -148,7 +148,7 @@ class Reminder extends Component {
           {this.countDown(item.date, item.time)}
           <Popup
             position="left center"
-            trigger={<div className="reminder-dots" />}
+            trigger={<div className="reminder-dots"></div>}
           >
             <div>
               <div>Notes: {item.notes}</div>
