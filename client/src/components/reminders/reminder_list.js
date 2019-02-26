@@ -7,7 +7,8 @@ import axios from 'axios';
 
 class Reminder extends Component {
   state = {
-    reminders: null
+    reminders: null,
+    isDeleting: false
   }
 
   reminderBackground = index => {
@@ -115,7 +116,12 @@ class Reminder extends Component {
   };
 
   deleteItem = async (item) => {
-    
+  if(this.state.isDeleting) {
+    return
+  };
+  this.setState({
+    isDeleting: true
+  }, async ()=> {
     await axios({
       url: `/auth/deleteBookmarks`,
       method: 'delete',
@@ -123,11 +129,11 @@ class Reminder extends Component {
         reminder: item
       }
     }).then( resp => {
-        
-        
         this.props.updateReminders();
+        this.setState({isDeleting: false})
       })
-    
+  })
+     
   }
 
   render() {
