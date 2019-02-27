@@ -180,10 +180,10 @@ iframe{
 *****************************************************/
 
 /*** Desktop media query ****/
-@media only screen and (max-width: 1300px){
+@media only screen and (max-width: 1250px){
     iframe{
-        width: 450px;
-        height: 300px;
+        width: 530px;
+        height: 330px;
     }
     
 }
