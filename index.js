@@ -254,17 +254,27 @@ app.delete("/auth/deleteBookmarks", (req, resp) => {
   userBase.findOne({ googleId }, (err, user) => {
       if (err) return console.log(err);
       console.log("Inside findOne function", user);
-      user.reminders.id(_id).remove()
+      if (user.reminders.id(_id)) {
+        user.reminders.id(_id).remove()
 
-      user.save(err => {
-        if (err){console.log("Error from find one and delete",err);} else {
-          console.log('Reminder delete success');
-        }
+        user.save(err => {
+          if (err){console.log("Error from find one and delete",err);} else {
+            console.log('Reminder delete success');
+          }
+          resp.send({
+            success: true
+          });
+        })
+      } else {
+        console.log('Reminder delete has no bookmark');
+
         resp.send({
-          success: true
-        });
+          success: false,
+          message: 'Bookmark no longer exists'
+        })
+      }
 
-      })
+      
     });
 });
 
