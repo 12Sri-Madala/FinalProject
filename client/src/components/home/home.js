@@ -42,8 +42,8 @@ export default props => {
                         <a href='http://localhost:8000/auth/google'><button className='login-button' type='button'>SIGNUP</button></a>
                     </div>
                     <div className="device-message-container">
-                        <p><i class="fas fa-exclamation-triangle"></i> Friendly Reminder <i class="fas fa-exclamation-triangle"></i></p>
-                        <span class="device-message">
+                        <p><i className="fas fa-exclamation-triangle"></i> Friendly Reminder <i className="fas fa-exclamation-triangle"></i></p>
+                        <span className="device-message">
                             This application is built as a chrome extension which is currently incompatible with mobile devices.
                             Please download our application on your laptop or desktop to access our features.
                         </span>
@@ -111,7 +111,7 @@ export default props => {
                 <div className="technologyIcons">
                     
                         <div className="iconContainer">
-							<div class="icon">
+							<div className="icon">
 								<img src={reactIcon}/>                                
 							</div>
                             <div className="iconName">
@@ -119,7 +119,7 @@ export default props => {
                             </div>							
                         </div>
                         <div className="iconContainer">
-							<div class="icon">
+							<div className="icon">
 								<img src={CSS}/>                                
 							</div>
                             <div className="iconName">
@@ -127,7 +127,7 @@ export default props => {
                             </div>							
                         </div>
                         <div className="iconContainer">
-							<div class="icon">
+							<div className="icon">
 								<img src={Redux}/>                                
 							</div>
                             <div className="iconName">
@@ -139,7 +139,7 @@ export default props => {
                 <div className="technologyIcons">
                     
                     <div className="iconContainer">
-                        <div class="icon">
+                        <div className="icon">
                             <img src={HTML}/>                                
                         </div>
                         <div className="iconName">
@@ -147,7 +147,7 @@ export default props => {
                         </div>							
                     </div>
                     <div className="iconContainer">
-                        <div class="icon">
+                        <div className="icon">
                             <img src={Javascript}/>                                
                         </div>
                         <div className="iconName">
@@ -155,7 +155,7 @@ export default props => {
                         </div>							
                     </div>
                     <div className="iconContainer">
-                        <div class="icon">
+                        <div className="icon">
                             <img src={NodeJS}/>                                
                         </div>
                         <div className="iconName">
