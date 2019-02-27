@@ -45,13 +45,13 @@ class ExistingBookmarks extends Component {
            return this.state.bookmarks === false ? (
             <div  className={`${this.state.outsideDivClass}`} >
                 <div  className={`${this.state.insideDivClass}`}>
-                    <p className="extensionRedirectText extensionRedirectTitle">OPPS! LETS FIGURE OUT WHY THE DASHBOARD IS NOT LOADING.</p>  
+                    <p className="extensionRedirectText extensionRedirectTitle">OOPS! LETS FIGURE OUT WHY THE DASHBOARD IS NOT LOADING.</p>  
                     <p className="extensionRedirectText redirectNumbers">1</p>
                     <p className="extensionRedirectText redirectTextOne">You do not have the extension. Please click on the button 
                         below to be redirected to the Chrome Store</p>
 
                 <div className=" meet-team-container meetTheTeamButton">
-                        <a href='https://chrome.google.com/webstore/category/extensions'><button className="extensionButtonDashboardPage team-button">GET THE EXTENSION</button></a>
+                        <a href='https://chrome.google.com/webstore/category/extensions'><button className="extensionButtonDashboardPage team-button">DOWNLOAD</button></a>
                 </div>
                 <img className={`imgExtensionPlaceholder ${this.state.insideDivClass}`} src={require(`./images/placeholder_extensionpic.png`)}/>
                     
