@@ -8,11 +8,10 @@ import rootReducer from './reducers/index';
 import thunk from './middleware/thunk';
 import { signIn } from './actions';
 
-
-const store = createStore(rootReducer, {}, applyMiddleware(thunk));
+const store = createStore(rootReducer, {},  applyMiddleware(thunk));
 
 signIn()(store.dispatch);
-
+ 
 ReactDOM.render(
         <Provider store={store}>
             <Router>

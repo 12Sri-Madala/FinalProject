@@ -16,7 +16,8 @@ class ApplicationPage extends Component {
         };
     }
     componentDidMount(){
-        this.authCall();
+        console.log(this.props)
+        this.authCall(); 
     }
     authCall = async () => {
         const response = await axios.get("http://localhost:8000/auth/getBookmarks",{
