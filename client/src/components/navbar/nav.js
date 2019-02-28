@@ -6,10 +6,7 @@ import { connect } from 'react-redux';
 import './nav.css';
 
 const Nav = props => {
-   // console.log('Props', props);
-
-
-   return (
+ return (
       <nav className="navbar">
          <div className="nav-wrapper main-nav">
            <Link className="logoCrease brand-logo nav-logo" to="/">Crease</Link>

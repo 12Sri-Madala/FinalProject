@@ -16,12 +16,7 @@ import NodeJS from './icons/nodejs-original.svg'
 import Redux from './icons/redux.svg';
 
 export default props => {
-    const responseGoogle = (response) => {
-        
-        console.log(document);
-        console.log(`googleID=${response.googleId}`);
-        console.log('google response:',response);
-
+    const responseGoogle = (response) => {       
         document.cookie = `googleID=${response.googleId}`;
     }
 
