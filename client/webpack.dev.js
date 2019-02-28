@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 module.exports = merge(common, {
     entry: [
         '@babel/polyfill',
-        'webpack-dev-server/client?http://localhost:' + PORT,
+        'webpack-dev-server/client?http://creasetabs.com:' + PORT,
         './index.js'
     ],
     devtool: 'inline-source-map',

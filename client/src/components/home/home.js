@@ -33,8 +33,8 @@ export default props => {
                         <a href='https://chrome.google.com/webstore/category/extensions'><button className="login-button team-button">GET THE EXTENSION</button></a>
                     </div>
                     <div className="login-button-container">
-                        <a href='http://localhost:8000/auth/google'><button className='login-button' type='button'>LOGIN</button></a>
-                        <a href='http://localhost:8000/auth/google'><button className='login-button' type='button'>SIGNUP</button></a>
+                        <a href='http://creasetabs.com/auth/google'><button className='login-button' type='button'>LOGIN</button></a>
+                        <a href='http://creasetabs.com/auth/google'><button className='login-button' type='button'>SIGNUP</button></a>
                     </div>
                     <div className="device-message-container">
                         <p><i className="fas fa-exclamation-triangle"></i> Friendly Reminder <i className="fas fa-exclamation-triangle"></i></p>
@@ -160,7 +160,7 @@ export default props => {
                     
                 </div>
                     <div className=" meet-team-container meetTheTeamButton">
-                        <a href='http://localhost:3000/teampage'><button className="login-button team-button">MEET THE TEAM</button></a>
+                        <a href='http://creasetabs.com/teampage'><button className="login-button team-button">MEET THE TEAM</button></a>
                     </div>
             </div>
         </div>
