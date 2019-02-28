@@ -143,7 +143,7 @@ class Reminder extends Component {
         <div key={item._id} className={this.reminderBackground(index)}>
           <a className="reminder-title-link" href={item.url} target="_blank">
             <div className="reminder-icon-bg">
-              <img className="reminder-icon" src={item.icon} />
+              <img className="reminder-icon" src={item.icon} alt={`\nfavicon`}/>
             </div>
           </a>
           <div className="reminder-title">
