@@ -85,7 +85,7 @@ function processForm() {
 
   var ajaxConfig = {
     datatype: "json",
-    url: "http://localhost:8000/auth/addBookmarks",
+    url: "http://creasetabs.com/auth/addBookmarks",
     method: "Post",
     data: creaseObj,
     success: function(response) {

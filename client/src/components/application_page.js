@@ -19,7 +19,7 @@ class ApplicationPage extends Component {
         this.authCall(); 
     }
     authCall = async () => {
-        const response = await axios.get("http://localhost:8000/auth/getBookmarks",{
+        const response = await axios.get("http://creasetabs.com/auth/getBookmarks",{
             withCredentials: true
         });
         const { reminders, bookmarks: bookmarkRoot } = response.data;

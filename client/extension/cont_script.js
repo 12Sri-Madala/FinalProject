@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/'
+const BASE_URL = 'http://creasetabs.com/'
 const COOKIE_NAME = 'connect.sid'
 
 class User {
@@ -37,7 +37,7 @@ class User {
             if (result.name === COOKIE_NAME) {
                 if (user.loggedIn) {
                     user.loggedIn = false;
-                    let domain = (matchedTab.url).match(/localhost:3000/gi)
+                    let domain = (matchedTab.url).match(/creasetabs.com/gi)
                     if (domain) {
                         chrome.tabs.reload(matchedTab.id);
                     }                   

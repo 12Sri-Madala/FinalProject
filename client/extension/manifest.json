@@ -9,9 +9,9 @@
     "notifications",
     "storage",
     "tabs",
-    "http://localhost:8000/auth/apiBookmarks",
+    "http://creasetabs.com/auth/apiBookmarks",
     "cookies",
-    "http://localhost:3000/application_page/",
+    "http://creasetabs.com/application_page/",
     "webNavigation",
     "<all_urls>",
     "*://*/*"
@@ -22,7 +22,7 @@
 
   "content_scripts": [
     {
-      "matches": ["http://*.localhost:3000/*"],
+      "matches": ["http://*.creasetabs.com/*"],
       "js": ["cont_script.js"]
     }
   ],

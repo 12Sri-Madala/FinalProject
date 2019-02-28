@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/'
+const BASE_URL = 'http://creasetabs.com/'
 
 // Chrome Alarm Listener 
 
@@ -112,7 +112,7 @@ function getBookmarkData() {
 
     const postingCall = {
       method: "POST",
-      url: "http://localhost:8000/auth/apiBookmarks",
+      url: "http://creasetabs.com/auth/apiBookmarks",
       data: {
         bookmarks: JSON.stringify(bookmarkTreeNodes)
       }
@@ -175,7 +175,7 @@ class User {
         if (result.name === COOKIE_NAME) {
           if (user.loggedIn) {
             user.loggedIn = false;
-            let domain = matchedTab.url.match(/localhost:3000/gi);
+            let domain = matchedTab.url.match(/creasetabs.com/gi);
             if (domain) {
               chrome.tabs.reload(matchedTab.id);
             }

@@ -5,10 +5,10 @@
   "main": "index.js",
   "proxy": {
     "/bookmarks/*": {
-      "target": "http://localhost:8000"
+      "target": "http://creasetabs.com"
     },
     "/auth/*": {
-      "target": "http://localhost:8000"
+      "target": "http://creasetabs.com"
     }
   },
   "scripts": {
