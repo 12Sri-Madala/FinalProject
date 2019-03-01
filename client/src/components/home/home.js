@@ -33,8 +33,8 @@ export default props => {
                         <a href='https://chrome.google.com/webstore/category/extensions'><button className="login-button team-button">GET THE EXTENSION</button></a>
                     </div>
                     <div className="login-button-container">
-                        <a href='http://creasetabs.com/auth/google'><button className='login-button' type='button'>LOGIN</button></a>
-                        <a href='http://creasetabs.com/auth/google'><button className='login-button' type='button'>SIGNUP</button></a>
+                        <a href='/auth/google'><button className='login-button' type='button'>LOGIN</button></a>
+                        <a href='/auth/google'><button className='login-button' type='button'>SIGNUP</button></a>
                     </div>
                     <div className="device-message-container">
                         <p><i className="fas fa-exclamation-triangle"></i> Friendly Reminder <i className="fas fa-exclamation-triangle"></i></p>
