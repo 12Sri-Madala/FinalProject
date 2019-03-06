@@ -82,10 +82,6 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next) {
-<<<<<<< HEAD
-=======
-  // res.header("Access-Control-Allow-Origin", "http://localhost:3000");
->>>>>>> 39b4e4249fa607ec7c9d7a123a2cd6d3bb8a4269
   res.header("Access-Control-Allow-Origin", "http://creasetabs.com");
   res.header("Access-Control-Allow-Credentials", true);
   next();
