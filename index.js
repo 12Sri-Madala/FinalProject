@@ -6,9 +6,7 @@ const cors = require("cors");
 const cookieSession = require("cookie-session");
 const { cookieConfig, dbConfig } = require("./config");
 const cookieParser = require("cookie-parser");
-// module.exports = app => {
-//   app.use('/auth', require('./auth'));
-// }
+
 const PORT = process.env.PORT || 8000;
 
 mongoose.connect(
@@ -76,29 +74,22 @@ app.use(
   })
 );
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(resolve(__dirname, "client", "dist")));
 app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(function(req, res, next) {
+<<<<<<< HEAD
+=======
+  // res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+>>>>>>> 39b4e4249fa607ec7c9d7a123a2cd6d3bb8a4269
   res.header("Access-Control-Allow-Origin", "http://creasetabs.com");
   res.header("Access-Control-Allow-Credentials", true);
-  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
 
 require("./routes")(app);
 
