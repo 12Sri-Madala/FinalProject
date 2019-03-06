@@ -51,9 +51,9 @@ class ExistingBookmarks extends Component {
                         below to be redirected to the Chrome Store</p>
 
                 <div className=" meet-team-container meetTheTeamButton">
-                        <a href='https://chrome.google.com/webstore/category/extensions'><button className="extensionButtonDashboardPage team-button">DOWNLOAD</button></a>
+                    <a href='https://chrome.google.com/webstore/detail/crease/nbodlocfffccgkpmcnjbfobeigaajhbn'><button className="extensionButtonDashboardPage team-button">DOWNLOAD</button></a>
                 </div>
-                <img className={`imgExtensionPlaceholder ${this.state.insideDivClass}`} src={require(`./images/placeholder_extensionpic.png`)}/>
+                <img className={`imgExtensionPlaceholder ${this.state.insideDivClass}`} src={require(`./images/creaseExtensionPic.png`)}/>
                     
                     <p className="extensionRedirectText orText">-OR-</p>
                     <p className="extensionRedirectText redirectNumbers">2</p>

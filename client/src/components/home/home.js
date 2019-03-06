@@ -28,10 +28,7 @@ export default props => {
                 <div  className="crease-logo"></div>
                 
                 
-                <div className="login-area">
-                    <div className=" meet-team-container meetTheTeamButton">
-                        <a href='https://chrome.google.com/webstore/category/extensions'><button className="login-button team-button">GET THE EXTENSION</button></a>
-                    </div>
+                <div className="login-area">                   
                     <div className="login-button-container">
                         <a href='http://creasetabs.com/auth/google'><button className='login-button' type='button'>LOGIN</button></a>
                         <a href='http://creasetabs.com/auth/google'><button className='login-button' type='button'>SIGNUP</button></a>
@@ -82,7 +79,7 @@ export default props => {
 
                         <p className="organize description-title">Organize and view with ease</p>
                         <div className="organize-video">
-                            <iframe width="420" height="345" src="https://www.youtube.com/embed/S-AT4nrDjgs?autoplay=1&loop=1&playlist=S-AT4nrDjgs" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>  
+                            <iframe width="420" height="345" src="https://www.youtube.com/embed/sWyRKwKZBac?autoplay=1&loop=1&playlist=sWyRKwKZBac" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>  
                         </div>
                                                 
                     </div>
@@ -91,7 +88,7 @@ export default props => {
                         
                         <p className="set description-title">Set a <span className="lobster">Crease</span> reminder</p>
                         <div className="set-reminder-video">
-                            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&loop=1&playlist=tgbNymZ7vqY" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                        
+                            <iframe width="420" height="345" src="https://www.youtube.com/embed/PwLfyxaZ18A?autoplay=1&loop=1&playlist=PwLfyxaZ18A" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                        
                         </div>
                     
                     </div>

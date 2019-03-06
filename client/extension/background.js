@@ -107,6 +107,7 @@ function createAlarm(creaseObj) {
 }
 
 function getBookmarkData() {
+  console.log("get bookmark data was hit")
   chrome.bookmarks.getTree(function(bookmarkTreeNodes) {
     console.log("Hitting dumpBookmarks function", bookmarkTreeNodes);
 
@@ -124,81 +125,38 @@ function getBookmarkData() {
 
 // Chrome Bookmark Listeners 
 
-chrome.runtime.onInstalled.addListener(getBookmarkData);
-chrome.bookmarks.onCreated.addListener(getBookmarkData)
-chrome.bookmarks.onRemoved.addListener(getBookmarkData);
-chrome.bookmarks.onChanged.addListener(getBookmarkData);
-chrome.bookmarks.onMoved.addListener(getBookmarkData);
-chrome.bookmarks.onChildrenReordered.addListener(getBookmarkData);
-chrome.bookmarks.onImportEnded.addListener(getBookmarkData);
-
-
-
-class User {
-  constructor() {
-    this.loggedIn = false;
-    // this.name = '';
-  }
-  login() {
-    if (user.loggedIn) {
-      return;
-    }
-    chrome.cookies.get(
-      {
-        url: BASE_URL,
-        name: COOKIE_NAME
-      },
-      function(cookie) {
-        if (cookie) {
-          console.log("Cookie from localhost3000: ", cookie);
-          var date = new Date();
-          var currenttime = date.getTime();
-          var ifExpire = currenttime - cookie.expirationDate;
-          if (ifExpire > 0) {
-            user.loggedIn = true;
-          } else {
-            user.loggedIn = false;
-          }
-        } else {
-          user.loggedIn = false;
-        }
-      }
-    );
-  }
-  logout() {
-    chrome.cookies.remove(
-      {
-        url: BASE_URL,
-        name: COOKIE_NAME
-      },
-      function(result) {
-        if (result.name === COOKIE_NAME) {
-          if (user.loggedIn) {
-            user.loggedIn = false;
-            let domain = matchedTab.url.match(/creasetabs.com/gi);
-            if (domain) {
-              chrome.tabs.reload(matchedTab.id);
-            }
-          }
-        }
-      }
-    );
-  }
+try {
+  console.log("went inside try block")
+  chrome.runtime.onInstalled.addListener(getBookmarkData);
+}
+catch (error){
+  console.log("error from onInstalled function: ", error)
 }
 
-// function createNewUser() {
-//     user = new User();
-//     user.login();
-// }
+chrome.runtime.onInstalled.addListener(function (details) {
+  getBookmarkData();
+});
 
-// chrome.runtime.onStartup.addListener(function (details) {
-//     createNewUser();
-// });
+chrome.bookmarks.onCreated.addListener(function (details) {
+  getBookmarkData();
+});
 
-// chrome.runtime.onInstalled.addListener(function (details) {
-//     createNewUser();
-// });
+chrome.bookmarks.onRemoved.addListener(function (details) {
+  getBookmarkData();
+});
 
-// if(!user){
-//     createNewUser();
-// }
+chrome.bookmarks.onChanged.addListener(function (details) {
+  getBookmarkData();
+});
+
+chrome.bookmarks.onMoved.addListener(function (details) {
+  getBookmarkData();
+});
+
+chrome.bookmarks.onChildrenReordered.addListener(function (details) {
+  getBookmarkData();
+});
+
+chrome.bookmarks.onImportEnded.addListener(function (details) {
+  getBookmarkData();
+});

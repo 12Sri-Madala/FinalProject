@@ -8,7 +8,7 @@ router.get('/test', (req, res) => {
 router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 
 router.get('/callback', passport.authenticate('google'), (req, res) => {
-    res.redirect('http://localhost:3000/crease_dashboard');
+    res.redirect('/crease_dashboard');
 });
 
 router.get('/current-user', (req, res) => {
