@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "Starting setup for react redux project",
   "main": "index.js",
+  "proxy": {
+    "/bookmarks/*": {
+      "target": "http://creasetabs.com"
+    },
+    "/auth/*": {
+      "target": "http://creasetabs.com"
+    }
+  },
   "scripts": {
     "start": "node dev_server.js",
     "bundle": "webpack --config webpack.prod.js --progress",
@@ -19,11 +27,14 @@
     "googleapis": "^35.0.0",
     "materialize-css": "^1.0.0",
     "react": "^16.5.2",
+    "react-cookie": "^3.0.8",
     "react-dom": "^16.5.2",
     "react-google-login": "^4.0.0",
-    "react-redux": "^5.0.7",
+    "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
-    "redux": "^4.0.1"
+    "reactjs-popup": "^1.3.1",
+    "redux": "^4.0.1",
+    "redux-form": "^7.4.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",

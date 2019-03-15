@@ -1,0 +1,221 @@
+*{
+    font-size: 1rem;
+}
+
+.listItemElements:hover{
+    font-style: italic;
+    background-color: lightgray;
+    list-style-type: none;
+}
+
+.light-reminder-background{
+    position: relative;
+    font-size: 1rem;
+    width: 100%;
+    height: 10%;
+    color: rgb(41, 41, 41);
+    background-color:   #f3ce8a;
+    min-width: 100px;
+    min-height: 80px;
+}
+.outer-reminders {
+    position: fixed;
+    width: 35%;
+    min-width: 420px;
+}
+
+.dark-reminder-background{
+    position: relative;
+    font-size: 1rem;
+    width: 100%;
+    height: 10%;
+    color: rgb(41, 41, 41);
+    background-color: #ffb52c;
+    min-width: 100px;
+    min-height: 80px;
+}
+
+.reminder-icon-bg {
+    display: inline-block;
+    position: relative;
+    background-image: url(/assets/images/06fd634a295418f825f43203fe2c6be1.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    height: 90%;
+    width: 20%;
+    top: 5%;
+    left: 5%;
+}
+
+.reminder-icon{
+    display: inline-block;
+    position: relative;
+    width: 50%;
+    height: 50%;
+    left: 50%;
+    transform: translate(-50%,50%);
+    white-space: pre;
+}
+
+.reminderElements{
+    list-style-type: none;
+    height: 90vh;
+    margin: 0;
+    overflow: scroll;
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.partOfList{
+    display: inline-block;
+    position: relative;
+
+}
+
+.listStyle{
+    position: relative;
+    left: 7%;
+    vertical-align: top;
+    width: 60%;
+    top: 20%;
+}
+
+.btnList{
+    position: relative;
+    font-size: .7rem;
+    width: 10%;
+    left: 9%;
+    top: 9%;
+}
+
+.countdown{
+    display: inline-block;
+    position: relative;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    margin: 0;
+    top: 7%;
+    left: 20%;
+    vertical-align: top;
+    text-align: right;
+    line-height: 2px;
+}
+
+.reminder-title-link{
+    position: relative;
+    color: black;
+    font-size: 100%;
+    word-wrap: break-word;
+}
+
+.reminder-title {
+    display: inline-block;
+    position: relative;
+    font-family: 'Barlow Condensed', sans-serif;
+    top: 25%;
+    left: 6%;
+    width: 47%;
+    font-size: 1.2rem;
+    vertical-align: middle;
+    line-height: initial;
+}
+
+#reminder-time-hours {
+    top: 20%;
+}
+
+#time-AM-PM {
+    top: 20%;
+    left:18%
+}
+
+#amPM {
+    font-size: 1rem;
+}
+
+.countdownAMPM{
+    display: inline-block;
+    position: relative;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    margin: 0;
+    top: 15%;
+    left: 15%;
+    vertical-align: top;
+    text-align: right;
+    line-height: 0px;
+}
+
+.countdown-font {
+    font-size: 1.2rem;
+}
+.countdown-font-dow {
+    font-size: 1.1rem;
+    color: rgb(97, 97, 97);
+}
+
+.reminder-dots {
+    position: absolute;
+    height: .9vh;
+    width: 6%;
+    -webkit-mask-box-image: url(./images/reminder-dots.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    right: 2%;
+    cursor: pointer;
+    background-color: red;
+    
+   
+}
+.outside-Reminder-dots{
+    height: 3.5vh;
+    cursor: pointer;
+    
+}
+
+.popup-link {
+    text-align: center;
+}
+
+.reminder-header {
+    position: relative;
+    text-align: center;
+    width: 100%;   
+    margin: 0;
+    padding: 0;
+    border-bottom: 3px solid lightgray;
+    margin-top: 15px;
+}
+
+
+.reminder-tab > h6 {
+    text-align: center;
+    color: rgb(68, 68, 68);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: bold;
+}
+
+.reminder-tab {
+    height: 70%;  
+    width: 35%;
+    background-color: lightgray;
+    border-radius: 15px 15px 0 0;
+    padding: 0;
+    left: 10%;
+    bottom: 0;
+}
+
+#delete-reminder-btn {
+    height: 24px;
+    line-height: 22.4px;
+    font-size: 11px;
+}
+
+.delete-reminder {
+    margin: 4px 0;
+}
+

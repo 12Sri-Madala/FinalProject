@@ -1,17 +1,15 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import Nav from './nav';
-import Home from './home';
 import ApplicationPage from './application_page';
-import MeetTeam from './meet_team';
+import Home from './home/home';
+import MeetTeam from './team_page/meet_team';
+import './application.css';
 
 export default () => (
-    <div>
-
-        <Nav/>
+    <div className="appDivBeforeRoot">
         <Route exact path="/" component={Home}/>
-        <Route path="/application_page" component={ApplicationPage}/>
-        <Route path="/meet_team" component={MeetTeam}/>
+        <Route path="/crease_dashboard" component={ApplicationPage}/>
+        <Route path="/teampage" component={MeetTeam}/>
     </div>
 )
 

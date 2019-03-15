@@ -1,0 +1,31 @@
+{
+  "name": "Crease",
+  "version": "1.3",
+  "description": "All in one bookmarks manager, that lets you set reminders for your inspirations and read laters",
+  "permissions": [
+    "alarms", 
+    "activeTab", 
+    "bookmarks",
+    "notifications",
+    "storage",
+    "tabs",
+    "http://creasetabs.com/auth/apiBookmarks",
+    "cookies",
+    "http://creasetabs.com/application_page/",
+    "webNavigation"
+  ],
+  "chrome_url_overrides" : {
+    "bookmarks": "crease-bookmarks.html"
+  },
+
+  "background": {
+     "scripts": ["jquery.min.js", "background.js"]
+  },
+  "browser_action": {
+      "default_title": "My Bookmarks",
+      "default_icon": "./images/temp.png",
+      "default_popup": "popup.html"
+  },
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+}

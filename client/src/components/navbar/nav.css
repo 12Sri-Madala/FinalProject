@@ -1,0 +1,50 @@
+.main-nav {
+    padding: 0 20px;
+}
+
+.nav-logo{
+    font-family: 'Lobster', cursive;
+}
+
+.navbar {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+nav {
+    background-color: #265288;
+    position: fixed;
+}
+
+
+@media screen and (orientation: portrait){
+    .dashboardLink{
+        display:none !important;
+    }
+    .authButtons{
+        display:none;
+    }
+    .teamLink{
+        position: relative;
+        left: 9%;  
+    }
+    .logoCrease{
+        left: 19% !important;
+        -webkit-transform: translateX(-50%) !important;
+        transform: translateX(-50%) !important;
+    }
+    
+}
+
+@media only screen and (max-width: 992px){
+    nav .brand-logo {
+        left:2% !important;
+        transform: 0 !important;
+        -webkit-transform: translateX(0) !important; 
+    }
+}
+
+
+

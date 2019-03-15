@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+}
+h1 {
+    display: inline-block;
+    text-align: center;
+    color: slateblue;
+}
+.search-bar {
+    display: inline-block;
+    position: absolute;
+    right: 5%;
+    top: 4%;
+}
+.nav-bar {
+    text-align: center;
+}
+.bookmark-body {
+    display: inline-block;
+    position: relative;
+    left: 22%;
+}
+.alarm-nav {
+    display: inline-block;
+    position: absolute;
+    height: 100%;
+    width: 25%;
+    background-color: lightblue;
+    padding: 5px 0;
+}
+#alarm-header {
+    text-align: center;
+    font-size: 6vmin;
+    font-family: 'Pacifico', cursive;
+    color: whitesmoke;
+}
+.alarm {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    padding: 5px 0;
+    background-color: lightcoral;
+}
+.alarm-name {
+    display: inline-block;
+}
+.alarm-time {
+    display: inline-block;
+    font-weight: bold
+}

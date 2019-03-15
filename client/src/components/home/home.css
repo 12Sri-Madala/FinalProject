@@ -1,0 +1,745 @@
+body{
+    background-color: #FFFFFF;
+    margin: 0;
+
+}
+
+.hrBar{
+    border: solid #e5e5e5;
+    border-width: 2px 0 0;
+}
+.homepage {
+    background-image: url(/assets/images/63e7632dcca3ec0df648e040702d31a1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+    /* height: 120vw; */
+}
+.home-login{
+    height: 86vh;
+    margin: 0;
+}
+
+.home-title {
+    font-size: 15vmin;
+    font-family: 'Lobster', cursive;
+    color: #265288;
+}
+button{
+    cursor: pointer;
+}
+
+.crease-logo {
+    position: relative;
+    display: inline-block;
+    height: 30%;
+    width: 70%;
+    top: 20vh;
+    background-image: url(/assets/images/7c600517f7aefb02cb66cea3582cfb80.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.login-area {
+    position: relative;
+    top: 30vh;
+    margin: 2%;
+}
+
+.login-button {
+    font-size: 1.2em;
+    font-weight: 800;
+    text-decoration: none;
+    text-align: center;
+    background-color: rgba(86, 135, 132, 0.2);
+    color: #265288;
+    border: 3px solid #265288;
+    border-radius: 5px;
+    padding: 1%;
+    margin: 0 1%;
+    width: 15%;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    word-wrap: break-word;
+    min-width: 130px;
+}
+
+.login-button:hover, .getting-started-button:hover {
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.85);
+    background-color: #265288;
+}
+button:focus {
+    outline: none;
+    background-color: #265288; 
+}
+
+.description-header {
+    position: relative;
+    height: 10vh;
+    color: whitesmoke;
+    margin: 0;
+    top: 1vh;
+    text-align: center;
+}
+
+.description-title {
+    text-align: center;
+    position: relative;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 4.5vmin;
+    top: 5px;
+    color: rgb(218, 218, 218);
+}
+
+.description-subtitle {
+    position: relative;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 4.5vmin;
+    top: 5px;
+    color: rgb(218, 218, 218);
+}
+
+.organize {
+    margin-top: 7%;
+}
+
+.set {
+    margin-top: 7%;
+}
+
+.description-body {
+    height: 100vh;
+    background-image: url(/assets/images/1bc33f165303309a8cb2eea3a90b79f3.png);
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.lobster {
+    font-family: "Lobster Two", cursive;
+    font-size: 4.5vmin;
+    color: white;
+}
+
+.video-container {
+    height: 25%;
+    width: 100%;
+    margin-top: 10%
+}
+
+.device-message-container {
+    display: none;
+}
+
+.phone-videos-container {
+    display: none;
+}
+
+.videos{
+    display:flex;
+    justify-content: space-evenly;
+}
+iframe{
+    width: 522px;
+    height: 330px;
+}
+.container {
+    width: 90% !important;   
+   }
+
+.technologyText{
+    text-align: center;
+    margin-top: 5%;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 8.5vmin;
+} 
+.technologyIcons{
+    display: flex;
+    justify-content: center;
+}  
+.icon > img {
+    width: 72px;
+    
+}
+.iconName{
+    text-align: center;
+}
+.iconContainer{
+    margin: 20px;
+}
+.meetTheTeamButton{
+    text-align: center;
+    padding-bottom:2%;
+}
+/*****************************************************
+***********         Media Queries         ************
+*****************************************************/
+
+/*** Desktop media query ****/
+@media only screen and (max-width: 1250px){
+    iframe{
+        width: 530px;
+        height: 330px;
+    }
+    
+}
+
+/***** iPad Pro Media Query *****/
+
+@media only screen 
+and (max-device-width : 1200px)  {
+
+    #home-login {
+        top: 0%;
+    }
+    
+    
+    .login-area {
+        top: 25vh;
+    }
+
+    .device-message-container {
+        display: inline-block;
+        width: 80%;
+        margin: 0 9% 7% 9%;
+        border: 5px solid grey;
+        border-radius: 10px;
+        background-color: rgb(38,82,136, 0.3);
+    }
+
+    .login-button-container {
+        display: none;
+    }
+
+    .device-message {
+        display: inline-block;
+        padding: 0 30px 30px 30px;
+        font-size: 1.3rem;
+    }
+
+    .device-message-container > p {
+        display: inline-block;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .fa-exclamation-triangle {
+        font-size: 1.3rem;
+        padding: 0 10px;
+        color: rgb(38,82,136);
+    }
+
+    .description-body {
+        position: relative;
+        top: 68px;
+        height: 67vh;
+    }
+
+    .team-button {
+        width: 30%;
+        padding: 2%;
+        font-size: 1.3rem;
+    }
+
+    .description-title {
+        text-align: center;
+        position: relative;
+    }
+
+    .description-subtitle {
+        top: 75px;
+        text-align: center;
+        position: relative;
+    }
+
+    .video-container-parent {
+        position: relative;
+        top: 150px;
+    }
+
+    .videos {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+
+    .organize-video {
+        margin-right: 4%;
+    }
+
+    .container {
+     width: 90% !important;   
+    }
+
+    .organize, .set {
+        font-size: 3rem;
+        text-align: center;
+    }
+}
+
+@media only screen 
+and (max-device-width : 1200px)
+and (orientation: landscape)  {
+
+    
+
+    .device-message-container {
+        margin: 0 9% 3% 9%;
+    }
+
+    .description-body {
+        top: 35px;
+        height: 80vh;
+    }
+
+    .videos {
+        width: 100%;
+    }
+
+    .organize-video {
+        display: block;
+        margin: 0px auto;
+    }
+
+    .set-reminder-video {
+        display: block;
+        margin: 0px auto;
+    }
+}
+
+/***** iPad Media Query *****/
+
+@media only screen 
+and (max-device-width : 768px)
+and (orientation: portrait)  {
+
+    .technologyUsed {
+        padding-top: 4%;
+    }
+    /* .homepage {
+        height: 162vh;
+    } */
+
+    .description-body {
+        top: 45px;
+        height: 64vh;
+    }
+
+    .organize, .set {
+        font-size: 2rem;
+    }
+
+    iframe {
+        width: 300px;
+        height: 200px;
+    }
+
+    .videos {
+        width: 100%;
+    }
+
+    .organize-video {
+        display: block;
+        margin: 0px auto;
+    }
+
+    .set-reminder-video {
+        display: block;
+        margin: 0px auto;
+    }
+    
+}
+
+@media only screen 
+and (max-device-width : 1024px)
+and (orientation: landscape)  {
+    
+    /* .homepage {
+        height: 182vh;
+    } */
+
+    .crease-logo{
+        top: 15vh;
+    }
+
+    .login-area {
+        top: 18vh;
+    }
+
+    .device-message {
+        font-size: 1.1rem;
+    }
+
+    .description-body {
+        top: 22px;
+        height: 83vh;
+    }
+
+    .organize, .set {
+        font-size: 2rem;
+    }
+
+    iframe {
+        width: 380px;
+        height: 250px;
+    }
+}
+
+/***** iPhoneX Media Query *****/
+
+@media only screen 
+and (max-device-width : 600px)
+and (orientation: portrait)  {
+
+    .technologyUsed{
+        padding-top: 4%;
+    }
+    /* .homepage {
+        height: 188vh;
+    } */
+
+    .crease-logo {
+        top: 17vh;
+    }
+
+    .login-area {
+        top: 20vh;
+    }
+
+    .device-message, .device-message-container > p {
+        font-size: 1rem;
+    }
+
+    .team-button {
+        width: 45%;
+        font-size: 1rem;
+        padding: 3%;
+    }
+
+    .description-body {
+        height: 88vh;
+        top: 37px;
+    }
+
+    .description-title, .description-title .lobster {
+        font-size: 6.5vmin
+    }
+
+    .description-subtitle {
+        top: 45px;
+    }
+
+    .organize, .set {
+        font-size: 1.3rem;
+    }
+
+    .set .lobster {
+        font-size: 1.4rem;
+    }
+
+    .video-container-parent {
+        display: none;
+    }
+
+    .phone-videos-container {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        top: 55px;
+    }
+
+    iframe {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+@media only screen 
+and (max-device-width : 812px)
+and (orientation: landscape)  {
+    .technologyUsed{
+        padding-top: 18%;
+    }
+    /* .homepage {
+        height: 257vh;
+    } */
+
+    .device-message, .device-message-container > p {
+        font-size: 1rem;
+    }
+
+    .team-button {
+        width: 35%;
+        font-size: 1rem;
+    }
+
+    .description-body {
+        top: 132px;
+        height: 116vh;
+    }
+
+    .description-title, .description-title .lobster {
+        font-size: 6.5vmin;
+    }
+
+    .description-subtitle, .description-subtitle .lobster {
+        font-size: 5.5vmin;
+        top: 25px;
+    }
+
+    .video-container-parent {
+        top: 50px;
+    }
+
+    iframe {
+        width: 300px;
+        height: 200px;
+    }
+
+}
+
+/***** iPhone 6/7/8 Plus Media Query *****/
+
+@media only screen 
+and (max-device-width : 414px)
+and (orientation: portrait)  {
+    .technologyUsed{
+        padding-top: 4%;
+    }
+    /* .homepage {
+        height: 193vh;
+    } */
+
+    .description-body {
+        height: 95vh;
+        top: 28px;
+    }
+
+}
+
+@media only screen 
+and (max-device-width : 736px)
+and (orientation: landscape)  {
+    .technologyUsed{
+        padding-top: 18%;
+    }
+    /* .homepage {
+        height: 230vh;
+    } */
+
+    .description-body {
+        height: 100vh;
+    }
+
+    .description-subtitle, .description-subtitle .lobster {
+        font-size: 5vmin;
+    }
+
+    .organize, .set, .set .lobster {
+        font-size: 1.5rem;
+    }
+}
+
+/***** iPhone 6/7/8 Media Query *****/
+
+@media only screen 
+and (max-device-width : 375px)
+and (orientation: portrait)  {
+    
+    .technologyUsed{
+        padding-top: 4%;
+    }
+    .crease-logo {
+        top: 13vh;
+    }
+
+    .login-area {
+        top: 16vh;
+    }
+
+    /* .homepage {
+        height: 199vh;
+    } */
+
+    .description-body {
+        top: 17px;
+        height: 102vh;
+    }
+
+}
+
+@media only screen 
+and (max-device-width : 667px)
+and (orientation: landscape)  {
+
+    .technologyUsed{
+        padding-top: 18%;
+    }
+    /* .homepage {
+        height: 235vh;
+    } */
+
+    iframe {
+        width: 270px;
+        height: 180px;
+    }
+
+}
+
+/***** iPhone 5 Media Query *****/
+
+@media only screen 
+and (max-device-width : 320px)
+and (orientation: portrait)  {
+    
+    .technologyUsed{
+        padding-top: 4%;
+    }
+    /* .homepage {
+        height: 215vh;
+    } */
+
+    .login-area {
+        top: 13vh;
+    }
+    
+    .device-message, .device-message-container > p {
+        font-size: .8rem;
+    }
+
+    .team-button {
+        width: 50%;
+        font-size: .8rem;
+    }
+
+    .description-body {
+        top: 12px;
+        height: 117vh;
+    }
+}
+
+@media only screen 
+and (max-device-width : 568px)
+and (orientation: landscape)  {
+    
+    .technologyUsed{
+        padding-top: 18%;
+    }
+    /* .homepage {
+        height: 245vh;
+    } */
+
+    .device-message, .device-message-container > p {
+        font-size: .8rem;
+    }
+
+    .team-button {
+        width: 50%;
+        font-size: .8rem;
+    }
+
+    .meet-team-container {
+        top: 25vh;
+    }
+
+    .description-body {
+        height: 102vh;
+    }
+
+    .organize, .set, .set .lobster {
+        font-size: 1.3rem;
+    }
+
+    iframe {
+        width: 230px;
+        height: 150px;
+    }
+}
+
+/***** iPhone 4 Media Query *****/
+
+@media only screen 
+and (max-device-width : 320px)
+and (max-device-height : 480px)
+and (orientation: portrait)  {
+    
+    .technologyUsed{
+        padding-top: 4%;
+    }
+    /* .homepage {
+        height: 244vh;
+    } */
+
+    .description-body {
+        top: 52px;
+        height: 136vh;
+    }
+
+    .description-title {
+        top: 11px;
+    }
+
+}
+
+@media only screen 
+and (max-device-width : 480px)
+and (max-device-height : 320px)
+and (orientation: landscape)  {
+    
+    .technologyUsed{
+        padding-top: 18%;
+    }
+    /* .homepage {
+        height: 240vh;
+    } */
+
+    .description-body {
+        height: 96vh;
+    }
+
+    .description-subtitle {
+        padding: 0 10px;
+    }
+
+    .organize, .set, .set .lobster {
+        font-size: 1.1rem;
+    }
+
+    iframe {
+        width: 200px;
+        height: 130px;
+    }
+}
+
+/***** iPhoneX Adjustments Media Query *****/
+
+@media only screen 
+and (max-device-width : 375px)
+and (min-device-height : 812px)
+and (orientation: portrait)  {
+
+    .technologyUsed{
+        padding-top: 4%;
+    }
+    /* .homepage {
+        height: 182vh;
+    } */
+
+    .description-body {
+        height: 87vh;
+    }
+
+    .meet-team-container {
+        top: 20vh;
+    }
+
+    .description-title {
+        top: 13px
+    }
+}
+
+

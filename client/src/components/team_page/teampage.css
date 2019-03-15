@@ -1,0 +1,104 @@
+
+.teampage-background {
+    background-image: url(./images/team-page-bg.jpg);
+    width: 100%;
+    z-index: -1;
+    padding-top:7%;
+}
+
+.meetteam-logo {
+    display: inline-block;
+    position: relative;
+    top: 20px;
+    right: 20px;
+}
+
+.teamPageTitle{
+
+}
+
+.member-container {
+    display: inline-block;
+    margin: auto;
+    width: 50%;
+    margin-top: 2%;
+}
+.teamCenter{
+    text-align: center;
+    position: relative;
+    top: 15%;
+}
+.member-pic {
+    display: inline-block;
+    width: 55%;
+}
+.iconSection{
+    display: flex;
+    justify-content: center;
+    /* width: 50%; */
+    margin: 0;
+    /* text-align: center; */
+
+}
+.id-card {
+    display: inline-block;
+    color: grey;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.github{
+    display: inline-block;
+    color: grey;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.linkedin{
+    display: inline-block;
+    color: grey;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.member-container a {
+    color: grey
+}
+
+.member-container a:hover {
+    color: #265288;
+} 
+
+.github:hover, .linkedin:hover, .id-card:hover {
+    color: #265288;
+}
+.nameStyle{
+    
+        font-size: 1.7rem;
+        
+        font-weight: 600;
+        margin: 0;
+    
+}
+.devStyle{
+    font-size:1.1rem;
+}
+.fa-id-card, .fa-github, .fa-linkedin {
+    font-size: 2rem;
+}
+
+
+
+@media screen and (orientation: portrait){
+    .teampage-background{
+        padding-top: 18%;
+        height: auto;
+    }
+    .member-pic {
+        display: inline-block;
+        width: 70%;
+    }
+    .member-container{
+        width: 100%;
+    }
+}
