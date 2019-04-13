@@ -81,11 +81,11 @@ app.use(express.static(resolve(__dirname, "client", "dist")));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://www.creasetabs.com");
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "https://www.creasetabs.com");
+//   res.header("Access-Control-Allow-Credentials", true);
+//   next();
+// });
 
 require("./routes")(app);
 
