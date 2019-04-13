@@ -1,6 +1,6 @@
 {
   "name": "Crease",
-  "version": "1.3",
+  "version": "1.4",
   "description": "All in one bookmarks manager, that lets you set reminders for your inspirations and read laters",
   "permissions": [
     "alarms", 
@@ -9,9 +9,9 @@
     "notifications",
     "storage",
     "tabs",
-    "http://creasetabs.com/auth/apiBookmarks",
+    "https://creasetabs.com/auth/apiBookmarks",
     "cookies",
-    "http://creasetabs.com/application_page/",
+    "https://creasetabs.com/application_page/",
     "webNavigation"
   ],
   "chrome_url_overrides" : {

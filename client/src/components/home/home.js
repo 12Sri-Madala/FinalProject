@@ -157,7 +157,7 @@ export default props => {
                     
                 </div>
                     <div className=" meet-team-container meetTheTeamButton">
-                        <a href='http://creasetabs.com/teampage'><button className="login-button team-button">MEET THE TEAM</button></a>
+                        <a href='https://creasetabs.com/teampage'><button className="login-button team-button">MEET THE TEAM</button></a>
                     </div>
             </div>
         </div>

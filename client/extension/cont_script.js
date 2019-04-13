@@ -1,4 +1,4 @@
-const BASE_URL = 'http://creasetabs.com/'
+const BASE_URL = 'https://creasetabs.com/'
 const COOKIE_NAME = 'connect.sid'
 
 class User {

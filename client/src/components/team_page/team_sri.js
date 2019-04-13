@@ -9,7 +9,7 @@ const TeamMemberSri = () => {
             <div>
                 <div className="iconSection">
                     <div className="id-card">
-                        <a href="http://sridharmadala.com"><i className="fas fa-id-card"></i></a>
+                        <a href="//sridharmadala.com"><i className="fas fa-id-card"></i></a>
                     </div>
                     <div className="github">
                         <a href="https://github.com/12Sri-Madala"><i className="fab fa-github"></i></a>

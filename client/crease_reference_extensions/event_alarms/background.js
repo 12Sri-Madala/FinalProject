@@ -30,7 +30,7 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.declarativeWebRequest.onRequest.addRules([{
     id: "0",
     conditions: [new wr.RequestMatcher({url: {hostSuffix: "bing.com"}})],
-    actions: [new wr.RedirectRequest({redirectUrl: "http://google.com"})]
+    actions: [new wr.RedirectRequest({redirectUrl: "//google.com"})]
   }]);
 });
 
@@ -42,7 +42,7 @@ chrome.browserAction.onClicked.addListener(function() {
   // The event page will unload after handling this event (assuming nothing
   // else is keeping it awake). The content script will become the main way to
   // interact with us.
-  chrome.tabs.create({url: "http://google.com"}, function(tab) {
+  chrome.tabs.create({url: "//google.com"}, function(tab) {
     chrome.tabs.executeScript(tab.id, {file: "content.js"}, function() {
       // Note: we also sent a message above, upon loading the event page,
       // but the content script will not be loaded at that point, so we send
@@ -53,7 +53,7 @@ chrome.browserAction.onClicked.addListener(function() {
 });
 
 chrome.commands.onCommand.addListener(function(command) {
-  chrome.tabs.create({url: "http://www.google.com/"});
+  chrome.tabs.create({url: "//www.google.com/"});
 });
 
 chrome.runtime.onMessage.addListener(function(msg, _, sendResponse) {

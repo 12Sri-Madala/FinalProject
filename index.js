@@ -82,7 +82,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://creasetabs.com");
+  res.header("Access-Control-Allow-Origin", "https://creasetabs.com");
   res.header("Access-Control-Allow-Credentials", true);
   next();
 });
