@@ -1,6 +1,6 @@
 {
   "name": "Crease",
-  "version": "1.4",
+  "version": "1.5",
   "description": "All in one bookmarks manager, that lets you set reminders for your inspirations and read laters",
   "permissions": [
     "alarms", 

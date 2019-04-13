@@ -1,4 +1,4 @@
-const BASE_URL = 'https://creasetabs.com/'
+const BASE_URL = 'https://www.creasetabs.com/'
 
 // Chrome Alarm Listener 
 
@@ -113,7 +113,7 @@ function getBookmarkData() {
 
     const postingCall = {
       method: "POST",
-      url: "https://creasetabs.com/auth/apiBookmarks",
+      url: "https://www.creasetabs.com/auth/apiBookmarks",
       data: {
         bookmarks: JSON.stringify(bookmarkTreeNodes)
       }
