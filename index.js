@@ -8,6 +8,7 @@ const { cookieConfig, dbConfig } = require("./config");
 const cookieParser = require("cookie-parser");
 
 const PORT = process.env.PORT || 8000;
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
 mongoose.connect(
   dbConfig.connect,
@@ -74,7 +75,7 @@ app.use(
   })
 );
 
-app.use(cors());
+app.use(cors({ origin: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(resolve(__dirname, "client", "dist")));

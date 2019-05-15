@@ -15,10 +15,15 @@ passport.deserializeUser(async (userId, done) => {
     done(null, existingUser);
 });
 
+let callbackURL = '/auth/callback';
+if (process.env.NODE_ENV === 'production'){
+    callbackURL = 'https://www.creasetabs.com' + callbackURL;
+}
+
 passport.use(new GoogleStrategy({
     clientID: googleConfig.googleClientID,
     clientSecret: googleConfig.googleClientSecret,
-    callbackURL: '/auth/callback'
+    callbackURL
 }, async (accessToken, refreshToken, profile, done) => {
     const existingUser = await User.findOne({ googleId: profile.id });
 
